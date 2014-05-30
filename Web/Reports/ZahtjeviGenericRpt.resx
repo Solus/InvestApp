@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="xrLabel8.Text" xml:space="preserve">
+    <value>Potvrđujem da mi je uručen Prospekt i Status gore navedenog fonda te da sam upoznat s njihovim sadržajem i suglasan s istim. Izjavljujem da su podaci koje sam naveo ispravni i točni te se obvezujem da ću o svim promjenama gore navedenih podataka obavijestiti Društvo pismenim putem. Uz navedeni investicijski račun dostavljam Društvu presliku gore navedenog dokumenta kojom se potvrđuje točnost podataka.</value>
+  </data>
+  <data name="xrLabel15.Text" xml:space="preserve">
+    <value>NAPOMENA:
+Kako bi zahtjev za prodaju bio potpun, potrebno je uz isti dostaviti fotokopiju osobne iskaznice i tekućeg računa u banci. Molimo Vas da podaci na fotokopijama dokumenata budu vidljivi, u suprotnom smatrati ćemo zahtjev nepotpunim.
+Ukoliko je ulagatelj maloljetna osoba, zahtjev za prodaju mora postaviti zakonski zastupnik ili skrbnik, pod uvjetom da se u društvo za upravljanje fondovima dostavi potvrda iz Ministarstva rada i socijalne skrbi.
+Društvo za upravljanje fondom obvezuje se prema odredbama Prospekta i Statuta fonda, isplatiti udjele u Fondu, prema cijeni koja odgovara vrijednosti udjela utvrđenoj na dan primitka Zahtjeva.</value>
+  </data>
+  <data name="xrTableCell188.Text" xml:space="preserve">
+    <value>*Pravne osobe koje po prvi puta vrše uplatu u fond pojedinog društva, uz Zahtjev za kupnju udjela, obvezne su dostaviti Rješenje Trgovačkog suda, pregled potpisnih kartona i Izjavu o stvarnom vlasnišvu.
+*Podatake o stvarnom vlasniku nije potrebno utvrđivati u slučajevima predviđenim čl. 35 Zakona o sprječavanju pranja novca i financiranja terorizma.
+                                   </value>
+  </data>
+  <data name="xrLabel7.Text" xml:space="preserve">
+    <value>Politički izložena osoba je:
+Fizička osoba koja vrši ili je vršila istaknutu ili visoku javnu funkciju, član uže obitelji takve osobe ili bliski suradnik takve osobe.
+
+„Istaknuta ili visoka javna funkcija” uključuje: (i) predsjednike država, predsjednike vlada, ministre i njihove zamjenike ili pomoćnike; (ii) saborske zastupnike; (iii) suce vrhovnih sudova, ustavnih sudova ili drugih visokih sudskih tijela na čije odluke nije dopušteno ulagati žalbe osim u iznimnim okolnostima; (iv) suce revizorskih sudova ili članove savjeta središnjih banaka; (v) veleposlanike, konzule i visoke časnike oružanih snaga; (vi) članove upravnih i nadzornih odbora subjekata u vlasništvu države.
+„Član uže obitelji“ uključuje: (i) bračnog druga; (ii) partnera koji prema nacionalnom zakonu ima status jednak onom bračnog druga; (iii) djecu i njihove bračne drugove ili partnere; (iv) roditelje.
+„Bliski suradnik” uključuje: (i) svaku fizičku osobu za koju je poznato da ima zajedničko stvarno vlasništvo nad pravnim subjektima ili organizacijama, ili drugi bliski poslovni odnos s osobom koja obnaša istaknutu ili visoku javnu funkciju; (ii) svaku fizičku osobu koja je isključivi stvarni vlasnik pravnog subjekta ili organizacije za koje se pouzdano zna da su osnovani u korist osobe koja obnaša istaknutu ili visoku javnu funkciju.</value>
+  </data>
+  <data name="xrLabel16.Text" xml:space="preserve">
+    <value>Prilikom kupnje/prodaje udjela obavezno je uz Zahtjev dostaviti i podatke koje je Društvo dužno prikupiti sukladno Zakonu o sprječavanju pranja novca i financiranja terorizma (NN 87/08, 25/12) i bez kojih Društvo ne smĳe uspostaviti poslovni odnos. Potrebne podatke zajedno s prilozima podnositelj Zahtjeva dostavlja putem donjeg obrasca.</value>
+  </data>
+  <data name="xrLabel25.Text" xml:space="preserve">
+    <value>¹Sukladno Zakonu o sprječavanju pranja novca i financiranju terorizma, (NN br.: 87/08), te podzakonskim aktima Hrvatske agencije za nadzor financijskih usluga, Zagreb, i Ureda za sprječavanje pranja novca Ministarstva Financija Republike Hrvatske, kupci Udjela u investicijskim fondovima registriranim u Republici Hrvatskoj, dužni su ispuniti predmetni obrazac.</value>
+  </data>
+  <data name="xrTableCell292.Text" xml:space="preserve">
+    <value>potvrđujem da su u njemu navedeni podaci istiniti te ovlašćujem Društvo da provjeri sve ovdje navedene podatke. Osobno ću obavijestiti Društvo ukoliko dođe do promjena vezanih uz prije izjavljene podatke i detalje.</value>
+  </data>
+  <data name="xrTableCell296.Text" xml:space="preserve">
+    <value>dajem svoju nedvojbenu, neopozivu i izričitu suglasnost Društvu na  poduzimanje svih radnji vezanih na obradu i razmjenu mojih osobnih podataka navedenih u ovom Upitniku, sukladno Zakonu o zaštiti osobnih podataka, uključujući i podatak o matičnom broju građana, kao i OIB, što reprezentira pravo Društva na prikupljanje, spremanje, snimanje, organiziranje, uvid i prijenos osobnih podataka u svrhu obavljanja redovitih poslova Društva.</value>
+  </data>
+  <data name="xrTableCell298.Text" xml:space="preserve">
+    <value>izjavljujem  da  sam  suglasan/na  da  Društvo  može  pohraniti  podatke  iz  ovog  obrasca  u  svoje  baze podataka,  da  ih  može  razmjenjivati  sa svojim ugovornim partnerima, te  društvima  koja  su vlasnički povezana s Društvom.</value>
+  </data>
+  <data name="xrTableCell271.Text" xml:space="preserve">
+    <value>Jeste li možda član uže obitelji gore/prethodno navedenih osoba:
+   1. bračni drug ili brat ili sestra
+   2. izvanbračni drug
+   3. dijete ili bračni drug djeteta ili izvanbračni drug djeteta
+   4. roditelj</value>
+  </data>
+  <data name="xrTableCell275.Text" xml:space="preserve">
+    <value>Jeste li bliski suradnik gore/prethodno navedenih osoba na osnovu zajedničke dobiti iz imovine ili na osnovu uspostavljenog poslovnog odnosa ili nekog drugog uskog poslovnog kontakta s nekom od gore navedenih osoba</value>
+  </data>
+  <data name="xrLabel21.Text" xml:space="preserve">
+    <value>Prilikom uspostavljanja poslovnog odnosa sa nerezidentima, Društvo je dužno primijeniti odgovarajući postupak kojim utvrđuje da li je Klijent strana politički izložena osoba, sukladno članku 32. ZSPNFT. Strana politički izložena osoba je svaka fizička osoba s prebivalištem ili uobičajenim boravištem u stranoj državi koja djeluje ili je u posljednjoj godini (ili dulje) djelovala na istaknutoj javnoj dužnosti, uključujući članove njezine uže obitelji ili bliske suradnike:</value>
+  </data>
+  <data name="xrRichText1.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAFwAYQBuAHMAaQBjAHAAZwAxADIANQAwAFwAZABlAGYAZgAwAHsAXABmAG8AbgB0AHQAYgBsAHsAXABmADAAXABmAG4AaQBsAFwAZgBjAGgAYQByAHMAZQB0ADIAMwA4ACAAVABhAGgAbwBtAGEAOwB9AHsAXABmADEAXABmAG4AaQBsAFwAZgBjAGgAYQByAHMAZQB0ADAAIABUAGEAaABvAG0AYQA7AH0AewBcAGYAMgBcAGYAbgBpAGwAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AfQANAAoAewBcAGMAbwBsAG8AcgB0AGIAbAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADAAOwB9AA0ACgBcAHYAaQBlAHcAawBpAG4AZAA0AFwAdQBjADEAXABwAGEAcgBkAFwAYwBmADEAXABsAGEAbgBnADEAMAA1ADAAXABmADAAXABmAHMAMQA2ACAAVQAgAHMAawBsAGEAZAB1ACAAcwAgAFwAJwBlADgAbABhAG4AawBvAG0AIAAyADMALgAgAGkAIAAyADQALgAgAFoAYQBrAG8AbgBhACAAbwAgAHMAcAByAGoAZQBcACcAZQA4AGEAdgBhAG4AagB1ACAAcAByAGEAbgBqAGEAIABuAG8AdgBjAGEAIABpACAAZgBpAG4AYQBuAGMAaQByAGEAbgBqAHUAIAB0AGUAcgBvAHIAaQB6AG0AYQAgACgAWgBTAFAATgBGAFQAKQAsACAARAByAHUAXAAnADkAYQB0AHYAbwAgAGoAZQAgAHUAIABvAGIAdgBlAHoAaQAgAFwAcABhAHIADQAKAHAAcgBpAGIAYQB2AGkAdABpACAAcABvAGQAYQB0AGsAZQAgAG8AIABiAGUAbgBlAGYAaQBjAGkAagBhAHIAbgBpAG0ALwBzAHQAdgBhAHIAbgBpAG0AIAB2AGwAYQBzAG4AaQBjAGkAbQBhACAAcABvAHMAbABvAHYAbgBpAGgAIABzAHUAYgBqAGUAawBhAHQAYQAuACAAXABwAGEAcgANAAoAUwB0AHYAYQByAG4AaQBtAC8AYgBlAG4AZQBmAGkAYwBpAGoAYQByAG4AaQBtACAAdgBsAGEAcwBuAGkAYwBpAG0AYQAgAHAAcgBhAHYAbgBpAGgAIABvAHMAbwBiAGEAIAAoAG4AagBpAGgAbwB2AGkAaAAgAHAAbwBkAHIAdQBcACcAOQBlAG4AaQBjAGEALAAgAHAAcgBlAGQAcwB0AGEAdgBuAGkAXAAnADkAYQB0AGEAdgBhACkALAAgAHQAZQAgAGQAcgB1AGcAaQBoACAAcwB1AGIAagBlAGsAYQB0AGEAIABkAG8AbQBhAFwAJwBlADYAZQBnACAAaQAgAFwAcABhAHIADQAKAHMAdAByAGEAbgBvAGcAIABwAHIAYQB2AGEAIABpAHoAagBlAGQAbgBhAFwAJwBlADgAZQBuAGkAaAAgAHMAIABwAHIAYQB2AG4AbwBtACAAbwBzAG8AYgBvAG0ALAAgAHMAbQBhAHQAcgBhAGoAdQAgAHMAZQA6ACAAXABwAGEAcgANAAoAQQApACAAUwB2AGEAawBhACAAZgBpAHoAaQBcACcAZQA4AGsAYQAgAG8AcwBvAGIAYQAgAGsAbwBqAGEAIABqAGUALAAgAGQAaQByAGUAawB0AG4AbwAgAGkAbABpACAAaQBuAGQAaQByAGUAawB0AG4AbwAsACAAXAB1AGwAIAB2AGwAYQBzAG4AaQBrACAAdgBpAFwAJwA5AGEAZQAgAG8AZAAgADIANQAlACAAZABpAG8AbgBpAGMAYQAsACAAdgBpAFwAJwA5AGEAZQAgAG8AZAAgAFwAYgAgADIANQAlACAAdQBkAGoAZQBsAGEAIABcAGIAMAAgAGkAbABpACAAdgBpAFwAJwA5AGEAZQAgAG8AZAAgADIANQAlACAAZwBsAGEAcwBhAFwAJwBlADgAawBpAGgAIABwAHIAYQB2AGEAXAB1AGwAbgBvAG4AZQBcAHAAYQByAA0ACgBCACkAIABTAHYAYQBrAGEAIABmAGkAegBpAFwAJwBlADgAawBhACAAbwBzAG8AYgBhACAAawBvAGoAYQAgAG4AYQAgAGQAcgB1AGcAaQAgAG4AYQBcACcAZQA4AGkAbgAgAGkAbQBhACAAdQB0AGoAZQBjAGEAagBuAGEAIAB1AHAAcgBhAHYAdQAgAHAAcgBhAHYAbgBlACAAbwBzAG8AYgBlACAAaQAgAGsAbwBqAGEAIABrAG8AbgB0AHIAbwBsAGkAcgBhACAAZABvAG4AbwBcACcAOQBhAGUAbgBqAGUAZgBpAG4AYQBjAGkAagBzAGsAaQBoACAAaQAgAHAAbwBzAGwAbwB2AG4AaQBoACAAbwBkAGwAdQBrAGEALgBcAHAAYQByAA0ACgBTAHQAdgBhAHIAbgBpAG0ALwBiAGUAbgBlAGYAaQBjAGkAagBhAHIAbgBpAG0AIAB2AGwAYQBzAG4AaQBjAGkAbQBhACAAZAByAHUAZwBpAGgAIABwAHIAYQB2AG4AaQBoACAAbwBzAG8AYgBhACAAawBhAG8AIABcACcAOQBhAHQAbwAgAHMAdQAgAHoAYQBrAGwAYQBkAGUALAAgAHAAbwB2AGoAZQByAGUAbgBpAFwAJwBlADgAawBpACAAcABvAHMAbABvAHYAaQAgAGsAbwBqAGkAbQBhACAAcwBlACAAdQBwAHIAYQB2AGwAagBhACAAbgBvAHYAXAAnAGUAOABhAG4AaQBtACAAcwByAGUAZABzAHQAdgBpAG0AYQAgAGkAIAByAGEAcwBwAG8AZABqAGUAbABqAHUAagB1ACAAbgBvAHYAXAAnAGUAOABhAG4AYQAgAHMAcgBlAGQAcwB0AHYAYQAsACAAcwBtAGEAdAByAGEAagB1ACAAcwBlADoAXABwAGEAcgANAAoAQwApACAAUwB2AGEAawBhACAAZgBpAHoAaQBcACcAZQA4AGsAYQAgAG8AcwBvAGIAYQAgAGsAbwBqAGEAIABqAGUAIAB2AGwAYQBzAG4AaQBrACAAdgBpAFwAJwA5AGEAZQAgAG8AZAAgADIANQAlACAAaQBtAG8AdgBpAG4AcwBrAGkAaAAgAHAAcgBhAHYAYQAgAG8AZAByAGUAXAAnAGYAMABlAG4AbwBnACAAcAByAGEAdgBuAG8AZwAgAHAAbwBzAGwAYQAgAC0AIABhAGsAbwAgAHMAdQAgAGIAdQBkAHUAXAAnAGUANgBpACAAdgBsAGEAcwBuAGkAYwBpACAAdgBlAFwAJwBlADYAIABvAGQAcgBlAFwAJwBmADAAZQBuAGkAIABcAHAAYQByAA0ACgBEACkAIABPAHMAbwBiAGEAIABpAGwAaQAgAGcAcgB1AHAAYQAgAG8AcwBvAGIAYQAgAHUAIABcACcAZQA4AGkAagBlAG0AIABqAGUAIABpAG4AdABlAHIAZQBzAHUAIABwAHIAYQB2AG4AaQAgAHAAbwBzAGEAbwAgAG8AZABuAG8AcwBuAG8AIAB1ACAAXAAnAGUAOABpAGoAZQBtACAAagBlACAAaQBuAHQAZQByAGUAcwB1ACAAcAByAGEAdgBuAGEAIABvAHMAbwBiAGEAIABvAHMAbgBvAHYAYQBuAGEAIABpAGwAaQAgAHUAIABcACcAZQA4AGkAagBlAG0AIABpAG4AdABlAHIAZQBzAHUAIABwAG8AcwBsAHUAagBlACAALQAgAGEAawBvACAAZgBpAHoAaQBcACcAZQA4AGsAZQAgAG8AZABuAG8AcwBuAG8AIABwAHIAYQB2AG4AZQBcAGYAMQAgACAAXABmADAAIABvAHMAbwBiAGUAIABrAG8AagBlACAAXAAnAGUANgBlACAAaQBtAGEAdABpACAAawBvAHIAaQBzAHQAaQAgAG8AZAAgAHAAcgBhAHYAbgBvAGcAIABwAG8AcwBsAGEAIABqAG8AXAAnADkAYQAgAG4AaQBzAHUAIABvAGQAcgBlAFwAJwBmADAAZQBuAGUAXABwAGEAcgANAAoARQApACAAUwB2AGEAawBhACAAZgBpAHoAaQBcACcAZQA4AGsAYQAgAG8AcwBvAGIAYQAgAGsAbwBqAGEALAAgAGQAaQByAGUAawB0AG4AbwAgAGkAbABpACAAaQBuAGQAaQByAGUAawB0AG4AbwAsACAAawBvAG4AdAByAG8AbABpAHIAYQAgAHYAaQBcACcAOQBhAGUAIABvAGQAIAAyADUAJQAgAGkAbQBvAHYAaQBuAHMAawBpAGgAIABwAHIAYQB2AGEAIABvAGQAcgBlAFwAJwBmADAAZQBuAG8AZwAgAHAAcgBhAHYAbgBvAGcAIABwAG8AcwBsAGEALgBcAGYAMgBcAGYAcwAyADQAXABwAGEAcgANAAoAfQANAAoA</value>
+  </data>
+  <data name="xrTableCell439.Text" xml:space="preserve">
+    <value>potvrđujem da su u njemu navedeni podaci istiniti te ovlašćujem Društvo da provjeri sve ovdje navedene podatke. Osobno ću obavijestiti Društvo ukoliko dođe do promjena vezanih uz prije izjavljene podatke i detalje.</value>
+  </data>
+  <data name="xrTableCell441.Text" xml:space="preserve">
+    <value>dajem svoju nedvojbenu, neopozivu i izričitu suglasnost Društvu na  poduzimanje svih radnji vezanih na obradu i razmjenu mojih osobnih podataka navedenih u ovom Upitniku, sukladno Zakonu o zaštiti osobnih podataka, uključujući i podatak o matičnom broju građana, kao i OIB, što reprezentira pravo Društva na prikupljanje, spremanje, snimanje, organiziranje, uvid i prijenos osobnih podataka u svrhu obavljanja redovitih poslova Društva.</value>
+  </data>
+  <data name="xrTableCell443.Text" xml:space="preserve">
+    <value>izjavljujem  da  sam  suglasan/na  da  Društvo  može  pohraniti  podatke  iz  ovog  obrasca  u  svoje  baze podataka,  da  ih  može  razmjenjivati  sa svojim ugovornim partnerima, te  društvima  koja  su vlasnički povezana s Društvom.</value>
+  </data>
+  <data name="xrTableCell416.Text" xml:space="preserve">
+    <value>Jeste li možda član uže obitelji gore/prethodno navedenih osoba:
+   1. bračni drug ili brat ili sestra
+   2. izvanbračni drug
+   3. dijete ili bračni drug djeteta ili izvanbračni drug djeteta
+   4. roditelj</value>
+  </data>
+  <data name="xrTableCell420.Text" xml:space="preserve">
+    <value>Jeste li bliski suradnik gore/prethodno navedenih osoba na osnovu zajedničke dobiti iz imovine ili na osnovu uspostavljenog poslovnog odnosa ili nekog drugog uskog poslovnog kontakta s nekom od gore navedenih osoba</value>
+  </data>
+  <data name="xrLabel35.Text" xml:space="preserve">
+    <value>¹Sukladno Zakonu o sprječavanju pranja novca i financiranju terorizma, (NN br.: 87/08), te podzakonskim aktima Hrvatske agencije za nadzor financijskih usluga, Zagreb, i Ureda za sprječavanje pranja novca Ministarstva Financija Republike Hrvatske, kupci Udjela u investicijskim fondovima registriranim u Republici Hrvatskoj, dužni su ispuniti predmetni obrazac.</value>
+  </data>
+  <data name="xrLabel31.Text" xml:space="preserve">
+    <value>Prilikom uspostavljanja poslovnog odnosa sa nerezidentima, Društvo je dužno primijeniti odgovarajući postupak kojim utvrđuje da li je Klijent strana politički izložena osoba, sukladno članku 32. ZSPNFT. Strana politički izložena osoba je svaka fizička osoba s prebivalištem ili uobičajenim boravištem u stranoj državi koja djeluje ili je u posljednjoj godini (ili dulje) djelovala na istaknutoj javnoj dužnosti, uključujući članove njezine uže obitelji ili bliske suradnike:</value>
+  </data>
+  <data name="xrTableCell472.Text" xml:space="preserve">
+    <value>potvrđujem da su u njemu navedeni podaci istiniti te ovlašćujem Društvo da provjeri sve ovdje navedene podatke. Osobno ću obavijestiti Društvo ukoliko dođe do promjena vezanih uz prije izjavljene podatke i detalje.</value>
+  </data>
+  <data name="xrTableCell474.Text" xml:space="preserve">
+    <value>dajem svoju nedvojbenu, neopozivu i izričitu suglasnost Društvu na  poduzimanje svih radnji vezanih na obradu i razmjenu mojih osobnih podataka navedenih u ovom Upitniku, sukladno Zakonu o zaštiti osobnih podataka, uključujući i podatak o matičnom broju građana, kao i OIB, što reprezentira pravo Društva na prikupljanje, spremanje, snimanje, organiziranje, uvid i prijenos osobnih podataka u svrhu obavljanja redovitih poslova Društva.</value>
+  </data>
+  <data name="xrTableCell476.Text" xml:space="preserve">
+    <value>izjavljujem  da  sam  suglasan/na  da  Društvo  može  pohraniti  podatke  iz  ovog  obrasca  u  svoje  baze podataka,  da  ih  može  razmjenjivati  sa svojim ugovornim partnerima, te  društvima  koja  su vlasnički povezana s Društvom.</value>
+  </data>
+  <data name="xrLabel39.Text" xml:space="preserve">
+    <value>Prilikom uspostavljanja poslovnog odnosa sa nerezidentima, Društvo je dužno primijeniti odgovarajući postupak kojim utvrđuje da li je Klijent strana politički izložena osoba, sukladno članku 32. ZSPNFT. Strana politički izložena osoba je svaka fizička osoba s prebivalištem ili uobičajenim boravištem u stranoj državi koja djeluje ili je u posljednjoj godini (ili dulje) djelovala na istaknutoj javnoj dužnosti, uključujući članove njezine uže obitelji ili bliske suradnike:</value>
+  </data>
+  <data name="xrLabel36.Text" xml:space="preserve">
+    <value>¹Sukladno Zakonu o sprječavanju pranja novca i financiranju terorizma, (NN br.: 87/08), te podzakonskim aktima Hrvatske agencije za nadzor financijskih usluga, Zagreb, i Ureda za sprječavanje pranja novca Ministarstva Financija Republike Hrvatske, kupci Udjela u investicijskim fondovima registriranim u Republici Hrvatskoj, dužni su ispuniti predmetni obrazac.</value>
+  </data>
+  <data name="xrTableCell502.Text" xml:space="preserve">
+    <value>Jeste li možda član uže obitelji gore/prethodno navedenih osoba:
+   1. bračni drug ili brat ili sestra
+   2. izvanbračni drug
+   3. dijete ili bračni drug djeteta ili izvanbračni drug djeteta
+   4. roditelj</value>
+  </data>
+  <data name="xrTableCell506.Text" xml:space="preserve">
+    <value>Jeste li bliski suradnik gore/prethodno navedenih osoba na osnovu zajedničke dobiti iz imovine ili na osnovu uspostavljenog poslovnog odnosa ili nekog drugog uskog poslovnog kontakta s nekom od gore navedenih osoba</value>
+  </data>
+  <data name="xrTableCell571.Text" xml:space="preserve">
+    <value>potvrđujem da su u njemu navedeni podaci istiniti te ovlašćujem Društvo da provjeri sve ovdje navedene podatke. Osobno ću obavijestiti Društvo ukoliko dođe do promjena vezanih uz prije izjavljene podatke i detalje.</value>
+  </data>
+  <data name="xrTableCell573.Text" xml:space="preserve">
+    <value>dajem svoju nedvojbenu, neopozivu i izričitu suglasnost Društvu na  poduzimanje svih radnji vezanih na obradu i razmjenu mojih osobnih podataka navedenih u ovom Upitniku, sukladno Zakonu o zaštiti osobnih podataka, uključujući i podatak o matičnom broju građana, kao i OIB, što reprezentira pravo Društva na prikupljanje, spremanje, snimanje, organiziranje, uvid i prijenos osobnih podataka u svrhu obavljanja redovitih poslova Društva.</value>
+  </data>
+  <data name="xrTableCell575.Text" xml:space="preserve">
+    <value>izjavljujem  da  sam  suglasan/na  da  Društvo  može  pohraniti  podatke  iz  ovog  obrasca  u  svoje  baze podataka,  da  ih  može  razmjenjivati  sa svojim ugovornim partnerima, te  društvima  koja  su vlasnički povezana s Društvom.</value>
+  </data>
+  <data name="xrTableCell548.Text" xml:space="preserve">
+    <value>Jeste li možda član uže obitelji gore/prethodno navedenih osoba:
+   1. bračni drug ili brat ili sestra
+   2. izvanbračni drug
+   3. dijete ili bračni drug djeteta ili izvanbračni drug djeteta
+   4. roditelj</value>
+  </data>
+  <data name="xrTableCell552.Text" xml:space="preserve">
+    <value>Jeste li bliski suradnik gore/prethodno navedenih osoba na osnovu zajedničke dobiti iz imovine ili na osnovu uspostavljenog poslovnog odnosa ili nekog drugog uskog poslovnog kontakta s nekom od gore navedenih osoba</value>
+  </data>
+  <data name="xrLabel42.Text" xml:space="preserve">
+    <value>Prilikom uspostavljanja poslovnog odnosa sa nerezidentima, Društvo je dužno primijeniti odgovarajući postupak kojim utvrđuje da li je Klijent strana politički izložena osoba, sukladno članku 32. ZSPNFT. Strana politički izložena osoba je svaka fizička osoba s prebivalištem ili uobičajenim boravištem u stranoj državi koja djeluje ili je u posljednjoj godini (ili dulje) djelovala na istaknutoj javnoj dužnosti, uključujući članove njezine uže obitelji ili bliske suradnike:</value>
+  </data>
+  <data name="xrLabel45.Text" xml:space="preserve">
+    <value>¹Sukladno Zakonu o sprječavanju pranja novca i financiranju terorizma, (NN br.: 87/08), te podzakonskim aktima Hrvatske agencije za nadzor financijskih usluga, Zagreb, i Ureda za sprječavanje pranja novca Ministarstva Financija Republike Hrvatske, kupci Udjela u investicijskim fondovima registriranim u Republici Hrvatskoj, dužni su ispuniti predmetni obrazac.</value>
+  </data>
+  <data name="xrTableCell382.Text" xml:space="preserve">
+    <value>dajem svoju nedvojbenu, neopozivu i izričitu suglasnost Društvu na poduzimanje svih radnji vezanih na obradu i razmjenu mojih osobnih podataka navedenih u ovom Upitniku, sukladno Zakonu o zaštiti osobnih podataka, uključujući i podatak o matičnom broju pravnog subjekta/građana, kao i OIB, što reprezentira pravo Društva na prikupljanje, spremanje, snimanje, organiziranje, uvid i prijenos osobnih podataka u svrhu obavljanja redovitih poslova Društva.</value>
+  </data>
+  <data name="xrTableCell384.Text" xml:space="preserve">
+    <value>izjavljujem da sam suglasan/na da Društvo može pohraniti podatke iz ovog obrasca u svoje baze podataka, da ih može razmjenjivati sa svojim ugovornim partnerima, te društvima koja su vlasnički povezana s Društvom.</value>
+  </data>
+  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+</root>

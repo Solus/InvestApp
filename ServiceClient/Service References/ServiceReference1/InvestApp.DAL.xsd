@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InvestApp.DAL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InvestApp.DAL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+  <xs:complexType name="ArrayOfTraziFondove_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TraziFondove_Result" nillable="true" type="tns:TraziFondove_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTraziFondove_Result" nillable="true" type="tns:ArrayOfTraziFondove_Result" />
+  <xs:complexType name="TraziFondove_Result">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q1:ComplexObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CILJ_PRINOSA_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="DATUM_OSNIVANJA" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DODATNI_PODACI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DRUSTVA_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FAVORIT" type="xs:int" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="IMOVINA_FONDA" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KATEGORIJA_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="KIID_URL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MINIMALNA_POCETNA_UPLATA" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MINIMALNE_OSTALE_UPLATE" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NAKNADA_BANKA_FIKSNA" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NAKNADA_BANKA_MAKSIMALNI" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NAKNADA_BANKA_MINIMALNI" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NAKNADA_BANKA_POSTO" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NAKNADA_DEPOZITARNOJ_BANCI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAKNADA_IZLAZNA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAKNADA_ULAZNA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NALOG_OPIS_PLACANJA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NALOG_PBO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NALOG_PBO_MODEL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NALOG_PRIMATELJ_RACUN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NALOG_PRIMATELJ_VBDI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NALOG_SIFRA_NAMJENE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAPOMENA_ZA_KUPNJU" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAPOMENA_ZA_ODREGISTRACIJU" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAPOMENA_ZA_PRODAJU" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAPOMENA_ZA_REGISTRACIJU" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAZIV" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAZIV_KATEGORIJE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NAZIV_VLASNIKA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OSOBNA_ISKAZNICA_URL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POCETNA_CIJENA_UDJELA" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PRAVILA_URL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PROFIL_RIZICNOSTI_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PROSLA_VRIJEDNOST" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PROSPEKT_URL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REGIJA_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="RIZICNOST" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SEKTOR_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TIP_ULAGANJA_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TIP_UPRAVLJANJA_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TRZISTE_ID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="VALUTA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VALUTA_SIFRA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VRIJEDI_DO" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="VRIJEDI_OD" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="VRIJEDNOST" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="VRIJEDNOST_DATUM" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ZAHTJEV_REPORT_ID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TraziFondove_Result" nillable="true" type="tns:TraziFondove_Result" />
+</xs:schema>

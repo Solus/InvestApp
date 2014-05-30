@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA6FA514-0F04-43C3-84F9-24BD4DC02B24}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InvestApp.Web</RootNamespace>
+    <AssemblyName>InvestApp.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.2.1.0\lib\net40\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.10.4\lib\net40\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Docs.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2.Web, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.1\lib\net40\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.0\lib\net40\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\RecoverPassword.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\Templates\PasswordResetTemplate.html" />
+    <Content Include="Account\Templates\NoviKorisnikTemplate.html" />
+    <Content Include="Account\Verify.aspx" />
+    <Content Include="Admin\AdminCP.aspx" />
+    <Content Include="Admin\AdminKorisnikUredjivanje.aspx" />
+    <Content Include="Admin\DrustvaPregled.aspx" />
+    <Content Include="Admin\FondCijeneUdjelaUredjivanje.aspx" />
+    <Content Include="Admin\FondStrukturaUredjivanje.aspx" />
+    <Content Include="Admin\FondUredjivanje.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Dokumenti\blank.txt" />
+    <Content Include="Dokumenti\Fondovi\blank.txt" />
+    <Content Include="Dokumenti\Korisnici\blank.txt" />
+    <Content Include="FondUsporedba\FondUsporedba.aspx" />
+    <Content Include="Fond\FondCijenePregledStandalone.aspx" />
+    <Content Include="Fond\FondDokumentStandalone.aspx" />
+    <Content Include="Fond\DrustvoDokument.aspx" />
+    <Content Include="Fond\FondCijenePregled.aspx" />
+    <Content Include="Fond\FondKorisnikDetalji.aspx" />
+    <Content Include="Fond\FondKupnja.aspx" />
+    <Content Include="Fond\FondPortfeljPregled.aspx" />
+    <Content Include="Fond\FondRealizacija.aspx" />
+    <Content Include="Fond\FondZahtjeviPregled.aspx" />
+    <Content Include="Fond\FondZahtjevRealizacija.aspx" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\cart.png" />
+    <Content Include="Images\checkbox.png" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\document.png" />
+    <Content Include="Images\dok_default.png" />
+    <Content Include="Images\dok_image.png" />
+    <Content Include="Images\dok_office_doc.png" />
+    <Content Include="Images\dok_pdf.png" />
+    <Content Include="Images\Drustva\kdinvestments.png" />
+    <Content Include="Images\Drustva\pbzinvest.gif" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\file_pdf.png" />
+    <Content Include="Images\header.png" />
+    <Content Include="Images\info.png" />
+    <Content Include="Images\logo_white_small.png" />
+    <Content Include="Images\radio_button.png" />
+    <Content Include="Fond\FondZahtjevPoruka.aspx" />
+    <Content Include="Fond\ZahtjevIspis.aspx" />
+    <Content Include="Images\arrow_left.png" />
+    <Content Include="Images\arrow_left_white.png" />
+    <Content Include="Images\arrow_right.png" />
+    <Content Include="Images\arrow_right_white.png" />
+    <Content Include="Images\cancel.png" />
+    <Content Include="Images\cancel_white.png" />
+    <Content Include="Images\check.png" />
+    <Content Include="Images\check_white.png" />
+    <Content Include="Images\exclamation.ico" />
+    <Content Include="Images\minus.png" />
+    <Content Include="Images\minus_white.png" />
+    <Content Include="Images\plus.png" />
+    <Content Include="Images\plus_white.png" />
+    <Content Include="Images\scale.png" />
+    <Content Include="Images\scales.png" />
+    <Content Include="Images\scale_blue.png" />
+    <Content Include="Images\scale_white.png" />
+    <Content Include="Images\star_check.png" />
+    <Content Include="Images\star_uncheck.png" />
+    <Content Include="Images\table.png" />
+    <Content Include="Images\trash.png" />
+    <Content Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx" />
+    <Content Include="Kontrole\FondPortfeljVrijednostGrafCtrl.ascx" />
+    <Content Include="Kontrole\FondStruktureUlaganjaCtrl.ascx" />
+    <Content Include="Kontrole\FondPrinosiGrafCtrl.ascx" />
+    <Content Include="Kontrole\FondPortfeljPregledCtrl.ascx" />
+    <Content Include="Kontrole\FondPrinosiTablicaCtrl.ascx" />
+    <Content Include="Blog.aspx" />
+    <Content Include="Reports\ZahtjevIspis.aspx" />
+    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Content\css\site_content.css" />
+    <Content Include="Scripts\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Scripts\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\thickbox\loadingAnimation.gif" />
+    <Content Include="Scripts\thickbox\thickbox.css" />
+    <Content Include="Scripts\thickbox\thickbox.js" />
+    <Content Include="Kontrole\FondPregledAdminCtrl.ascx" />
+    <Content Include="Fond\FondDokument.aspx" />
+    <Content Include="Fond\FondPregled.aspx" />
+    <Content Include="Kontrole\FondPregledCtrl.ascx" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\Background1.gif" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\calendar.gif" />
+    <Content Include="Images\chart-icon-16x16.gif" />
+    <Content Include="Images\dc.gif" />
+    <Content Include="Images\delete.gif" />
+    <Content Include="Images\edit.gif" />
+    <Content Include="Images\Fina.gif" />
+    <Content Include="Images\Greska.gif" />
+    <Content Include="Images\GumbStrelica.gif" />
+    <Content Include="Images\gumb_test.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\Hotbox.gif" />
+    <Content Include="Images\HUB1.gif" />
+    <Content Include="Images\HUB3.gif" />
+    <Content Include="Images\iban.gif" />
+    <Content Include="Images\icon3.gif" />
+    <Content Include="Images\Image96.gif" />
+    <Content Include="Images\info.gif" />
+    <Content Include="Images\info2.gif" />
+    <Content Include="Images\Informacija.GIF" />
+    <Content Include="Images\Ispis.gif" />
+    <Content Include="Images\jednako.gif" />
+    <Content Include="Images\manje.gif" />
+    <Content Include="Images\menu_wrapper_bck.gif" />
+    <Content Include="Images\new-16.png" />
+    <Content Include="Images\new-17.png" />
+    <Content Include="Images\Novi.gif" />
+    <Content Include="Images\Odabir16_1.GIF" />
+    <Content Include="Images\ok.gif" />
+    <Content Include="Images\Operateri.gif" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\pdf.gif" />
+    <Content Include="Images\PlatniNalog.gif" />
+    <Content Include="Images\Poruke.gif" />
+    <Content Include="Images\povecalo.gif" />
+    <Content Include="Images\Racunalo.GIF" />
+    <Content Include="Images\refresh.gif" />
+    <Content Include="Images\rpt_ceba_logo.gif" />
+    <Content Include="Images\rpt_ceba_logo3.png" />
+    <Content Include="Images\rpt_ceba_logo_red.png" />
+    <Content Include="Images\rpt_logo.gif" />
+    <Content Include="Images\rpt_logo2.gif" />
+    <Content Include="Images\rpt_logo3.png" />
+    <Content Include="Images\TecajneListe.gif" />
+    <Content Include="Images\TOKEN.gif" />
+    <Content Include="Images\Upit.GIF" />
+    <Content Include="Images\Upozorenje.gif" />
+    <Content Include="Images\vise.gif" />
+    <Content Include="Images\xls.gif" />
+    <Content Include="Images\Zastave\124.gif" />
+    <Content Include="Images\Zastave\203.gif" />
+    <Content Include="Images\Zastave\208.gif" />
+    <Content Include="Images\Zastave\348.gif" />
+    <Content Include="Images\Zastave\36.gif" />
+    <Content Include="Images\Zastave\392.gif" />
+    <Content Include="Images\Zastave\578.gif" />
+    <Content Include="Images\Zastave\703.gif" />
+    <Content Include="Images\Zastave\752.gif" />
+    <Content Include="Images\Zastave\756.gif" />
+    <Content Include="Images\Zastave\826.gif" />
+    <Content Include="Images\Zastave\840.gif" />
+    <Content Include="Images\Zastave\977.gif" />
+    <Content Include="Images\Zastave\978.gif" />
+    <Content Include="Images\Zastave\985.gif" />
+    <Content Include="Images\Zastave\australialg.gif" />
+    <Content Include="Images\Zastave\bosnialg.gif" />
+    <Content Include="Images\Zastave\canadalg.gif" />
+    <Content Include="Images\Zastave\czechlg.gif" />
+    <Content Include="Images\Zastave\denmarklg.gif" />
+    <Content Include="Images\Zastave\europeunionlg.gif" />
+    <Content Include="Images\Zastave\hungarylg.gif" />
+    <Content Include="Images\Zastave\japanlg.gif" />
+    <Content Include="Images\Zastave\norwaylg.gif" />
+    <Content Include="Images\Zastave\polandlg.gif" />
+    <Content Include="Images\Zastave\slovakialg.gif" />
+    <Content Include="Images\Zastave\swedenlg.gif" />
+    <Content Include="Images\Zastave\switzerlg.gif" />
+    <Content Include="Images\Zastave\uklg.gif" />
+    <Content Include="Images\Zastave\USAFlag.gif" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <Content Include="Scripts\modernizr-2.7.2.js" />
+    <Content Include="Scripts\tinymce.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="test.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="Reports\ZahtjeviDS.xsc">
+      <DependentUpon>ZahtjeviDS.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\ZahtjeviDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZahtjeviDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\ZahtjeviDS.xss">
+      <DependentUpon>ZahtjeviDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\RecoverPassword.aspx.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RecoverPassword.aspx.designer.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Verify.aspx.cs">
+      <DependentUpon>Verify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Verify.aspx.designer.cs">
+      <DependentUpon>Verify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminCP.aspx.cs">
+      <DependentUpon>AdminCP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminCP.aspx.designer.cs">
+      <DependentUpon>AdminCP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminKorisnikUredjivanje.aspx.cs">
+      <DependentUpon>AdminKorisnikUredjivanje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminKorisnikUredjivanje.aspx.designer.cs">
+      <DependentUpon>AdminKorisnikUredjivanje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DrustvaPregled.aspx.cs">
+      <DependentUpon>DrustvaPregled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DrustvaPregled.aspx.designer.cs">
+      <DependentUpon>DrustvaPregled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FondCijeneUdjelaUredjivanje.aspx.cs">
+      <DependentUpon>FondCijeneUdjelaUredjivanje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FondCijeneUdjelaUredjivanje.aspx.designer.cs">
+      <DependentUpon>FondCijeneUdjelaUredjivanje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FondStrukturaUredjivanje.aspx.cs">
+      <DependentUpon>FondStrukturaUredjivanje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FondStrukturaUredjivanje.aspx.designer.cs">
+      <DependentUpon>FondStrukturaUredjivanje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FondUredjivanje.aspx.cs">
+      <DependentUpon>FondUredjivanje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FondUredjivanje.aspx.designer.cs">
+      <DependentUpon>FondUredjivanje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FondUsporedba\FondUsporedba.aspx.cs">
+      <DependentUpon>FondUsporedba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FondUsporedba\FondUsporedba.aspx.designer.cs">
+      <DependentUpon>FondUsporedba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FondUsporedba\FondUsporedbaContainer.cs" />
+    <Compile Include="Fond\FondCijenePregledStandalone.aspx.cs">
+      <DependentUpon>FondCijenePregledStandalone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondCijenePregledStandalone.aspx.designer.cs">
+      <DependentUpon>FondCijenePregledStandalone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondDokumentStandalone.aspx.cs">
+      <DependentUpon>FondDokumentStandalone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondDokumentStandalone.aspx.designer.cs">
+      <DependentUpon>FondDokumentStandalone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\DrustvoDokument.aspx.cs">
+      <DependentUpon>DrustvoDokument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\DrustvoDokument.aspx.designer.cs">
+      <DependentUpon>DrustvoDokument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondCijenePregled.aspx.cs">
+      <DependentUpon>FondCijenePregled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondCijenePregled.aspx.designer.cs">
+      <DependentUpon>FondCijenePregled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondKorisnikDetalji.aspx.cs">
+      <DependentUpon>FondKorisnikDetalji.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondKorisnikDetalji.aspx.designer.cs">
+      <DependentUpon>FondKorisnikDetalji.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondKupnja.aspx.cs">
+      <DependentUpon>FondKupnja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondKupnja.aspx.designer.cs">
+      <DependentUpon>FondKupnja.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondPortfeljPregled.aspx.cs">
+      <DependentUpon>FondPortfeljPregled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondPortfeljPregled.aspx.designer.cs">
+      <DependentUpon>FondPortfeljPregled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondRealizacija.aspx.cs">
+      <DependentUpon>FondRealizacija.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondRealizacija.aspx.designer.cs">
+      <DependentUpon>FondRealizacija.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondZahtjeviPregled.aspx.cs">
+      <DependentUpon>FondZahtjeviPregled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondZahtjeviPregled.aspx.designer.cs">
+      <DependentUpon>FondZahtjeviPregled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondZahtjevPoruka.aspx.cs">
+      <DependentUpon>FondZahtjevPoruka.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondZahtjevPoruka.aspx.designer.cs">
+      <DependentUpon>FondZahtjevPoruka.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondZahtjevRealizacija.aspx.cs">
+      <DependentUpon>FondZahtjevRealizacija.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondZahtjevRealizacija.aspx.designer.cs">
+      <DependentUpon>FondZahtjevRealizacija.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx.cs">
+      <DependentUpon>FondPortfeljUdioGrafCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx.designer.cs">
+      <DependentUpon>FondPortfeljUdioGrafCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPortfeljVrijednostGrafCtrl.ascx.cs">
+      <DependentUpon>FondPortfeljVrijednostGrafCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPortfeljVrijednostGrafCtrl.ascx.designer.cs">
+      <DependentUpon>FondPortfeljVrijednostGrafCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Blog.aspx.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Blog.aspx.designer.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report.cs" />
+    <Compile Include="Fond\ZahtjevIspis.aspx.cs">
+      <DependentUpon>ZahtjevIspis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\ZahtjevIspis.aspx.designer.cs">
+      <DependentUpon>ZahtjevIspis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondStruktureUlaganjaCtrl.ascx.cs">
+      <DependentUpon>FondStruktureUlaganjaCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondStruktureUlaganjaCtrl.ascx.designer.cs">
+      <DependentUpon>FondStruktureUlaganjaCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPrinosiGrafCtrl.ascx.cs">
+      <DependentUpon>FondPrinosiGrafCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPrinosiGrafCtrl.ascx.designer.cs">
+      <DependentUpon>FondPrinosiGrafCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPortfeljPregledCtrl.ascx.cs">
+      <DependentUpon>FondPortfeljPregledCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPortfeljPregledCtrl.ascx.designer.cs">
+      <DependentUpon>FondPortfeljPregledCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPregledAdminCtrl.ascx.cs">
+      <DependentUpon>FondPregledAdminCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPregledAdminCtrl.ascx.designer.cs">
+      <DependentUpon>FondPregledAdminCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondDokument.aspx.cs">
+      <DependentUpon>FondDokument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondDokument.aspx.designer.cs">
+      <DependentUpon>FondDokument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fond\FondPregled.aspx.cs">
+      <DependentUpon>FondPregled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\FondPregled.aspx.designer.cs">
+      <DependentUpon>FondPregled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPregledCtrl.ascx.cs">
+      <DependentUpon>FondPregledCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPregledCtrl.ascx.designer.cs">
+      <DependentUpon>FondPregledCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrole\FondPrinosiTablicaCtrl.ascx.cs">
+      <DependentUpon>FondPrinosiTablicaCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kontrole\FondPrinosiTablicaCtrl.ascx.designer.cs">
+      <DependentUpon>FondPrinosiTablicaCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InvestMainContent.Master.cs">
+      <DependentUpon>InvestMainContent.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvestMainContent.Master.designer.cs">
+      <DependentUpon>InvestMainContent.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ZahtjeviGenericRpt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ZahtjeviGenericRpt.Designer.cs">
+      <DependentUpon>ZahtjeviGenericRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ZahtjevIspis.aspx.cs">
+      <DependentUpon>ZahtjevIspis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ZahtjevIspis.aspx.designer.cs">
+      <DependentUpon>ZahtjevIspis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ZahtjeviDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZahtjeviDS.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Dokumenti\Potvrde\" />
+    <Folder Include="Slike\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="InvestMainContent.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce-small.json" />
+    <Content Include="Scripts\skins\lightgray\fonts\tinymce.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{bb080db7-9093-467f-916f-5d0ff4ef017f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{457a9c6b-dbd0-4c87-92c0-db7ea1b5e151}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIControls\UIControls.csproj">
+      <Project>{b0ada90b-a759-4828-bb74-269cb164c821}</Project>
+      <Name>UIControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\ZahtjeviGenericRpt.resx">
+      <DependentUpon>ZahtjeviGenericRpt.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1405/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

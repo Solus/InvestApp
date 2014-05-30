@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FondModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FondModelStoreContainer">
+    <EntitySet Name="ADMIN_CONFIG" EntityType="FondModel.Store.ADMIN_CONFIG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="APL_LOG" EntityType="FondModel.Store.APL_LOG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DOMACE_BANKE" EntityType="FondModel.Store.DOMACE_BANKE" store:Type="Tables" store:Schema="dbo" store:Name="DOMACE_BANKE">
+      <DefiningQuery>SELECT 
+      [DOMACE_BANKE].[PID] AS [PID], 
+      [DOMACE_BANKE].[VBDI] AS [VBDI], 
+      [DOMACE_BANKE].[SMBK] AS [SMBK], 
+      [DOMACE_BANKE].[NAZIV] AS [NAZIV], 
+      [DOMACE_BANKE].[BIC] AS [BIC], 
+      [DOMACE_BANKE].[BRC] AS [BRC], 
+      [DOMACE_BANKE].[RACUN_U_BANCI] AS [RACUN_U_BANCI], 
+      [DOMACE_BANKE].[AKTIVNOST] AS [AKTIVNOST]
+      FROM [dbo].[DOMACE_BANKE] AS [DOMACE_BANKE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="FOND_CILJ_PRINOSA" EntityType="FondModel.Store.FOND_CILJ_PRINOSA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_DEF" EntityType="FondModel.Store.FOND_DEF" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_DRUSTVA" EntityType="FondModel.Store.FOND_DRUSTVA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_KATEGORIJE" EntityType="FondModel.Store.FOND_KATEGORIJE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_PROFIL_RIZICNOSTI" EntityType="FondModel.Store.FOND_PROFIL_RIZICNOSTI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_PROMETI" EntityType="FondModel.Store.FOND_PROMETI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_REGIJA" EntityType="FondModel.Store.FOND_REGIJA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_SEKTOR" EntityType="FondModel.Store.FOND_SEKTOR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_STRUKTURA_ULAGANJA_DETALJI" EntityType="FondModel.Store.FOND_STRUKTURA_ULAGANJA_DETALJI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_STRUKTURA_ULAGANJA_ZAG" EntityType="FondModel.Store.FOND_STRUKTURA_ULAGANJA_ZAG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_TIP_ULAGANJA" EntityType="FondModel.Store.FOND_TIP_ULAGANJA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_TIP_UPRAVLJANJA" EntityType="FondModel.Store.FOND_TIP_UPRAVLJANJA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_TRZISTE" EntityType="FondModel.Store.FOND_TRZISTE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_VRIJEDNOST_UDJELA" EntityType="FondModel.Store.FOND_VRIJEDNOST_UDJELA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_ZAHTJEV_POLITICKA_IZLOZENOST" EntityType="FondModel.Store.FOND_ZAHTJEV_POLITICKA_IZLOZENOST" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_ZAHTJEVI" EntityType="FondModel.Store.FOND_ZAHTJEVI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FOND_ZAHTJEVI_DODATNO" EntityType="FondModel.Store.FOND_ZAHTJEVI_DODATNO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KORISNIK" EntityType="FondModel.Store.KORISNIK" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KORISNIK_DODATNO" EntityType="FondModel.Store.KORISNIK_DODATNO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KORISNIK_FOND_FAVORITI" EntityType="FondModel.Store.KORISNIK_FOND_FAVORITI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NOVOSTI" EntityType="FondModel.Store.NOVOSTI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VALUTE" EntityType="FondModel.Store.VALUTE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FondPodaci" EntityType="FondModel.Store.FondPodaci" store:Type="Views" store:Schema="dbo" store:Name="FondPodaci">
+      <DefiningQuery>SELECT 
+      [FondPodaci].[ID] AS [ID], 
+      [FondPodaci].[KATEGORIJA_ID] AS [KATEGORIJA_ID], 
+      [FondPodaci].[REGIJA_ID] AS [REGIJA_ID], 
+      [FondPodaci].[TIP_ULAGANJA_ID] AS [TIP_ULAGANJA_ID], 
+      [FondPodaci].[TIP_UPRAVLJANJA_ID] AS [TIP_UPRAVLJANJA_ID], 
+      [FondPodaci].[DRUSTVA_ID] AS [DRUSTVA_ID], 
+      [FondPodaci].[RIZICNOST] AS [RIZICNOST], 
+      [FondPodaci].[MINIMALNA_POCETNA_UPLATA] AS [MINIMALNA_POCETNA_UPLATA], 
+      [FondPodaci].[MINIMALNE_OSTALE_UPLATE] AS [MINIMALNE_OSTALE_UPLATE], 
+      [FondPodaci].[VALUTA_SIFRA] AS [VALUTA_SIFRA], 
+      [FondPodaci].[POCETNA_CIJENA_UDJELA] AS [POCETNA_CIJENA_UDJELA], 
+      [FondPodaci].[DATUM_OSNIVANJA] AS [DATUM_OSNIVANJA], 
+      [FondPodaci].[IMOVINA_FONDA] AS [IMOVINA_FONDA], 
+      [FondPodaci].[NAKNADA_ULAZNA] AS [NAKNADA_ULAZNA], 
+      [FondPodaci].[NAKNADA_IZLAZNA] AS [NAKNADA_IZLAZNA], 
+      [FondPodaci].[NAKNADA_ZA_UPRAVLJANJEM_FONDA] AS [NAKNADA_ZA_UPRAVLJANJEM_FONDA], 
+      [FondPodaci].[NAKNADA_DEPOZITARNOJ_BANCI] AS [NAKNADA_DEPOZITARNOJ_BANCI], 
+      [FondPodaci].[NAKNADA_BANKA_FIKSNA] AS [NAKNADA_BANKA_FIKSNA], 
+      [FondPodaci].[NAKNADA_BANKA_POSTO] AS [NAKNADA_BANKA_POSTO], 
+      [FondPodaci].[NAKNADA_BANKA_MINIMALNI] AS [NAKNADA_BANKA_MINIMALNI], 
+      [FondPodaci].[NAKNADA_BANKA_MAKSIMALNI] AS [NAKNADA_BANKA_MAKSIMALNI], 
+      [FondPodaci].[NAPOMENA_ZA_KUPNJU] AS [NAPOMENA_ZA_KUPNJU], 
+      [FondPodaci].[NAPOMENA_ZA_PRODAJU] AS [NAPOMENA_ZA_PRODAJU], 
+      [FondPodaci].[NAPOMENA_ZA_REGISTRACIJU] AS [NAPOMENA_ZA_REGISTRACIJU], 
+      [FondPodaci].[DODATNI_PODACI] AS [DODATNI_PODACI], 
+      [FondPodaci].[VRIJEDI_OD] AS [VRIJEDI_OD], 
+      [FondPodaci].[VRIJEDI_DO] AS [VRIJEDI_DO], 
+      [FondPodaci].[NAZIV] AS [NAZIV], 
+      [FondPodaci].[NAPOMENA_ZA_ODREGISTRACIJU] AS [NAPOMENA_ZA_ODREGISTRACIJU], 
+      [FondPodaci].[ZAHTJEV_REPORT_ID] AS [ZAHTJEV_REPORT_ID], 
+      [FondPodaci].[NALOG_PRIMATELJ_VBDI] AS [NALOG_PRIMATELJ_VBDI], 
+      [FondPodaci].[NALOG_PRIMATELJ_RACUN] AS [NALOG_PRIMATELJ_RACUN], 
+      [FondPodaci].[NALOG_PBO_MODEL] AS [NALOG_PBO_MODEL], 
+      [FondPodaci].[NALOG_PBO] AS [NALOG_PBO], 
+      [FondPodaci].[NALOG_OPIS_PLACANJA] AS [NALOG_OPIS_PLACANJA], 
+      [FondPodaci].[NAZIV_VLASNIKA] AS [NAZIV_VLASNIKA], 
+      [FondPodaci].[VRIJEDNOST] AS [VRIJEDNOST], 
+      [FondPodaci].[VRIJEDNOST_DATUM] AS [VRIJEDNOST_DATUM], 
+      [FondPodaci].[PROSLA_VRIJEDNOST] AS [PROSLA_VRIJEDNOST], 
+      [FondPodaci].[VALUTA] AS [VALUTA], 
+      [FondPodaci].[NAZIV_KATEGORIJE] AS [NAZIV_KATEGORIJE]
+      FROM [dbo].[FondPodaci] AS [FondPodaci]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_CILJ_PRINOSA" Association="FondModel.Store.FK_FOND_DEF_FOND_CILJ_PRINOSA">
+      <End Role="FOND_CILJ_PRINOSA" EntitySet="FOND_CILJ_PRINOSA" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_DRUSTVA" Association="FondModel.Store.FK_FOND_DEF_FOND_DRUSTVA">
+      <End Role="FOND_DRUSTVA" EntitySet="FOND_DRUSTVA" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_GEO" Association="FondModel.Store.FK_FOND_DEF_FOND_GEO">
+      <End Role="FOND_REGIJA" EntitySet="FOND_REGIJA" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_KATEGORIJE" Association="FondModel.Store.FK_FOND_DEF_FOND_KATEGORIJE">
+      <End Role="FOND_KATEGORIJE" EntitySet="FOND_KATEGORIJE" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI" Association="FondModel.Store.FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI">
+      <End Role="FOND_PROFIL_RIZICNOSTI" EntitySet="FOND_PROFIL_RIZICNOSTI" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_SEKTOR" Association="FondModel.Store.FK_FOND_DEF_FOND_SEKTOR">
+      <End Role="FOND_SEKTOR" EntitySet="FOND_SEKTOR" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_TIP_ULAGANJA" Association="FondModel.Store.FK_FOND_DEF_FOND_TIP_ULAGANJA">
+      <End Role="FOND_TIP_ULAGANJA" EntitySet="FOND_TIP_ULAGANJA" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_TIP_UPRAVLJANJA" Association="FondModel.Store.FK_FOND_DEF_FOND_TIP_UPRAVLJANJA">
+      <End Role="FOND_TIP_UPRAVLJANJA" EntitySet="FOND_TIP_UPRAVLJANJA" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_TRZISTE" Association="FondModel.Store.FK_FOND_DEF_FOND_TRZISTE">
+      <End Role="FOND_TRZISTE" EntitySet="FOND_TRZISTE" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_VALUTE" Association="FondModel.Store.FK_FOND_DEF_VALUTE">
+      <End Role="VALUTE" EntitySet="VALUTE" />
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_PROMETI_FOND_DEF" Association="FondModel.Store.FK_FOND_PROMETI_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+      <End Role="FOND_PROMETI" EntitySet="FOND_PROMETI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_PROMETI_FOND_ZAHTJEVI" Association="FondModel.Store.FK_FOND_PROMETI_FOND_ZAHTJEVI">
+      <End Role="FOND_ZAHTJEVI" EntitySet="FOND_ZAHTJEVI" />
+      <End Role="FOND_PROMETI" EntitySet="FOND_PROMETI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_PROMETI_KORISNIK" Association="FondModel.Store.FK_FOND_PROMETI_KORISNIK">
+      <End Role="KORISNIK" EntitySet="KORISNIK" />
+      <End Role="FOND_PROMETI" EntitySet="FOND_PROMETI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG" Association="FondModel.Store.FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG">
+      <End Role="FOND_STRUKTURA_ULAGANJA_ZAG" EntitySet="FOND_STRUKTURA_ULAGANJA_ZAG" />
+      <End Role="FOND_STRUKTURA_ULAGANJA_DETALJI" EntitySet="FOND_STRUKTURA_ULAGANJA_DETALJI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" Association="FondModel.Store.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+      <End Role="FOND_STRUKTURA_ULAGANJA_ZAG" EntitySet="FOND_STRUKTURA_ULAGANJA_ZAG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF" Association="FondModel.Store.FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+      <End Role="FOND_VRIJEDNOST_UDJELA" EntitySet="FOND_VRIJEDNOST_UDJELA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_ZAHTJEV_POLITICKA_IZLOZENOST_FOND_ZAHTJEVI" Association="FondModel.Store.FK_FOND_ZAHTJEV_POLITICKA_IZLOZENOST_FOND_ZAHTJEVI">
+      <End Role="FOND_ZAHTJEVI" EntitySet="FOND_ZAHTJEVI" />
+      <End Role="FOND_ZAHTJEV_POLITICKA_IZLOZENOST" EntitySet="FOND_ZAHTJEV_POLITICKA_IZLOZENOST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_ZAHTJEVI_DODATNO_FOND_ZAHTJEVI" Association="FondModel.Store.FK_FOND_ZAHTJEVI_DODATNO_FOND_ZAHTJEVI">
+      <End Role="FOND_ZAHTJEVI" EntitySet="FOND_ZAHTJEVI" />
+      <End Role="FOND_ZAHTJEVI_DODATNO" EntitySet="FOND_ZAHTJEVI_DODATNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_ZAHTJEVI_FOND_DEF" Association="FondModel.Store.FK_FOND_ZAHTJEVI_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+      <End Role="FOND_ZAHTJEVI" EntitySet="FOND_ZAHTJEVI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KORISNIK_DODATNO_KORISNIK" Association="FondModel.Store.FK_KORISNIK_DODATNO_KORISNIK">
+      <End Role="KORISNIK" EntitySet="KORISNIK" />
+      <End Role="KORISNIK_DODATNO" EntitySet="KORISNIK_DODATNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KORISNIK_FOND_DRUSTVA" Association="FondModel.Store.FK_KORISNIK_FOND_DRUSTVA">
+      <End Role="FOND_DRUSTVA" EntitySet="FOND_DRUSTVA" />
+      <End Role="KORISNIK" EntitySet="KORISNIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KORISNIK_FOND_FAVORITI_FOND_DEF" Association="FondModel.Store.FK_KORISNIK_FOND_FAVORITI_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+      <End Role="KORISNIK_FOND_FAVORITI" EntitySet="KORISNIK_FOND_FAVORITI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KORISNIK_FOND_FAVORITI_KORISNIK" Association="FondModel.Store.FK_KORISNIK_FOND_FAVORITI_KORISNIK">
+      <End Role="KORISNIK" EntitySet="KORISNIK" />
+      <End Role="KORISNIK_FOND_FAVORITI" EntitySet="KORISNIK_FOND_FAVORITI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOVOSTI_KORISNIK" Association="FondModel.Store.FK_NOVOSTI_KORISNIK">
+      <End Role="KORISNIK" EntitySet="KORISNIK" />
+      <End Role="NOVOSTI" EntitySet="NOVOSTI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOVOSTI_KORISNIK1" Association="FondModel.Store.FK_NOVOSTI_KORISNIK1">
+      <End Role="KORISNIK" EntitySet="KORISNIK" />
+      <End Role="NOVOSTI" EntitySet="NOVOSTI" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ADMIN_CONFIG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="GRAF_MAX_ZAPISA" Type="int" />
+  </EntityType>
+  <EntityType Name="APL_LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TEKST" Type="text" Nullable="false" />
+    <Property Name="VRIJEME" Type="datetime" Nullable="false" />
+    <Property Name="KORISNIK" Type="nvarchar" MaxLength="256" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+    <Property Name="USER_AGENT" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'InvestApp.dbo.DOMACE_BANKE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="DOMACE_BANKE">
+    <Key>
+      <PropertyRef Name="PID" />
+      <PropertyRef Name="VBDI" />
+      <PropertyRef Name="SMBK" />
+      <PropertyRef Name="NAZIV" />
+    </Key>
+    <Property Name="PID" Type="numeric" Nullable="false" Precision="9" />
+    <Property Name="VBDI" Type="varchar" Nullable="false" MaxLength="7" />
+    <Property Name="SMBK" Type="numeric" Nullable="false" Precision="7" />
+    <Property Name="NAZIV" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="BIC" Type="nvarchar" MaxLength="8" />
+    <Property Name="BRC" Type="nvarchar" MaxLength="3" />
+    <Property Name="RACUN_U_BANCI" Type="varchar" MaxLength="10" />
+    <Property Name="AKTIVNOST" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="FOND_CILJ_PRINOSA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_DEF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NAZIV" Type="nvarchar" MaxLength="200" />
+    <Property Name="KATEGORIJA_ID" Type="int" />
+    <Property Name="DRUSTVA_ID" Type="int" />
+    <Property Name="REGIJA_ID" Type="int" />
+    <Property Name="TIP_ULAGANJA_ID" Type="int" />
+    <Property Name="TIP_UPRAVLJANJA_ID" Type="int" />
+    <Property Name="CILJ_PRINOSA_ID" Type="int" />
+    <Property Name="SEKTOR_ID" Type="int" />
+    <Property Name="TRZISTE_ID" Type="int" />
+    <Property Name="PROFIL_RIZICNOSTI_ID" Type="int" />
+    <Property Name="RIZICNOST" Type="nchar" MaxLength="2" />
+    <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
+    <Property Name="POCETNA_CIJENA_UDJELA" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="DATUM_OSNIVANJA" Type="date" />
+    <Property Name="IMOVINA_FONDA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_ULAZNA" Type="nvarchar(max)" />
+    <Property Name="NAKNADA_IZLAZNA" Type="nvarchar(max)" />
+    <Property Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" Type="nvarchar(max)" />
+    <Property Name="NAKNADA_DEPOZITARNOJ_BANCI" Type="nvarchar(max)" />
+    <Property Name="NAKNADA_BANKA_FIKSNA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_POSTO" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_MINIMALNI" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_MAKSIMALNI" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAPOMENA_ZA_KUPNJU" Type="ntext" />
+    <Property Name="NAPOMENA_ZA_PRODAJU" Type="ntext" />
+    <Property Name="NAPOMENA_ZA_REGISTRACIJU" Type="ntext" />
+    <Property Name="DODATNI_PODACI" Type="nvarchar" />
+    <Property Name="VRIJEDI_OD" Type="date" />
+    <Property Name="VRIJEDI_DO" Type="date" />
+    <Property Name="NAPOMENA_ZA_ODREGISTRACIJU" Type="ntext" />
+    <Property Name="ZAHTJEV_REPORT_ID" Type="nvarchar" MaxLength="200" />
+    <Property Name="NALOG_PRIMATELJ_VBDI" Type="nvarchar" MaxLength="7" />
+    <Property Name="NALOG_PRIMATELJ_RACUN" Type="nvarchar" MaxLength="21" />
+    <Property Name="NALOG_PBO_MODEL" Type="nvarchar" MaxLength="4" />
+    <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
+    <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
+    <Property Name="KIID_URL" Type="nchar" MaxLength="255" />
+    <Property Name="PRAVILA_URL" Type="nchar" MaxLength="255" />
+    <Property Name="PROSPEKT_URL" Type="nchar" MaxLength="255" />
+    <Property Name="OSOBNA_ISKAZNICA_URL" Type="nchar" MaxLength="255" />
+    <Property Name="OPIS" Type="text" />
+    <Property Name="POKAZATELJ_UKUPNIH_TROSKOVA" Type="nvarchar(max)" />
+    <Property Name="INDEKSNI" Type="bit" />
+    <Property Name="GRUPE" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FOND_DRUSTVA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NAZIV" Type="nvarchar" />
+    <Property Name="ADRESA" Type="nvarchar" />
+    <Property Name="MATICNI_BROJ" Type="nvarchar" MaxLength="50" />
+    <Property Name="OIB" Type="nvarchar" MaxLength="50" />
+    <Property Name="TEL" Type="nvarchar" MaxLength="50" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+    <Property Name="DODATNI_PODACI" Type="nvarchar" />
+    <Property Name="ZAHTJEV_REPORT_ID" Type="nvarchar" MaxLength="200" />
+    <Property Name="NALOG_PRIMATELJ_VBDI" Type="nvarchar" MaxLength="7" />
+    <Property Name="NALOG_PRIMATELJ_RACUN" Type="nvarchar" MaxLength="10" />
+    <Property Name="NALOG_PBO_MODEL" Type="nvarchar" MaxLength="4" />
+    <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
+    <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
+    <Property Name="LOGO_URL" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="FOND_KATEGORIJE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_PROFIL_RIZICNOSTI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_PROMETI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="KORISNIK_ID" Type="int" Nullable="false" />
+    <Property Name="DATUM" Type="date" Nullable="false" />
+    <Property Name="TIP_TRANSAKCIJE" Type="nchar" Nullable="false" MaxLength="1" />
+    <Property Name="FOND_ID" Type="int" Nullable="false" />
+    <Property Name="BROJ_UDJELA" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+    <Property Name="IZNOS" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="IZNOS_KN" Type="numeric" Nullable="false" Precision="15" Scale="2" />
+    <Property Name="ZAHTJEV_ID" Type="int" />
+    <Property Name="VRIJEME" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FOND_REGIJA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_SEKTOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_STRUKTURA_ULAGANJA_DETALJI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ZAGLAVLJE_ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" MaxLength="200" />
+    <Property Name="UDIO" Type="numeric" Precision="15" Scale="2" />
+  </EntityType>
+  <EntityType Name="FOND_STRUKTURA_ULAGANJA_ZAG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FOND_ID" Type="int" Nullable="false" />
+    <Property Name="DATUM_OD" Type="date" />
+    <Property Name="DATUM_DO" Type="date" />
+    <Property Name="TIP" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="FOND_TIP_ULAGANJA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_TIP_UPRAVLJANJA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_TRZISTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAZIV" Type="nvarchar" />
+  </EntityType>
+  <EntityType Name="FOND_VRIJEDNOST_UDJELA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FOND_ID" Type="int" />
+    <Property Name="DATUM" Type="date" />
+    <Property Name="VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="VRIJEDI_DO" Type="date" />
+  </EntityType>
+  <EntityType Name="FOND_ZAHTJEV_POLITICKA_IZLOZENOST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_1" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_2" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_3" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_4" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_5" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_6" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_7" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_8" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_POL_IZLOZEN_PITANJE_9" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_OBAVLJANJE_DUZNOSTI" Type="nvarchar" MaxLength="250" />
+    <Property Name="FIZICKA_IZVOR_IMOVINE" Type="nvarchar(max)" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_1" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_2" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_3" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_4" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_5" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_6" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_7" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_8" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_9" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK1_OBAVLJANJE_DUZNOSTI" Type="nvarchar" MaxLength="250" />
+    <Property Name="PRAVNA_VLASNIK1_IZVOR_IMOVINE" Type="nvarchar(max)" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_1" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_2" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_3" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_4" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_5" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_6" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_7" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_8" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_9" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_OBAVLJANJE_DUZNOSTI" Type="nvarchar" MaxLength="250" />
+    <Property Name="PRAVNA_VLASNIK2_IZVOR_IMOVINE" Type="nvarchar(max)" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_1" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_2" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_3" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_4" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_5" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_6" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_7" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_8" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_9" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_OBAVLJANJE_DUZNOSTI" Type="nvarchar" MaxLength="250" />
+    <Property Name="PRAVNA_VLASNIK3_IZVOR_IMOVINE" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="FOND_ZAHTJEVI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PODNOSENJE_DATUM" Type="date" />
+    <Property Name="TIP_ZAHTJEVA" Type="nchar" MaxLength="1" />
+    <Property Name="FOND_ID" Type="int" />
+    <Property Name="ZELJENI_BROJ_UDJELA" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="ZELJENI_IZNOS_UDJELA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="VBDI" Type="varchar" MaxLength="7" />
+    <Property Name="RACUN_BROJ" Type="varchar" MaxLength="21" />
+    <Property Name="STATUS" Type="nchar" MaxLength="2" />
+    <Property Name="OBRADA_DATUM" Type="date" />
+    <Property Name="RACUN_VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
+    <Property Name="POTPISL_DATUM" Type="date" />
+    <Property Name="POTPISL_KORISNIK_ID" Type="int" />
+    <Property Name="POTPISD_DATUM" Type="date" />
+    <Property Name="POTPISD_KORISNIK_ID" Type="int" />
+    <Property Name="PODNOSENJE_KORISNIK_ID" Type="int" />
+    <Property Name="DRUGI_RACUN_VBDI" Type="nvarchar" MaxLength="7" />
+    <Property Name="DRUGI_RACUN_BROJ" Type="nvarchar" MaxLength="10" />
+    <Property Name="NALOG_ID" Type="int" />
+    <Property Name="NALOG_DATUM_VALUTE" Type="date" />
+    <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NALOG_PRIMATELJ_IME" Type="nvarchar" MaxLength="50" />
+    <Property Name="NALOG_PRIMATELJ_ADRESA" Type="nvarchar" MaxLength="100" />
+    <Property Name="NALOG_MODEL" Type="nvarchar" MaxLength="4" />
+    <Property Name="NALOG_VBDI" Type="nvarchar" MaxLength="7" />
+    <Property Name="NALOG_BROJ_RACUNA" Type="nvarchar" MaxLength="10" />
+    <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
+    <Property Name="ODBIJANJE_RAZLOG" Type="nvarchar" MaxLength="500" />
+    <Property Name="ZAHTJEV_ISPISAN" Type="nchar" MaxLength="2" />
+    <Property Name="NALOG_KREIRAN" Type="nchar" MaxLength="2" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
+    <Property Name="SLANJE_NA_EMAIL" Type="bit" />
+    <Property Name="DOKUMENT_URL" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="FOND_ZAHTJEVI_DODATNO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PRAVNA_IME" Type="nvarchar" MaxLength="100" />
+    <Property Name="PRAVNA_MB" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRAVNA_OIB" Type="nvarchar" MaxLength="13" />
+    <Property Name="PRAVNA_ADRESA_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="PRAVNA_ADRESA_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="PRAVNA_ADRESA_POSTANSKI_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="PRAVNA_ADRESA_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="PRAVNA_ADRESA_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="PRAVNA_TELEFON" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRAVNA_MOBITEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRAVNA_FAX" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRAVNA_EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_IME" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_PREZIME" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_JMBG" Type="nvarchar" MaxLength="13" />
+    <Property Name="FIZICKA_OIB" Type="nvarchar" MaxLength="13" />
+    <Property Name="FIZICKA_DOKUMENT_TIP" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_DOKUMENT_BROJ" Type="nvarchar" MaxLength="20" />
+    <Property Name="FIZICKA_DOKUMENT_IZDAVATELJ" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIZICKA_DOKUMENT_VRIJEDI_DO" Type="date" />
+    <Property Name="FIZICKA_ADRESA_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_ADRESA_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="FIZICKA_ADRESA_POSTANSKI_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="FIZICKA_ADRESA_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_ADRESA_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_DATUM_RODENJA" Type="date" />
+    <Property Name="FIZICKA_MJESTO_RODENJA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_DRZAVA_RODENJA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_DRZAVLJANSTVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_TELEFON" Type="nvarchar" MaxLength="20" />
+    <Property Name="FIZICKA_MOBITEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="FIZICKA_FAX" Type="nvarchar" MaxLength="20" />
+    <Property Name="FIZICKA_EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_SLANJE_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_SLANJE_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="ADRESA_SLANJE_POSTANSKI_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="ADRESA_SLANJE_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_SLANJE_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_STATUS_ODABIR" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_STATUS_OSTALO" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_VRSTA_POSLODAVCA" Type="nchar" MaxLength="2" />
+    <Property Name="FIZICKA_STRUCNA_SPREMA" Type="nvarchar" MaxLength="6" />
+    <Property Name="FIZICKA_ZVANJE" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_ZANIMANJE" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_PLANIRANA_GOD_ULAGANJA" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_SREDSTVA_OSTVARENA" Type="nchar" MaxLength="1" />
+    <Property Name="PRAVNA_PLANIRANA_GOD_ULAGANJA" Type="nchar" MaxLength="1" />
+    <Property Name="PRAVNA" Type="nvarchar" MaxLength="1" />
+    <Property Name="REZIDENTNOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNISTVO_PODIJELJENO" Type="nvarchar" MaxLength="1" />
+    <Property Name="ZASTUPANJE_TIP" Type="nvarchar" MaxLength="1" />
+    <Property Name="DRUGA_FIZICKA_IME" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_PREZIME" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_JMBG" Type="nvarchar" MaxLength="13" />
+    <Property Name="DRUGA_FIZICKA_OIB" Type="nvarchar" MaxLength="13" />
+    <Property Name="DRUGA_FIZICKA_DOKUMENT_TIP" Type="nchar" MaxLength="1" />
+    <Property Name="DRUGA_FIZICKA_DOKUMENT_BROJ" Type="nvarchar" MaxLength="20" />
+    <Property Name="DRUGA_FIZICKA_DOKUMENT_IZDAVATELJ" Type="nvarchar" MaxLength="50" />
+    <Property Name="DRUGA_FIZICKA_DOKUMENT_VRIJEDI_DO" Type="date" />
+    <Property Name="DRUGA_FIZICKA_ADRESA_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_ADRESA_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="DRUGA_FIZICKA_ADRESA_POSTANSKI_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="DRUGA_FIZICKA_ADRESA_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_ADRESA_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_DATUM_RODENJA" Type="date" />
+    <Property Name="DRUGA_FIZICKA_MJESTO_RODENJA" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_DRZAVA_RODENJA" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_DRZAVLJANSTVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUGA_FIZICKA_TELEFON" Type="nvarchar" MaxLength="20" />
+    <Property Name="DRUGA_FIZICKA_MOBITEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="DRUGA_FIZICKA_FAX" Type="nvarchar" MaxLength="20" />
+    <Property Name="DRUGA_FIZICKA_EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="VLASNIK1_IME_PREZIME" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK1_RODJENJE" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK1_PREBIVALISTE" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK1_DRZAVLJANSTVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="VLASNIK1_DIREKTNOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNIK1_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNIK1_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="VLASNIK1_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK2_POSTOJI" Type="bit" />
+    <Property Name="VLASNIK2_IME_PREZIME" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK2_RODJENJE" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK2_PREBIVALISTE" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK2_DRZAVLJANSTVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="VLASNIK2_DIREKTNOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNIK2_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNIK2_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="VLASNIK2_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNIK3_POSTOJI" Type="bit" />
+    <Property Name="VLASNIK3_IME_PREZIME" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK3_RODJENJE" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK3_PREBIVALISTE" Type="nvarchar" MaxLength="250" />
+    <Property Name="VLASNIK3_DRZAVLJANSTVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="VLASNIK3_DIREKTNOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNIK3_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
+    <Property Name="VLASNIK3_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="VLASNIK3_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="KORISNIK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="USER_NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="DRUSTVO_ID" Type="int" />
+    <Property Name="PASSWORD_RESET_TOKEN" Type="varchar" MaxLength="50" />
+    <Property Name="PASSWORD_RESET_VRIJEDI_DO" Type="date" />
+  </EntityType>
+  <EntityType Name="KORISNIK_DODATNO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IME" Type="nvarchar" MaxLength="100" />
+    <Property Name="PREZIME" Type="nvarchar" MaxLength="100" />
+    <Property Name="MB" Type="nvarchar" MaxLength="13" />
+    <Property Name="OIB" Type="nvarchar" MaxLength="13" />
+    <Property Name="ADRESA_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="ADRESA_POSTANSKI_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="ADRESA_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="TELEFON" Type="nvarchar" MaxLength="20" />
+    <Property Name="MOBITEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="20" />
+    <Property Name="KONTAKT_EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_DATUM_RODENJA" Type="date" />
+    <Property Name="FIZICKA_MJESTO_RODENJA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_DRZAVA_RODENJA" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_DRZAVLJANSTVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_STATUS_ODABIR" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_STATUS_OSTALO" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_VRSTA_POSLODAVCA" Type="nchar" MaxLength="2" />
+    <Property Name="FIZICKA_STRUCNA_SPREMA" Type="nvarchar" MaxLength="6" />
+    <Property Name="FIZICKA_ZVANJE" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_ZANIMANJE" Type="nvarchar" MaxLength="100" />
+    <Property Name="FIZICKA_PLANIRANA_GOD_ULAGANJA" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_SREDSTVA_OSTVARENA" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_DOKUMENT_TIP" Type="nchar" MaxLength="1" />
+    <Property Name="FIZICKA_DOKUMENT_BROJ" Type="nvarchar" MaxLength="20" />
+    <Property Name="FIZICKA_DOKUMENT_IZDAVATELJ" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIZICKA_DOKUMENT_VRIJEDI_DO" Type="date" />
+    <Property Name="PRAVNA_PLANIRANA_GOD_ULAGANJA" Type="nchar" MaxLength="1" />
+    <Property Name="ZASTUPNIK_IME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZASTUPNIK_PREZIME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZASTUPNIK_JMBG" Type="nvarchar" MaxLength="13" />
+    <Property Name="ZASTUPNIK_OIB" Type="nvarchar" MaxLength="13" />
+    <Property Name="ZASTUPNIK_ADRESA_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZASTUPNIK_ADRESA_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="ZASTUPNIK_ADRESA_P_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="ZASTUPNIK_ADRESA_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZASTUPNIK_ADRESA_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZASTUPNIK_TELEFON" Type="nvarchar" MaxLength="20" />
+    <Property Name="ZASTUPNIK_MOBITEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="ZASTUPNIK_FAX" Type="nvarchar" MaxLength="20" />
+    <Property Name="ZASTUPNIK_EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_SLANJE_ULICA" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_SLANJE_KUCNI_BROJ" Type="nvarchar" MaxLength="6" />
+    <Property Name="ADRESA_SLANJE_POSTANSKI_BROJ" Type="nvarchar" MaxLength="5" />
+    <Property Name="ADRESA_SLANJE_MJESTO" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA_SLANJE_DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="SLIKA_OSOBNE_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="KARTICA_RACUNA_URL" Type="varchar" MaxLength="250" />
+    <Property Name="PRAVNA" Type="nvarchar" MaxLength="1" />
+    <Property Name="REZIDENTNOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="RACUN_VBDI" Type="varchar" MaxLength="7" />
+    <Property Name="RACUN_BROJ" Type="varchar" MaxLength="21" />
+    <Property Name="FIZICKA_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="PRAVNA_VLASNISTVO_PODIJELJENO" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="KORISNIK_FOND_FAVORITI">
+    <Key>
+      <PropertyRef Name="KORISNIK_ID" />
+      <PropertyRef Name="FOND_ID" />
+    </Key>
+    <Property Name="KORISNIK_ID" Type="int" Nullable="false" />
+    <Property Name="FOND_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOVOSTI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VRIJEME_KREIRANJA" Type="datetime" Nullable="false" />
+    <Property Name="VRIJEME_PROMJENE" Type="datetime" />
+    <Property Name="KORISNIK_ID" Type="int" Nullable="false" />
+    <Property Name="KORISNIK_PROMJENA_ID" Type="int" />
+    <Property Name="TEKST" Type="text" Nullable="false" />
+    <Property Name="NASLOV" Type="nvarchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="VALUTE">
+    <Key>
+      <PropertyRef Name="SIFRA" />
+    </Key>
+    <Property Name="SIFRA" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="OZNAKA" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="APOEN" Type="numeric" Nullable="false" Precision="3" />
+    <Property Name="NAZIV" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="MASKA" Type="nvarchar" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'InvestApp.dbo.FondPodaci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="FondPodaci">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="VALUTA" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="KATEGORIJA_ID" Type="int" />
+    <Property Name="REGIJA_ID" Type="int" />
+    <Property Name="TIP_ULAGANJA_ID" Type="int" />
+    <Property Name="TIP_UPRAVLJANJA_ID" Type="int" />
+    <Property Name="DRUSTVA_ID" Type="int" />
+    <Property Name="RIZICNOST" Type="nchar" MaxLength="2" />
+    <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
+    <Property Name="POCETNA_CIJENA_UDJELA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="DATUM_OSNIVANJA" Type="date" />
+    <Property Name="IMOVINA_FONDA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_ULAZNA" Type="nvarchar" />
+    <Property Name="NAKNADA_IZLAZNA" Type="nvarchar" />
+    <Property Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" Type="nvarchar" />
+    <Property Name="NAKNADA_DEPOZITARNOJ_BANCI" Type="nvarchar" />
+    <Property Name="NAKNADA_BANKA_FIKSNA" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_POSTO" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_MINIMALNI" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_MAKSIMALNI" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="NAPOMENA_ZA_KUPNJU" Type="ntext" />
+    <Property Name="NAPOMENA_ZA_PRODAJU" Type="ntext" />
+    <Property Name="NAPOMENA_ZA_REGISTRACIJU" Type="ntext" />
+    <Property Name="DODATNI_PODACI" Type="nvarchar" />
+    <Property Name="VRIJEDI_OD" Type="date" />
+    <Property Name="VRIJEDI_DO" Type="date" />
+    <Property Name="NAZIV" Type="nvarchar" MaxLength="200" />
+    <Property Name="NAPOMENA_ZA_ODREGISTRACIJU" Type="ntext" />
+    <Property Name="ZAHTJEV_REPORT_ID" Type="nvarchar" MaxLength="200" />
+    <Property Name="NALOG_PRIMATELJ_VBDI" Type="nvarchar" MaxLength="7" />
+    <Property Name="NALOG_PRIMATELJ_RACUN" Type="nvarchar" MaxLength="10" />
+    <Property Name="NALOG_PBO_MODEL" Type="nvarchar" MaxLength="2" />
+    <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
+    <Property Name="NAZIV_VLASNIKA" Type="nvarchar" />
+    <Property Name="VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="VRIJEDNOST_DATUM" Type="date" />
+    <Property Name="PROSLA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="VALUTA" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="NAZIV_KATEGORIJE" Type="nvarchar" />
+  </EntityType>
+  <Association Name="FK_FOND_DEF_FOND_CILJ_PRINOSA">
+    <End Role="FOND_CILJ_PRINOSA" Type="FondModel.Store.FOND_CILJ_PRINOSA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_CILJ_PRINOSA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="CILJ_PRINOSA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
+    <End Role="FOND_DRUSTVA" Type="FondModel.Store.FOND_DRUSTVA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DRUSTVA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="DRUSTVA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_GEO">
+    <End Role="FOND_REGIJA" Type="FondModel.Store.FOND_REGIJA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_REGIJA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="REGIJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_KATEGORIJE">
+    <End Role="FOND_KATEGORIJE" Type="FondModel.Store.FOND_KATEGORIJE" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_KATEGORIJE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="KATEGORIJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI">
+    <End Role="FOND_PROFIL_RIZICNOSTI" Type="FondModel.Store.FOND_PROFIL_RIZICNOSTI" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_PROFIL_RIZICNOSTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="PROFIL_RIZICNOSTI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_SEKTOR">
+    <End Role="FOND_SEKTOR" Type="FondModel.Store.FOND_SEKTOR" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_SEKTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="SEKTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_TIP_ULAGANJA">
+    <End Role="FOND_TIP_ULAGANJA" Type="FondModel.Store.FOND_TIP_ULAGANJA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_TIP_ULAGANJA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="TIP_ULAGANJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_TIP_UPRAVLJANJA">
+    <End Role="FOND_TIP_UPRAVLJANJA" Type="FondModel.Store.FOND_TIP_UPRAVLJANJA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_TIP_UPRAVLJANJA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="TIP_UPRAVLJANJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_TRZISTE">
+    <End Role="FOND_TRZISTE" Type="FondModel.Store.FOND_TRZISTE" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_TRZISTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="TRZISTE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_VALUTE">
+    <End Role="VALUTE" Type="FondModel.Store.VALUTE" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VALUTE">
+        <PropertyRef Name="SIFRA" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="VALUTA_SIFRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_PROMETI_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FOND_PROMETI" Type="FondModel.Store.FOND_PROMETI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_PROMETI">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_PROMETI_FOND_ZAHTJEVI">
+    <End Role="FOND_ZAHTJEVI" Type="FondModel.Store.FOND_ZAHTJEVI" Multiplicity="0..1" />
+    <End Role="FOND_PROMETI" Type="FondModel.Store.FOND_PROMETI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_ZAHTJEVI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_PROMETI">
+        <PropertyRef Name="ZAHTJEV_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_PROMETI_KORISNIK">
+    <End Role="KORISNIK" Type="FondModel.Store.KORISNIK" Multiplicity="1" />
+    <End Role="FOND_PROMETI" Type="FondModel.Store.FOND_PROMETI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KORISNIK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_PROMETI">
+        <PropertyRef Name="KORISNIK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG">
+    <End Role="FOND_STRUKTURA_ULAGANJA_ZAG" Type="FondModel.Store.FOND_STRUKTURA_ULAGANJA_ZAG" Multiplicity="1" />
+    <End Role="FOND_STRUKTURA_ULAGANJA_DETALJI" Type="FondModel.Store.FOND_STRUKTURA_ULAGANJA_DETALJI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_STRUKTURA_ULAGANJA_ZAG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_STRUKTURA_ULAGANJA_DETALJI">
+        <PropertyRef Name="ZAGLAVLJE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FOND_STRUKTURA_ULAGANJA_ZAG" Type="FondModel.Store.FOND_STRUKTURA_ULAGANJA_ZAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_STRUKTURA_ULAGANJA_ZAG">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FOND_VRIJEDNOST_UDJELA" Type="FondModel.Store.FOND_VRIJEDNOST_UDJELA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_VRIJEDNOST_UDJELA">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_ZAHTJEV_POLITICKA_IZLOZENOST_FOND_ZAHTJEVI">
+    <End Role="FOND_ZAHTJEVI" Type="FondModel.Store.FOND_ZAHTJEVI" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FOND_ZAHTJEV_POLITICKA_IZLOZENOST" Type="FondModel.Store.FOND_ZAHTJEV_POLITICKA_IZLOZENOST" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_ZAHTJEVI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_ZAHTJEV_POLITICKA_IZLOZENOST">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_ZAHTJEVI_DODATNO_FOND_ZAHTJEVI">
+    <End Role="FOND_ZAHTJEVI" Type="FondModel.Store.FOND_ZAHTJEVI" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FOND_ZAHTJEVI_DODATNO" Type="FondModel.Store.FOND_ZAHTJEVI_DODATNO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_ZAHTJEVI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_ZAHTJEVI_DODATNO">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_ZAHTJEVI_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FOND_ZAHTJEVI" Type="FondModel.Store.FOND_ZAHTJEVI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_ZAHTJEVI">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KORISNIK_DODATNO_KORISNIK">
+    <End Role="KORISNIK" Type="FondModel.Store.KORISNIK" Multiplicity="1" />
+    <End Role="KORISNIK_DODATNO" Type="FondModel.Store.KORISNIK_DODATNO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="KORISNIK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KORISNIK_DODATNO">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KORISNIK_FOND_DRUSTVA">
+    <End Role="FOND_DRUSTVA" Type="FondModel.Store.FOND_DRUSTVA" Multiplicity="0..1" />
+    <End Role="KORISNIK" Type="FondModel.Store.KORISNIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DRUSTVA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KORISNIK">
+        <PropertyRef Name="DRUSTVO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KORISNIK_FOND_FAVORITI_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="KORISNIK_FOND_FAVORITI" Type="FondModel.Store.KORISNIK_FOND_FAVORITI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KORISNIK_FOND_FAVORITI">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KORISNIK_FOND_FAVORITI_KORISNIK">
+    <End Role="KORISNIK" Type="FondModel.Store.KORISNIK" Multiplicity="1" />
+    <End Role="KORISNIK_FOND_FAVORITI" Type="FondModel.Store.KORISNIK_FOND_FAVORITI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KORISNIK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KORISNIK_FOND_FAVORITI">
+        <PropertyRef Name="KORISNIK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOVOSTI_KORISNIK">
+    <End Role="KORISNIK" Type="FondModel.Store.KORISNIK" Multiplicity="1" />
+    <End Role="NOVOSTI" Type="FondModel.Store.NOVOSTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KORISNIK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NOVOSTI">
+        <PropertyRef Name="KORISNIK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOVOSTI_KORISNIK1">
+    <End Role="KORISNIK" Type="FondModel.Store.KORISNIK" Multiplicity="0..1" />
+    <End Role="NOVOSTI" Type="FondModel.Store.NOVOSTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KORISNIK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NOVOSTI">
+        <PropertyRef Name="KORISNIK_PROMJENA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DohvatiCijene" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inFondId" Type="int" Mode="In" />
+    <Parameter Name="inDatumOd" Type="date" Mode="In" />
+    <Parameter Name="inDatumDo" Type="date" Mode="In" />
+  </Function>
+  <Function Name="DohvatiPortfelj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inKorisnikId" Type="int" Mode="In" />
+    <Parameter Name="inDatum" Type="date" Mode="In" />
+  </Function>
+  <Function Name="TraziFondove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inFondId" Type="int" Mode="In" />
+    <Parameter Name="inDatum" Type="date" Mode="In" />
+    <Parameter Name="inNaziv" Type="nvarchar" Mode="In" />
+    <Parameter Name="inKategorijaId" Type="int" Mode="In" />
+    <Parameter Name="inRizicnost" Type="char" Mode="In" />
+    <Parameter Name="inDrustvoId" Type="int" Mode="In" />
+    <Parameter Name="inRegijaId" Type="int" Mode="In" />
+    <Parameter Name="inUlaganjeTipId" Type="int" Mode="In" />
+    <Parameter Name="inUpravljanjeTipId" Type="int" Mode="In" />
+    <Parameter Name="inCiljPrinosaId" Type="int" Mode="In" />
+    <Parameter Name="inSektorId" Type="int" Mode="In" />
+    <Parameter Name="inTrzisteId" Type="int" Mode="In" />
+    <Parameter Name="inProfilRizicnosti" Type="int" Mode="In" />
+    <Parameter Name="inKorisnikId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ZadnjaCijena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inFondId" Type="int" Mode="In" />
+    <Parameter Name="inDatum" Type="date" Mode="In" />
+    <Parameter Name="outZadnjaCijena" Type="numeric" Mode="InOut" />
+    <Parameter Name="outDatumZadnjeCijene" Type="date" Mode="InOut" />
+    <Parameter Name="outPredzadnjaCijena" Type="numeric" Mode="InOut" />
+  </Function>
+</Schema>

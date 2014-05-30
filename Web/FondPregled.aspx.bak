@@ -1,0 +1,15 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondPregled.aspx.cs" Inherits="InvestApp.Web.FondPregled" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.2, Version=8.2.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1"
+	Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
+<%@ Register src="FondPregledCtrl.ascx" tagname="FondPregledCtrl" tagprefix="uc1" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxEditors.v8.2, Version=8.2.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" namespace="DevExpress.Web.ASPxEditors" tagprefix="dxe" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    
+    <uc1:FondPregledCtrl ID="fondPregledControl" runat="server" />
+
+    <dxwgv:ASPxGridView ID="gvFondovi" runat="server"></dxwgv:ASPxGridView>
+
+</asp:Content>

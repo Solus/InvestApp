@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c5d267238a544e55bf077607759f4113" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="FondModel.Fond" Width="1.75" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.Drustvo" Width="2.125" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.Kategorija" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.FondPromet" Width="1.5" PointX="6.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.FOND_TIP_ULAGANJA" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.FOND_TIP_UPRAVLJANJA" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.FondVrijednost" Width="1.5" PointX="0.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FondModel.FondZahtjev" Width="2.75" PointX="5.375" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_DRUSTVA" ManuallyRouted="false" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_KATEGORIJE" ManuallyRouted="false" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_TIP_ULAGANJA" ManuallyRouted="false" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_TIP_UPRAVLJANJA" ManuallyRouted="false" />
+        <AssociationConnector Association="FondModel.FK_FOND_PROMETI_FOND_DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="FondModel.FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="FondModel.FK_FOND_ZAHTJEVI_FOND_DEF" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FondModel.FOND_REGIJA" Width="1.5" PointX="0.75" PointY="4.625" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_GEO1" />
+        <EntityTypeShape EntityType="FondModel.FondPodatak" Width="1.5" PointX="14.375" PointY="4.5" />
+        <EntityTypeShape EntityType="FondModel.Korisnik" Width="2.25" PointX="11.375" PointY="1" />
+        <EntityTypeShape EntityType="FondModel.BankaDomaca" Width="1.5" PointX="14.375" PointY="13.75" />
+        <AssociationConnector Association="FondModel.FK_FOND_PROMETI_KORISNIK" />
+        <EntityTypeShape EntityType="FondModel.VALUTA" Width="1.5" PointX="3.625" PointY="18.25" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_VALUTE" />
+        <EntityTypeShape EntityType="FondModel.StrukturaUlaganjaDetalji" Width="1.5" PointX="0.875" PointY="17.875" />
+        <EntityTypeShape EntityType="FondModel.StrukturaUlaganjaZaglavlje" Width="1.5" PointX="0.75" PointY="15" />
+        <AssociationConnector Association="FondModel.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" />
+        <AssociationConnector Association="FondModel.FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG" />
+        <AssociationConnector Association="FondModel.FK_FOND_PROMETI_FOND_ZAHTJEVI" />
+        <AssociationConnector Association="FondModel.FK_KORISNIK_FOND_DRUSTVA" />
+        <EntityTypeShape EntityType="FondModel.AdminConfig" Width="2.625" PointX="15.625" PointY="1.5" />
+        <EntityTypeShape EntityType="FondModel.AplLog" Width="1.5" PointX="16.25" PointY="3.375" />
+        <AssociationConnector Association="FondModel.KORISNIK_FOND_FAVORITI" />
+        <EntityTypeShape EntityType="FondModel.FOND_CILJ_PRINOSA" Width="1.5" PointX="0.5" PointY="21.125" />
+        <EntityTypeShape EntityType="FondModel.FOND_PROFIL_RIZICNOSTI" Width="1.5" PointX="0.625" PointY="24.875" />
+        <EntityTypeShape EntityType="FondModel.FOND_SEKTOR" Width="1.5" PointX="0.625" PointY="23" />
+        <EntityTypeShape EntityType="FondModel.FOND_TRZISTE" Width="1.5" PointX="0.625" PointY="26.625" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_CILJ_PRINOSA" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_SEKTOR" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_TRZISTE" />
+        <EntityTypeShape EntityType="FondModel.Novost" Width="1.5" PointX="8.875" PointY="25.5" />
+        <AssociationConnector Association="FondModel.FK_NOVOSTI_KORISNIK" />
+        <AssociationConnector Association="FondModel.FK_NOVOSTI_KORISNIK1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

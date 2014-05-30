@@ -1,0 +1,1036 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FondModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="FondEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Fondovi" EntityType="FondModel.Fond" />
+    <EntitySet Name="Drustva" EntityType="FondModel.Drustvo" />
+    <EntitySet Name="Kategorije" EntityType="FondModel.Kategorija" />
+    <EntitySet Name="FondPrometi" EntityType="FondModel.FondPromet" />
+    <EntitySet Name="FOND_TIP_ULAGANJA" EntityType="FondModel.FOND_TIP_ULAGANJA" />
+    <EntitySet Name="FOND_TIP_UPRAVLJANJA" EntityType="FondModel.FOND_TIP_UPRAVLJANJA" />
+    <EntitySet Name="FondVrijednosti" EntityType="FondModel.FondVrijednost" />
+    <EntitySet Name="FondZahtjevi" EntityType="FondModel.FondZahtjev" />
+    <AssociationSet Name="FK_FOND_DEF_FOND_DRUSTVA" Association="FondModel.FK_FOND_DEF_FOND_DRUSTVA">
+      <End Role="FOND_DRUSTVA" EntitySet="Drustva" />
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_KATEGORIJE" Association="FondModel.FK_FOND_DEF_FOND_KATEGORIJE">
+      <End Role="FOND_KATEGORIJE" EntitySet="Kategorije" />
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_TIP_ULAGANJA" Association="FondModel.FK_FOND_DEF_FOND_TIP_ULAGANJA">
+      <End Role="FOND_TIP_ULAGANJA" EntitySet="FOND_TIP_ULAGANJA" />
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_TIP_UPRAVLJANJA" Association="FondModel.FK_FOND_DEF_FOND_TIP_UPRAVLJANJA">
+      <End Role="FOND_TIP_UPRAVLJANJA" EntitySet="FOND_TIP_UPRAVLJANJA" />
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_PROMETI_FOND_DEF" Association="FondModel.FK_FOND_PROMETI_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+      <End Role="FOND_PROMETI" EntitySet="FondPrometi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF" Association="FondModel.FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+      <End Role="FOND_VRIJEDNOST_UDJELA" EntitySet="FondVrijednosti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_ZAHTJEVI_FOND_DEF" Association="FondModel.FK_FOND_ZAHTJEVI_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="Fondovi" />
+      <End Role="FOND_ZAHTJEVI" EntitySet="FondZahtjevi" />
+    </AssociationSet>
+    <EntitySet Name="FOND_REGIJA" EntityType="FondModel.FOND_REGIJA" />
+    <AssociationSet Name="FK_FOND_DEF_FOND_GEO1" Association="FondModel.FK_FOND_DEF_FOND_GEO1">
+      <End Role="FOND_REGIJA" EntitySet="FOND_REGIJA" />
+      <End Role="Fond" EntitySet="Fondovi" />
+    </AssociationSet>
+    <FunctionImport Name="DohvatiCijene" ReturnType="Collection(FondModel.DohvatiCijene_Result)">
+      <Parameter Name="inFondId" Mode="In" Type="Int32" />
+      <Parameter Name="inDatumOd" Mode="In" Type="DateTime" />
+      <Parameter Name="inDatumDo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="FondPodaci" EntityType="FondModel.FondPodatak" />
+    <EntitySet Name="Korisnici" EntityType="FondModel.Korisnik" />
+    <EntitySet Name="BankeDomace" EntityType="FondModel.BankaDomaca" />
+    <AssociationSet Name="FK_FOND_PROMETI_KORISNIK" Association="FondModel.FK_FOND_PROMETI_KORISNIK">
+      <End Role="Korisnik" EntitySet="Korisnici" />
+      <End Role="FOND_PROMETI" EntitySet="FondPrometi" />
+    </AssociationSet>
+    <FunctionImport Name="DohvatiPortfelj" ReturnType="Collection(FondModel.DohvatiPortfelj_Result)">
+      <Parameter Name="inKorisnikId" Mode="In" Type="Int32" />
+      <Parameter Name="inDatum" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ZadnjaCijena">
+      <Parameter Name="inFondId" Mode="In" Type="Int32" />
+      <Parameter Name="inDatum" Mode="In" Type="DateTime" />
+      <Parameter Name="outZadnjaCijena" Mode="InOut" Type="Decimal" />
+      <Parameter Name="outDatumZadnjeCijene" Mode="InOut" Type="DateTime" />
+      <Parameter Name="outPredzadnjaCijena" Mode="InOut" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="VALUTE" EntityType="FondModel.VALUTA" />
+    <AssociationSet Name="FK_FOND_DEF_VALUTE" Association="FondModel.FK_FOND_DEF_VALUTE">
+      <End Role="VALUTE" EntitySet="VALUTE" />
+      <End Role="Fond" EntitySet="Fondovi" />
+    </AssociationSet>
+    <EntitySet Name="StruktureUlaganjaDetalji" EntityType="FondModel.StrukturaUlaganjaDetalji" />
+    <EntitySet Name="StruktureUlaganjaZaglavlje" EntityType="FondModel.StrukturaUlaganjaZaglavlje" />
+    <AssociationSet Name="FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" Association="FondModel.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF">
+      <End Role="Fond" EntitySet="Fondovi" />
+      <End Role="FOND_STRUKTURA_ULAGANJA_ZAG" EntitySet="StruktureUlaganjaZaglavlje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG" Association="FondModel.FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG">
+      <End Role="FOND_STRUKTURA_ULAGANJA_ZAG" EntitySet="StruktureUlaganjaZaglavlje" />
+      <End Role="FOND_STRUKTURA_ULAGANJA_DETALJI" EntitySet="StruktureUlaganjaDetalji" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_PROMETI_FOND_ZAHTJEVI" Association="FondModel.FK_FOND_PROMETI_FOND_ZAHTJEVI">
+      <End Role="FondZahtjev" EntitySet="FondZahtjevi" />
+      <End Role="FondPromet" EntitySet="FondPrometi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KORISNIK_FOND_DRUSTVA" Association="FondModel.FK_KORISNIK_FOND_DRUSTVA">
+      <End Role="Drustvo" EntitySet="Drustva" />
+      <End Role="Korisnik" EntitySet="Korisnici" />
+    </AssociationSet>
+    <EntitySet Name="AdminConfigs" EntityType="FondModel.AdminConfig" />
+    <EntitySet Name="AplLogovi" EntityType="FondModel.AplLog" />
+    <AssociationSet Name="KORISNIK_FOND_FAVORITI" Association="FondModel.KORISNIK_FOND_FAVORITI">
+      <End Role="Fond" EntitySet="Fondovi" />
+      <End Role="Korisnik" EntitySet="Korisnici" />
+    </AssociationSet>
+    <FunctionImport Name="TraziFondove" ReturnType="Collection(FondModel.TraziFondove_Result)">
+      <Parameter Name="inFondId" Mode="In" Type="Int32" />
+      <Parameter Name="inDatum" Mode="In" Type="DateTime" />
+      <Parameter Name="inNaziv" Mode="In" Type="String" />
+      <Parameter Name="inKategorijaId" Mode="In" Type="Int32" />
+      <Parameter Name="inRizicnost" Mode="In" Type="String" />
+      <Parameter Name="inDrustvoId" Mode="In" Type="Int32" />
+      <Parameter Name="inRegijaId" Mode="In" Type="Int32" />
+      <Parameter Name="inUlaganjeTipId" Mode="In" Type="Int32" />
+      <Parameter Name="inUpravljanjeTipId" Mode="In" Type="Int32" />
+      <Parameter Name="inCiljPrinosaId" Mode="In" Type="Int32" />
+      <Parameter Name="inSektorId" Mode="In" Type="Int32" />
+      <Parameter Name="inTrzisteId" Mode="In" Type="Int32" />
+      <Parameter Name="inProfilRizicnosti" Mode="In" Type="Int32" />
+      <Parameter Name="inKorisnikId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="FOND_CILJ_PRINOSA" EntityType="FondModel.FOND_CILJ_PRINOSA" />
+    <EntitySet Name="FOND_PROFIL_RIZICNOSTI" EntityType="FondModel.FOND_PROFIL_RIZICNOSTI" />
+    <EntitySet Name="FOND_SEKTOR" EntityType="FondModel.FOND_SEKTOR" />
+    <EntitySet Name="FOND_TRZISTE" EntityType="FondModel.FOND_TRZISTE" />
+    <AssociationSet Name="FK_FOND_DEF_FOND_CILJ_PRINOSA" Association="FondModel.FK_FOND_DEF_FOND_CILJ_PRINOSA">
+      <End Role="FOND_CILJ_PRINOSA" EntitySet="FOND_CILJ_PRINOSA" />
+      <End Role="Fond" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI" Association="FondModel.FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI">
+      <End Role="FOND_PROFIL_RIZICNOSTI" EntitySet="FOND_PROFIL_RIZICNOSTI" />
+      <End Role="Fond" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_SEKTOR" Association="FondModel.FK_FOND_DEF_FOND_SEKTOR">
+      <End Role="FOND_SEKTOR" EntitySet="FOND_SEKTOR" />
+      <End Role="Fond" EntitySet="Fondovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_TRZISTE" Association="FondModel.FK_FOND_DEF_FOND_TRZISTE">
+      <End Role="FOND_TRZISTE" EntitySet="FOND_TRZISTE" />
+      <End Role="Fond" EntitySet="Fondovi" />
+    </AssociationSet>
+    <EntitySet Name="Novosti" EntityType="FondModel.Novost" />
+    <AssociationSet Name="FK_NOVOSTI_KORISNIK" Association="FondModel.FK_NOVOSTI_KORISNIK">
+      <End Role="Korisnik" EntitySet="Korisnici" />
+      <End Role="NOVOSTI" EntitySet="Novosti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOVOSTI_KORISNIK1" Association="FondModel.FK_NOVOSTI_KORISNIK1">
+      <End Role="Korisnik" EntitySet="Korisnici" />
+      <End Role="Novost" EntitySet="Novosti" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Fond">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORIJA_ID" Type="Int32" />
+    <Property Name="TIP_ULAGANJA_ID" Type="Int32" />
+    <Property Name="TIP_UPRAVLJANJA_ID" Type="Int32" />
+    <Property Name="DRUSTVA_ID" Type="Int32" />
+    <Property Name="RIZICNOST" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="MINIMALNA_POCETNA_UPLATA" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="MINIMALNE_OSTALE_UPLATE" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="VALUTA_SIFRA" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="POCETNA_CIJENA_UDJELA" Type="Decimal" Precision="15" Scale="4" />
+    <Property Name="DATUM_OSNIVANJA" Type="DateTime" Precision="0" />
+    <Property Name="IMOVINA_FONDA" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_ULAZNA" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NAKNADA_IZLAZNA" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NAKNADA_DEPOZITARNOJ_BANCI" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NAKNADA_BANKA_FIKSNA" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_POSTO" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_MINIMALNI" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="NAKNADA_BANKA_MAKSIMALNI" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="NAPOMENA_ZA_KUPNJU" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NAPOMENA_ZA_PRODAJU" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NAPOMENA_ZA_REGISTRACIJU" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DODATNI_PODACI" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="VRIJEDI_OD" Type="DateTime" Precision="0" />
+    <Property Name="VRIJEDI_DO" Type="DateTime" Precision="0" />
+    <Property Name="NAZIV" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="NAPOMENA_ZA_ODREGISTRACIJU" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ZAHTJEV_REPORT_ID" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PRIMATELJ_VBDI" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PRIMATELJ_RACUN" Type="String" MaxLength="21" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PBO_MODEL" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PBO" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Drustvo" Relationship="FondModel.FK_FOND_DEF_FOND_DRUSTVA" FromRole="FOND_DEF" ToRole="FOND_DRUSTVA" />
+    <NavigationProperty Name="Kategorija" Relationship="FondModel.FK_FOND_DEF_FOND_KATEGORIJE" FromRole="FOND_DEF" ToRole="FOND_KATEGORIJE" />
+    <NavigationProperty Name="FOND_TIP_ULAGANJA" Relationship="FondModel.FK_FOND_DEF_FOND_TIP_ULAGANJA" FromRole="FOND_DEF" ToRole="FOND_TIP_ULAGANJA" />
+    <NavigationProperty Name="FOND_TIP_UPRAVLJANJA" Relationship="FondModel.FK_FOND_DEF_FOND_TIP_UPRAVLJANJA" FromRole="FOND_DEF" ToRole="FOND_TIP_UPRAVLJANJA" />
+    <NavigationProperty Name="FOND_PROMETI" Relationship="FondModel.FK_FOND_PROMETI_FOND_DEF" FromRole="FOND_DEF" ToRole="FOND_PROMETI" />
+    <NavigationProperty Name="FOND_VRIJEDNOST_UDJELA" Relationship="FondModel.FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF" FromRole="FOND_DEF" ToRole="FOND_VRIJEDNOST_UDJELA" />
+    <NavigationProperty Name="FOND_ZAHTJEVI" Relationship="FondModel.FK_FOND_ZAHTJEVI_FOND_DEF" FromRole="FOND_DEF" ToRole="FOND_ZAHTJEVI" />
+    <Property Type="Int32" Name="REGIJA_ID" />
+    <NavigationProperty Name="FOND_REGIJA" Relationship="FondModel.FK_FOND_DEF_FOND_GEO1" FromRole="Fond" ToRole="FOND_REGIJA" />
+    <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="KIID_URL" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="PRAVILA_URL" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="PROSPEKT_URL" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="OSOBNA_ISKAZNICA_URL" MaxLength="255" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="VALUTA_REF" Relationship="FondModel.FK_FOND_DEF_VALUTE" FromRole="Fond" ToRole="VALUTE" />
+    <NavigationProperty Name="StrukturaUlaganja" Relationship="FondModel.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" FromRole="Fond" ToRole="FOND_STRUKTURA_ULAGANJA_ZAG" />
+    <NavigationProperty Name="KORISNIKs" Relationship="FondModel.KORISNIK_FOND_FAVORITI" FromRole="Fond" ToRole="Korisnik" />
+    <Property Type="Int32" Name="CILJ_PRINOSA_ID" />
+    <Property Type="Int32" Name="SEKTOR_ID" />
+    <Property Type="Int32" Name="TRZISTE_ID" />
+    <Property Type="Int32" Name="PROFIL_RIZICNOSTI_ID" />
+    <Property Type="String" Name="OPIS" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FOND_CILJ_PRINOSA" Relationship="FondModel.FK_FOND_DEF_FOND_CILJ_PRINOSA" FromRole="Fond" ToRole="FOND_CILJ_PRINOSA" />
+    <NavigationProperty Name="FOND_PROFIL_RIZICNOSTI" Relationship="FondModel.FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI" FromRole="Fond" ToRole="FOND_PROFIL_RIZICNOSTI" />
+    <NavigationProperty Name="FOND_SEKTOR" Relationship="FondModel.FK_FOND_DEF_FOND_SEKTOR" FromRole="Fond" ToRole="FOND_SEKTOR" />
+    <NavigationProperty Name="FOND_TRZISTE" Relationship="FondModel.FK_FOND_DEF_FOND_TRZISTE" FromRole="Fond" ToRole="FOND_TRZISTE" />
+    <Property Type="String" Name="POKAZATELJ_UKUPNIH_TROSKOVA" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="INDEKSNI" />
+    <Property Type="String" Name="GRUPE" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Drustvo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NAZIV" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="ADRESA" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="MATICNI_BROJ" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="OIB" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TEL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FAX" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DODATNI_PODACI" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="ZAHTJEV_REPORT_ID" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PRIMATELJ_VBDI" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PRIMATELJ_RACUN" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PBO_MODEL" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PBO" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_DRUSTVA" FromRole="FOND_DRUSTVA" ToRole="FOND_DEF" />
+    <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LOGO_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KORISNIKs" Relationship="FondModel.FK_KORISNIK_FOND_DRUSTVA" FromRole="Drustvo" ToRole="Korisnik" />
+  </EntityType>
+  <EntityType Name="Kategorija">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NAZIV" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_KATEGORIJE" FromRole="FOND_KATEGORIJE" ToRole="FOND_DEF" />
+  </EntityType>
+  <EntityType Name="FondPromet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DATUM" Type="DateTime" Precision="0" Nullable="false" />
+    <Property Name="TIP_TRANSAKCIJE" Type="String" MaxLength="1" Unicode="true" FixedLength="true" Nullable="false" />
+    <Property Name="FOND_ID" Type="Int32" Nullable="false" />
+    <Property Name="BROJ_UDJELA" Type="Decimal" Precision="15" Scale="4" Nullable="false" />
+    <Property Name="IZNOS" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="IZNOS_KN" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="ZAHTJEV_ID" Type="Int32" />
+    <NavigationProperty Name="Fond" Relationship="FondModel.FK_FOND_PROMETI_FOND_DEF" FromRole="FOND_PROMETI" ToRole="FOND_DEF" />
+    <Property Type="Int32" Name="KORISNIK_ID" Nullable="false" />
+    <Property Type="DateTime" Name="VRIJEME" Precision="3" />
+    <NavigationProperty Name="Korisnik" Relationship="FondModel.FK_FOND_PROMETI_KORISNIK" FromRole="FOND_PROMETI" ToRole="Korisnik" />
+    <NavigationProperty Name="Zahtjev" Relationship="FondModel.FK_FOND_PROMETI_FOND_ZAHTJEVI" FromRole="FondPromet" ToRole="FondZahtjev" />
+  </EntityType>
+  <EntityType Name="FOND_TIP_ULAGANJA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NAZIV" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_TIP_ULAGANJA" FromRole="FOND_TIP_ULAGANJA" ToRole="FOND_DEF" />
+  </EntityType>
+  <EntityType Name="FOND_TIP_UPRAVLJANJA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NAZIV" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_TIP_UPRAVLJANJA" FromRole="FOND_TIP_UPRAVLJANJA" ToRole="FOND_DEF" />
+  </EntityType>
+  <EntityType Name="FondVrijednost">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FOND_ID" Type="Int32" />
+    <Property Name="DATUM" Type="DateTime" Precision="0" />
+    <Property Name="VRIJEDNOST" Type="Decimal" Precision="15" Scale="4" />
+    <Property Name="VRIJEDI_DO" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF" FromRole="FOND_VRIJEDNOST_UDJELA" ToRole="FOND_DEF" />
+  </EntityType>
+  <EntityType Name="FondZahtjev">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="PODNOSENJE_DATUM" Type="DateTime" Precision="0" />
+    <Property Name="TIP_ZAHTJEVA" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="FOND_ID" Type="Int32" />
+    <Property Name="ZELJENI_BROJ_UDJELA" Type="Decimal" Precision="15" Scale="4" />
+    <Property Name="ZELJENI_IZNOS_UDJELA" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="STATUS" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="OBRADA_DATUM" Type="DateTime" Precision="0" />
+    <Property Name="RACUN_VALUTA_SIFRA" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="POTPISL_DATUM" Type="DateTime" Precision="0" />
+    <Property Name="POTPISL_KORISNIK_ID" Type="Int32" />
+    <Property Name="POTPISD_DATUM" Type="DateTime" Precision="0" />
+    <Property Name="POTPISD_KORISNIK_ID" Type="Int32" />
+    <Property Name="PODNOSENJE_KORISNIK_ID" Type="Int32" />
+    <Property Name="DRUGI_RACUN_VBDI" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+    <Property Name="DRUGI_RACUN_BROJ" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_ID" Type="Int32" />
+    <Property Name="NALOG_DATUM_VALUTE" Type="DateTime" Precision="0" />
+    <Property Name="NALOG_PBO" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PRIMATELJ_IME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_PRIMATELJ_ADRESA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_MODEL" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_VBDI" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_BROJ_RACUNA" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="ODBIJANJE_RAZLOG" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="ZAHTJEV_ISPISAN" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="NALOG_KREIRAN" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="NALOG_OPIS_PLACANJA" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Fond" Relationship="FondModel.FK_FOND_ZAHTJEVI_FOND_DEF" FromRole="FOND_ZAHTJEVI" ToRole="FOND_DEF" />
+    <Property Type="String" Name="VBDI" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RACUN_BROJ" MaxLength="21" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="SLANJE_NA_EMAIL" />
+    <Property Type="String" Name="PRAVNA_IME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_MB" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_OIB" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_ADRESA_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_ADRESA_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_ADRESA_POSTANSKI_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_ADRESA_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_ADRESA_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_TELEFON" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_MOBITEL" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_FAX" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_IME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_PREZIME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_JMBG" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_OIB" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DOKUMENT_TIP" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DOKUMENT_BROJ" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DOKUMENT_IZDAVATELJ" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FIZICKA_DOKUMENT_VRIJEDI_DO" Precision="0" />
+    <Property Type="String" Name="FIZICKA_ADRESA_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ADRESA_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ADRESA_POSTANSKI_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ADRESA_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ADRESA_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FIZICKA_DATUM_RODENJA" Precision="0" />
+    <Property Type="String" Name="FIZICKA_MJESTO_RODENJA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DRZAVA_RODENJA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DRZAVLJANSTVO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_TELEFON" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_MOBITEL" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_FAX" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_POSTANSKI_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_STATUS_ODABIR" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_STATUS_OSTALO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_VRSTA_POSLODAVCA" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_STRUCNA_SPREMA" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ZVANJE" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ZANIMANJE" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_PLANIRANA_GOD_ULAGANJA" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_SREDSTVA_OSTVARENA" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_PLANIRANA_GOD_ULAGANJA" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="PRAVNA" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="REZIDENTNOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="POLITICKA_IZLOZENOST" FixedLength="false" Unicode="true" MaxLength="1" />
+    <Property Type="String" Name="VLASNISTVO_PODIJELJENO" FixedLength="false" Unicode="true" MaxLength="1" />
+    <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Promet" Relationship="FondModel.FK_FOND_PROMETI_FOND_ZAHTJEVI" FromRole="FondZahtjev" ToRole="FondPromet" />
+    <Property Type="String" Name="DOKUMENT_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_IME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_PREZIME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_JMBG" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_OIB" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_DOKUMENT_TIP" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_DOKUMENT_BROJ" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_DOKUMENT_IZDAVATELJ" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="DRUGA_FIZICKA_DOKUMENT_VRIJEDI_DO" Precision="0" />
+    <Property Type="String" Name="DRUGA_FIZICKA_ADRESA_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_ADRESA_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_ADRESA_POSTANSKI_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_ADRESA_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_ADRESA_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="DRUGA_FIZICKA_DATUM_RODENJA" Precision="0" />
+    <Property Type="String" Name="DRUGA_FIZICKA_MJESTO_RODENJA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_DRZAVA_RODENJA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_DRZAVLJANSTVO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_TELEFON" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_MOBITEL" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_FAX" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DRUGA_FIZICKA_EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPANJE_TIP" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK1_IME_PREZIME" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK1_RODJENJE" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK1_PREBIVALISTE" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK1_DRZAVLJANSTVO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK1_DIREKTNOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK1_VLASNISTVO_TIP" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="VLASNIK1_POSTOTAK_VLASNISTVA" Precision="5" Scale="2" />
+    <Property Type="String" Name="VLASNIK1_POLITICKA_IZLOZENOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="PRAVNA_VLASNIK2_POSTOJI" />
+    <Property Type="String" Name="VLASNIK2_IME_PREZIME" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK2_RODJENJE" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK2_PREBIVALISTE" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK2_DRZAVLJANSTVO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK2_DIREKTNOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK2_VLASNISTVO_TIP" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="VLASNIK2_POSTOTAK_VLASNISTVA" Precision="5" Scale="2" />
+    <Property Type="String" Name="VLASNIK2_POLITICKA_IZLOZENOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="PRAVNA_VLASNIK3_POSTOJI" />
+    <Property Type="String" Name="VLASNIK3_IME_PREZIME" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK3_RODJENJE" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK3_PREBIVALISTE" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK3_DRZAVLJANSTVO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK3_DIREKTNOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VLASNIK3_VLASNISTVO_TIP" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="VLASNIK3_POSTOTAK_VLASNISTVA" Precision="5" Scale="2" />
+    <Property Type="String" Name="VLASNIK3_POLITICKA_IZLOZENOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_1" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_2" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_3" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_4" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_5" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_6" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_7" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_8" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_1" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_2" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_3" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_4" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_5" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_6" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_7" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_8" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK1_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_1" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_2" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_3" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_4" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_5" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_6" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_7" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_8" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK2_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_1" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_2" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_3" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_4" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_5" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_6" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_7" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_8" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_VLASNIK3_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
+    <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DRUSTVA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="DRUSTVA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_KATEGORIJE">
+    <End Role="FOND_KATEGORIJE" Type="FondModel.Kategorija" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_KATEGORIJE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="KATEGORIJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_TIP_ULAGANJA">
+    <End Role="FOND_TIP_ULAGANJA" Type="FondModel.FOND_TIP_ULAGANJA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_TIP_ULAGANJA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="TIP_ULAGANJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_TIP_UPRAVLJANJA">
+    <End Role="FOND_TIP_UPRAVLJANJA" Type="FondModel.FOND_TIP_UPRAVLJANJA" Multiplicity="0..1" />
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_TIP_UPRAVLJANJA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF">
+        <PropertyRef Name="TIP_UPRAVLJANJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_PROMETI_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="1" />
+    <End Role="FOND_PROMETI" Type="FondModel.FondPromet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_PROMETI">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_VRIJEDNOST_UDJELA_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="0..1" />
+    <End Role="FOND_VRIJEDNOST_UDJELA" Type="FondModel.FondVrijednost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_VRIJEDNOST_UDJELA">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_ZAHTJEVI_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Fond" Multiplicity="0..1" />
+    <End Role="FOND_ZAHTJEVI" Type="FondModel.FondZahtjev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_ZAHTJEVI">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="FOND_REGIJA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAZIV" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_GEO1" FromRole="FOND_REGIJA" ToRole="Fond" />
+  </EntityType>
+  <Association Name="FK_FOND_DEF_FOND_GEO1">
+    <End Type="FondModel.FOND_REGIJA" Role="FOND_REGIJA" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_REGIJA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fond">
+        <PropertyRef Name="REGIJA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="DohvatiCijene_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="FOND_ID" Nullable="true" />
+    <Property Type="DateTime" Name="DATUM" Nullable="true" />
+    <Property Type="Decimal" Name="VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="VRIJEDI_DO" Nullable="true" />
+    <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" />
+  </ComplexType>
+  <EntityType Name="FondPodatak">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="VALUTA" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="KATEGORIJA_ID" />
+    <Property Type="Int32" Name="REGIJA_ID" />
+    <Property Type="Int32" Name="TIP_ULAGANJA_ID" />
+    <Property Type="Int32" Name="TIP_UPRAVLJANJA_ID" />
+    <Property Type="Int32" Name="DRUSTVA_ID" />
+    <Property Type="String" Name="RIZICNOST" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Type="Decimal" Name="MINIMALNA_POCETNA_UPLATA" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="MINIMALNE_OSTALE_UPLATE" Precision="15" Scale="2" />
+    <Property Type="String" Name="VALUTA_SIFRA" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Precision="15" Scale="2" />
+    <Property Type="DateTime" Name="DATUM_OSNIVANJA" Precision="0" />
+    <Property Type="Decimal" Name="IMOVINA_FONDA" Precision="15" Scale="2" />
+    <Property Type="String" Name="NAKNADA_ULAZNA" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAKNADA_IZLAZNA" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAKNADA_DEPOZITARNOJ_BANCI" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_FIKSNA" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_POSTO" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_MINIMALNI" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_MAKSIMALNI" Precision="15" Scale="2" />
+    <Property Type="String" Name="NAPOMENA_ZA_KUPNJU" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAPOMENA_ZA_PRODAJU" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAPOMENA_ZA_REGISTRACIJU" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DODATNI_PODACI" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="VRIJEDI_OD" Precision="0" />
+    <Property Type="DateTime" Name="VRIJEDI_DO" Precision="0" />
+    <Property Type="String" Name="NAZIV" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAPOMENA_ZA_ODREGISTRACIJU" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZAHTJEV_REPORT_ID" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NALOG_PRIMATELJ_VBDI" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NALOG_PRIMATELJ_RACUN" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NALOG_PBO_MODEL" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NALOG_PBO" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NALOG_OPIS_PLACANJA" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAZIV_VLASNIKA" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="VRIJEDNOST" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="VRIJEDNOST_DATUM" Precision="0" />
+    <Property Type="Decimal" Name="PROSLA_VRIJEDNOST" Precision="15" Scale="4" />
+    <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NAZIV_KATEGORIJE" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="TraziFondove_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="KATEGORIJA_ID" Nullable="true" />
+    <Property Type="Int32" Name="REGIJA_ID" Nullable="true" />
+    <Property Type="Int32" Name="TIP_ULAGANJA_ID" Nullable="true" />
+    <Property Type="Int32" Name="TIP_UPRAVLJANJA_ID" Nullable="true" />
+    <Property Type="Int32" Name="DRUSTVA_ID" Nullable="true" />
+    <Property Type="String" Name="RIZICNOST" Nullable="true" MaxLength="2" />
+    <Property Type="Decimal" Name="MINIMALNA_POCETNA_UPLATA" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="MINIMALNE_OSTALE_UPLATE" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="String" Name="VALUTA_SIFRA" Nullable="true" MaxLength="3" />
+    <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="DateTime" Name="DATUM_OSNIVANJA" Nullable="true" />
+    <Property Type="Decimal" Name="IMOVINA_FONDA" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="String" Name="NAKNADA_ULAZNA" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NAKNADA_IZLAZNA" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NAKNADA_DEPOZITARNOJ_BANCI" Nullable="true" MaxLength="4000" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_FIKSNA" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_POSTO" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_MINIMALNI" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="NAKNADA_BANKA_MAKSIMALNI" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="String" Name="NAPOMENA_ZA_KUPNJU" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NAPOMENA_ZA_PRODAJU" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="NAPOMENA_ZA_REGISTRACIJU" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="DODATNI_PODACI" Nullable="true" MaxLength="4000" />
+    <Property Type="DateTime" Name="VRIJEDI_OD" Nullable="true" />
+    <Property Type="DateTime" Name="VRIJEDI_DO" Nullable="true" />
+    <Property Type="String" Name="NAZIV" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="NAPOMENA_ZA_ODREGISTRACIJU" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="ZAHTJEV_REPORT_ID" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="NALOG_PRIMATELJ_VBDI" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="NALOG_PRIMATELJ_RACUN" Nullable="true" MaxLength="21" />
+    <Property Type="String" Name="NALOG_PBO_MODEL" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="NALOG_PBO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NALOG_OPIS_PLACANJA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="NAZIV_VLASNIKA" Nullable="true" MaxLength="4000" />
+    <Property Type="Decimal" Name="VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="VRIJEDNOST_DATUM" Nullable="true" />
+    <Property Type="Decimal" Name="PROSLA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+    <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="NAZIV_KATEGORIJE" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NALOG_SIFRA_NAMJENE" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="KIID_URL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="PRAVILA_URL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="PROSPEKT_URL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="OSOBNA_ISKAZNICA_URL" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="FAVORIT" Nullable="false" />
+    <Property Type="Int32" Name="CILJ_PRINOSA_ID" Nullable="true" />
+    <Property Type="Int32" Name="SEKTOR_ID" Nullable="true" />
+    <Property Type="Int32" Name="TRZISTE_ID" Nullable="true" />
+    <Property Type="Int32" Name="PROFIL_RIZICNOSTI_ID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Korisnik">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="USER_NAME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PASSWORD" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DOKUMENT_TIP" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DOKUMENT_BROJ" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DOKUMENT_IZDAVATELJ" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FIZICKA_DOKUMENT_VRIJEDI_DO" Precision="0" />
+    <Property Type="String" Name="PRAVNA_PLANIRANA_GOD_ULAGANJA" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_IME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_PREZIME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_JMBG" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_OIB" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_ADRESA_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_ADRESA_P_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_ADRESA_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_ADRESA_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FIZICKA_DATUM_RODENJA" Precision="0" />
+    <Property Type="String" Name="FIZICKA_MJESTO_RODENJA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DRZAVA_RODENJA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_DRZAVLJANSTVO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_TELEFON" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_MOBITEL" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_FAX" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_STATUS_ODABIR" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_STATUS_OSTALO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_VRSTA_POSLODAVCA" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_STRUCNA_SPREMA" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ZVANJE" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_ZANIMANJE" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_PLANIRANA_GOD_ULAGANJA" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_SREDSTVA_OSTVARENA" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_POSTANSKI_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SLIKA_OSOBNE_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="KARTICA_RACUNA_URL" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PRAVNA" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="REZIDENTNOST" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PREZIME" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MB" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OIB" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_ULICA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_POSTANSKI_BROJ" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_MJESTO" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_DRZAVA" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TELEFON" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MOBITEL" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FAX" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ZASTUPNIK_ADRESA_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="KONTAKT_EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADRESA_SLANJE_KUCNI_BROJ" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RACUN_VBDI" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RACUN_BROJ" MaxLength="21" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FIZICKA_POLITICKA_IZLOZENOST" FixedLength="false" Unicode="true" MaxLength="1" />
+    <Property Type="String" Name="PRAVNA_VLASNISTVO_PODIJELJENO" FixedLength="false" Unicode="true" MaxLength="1" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <NavigationProperty Name="FOND_PROMETI" Relationship="FondModel.FK_FOND_PROMETI_KORISNIK" FromRole="Korisnik" ToRole="FOND_PROMETI" />
+    <Property Type="Int32" Name="DRUSTVO_ID" />
+    <NavigationProperty Name="FOND_DRUSTVA" Relationship="FondModel.FK_KORISNIK_FOND_DRUSTVA" FromRole="Korisnik" ToRole="Drustvo" />
+    <Property Type="String" Name="PASSWORD_RESET_TOKEN" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="PASSWORD_RESET_VRIJEDI_DO" Precision="0" />
+    <NavigationProperty Name="FondFavoriti" Relationship="FondModel.KORISNIK_FOND_FAVORITI" FromRole="Korisnik" ToRole="Fond" />
+    <NavigationProperty Name="NOVOSTIs" Relationship="FondModel.FK_NOVOSTI_KORISNIK" FromRole="Korisnik" ToRole="NOVOSTI" />
+    <NavigationProperty Name="NOVOSTIs1" Relationship="FondModel.FK_NOVOSTI_KORISNIK1" FromRole="Korisnik" ToRole="Novost" />
+  </EntityType>
+  <EntityType Name="BankaDomaca">
+    <Key>
+      <PropertyRef Name="PID" />
+      <PropertyRef Name="VBDI" />
+      <PropertyRef Name="SMBK" />
+      <PropertyRef Name="NAZIV" />
+    </Key>
+    <Property Type="Decimal" Name="PID" Nullable="false" Precision="9" Scale="0" />
+    <Property Type="String" Name="VBDI" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="SMBK" Nullable="false" Precision="7" Scale="0" />
+    <Property Type="String" Name="NAZIV" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BIC" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BRC" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RACUN_U_BANCI" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AKTIVNOST" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_FOND_PROMETI_KORISNIK">
+    <End Type="FondModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+    <End Type="FondModel.FondPromet" Role="FOND_PROMETI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_PROMETI">
+        <PropertyRef Name="KORISNIK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="DohvatiPortfelj_Result">
+    <Property Type="Int32" Name="FOND_ID" Nullable="true" />
+    <Property Type="String" Name="NAZIV_FONDA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="KATEGORIJA" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="DRUSTVO" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="RIZICNOST" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="VALUTA" Nullable="true" MaxLength="3" />
+    <Property Type="Decimal" Name="BR_UDJELA" Nullable="true" Precision="38" Scale="4" />
+    <Property Type="Decimal" Name="NABAVNA_VRIJEDNOST" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="NABAVNA_VRIJEDNOST_KN" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="UPRAVLJANJE_NAZIV" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="CILJ_PRINOSA_NAZIV" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="ULAGANJE_NAZIV" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="REGIJA_NAZIV" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="SEKTOR_NAZIV" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="TRZISTE_NAZIV" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="PROFIL_RIZICNOSTI_NAZIV" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <EntityType Name="VALUTA">
+    <Key>
+      <PropertyRef Name="SIFRA" />
+    </Key>
+    <Property Type="String" Name="SIFRA" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OZNAKA" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="APOEN" Nullable="false" Precision="3" Scale="0" />
+    <Property Type="String" Name="NAZIV" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MASKA" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_VALUTE" FromRole="VALUTE" ToRole="Fond" />
+  </EntityType>
+  <Association Name="FK_FOND_DEF_VALUTE">
+    <End Type="FondModel.VALUTA" Role="VALUTE" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VALUTE">
+        <PropertyRef Name="SIFRA" />
+      </Principal>
+      <Dependent Role="Fond">
+        <PropertyRef Name="VALUTA_SIFRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="StrukturaUlaganjaDetalji">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ZAGLAVLJE_ID" Nullable="false" />
+    <Property Type="String" Name="NAZIV" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="UDIO" Precision="15" Scale="2" />
+    <NavigationProperty Name="Zaglavlje" Relationship="FondModel.FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG" FromRole="FOND_STRUKTURA_ULAGANJA_DETALJI" ToRole="FOND_STRUKTURA_ULAGANJA_ZAG" />
+  </EntityType>
+  <EntityType Name="StrukturaUlaganjaZaglavlje">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="FOND_ID" Nullable="false" />
+    <Property Type="DateTime" Name="DATUM_OD" Precision="0" />
+    <Property Type="DateTime" Name="DATUM_DO" Precision="0" />
+    <Property Type="String" Name="TIP" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Fond" Relationship="FondModel.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" FromRole="FOND_STRUKTURA_ULAGANJA_ZAG" ToRole="Fond" />
+    <NavigationProperty Name="Detalji" Relationship="FondModel.FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG" FromRole="FOND_STRUKTURA_ULAGANJA_ZAG" ToRole="FOND_STRUKTURA_ULAGANJA_DETALJI" />
+  </EntityType>
+  <Association Name="FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF">
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="1" />
+    <End Type="FondModel.StrukturaUlaganjaZaglavlje" Role="FOND_STRUKTURA_ULAGANJA_ZAG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fond">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_STRUKTURA_ULAGANJA_ZAG">
+        <PropertyRef Name="FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_STRUKTURA_ULAGANJA_DETALJI_FOND_STRUKTURA_ULAGANJA_ZAG">
+    <End Type="FondModel.StrukturaUlaganjaZaglavlje" Role="FOND_STRUKTURA_ULAGANJA_ZAG" Multiplicity="1" />
+    <End Type="FondModel.StrukturaUlaganjaDetalji" Role="FOND_STRUKTURA_ULAGANJA_DETALJI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_STRUKTURA_ULAGANJA_ZAG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_STRUKTURA_ULAGANJA_DETALJI">
+        <PropertyRef Name="ZAGLAVLJE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_PROMETI_FOND_ZAHTJEVI">
+    <End Type="FondModel.FondZahtjev" Role="FondZahtjev" Multiplicity="0..1" />
+    <End Type="FondModel.FondPromet" Role="FondPromet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FondZahtjev">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FondPromet">
+        <PropertyRef Name="ZAHTJEV_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KORISNIK_FOND_DRUSTVA">
+    <End Type="FondModel.Drustvo" Role="Drustvo" Multiplicity="0..1" />
+    <End Type="FondModel.Korisnik" Role="Korisnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drustvo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Korisnik">
+        <PropertyRef Name="DRUSTVO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AdminConfig">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="GRAF_MAX_ZAPISA" />
+  </EntityType>
+  <EntityType Name="AplLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TEKST" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="VRIJEME" Nullable="false" Precision="3" />
+    <Property Type="String" Name="KORISNIK" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IP" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="USER_AGENT" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="URL" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="KORISNIK_FOND_FAVORITI">
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <End Type="FondModel.Korisnik" Role="Korisnik" Multiplicity="*" />
+  </Association>
+  <EntityType Name="FOND_CILJ_PRINOSA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAZIV" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_CILJ_PRINOSA" FromRole="FOND_CILJ_PRINOSA" ToRole="Fond" />
+  </EntityType>
+  <EntityType Name="FOND_PROFIL_RIZICNOSTI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAZIV" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI" FromRole="FOND_PROFIL_RIZICNOSTI" ToRole="Fond" />
+  </EntityType>
+  <EntityType Name="FOND_SEKTOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAZIV" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_SEKTOR" FromRole="FOND_SEKTOR" ToRole="Fond" />
+  </EntityType>
+  <EntityType Name="FOND_TRZISTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="NAZIV" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FOND_DEF" Relationship="FondModel.FK_FOND_DEF_FOND_TRZISTE" FromRole="FOND_TRZISTE" ToRole="Fond" />
+  </EntityType>
+  <Association Name="FK_FOND_DEF_FOND_CILJ_PRINOSA">
+    <End Type="FondModel.FOND_CILJ_PRINOSA" Role="FOND_CILJ_PRINOSA" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_CILJ_PRINOSA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fond">
+        <PropertyRef Name="CILJ_PRINOSA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_PROFIL_RIZICNOSTI">
+    <End Type="FondModel.FOND_PROFIL_RIZICNOSTI" Role="FOND_PROFIL_RIZICNOSTI" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_PROFIL_RIZICNOSTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fond">
+        <PropertyRef Name="PROFIL_RIZICNOSTI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_SEKTOR">
+    <End Type="FondModel.FOND_SEKTOR" Role="FOND_SEKTOR" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_SEKTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fond">
+        <PropertyRef Name="SEKTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_TRZISTE">
+    <End Type="FondModel.FOND_TRZISTE" Role="FOND_TRZISTE" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_TRZISTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fond">
+        <PropertyRef Name="TRZISTE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Novost">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="VRIJEME_KREIRANJA" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="VRIJEME_PROMJENE" Precision="3" />
+    <Property Type="Int32" Name="KORISNIK_ID" Nullable="false" />
+    <Property Type="String" Name="TEKST" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NASLOV" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KORISNIK" Relationship="FondModel.FK_NOVOSTI_KORISNIK" FromRole="NOVOSTI" ToRole="Korisnik" />
+    <Property Type="Int32" Name="KORISNIK_PROMJENA_ID" />
+    <NavigationProperty Name="KORISNIK1" Relationship="FondModel.FK_NOVOSTI_KORISNIK1" FromRole="Novost" ToRole="Korisnik" />
+  </EntityType>
+  <Association Name="FK_NOVOSTI_KORISNIK">
+    <End Type="FondModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+    <End Type="FondModel.Novost" Role="NOVOSTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NOVOSTI">
+        <PropertyRef Name="KORISNIK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOVOSTI_KORISNIK1">
+    <End Type="FondModel.Korisnik" Role="Korisnik" Multiplicity="0..1" />
+    <End Type="FondModel.Novost" Role="Novost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Novost">
+        <PropertyRef Name="KORISNIK_PROMJENA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

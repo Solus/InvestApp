@@ -1,0 +1,115 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InvestMainContent.Master.cs" Inherits="InvestApp.Web.InvestMainContent" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:PlaceHolder runat="server">
+
+        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.7.2.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/jquery-2.1.0.min.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/jquery-ui-1.10.4.min.js") %>"></script>
+
+        <script src="<%: ResolveUrl("~/Scripts/thickbox/thickbox.js") %>"></script>
+        <link href="<%: ResolveUrl("~/Scripts/thickbox/thickbox.css") %>" rel="stylesheet" />
+
+    </asp:PlaceHolder>
+
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form runat="server">
+        
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="jquery.ui.combined" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <header>
+
+                <div class="site-title"><a id="A1" runat="server" href="~/Fond/FondPregled.aspx">Fondovi</a></div>
+
+                <section id="login">
+                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled" >
+                        <AnonymousTemplate>
+                            <ul>
+                                <li><a id="registerLink" runat="server" href="~/Account/Register">Registracija</a></li>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login">Prijava</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <p>
+                                <a id="A2" runat="server" class="username" href="~/Account/Manage" title="Manage your account">
+                                    <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                </a>
+                                <asp:LoginStatus ID="loginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log out" LogoutPageUrl="~/" OnLoggedOut="loginStatus_LoggedOut" />
+                            </p>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </section>
+
+                    <nav>
+                        
+                        <asp:SiteMapDataSource runat="server" ID="siteMapDataSource" ShowStartingNode="false" />
+                        <asp:Menu ID="menuMain" CssClass="main_menu" runat="server" SkipLinkText="" IncludeStyleBlock="false" Orientation="Horizontal" DataSourceID="siteMapDataSource" RenderingMode="List" OnPreRender="menuMain_PreRender"></asp:Menu>
+
+                        <%--<div class="main_menu">
+                            <ul id="menu">
+                                <li><a id="zahtjeviLink" runat="server" href="~/Fond/FondZahtjeviPregled.aspx">Zahtjevi</a></li>
+                                <li><a id="portfeljLink" runat="server" href="~/Fond/FondPortfeljPregled.aspx">Portfelj</a></li>
+                                <li><a id="fondoviLink" runat="server" href="~/Fond/FondPregled.aspx">Fondovi</a></li>
+                                <li><a id="usporedbaLink" runat="server" href="~/FondUsporedba/FondUsporedba.aspx">Usporedba<span id="usporedbaBroj"><%= BrojFondovaZaUsporedbu() %></span></a></li>
+                                <li><a id="kupnjaLink" runat="server" href="~/Fond/FondKupnja.aspx">Kupnja</a></li>
+                                <li><a id="korisnikLink" runat="server" href="~/Fond/FondKorisnikDetalji.aspx">Korisnik</a></li>
+                                <li>
+                                    <a id="adminLink" runat="server" href="javascript:void(0);">Admin</a>
+                                    <ul>
+                                        <li><a id="a2" runat="server" href="~/Admin/AdminCP.aspx">Control panel</a></li>
+                                        <li><a id="a1" runat="server" href="~/Admin/FondCijeneUdjelaUredjivanje.aspx">Cijene udjela</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>--%>
+
+                    </nav>
+
+        </header>
+        <div id="body">
+            <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+            <%--<section class="content-wrapper main-content clear-fix">--%>
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            <%--</section>--%>
+        </div>
+        <footer>
+            <div class="foot_copyright">
+                &copy; <%: DateTime.Now.Year %>
+            </div>
+
+            <div class="foot_info">
+                <img class="foot_logo" src="/Images/logo_white_small.png" alt="logo" />
+                <p>
+                    Inspire Capital Ltd.<br />
+                    Bogovićeva 7, HR-10000<br />
+                    Zagreb, Croatia<br />
+                    <br />
+                    +385 98 375 273<br />
+                    <a href="mailto:marko.varga@inspirecapital.biz">marko.varga@inspirecapital.biz</a><br />
+                    <a href="www.inspirecapital.biz">www.inspirecapital.biz</a>
+                </p>
+            </div>
+
+            <asp:Label ID="lblLog" runat="server" Visible="false"></asp:Label>
+        </footer>
+
+    </form>
+
+</body>
+</html>
