@@ -27,103 +27,120 @@
         $('.search_list a[href^=javascript]').toggleClass("opened", naprednaPretraga);
     }
 
-    function NaprednaPretragaPrikaz() {
+    function setRadioButtonCheckedClass() {
 
-        $('#divNapredniUvjeti').toggle(naprednaPretraga);
-        $('.search_list a[href^=javascript]').toggleClass("opened", naprednaPretraga);
-        //$('#cbNaprednoToggle').prop('checked', naprednaPretraga);
+        $('.search_list_extra input[type=radio]').removeClass('checked');
+        $('.search_list_extra input[type=radio]:checked').addClass('checked');
     }
 
-    function initAjax() {
+        function NaprednaPretragaPrikaz() {
 
-        $(document).ready(function () {
+            $('#divNapredniUvjeti').toggle(naprednaPretraga);
+            $('.search_list a[href^=javascript]').toggleClass("opened", naprednaPretraga);
+            //$('#cbNaprednoToggle').prop('checked', naprednaPretraga);
+        }
 
-            // Add the page method call as an onclick handler for the div.
-            $(".updateCart").click(updateCartAjax);
+        function initAjax() {
 
-            usporedbaTooltipovi();
-        });
+            $(document).ready(function () {
 
-    }
+                // Add the page method call as an onclick handler for the div.
+                $(".updateCart").click(updateCartAjax);
 
-    function usporedbaTooltipovi() {
+                usporedbaTooltipovi();
 
-        $(".updateCart").attr('title', 'Dodaj u usporedbu');
-        $(".updateCart.remove").attr('title', 'Ukloni iz usporedbe');
-        $(".updateCart.disabled").attr('title', 'Ne može se dodati više fondova u usporedbu');
-    }
+                $('.search_list_extra > input[type=radio]:first-child').addClass('first_child');
 
-    function updateCartAjax(event) {
+                setRadioButtonCheckedClass();
 
-        var origBtn = $(this);
-        var dataID = $(origBtn).attr("data-id");
+                $(".search_list_extra input[type=radio] + label").click(function (event) {
+                    var id = $(this).attr('for');
+                    $('#' + id).click();
 
-        $.ajax({
-            type: "POST",
-            url: "../Fond/FondPregled.aspx/UpdateCart",
-            data: "{'ID': '" + dataID + "'}",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (msg) {
-                console.log(msg);
+                    setRadioButtonCheckedClass();
+                });
+            });
 
-                var usporedbaLink = $('a[href="/FondUsporedba/FondUsporedba.aspx"]');//$('#usporedbaBroj');
+        }
 
-                if (msg.d.Count > 0)
-                    $(usporedbaLink).text('Usporedba (' + msg.d.Count + ')');
-                else
-                    $(usporedbaLink).text('Usporedba');
+        function usporedbaTooltipovi() {
 
-                if (msg.d.Success) {
+            $(".updateCart").attr('title', 'Dodaj u usporedbu');
+            $(".updateCart.remove").attr('title', 'Ukloni iz usporedbe');
+            $(".updateCart.disabled").attr('title', 'Ne može se dodati više fondova u usporedbu');
+        }
 
-                    //animiranje linka za usporedbu
-                    $(usporedbaLink).stop(true, true).switchClass("", "text_highlight", 100, function () { $(usporedbaLink).switchClass("text_highlight", "", 1000); });
+        function updateCartAjax(event) {
 
-                    var otherBtn = $('.updateCart[data-id=' + dataID + ']').not(origBtn);
+            var origBtn = $(this);
+            var dataID = $(origBtn).attr("data-id");
 
-                    var delay = 200;
+            $.ajax({
+                type: "POST",
+                url: "../Fond/FondPregled.aspx/UpdateCart",
+                data: "{'ID': '" + dataID + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    console.log(msg);
 
-                    if (msg.d.Removed) { //gumb sad dodaje
+                    var usporedbaLink = $('a[href="/FondUsporedba/FondUsporedba.aspx"]');//$('#usporedbaBroj');
 
-                        //$(origBtn).fadeOut(delay, function () {
-                        //    $(origBtn).text('Dodaj').removeClass('remove').fadeIn(delay);
-                        //});
+                    if (msg.d.Count > 0)
+                        $(usporedbaLink).text('Usporedba (' + msg.d.Count + ')');
+                    else
+                        $(usporedbaLink).text('Usporedba');
 
-                        $(origBtn).text('Dodaj').removeClass('remove');
+                    if (msg.d.Success) {
 
-                        if (otherBtn)
-                            $(otherBtn).text('Dodaj').removeClass('remove');
+                        //animiranje linka za usporedbu
+                        $(usporedbaLink).stop(true, true).switchClass("", "text_highlight", 100, function () { $(usporedbaLink).switchClass("text_highlight", "", 1000); });
+
+                        var otherBtn = $('.updateCart[data-id=' + dataID + ']').not(origBtn);
+
+                        var delay = 200;
+
+                        if (msg.d.Removed) { //gumb sad dodaje
+
+                            //$(origBtn).fadeOut(delay, function () {
+                            //    $(origBtn).text('Dodaj').removeClass('remove').fadeIn(delay);
+                            //});
+
+                            $(origBtn).text('Dodaj').removeClass('remove');
+
+                            if (otherBtn)
+                                $(otherBtn).text('Dodaj').removeClass('remove');
+                        }
+                        else { //gumb sad uklanja
+
+                            //$(origBtn).fadeOut(delay, function () {
+                            //    $(origBtn).text('Ukloni').addClass('remove').fadeIn(delay);
+                            //});
+
+                            $(origBtn).text('Ukloni').addClass('remove')
+
+                            if (otherBtn)
+                                $(otherBtn).text('Ukloni').addClass('remove');
+                        }
+
+                        //ako se ne može više dodavati, označi gumbe drugačije
+                        if (msg.d.IsFull) {
+                            $(".updateCart:not([class*=remove])").not(origBtn).addClass("disabled");
+
+                            $('#TB_iframeContent').contents().find(".updateCart:not([class*=remove])").not(origBtn).addClass("disabled"); //unutar framea
+                        }
+                        else {
+                            $(".updateCart").removeClass("disabled");
+
+                            $('#TB_iframeContent').contents().find(".updateCart").removeClass("disabled"); //unutar framea
+                        }
+
+                        usporedbaTooltipovi();
+
                     }
-                    else { //gumb sad uklanja
-
-                        //$(origBtn).fadeOut(delay, function () {
-                        //    $(origBtn).text('Ukloni').addClass('remove').fadeIn(delay);
-                        //});
-
-                        $(origBtn).text('Ukloni').addClass('remove')
-
-                        if (otherBtn)
-                            $(otherBtn).text('Ukloni').addClass('remove');
-                    }
-
-                    //ako se ne može više dodavati, označi gumbe drugačije
-                    if (msg.d.IsFull) {
-                        $(".updateCart:not([class*=remove])").not(origBtn).addClass("disabled");
-
-                        $('#TB_iframeContent').contents().find(".updateCart:not([class*=remove])").not(origBtn).addClass("disabled"); //unutar framea
-                    }
-                    else {
-                        $(".updateCart").removeClass("disabled");
-
-                        $('#TB_iframeContent').contents().find(".updateCart").removeClass("disabled"); //unutar framea
-                    }
-
-                    usporedbaTooltipovi();
-
                 }
-            }
-        });
-    }
+            });
+        }
 
 </script>
 
@@ -172,7 +189,7 @@
 
                     <asp:RadioButtonList ID="rblUpravljanje" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
                         <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
-                        <asp:ListItem Text="Aktivno" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Aktivno" Value="1" ></asp:ListItem>
                         <asp:ListItem Text="Pasivno" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
 
@@ -362,31 +379,31 @@
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="1mj[%]" FieldName="PRINOS_1M" Name="PRINOS_1M" ToolTip="Prinos u 1 mjesec [%]" VisibleIndex="10" Width="50px">
+                    <dx:GridViewDataTextColumn Caption="1mj[%]" FieldName="PRINOS_1M" Name="PRINOS_1M" ToolTip="Prinos u 1 mjesec [%]" VisibleIndex="10" Width="60px">
                         <HeaderStyle HorizontalAlign="Center" />
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="3mj[%]" FieldName="PRINOS_3M" Name="PRINOS_3M" ToolTip="Prinos u 3 mjeseca [%]" VisibleIndex="11" Width="50px">
+                    <dx:GridViewDataTextColumn Caption="3mj[%]" FieldName="PRINOS_3M" Name="PRINOS_3M" ToolTip="Prinos u 3 mjeseca [%]" VisibleIndex="11" Width="60px">
                         <HeaderStyle HorizontalAlign="Center" />
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="1g[%]" FieldName="PRINOS_1G" Name="PRINOS_1G" ToolTip="Prinos u 1 godinu [%]" VisibleIndex="12" Width="50px">
+                    <dx:GridViewDataTextColumn Caption="1g[%]" FieldName="PRINOS_1G" Name="PRINOS_1G" ToolTip="Prinos u 1 godinu [%]" VisibleIndex="12" Width="60px">
                         <HeaderStyle HorizontalAlign="Center" />
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="3g[%]" FieldName="PRINOS_3G" Name="PRINOS_3G" ToolTip="Prinos u 3 godine [%]" VisibleIndex="13" Width="50px">
+                    <dx:GridViewDataTextColumn Caption="3g[%]" FieldName="PRINOS_3G" Name="PRINOS_3G" ToolTip="Prinos u 3 godine [%]" VisibleIndex="13" Width="60px">
                         <HeaderStyle HorizontalAlign="Center" />
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="PGP[%]" FieldName="PGP" Name="PGP" ToolTip="Prosječni godišnji prinos [%]" VisibleIndex="14" Width="42px">
+                    <dx:GridViewDataTextColumn Caption="PGP[%]" FieldName="PGP" Name="PGP" ToolTip="Prosječni godišnji prinos [%]" VisibleIndex="14" Width="60px">
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>

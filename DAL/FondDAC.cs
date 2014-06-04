@@ -106,7 +106,7 @@ namespace InvestApp.DAL
 						fondovi.Add(fond[0]);
 				}
 
-				return fondovi.Any() ? fondovi : null;
+				return fondovi.Any() ? fondovi.OrderBy(f=>f.NAZIV) : null;
 			}
 		}
 

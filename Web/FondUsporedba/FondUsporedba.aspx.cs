@@ -8,6 +8,7 @@ using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Web;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using System.Drawing;
 
 namespace InvestApp.Web
 {
@@ -153,11 +154,19 @@ namespace InvestApp.Web
 
 			chartUsporedba.Series.Clear();
 
-			foreach (Int32 fondId in container.Fondovi())
-			{
-				var fond = DAL.FondDAC.VratiFond(fondId);
+            List<DAL.Fond> fondovi = new List<DAL.Fond>();
 
-				var cijene = DAL.FondDAC.DohvatiCijeneProsireno(fondId, inDatumOd, inDatumDo);
+            foreach (Int32 fondId in container.Fondovi())
+            {
+                var fond = DAL.FondDAC.VratiFond(fondId);
+                fondovi.Add(fond);
+            }
+
+            fondovi = fondovi.OrderBy(f => f.NAZIV).ToList();
+
+            for (int fi = 0; fi < fondovi.Count; fi++)
+			{
+				var cijene = DAL.FondDAC.DohvatiCijeneProsireno(fondovi[fi].ID, inDatumOd, inDatumDo);
 
 				//ograničavanje broja elemenata grafa
 				int? maxZapisa = DAL.AdminDAC.VratiConfig().GRAF_MAX_ZAPISA;
@@ -172,7 +181,7 @@ namespace InvestApp.Web
 
 				bCijeneExist = bCijeneExist || cijene.Any(); 
 
-				DevExpress.XtraCharts.Series series = new DevExpress.XtraCharts.Series(fond.NAZIV, DevExpress.XtraCharts.ViewType.Line);
+				DevExpress.XtraCharts.Series series = new DevExpress.XtraCharts.Series(fondovi[fi].NAZIV, DevExpress.XtraCharts.ViewType.Line);
 
 				series.DataSource = cijene;
 				series.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
@@ -180,9 +189,20 @@ namespace InvestApp.Web
 				series.ValueScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
 				series.ValueDataMembers.AddRange(new string[] { "POSTOTAK" });
 
-				//((LineSeriesView)series.View).Color = System.Drawing.ColorTranslator.FromHtml("#C6234F");
+                string boja = "";
+                switch (fi)
+                {
+                    case 0: boja = "#0070bb"; break;
+                    case 1: boja = "#c1272c"; break;
+                    case 2: boja = "#8bc53e"; break;
+                    case 3: boja = "#92278f"; break;
+                }
+
+                if(!string.IsNullOrEmpty(boja))
+                    ((LineSeriesView)series.View).Color = System.Drawing.ColorTranslator.FromHtml(boja);
 
 				((LineSeriesView)series.View).MarkerVisibility = DevExpress.Utils.DefaultBoolean.False;
+                ((LineSeriesView)series.View).LineStyle.Thickness = 2;
 				//((LineSeriesView)series.View).LineMarkerOptions.Color = System.Drawing.Color.Transparent;
 				//((LineSeriesView)series.View).LineMarkerOptions.BorderVisible = false;
 				//((LineSeriesView)series.View).LineMarkerOptions.FillStyle.FillMode = FillMode.Solid;
@@ -200,24 +220,27 @@ namespace InvestApp.Web
 
 				//((XYDiagram)chartUsporedba.Diagram).AxisY.VisualRange.MinValue = min;
 				//((XYDiagram)chartUsporedba.Diagram).AxisY.VisualRange.MaxValue = max;
-
+                
 				((XYDiagram)chartUsporedba.Diagram).AxisY.Label.NumericOptions.Format = NumericFormat.Number;
-				((XYDiagram)chartUsporedba.Diagram).AxisY.Label.NumericOptions.Precision = 2;
+				((XYDiagram)chartUsporedba.Diagram).AxisY.Label.NumericOptions.Precision = 0;
 				((XYDiagram)chartUsporedba.Diagram).AxisY.Label.EndText = "%";
-				((XYDiagram)chartUsporedba.Diagram).AxisY.Color = System.Drawing.ColorTranslator.FromHtml("#c0c0c0");
+				((XYDiagram)chartUsporedba.Diagram).AxisY.Color = System.Drawing.ColorTranslator.FromHtml("#fff");
+                ((XYDiagram)chartUsporedba.Diagram).AxisY.GridLines.Color = Color.White;
 
 				//((XYDiagram)chartUsporedba.Diagram).AxisX.Label.Staggered = true;
 				((XYDiagram)chartUsporedba.Diagram).AxisX.Label.DateTimeOptions.Format = DateTimeFormat.Custom;
 				((XYDiagram)chartUsporedba.Diagram).AxisX.Label.DateTimeOptions.FormatString = "dd.MM.yyyy";
+				((XYDiagram)chartUsporedba.Diagram).AxisX.Color = System.Drawing.ColorTranslator.FromHtml("#fff");
+                ((XYDiagram)chartUsporedba.Diagram).AxisX.GridLines.Visible = true;
+                ((XYDiagram)chartUsporedba.Diagram).AxisX.GridLines.Color = Color.White;
 
-				((XYDiagram)chartUsporedba.Diagram).AxisX.Color = System.Drawing.ColorTranslator.FromHtml("#c0c0c0");
-
-				((XYDiagram)chartUsporedba.Diagram).DefaultPane.BackColor = System.Drawing.ColorTranslator.FromHtml("#fbfbfb");
+                ((XYDiagram)chartUsporedba.Diagram).DefaultPane.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E6E6");
 				((XYDiagram)chartUsporedba.Diagram).DefaultPane.FillStyle.FillMode = DevExpress.XtraCharts.FillMode.Solid;
+                ((XYDiagram)chartUsporedba.Diagram).DefaultPane.BorderColor = System.Drawing.Color.White;
 
 				chartUsporedba.Width = new Unit(845);
 				chartUsporedba.Height = new Unit(400);
-//				chartUsporedba.Legend.Visible = false;
+				chartUsporedba.Legend.Visible = false;
 
 				chartUsporedba.Visible = true;
 				divGraf.Visible = true;
@@ -442,7 +465,7 @@ namespace InvestApp.Web
 
 			var fondoviUsporedba = container.Fondovi();
 
-			var fondovi = DAL.FondDAC.VratiFondove().Where(f=> !fondoviUsporedba.Contains(f.ID) && f.INDEKSNI != true).OrderBy(f=>f.NAZIV);
+			var fondovi = DAL.FondDAC.VratiFondove().Where(f=> !fondoviUsporedba.Contains(f.ID) && f.INDEKSNI != true).OrderBy(f=>f.NAZIV).ToList();
 			
 			var fondoviDionicki = fondovi.Where(f => f.KATEGORIJA_ID == (int)Common.FondoviHelper.Kategorija.DIONICKI).ToList();
 			var fondoviMjesoviti = fondovi.Where(f => f.KATEGORIJA_ID == (int)Common.FondoviHelper.Kategorija.MJESOVITI).ToList();
@@ -470,11 +493,18 @@ namespace InvestApp.Web
 			fondBlank.NAZIV = "OBVEZNIČKI";
 			fondoviObveznicki.Insert(0, fondBlank);
 
+            fondBlank = new DAL.Fond();
+            fondBlank.ID = -1;
+            fondBlank.NAZIV = "SVI";
+            fondovi.Insert(0, fondBlank);
+
+            ddlFondoviSvi.DataSource = fondovi;
 			ddlFondoviDionicki.DataSource = fondoviDionicki;
 			ddlFondoviMjesoviti.DataSource = fondoviMjesoviti;
 			ddlFondoviNovcani.DataSource = fondoviNovcani;
 			ddlFondoviObveznicki.DataSource = fondoviObveznicki;
 
+            ddlFondoviSvi.DataBind();
 			ddlFondoviDionicki.DataBind();
 			ddlFondoviMjesoviti.DataBind();
 			ddlFondoviNovcani.DataBind();
@@ -494,6 +524,9 @@ namespace InvestApp.Web
 
 			switch (kat)
 			{
+                case InvestApp.Common.FondoviHelper.Kategorija.SVI:
+                    value = ddlFondoviSvi.SelectedValue;
+                    break;
 				case InvestApp.Common.FondoviHelper.Kategorija.NOVCANI:
 					value = ddlFondoviNovcani.SelectedValue;
 					break;
@@ -547,5 +580,10 @@ namespace InvestApp.Web
 		{
 			DodajUsporedbu(Common.FondoviHelper.Kategorija.DIONICKI);
 		}
+
+        protected void btnDodajSvi_Click(object sender, EventArgs e)
+        {
+            DodajUsporedbu(Common.FondoviHelper.Kategorija.SVI);
+        }
 	}
 }

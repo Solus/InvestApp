@@ -74,7 +74,7 @@ namespace InvestApp.Web
 					foreach (var prinos in fondPrinosi)
 					{
 						TableHeaderCell headerCellPrinos = new TableHeaderCell();
-						headerCellPrinos.Text = prinos.NAZIV;
+                        headerCellPrinos.Text = "<span class=\"prinos_color\"></span>" + prinos.NAZIV;
 						headerRow.Cells.Add(headerCellPrinos);
 					}
 				}
@@ -96,7 +96,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PRINOS_1M) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PRINOS_1M), Common.Utility.DecimalToString(prinos.PRINOS_1M));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -112,7 +112,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PRINOS_3M) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PRINOS_3M), Common.Utility.DecimalToString(prinos.PRINOS_3M));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -128,7 +128,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PRINOS_6M) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PRINOS_6M), Common.Utility.DecimalToString(prinos.PRINOS_6M));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -144,7 +144,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PRINOS_1G) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PRINOS_1G), Common.Utility.DecimalToString(prinos.PRINOS_1G));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -160,7 +160,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PRINOS_3G) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PRINOS_3G), Common.Utility.DecimalToString(prinos.PRINOS_3G));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -176,7 +176,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PRINOS_5G) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PRINOS_5G), Common.Utility.DecimalToString(prinos.PRINOS_5G));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -192,7 +192,7 @@ namespace InvestApp.Web
 			foreach (var prinos in fondPrinosi)
 			{
 				TableCell cellPrinos = new TableCell();
-				cellPrinos.Text = Common.Utility.DecimalToString(prinos.PGP) + "%";
+                cellPrinos.Text = string.Format("<span class=\"{0}\">{1}%</span>", NumberClass(prinos.PGP), Common.Utility.DecimalToString(prinos.PGP));
 				row.Cells.Add(cellPrinos);
 			}
 
@@ -200,5 +200,15 @@ namespace InvestApp.Web
 
 			Controls.Add(table);
 		}
+
+        private string NumberClass(decimal? value)
+        {
+            if (value.HasValue)
+            {
+                return value >= 0 ? "positive" : "negative";
+            }
+            else
+                return "";
+        }
 	}
 }

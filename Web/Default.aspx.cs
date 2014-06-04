@@ -15,7 +15,7 @@ namespace InvestApp.Web
             if(KorisnikID > 0)
                 Response.Redirect("Fond/FondPregled.aspx");
             else
-                Response.Redirect("Fond/FondPregled.aspx?uvod=D");
+                Response.Redirect("Pocetna.aspx");
         }
     }
 }

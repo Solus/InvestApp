@@ -10,6 +10,7 @@ namespace InvestApp.Common
     {
         public enum Kategorija
         {
+            SVI = 0,
             NOVCANI = 1,
             OBVEZNICKI = 2,
             MJESOVITI = 3,

@@ -237,6 +237,7 @@
     <Content Include="Images\cart.png" />
     <Content Include="Images\checkbox.png" />
     <Content Include="Images\delete.png" />
+    <Content Include="Images\delete_circle_red.png" />
     <Content Include="Images\document.png" />
     <Content Include="Images\dok_default.png" />
     <Content Include="Images\dok_image.png" />
@@ -259,6 +260,7 @@
     <Content Include="Images\kupi.png" />
     <Content Include="Images\logo_white_small.png" />
     <Content Include="Images\log_out.png" />
+    <Content Include="Images\plus_circle.png" />
     <Content Include="Images\podrska.png" />
     <Content Include="Images\pouzdano.png" />
     <Content Include="Images\radio_button.png" />
@@ -303,6 +305,7 @@
     <Content Include="Reports\ZahtjevIspis.aspx" />
     <Content Include="Admin.sitemap" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />

@@ -40,31 +40,22 @@ namespace InvestApp.Web {
         protected global::System.Web.UI.WebControls.Menu menuPeriod;
         
         /// <summary>
-        /// tbDatumOd control.
+        /// ddlFondoviSvi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit tbDatumOd;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFondoviSvi;
         
         /// <summary>
-        /// tbDatumDo control.
+        /// btnDodajSvi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit tbDatumDo;
-        
-        /// <summary>
-        /// btnTrazi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnTrazi;
+        protected global::System.Web.UI.WebControls.Button btnDodajSvi;
         
         /// <summary>
         /// ddlFondoviDionicki control.
@@ -139,13 +130,31 @@ namespace InvestApp.Web {
         protected global::System.Web.UI.WebControls.Button btnDodajNovcani;
         
         /// <summary>
-        /// gvFondovi control.
+        /// tbDatumOd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFondovi;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit tbDatumOd;
+        
+        /// <summary>
+        /// tbDatumDo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit tbDatumDo;
+        
+        /// <summary>
+        /// btnTrazi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnTrazi;
         
         /// <summary>
         /// divGraf control.
@@ -173,6 +182,15 @@ namespace InvestApp.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.XtraCharts.Web.WebChartControl chartUsporedba;
+        
+        /// <summary>
+        /// gvFondovi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvFondovi;
         
         /// <summary>
         /// tablePrinosi control.

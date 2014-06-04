@@ -11,11 +11,21 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <asp:PlaceHolder runat="server">
 
         <script src="<%: ResolveUrl("~/Scripts/modernizr-2.7.2.js") %>"></script>
-        <script src="<%: ResolveUrl("~/Scripts/jquery-2.1.0.min.js") %>"></script>
+
+        <!--[if lt IE 9]>
+            <script src="<%: ResolveUrl("~/Scripts/jquery-1.11.1.min.js") %>" ></script>
+        <![endif]-->
+        <!--[if (gte IE 9) | (!IE)]><!-->
+            <script src="<%: ResolveUrl("~/Scripts/jquery-2.1.0.min.js") %>"></script>
+        <!--<![endif]-->
+
+
         <script src="<%: ResolveUrl("~/Scripts/jquery-ui-1.10.4.min.js") %>"></script>
+
 
         <script src="<%: ResolveUrl("~/Scripts/thickbox/thickbox.js") %>"></script>
         <link href="<%: ResolveUrl("~/Scripts/thickbox/thickbox.css") %>" rel="stylesheet" />
@@ -51,7 +61,7 @@
 
                         <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                             <AnonymousTemplate>
-                                    <li><a id="registerLink" runat="server" href="~/Account/Register">Registracija</a></li>
+                                    <%--<li><a id="registerLink" runat="server" href="~/Account/Register">Registracija</a></li>--%>
                                     <li><a id="loginLink" runat="server" href="~/Account/Login">Logiraj se</a></li>
                             </AnonymousTemplate>
                             <LoggedInTemplate>
@@ -70,7 +80,7 @@
                     </FooterTemplate>
                 </asp:Repeater>
 
-                <a id="A3" class="blog_link" runat="server" href="~/Blog.aspx">Blog</a>
+                
 
             </section>
 
@@ -82,26 +92,10 @@
                         
                         <asp:SiteMapDataSource runat="server" ID="siteMapDataSource" SiteMapProvider="webSitemap" ShowStartingNode="false" />
                         <asp:Menu ID="menuMain" CssClass="main_menu" runat="server" SkipLinkText="" IncludeStyleBlock="false" Orientation="Horizontal" DataSourceID="siteMapDataSource" RenderingMode="List" OnPreRender="menuMain_PreRender"></asp:Menu>
-
-                        <%--<div class="main_menu">
-                            <ul id="menu">
-                                <li><a id="zahtjeviLink" runat="server" href="~/Fond/FondZahtjeviPregled.aspx">Zahtjevi</a></li>
-                                <li><a id="portfeljLink" runat="server" href="~/Fond/FondPortfeljPregled.aspx">Portfelj</a></li>
-                                <li><a id="fondoviLink" runat="server" href="~/Fond/FondPregled.aspx">Fondovi</a></li>
-                                <li><a id="usporedbaLink" runat="server" href="~/FondUsporedba/FondUsporedba.aspx">Usporedba<span id="usporedbaBroj"><%= BrojFondovaZaUsporedbu() %></span></a></li>
-                                <li><a id="kupnjaLink" runat="server" href="~/Fond/FondKupnja.aspx">Kupnja</a></li>
-                                <li><a id="korisnikLink" runat="server" href="~/Fond/FondKorisnikDetalji.aspx">Korisnik</a></li>
-                                <li>
-                                    <a id="adminLink" runat="server" href="javascript:void(0);">Admin</a>
-                                    <ul>
-                                        <li><a id="a2" runat="server" href="~/Admin/AdminCP.aspx">Control panel</a></li>
-                                        <li><a id="a1" runat="server" href="~/Admin/FondCijeneUdjelaUredjivanje.aspx">Cijene udjela</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>--%>
-
+                        
                     </nav>
+
+                <a id="A3" class="blog_link" runat="server" href="~/Blog.aspx">Blog</a>
 
                 </div>
 

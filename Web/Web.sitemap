@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode roles="*">
+    <siteMapNode url="~/Pocetna.aspx" title="" />
     <siteMapNode url="~/Fond/FondPregled.aspx" title="Fondovi"  description="Pregled fondova" />
     <siteMapNode url="~/FondUsporedba/FondUsporedba.aspx" title="Usporedba"  description="Usporedba fondova" />
     <siteMapNode url="~/Fond/FondKupnja.aspx" title="Kupnja"  description="Kupnja udjela u fondu" />

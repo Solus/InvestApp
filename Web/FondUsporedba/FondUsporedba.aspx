@@ -19,6 +19,29 @@
             if (proizvoljno == 'true')
                 $('#divDatum').toggle(true);
         }
+
+        function toggleDatum() {
+
+            $('#divDatum').toggle();
+
+            var opened = $('#divDatum').is(":visible");
+
+            $('.search_list a[href^=javascript]').toggleClass("opened", opened);
+        }
+
+        $(document).ready(function () {
+
+            $('.fond_usporedba_table tr:nth-child(1)').addClass("first_child");
+            $('.fond_usporedba_table tr:nth-child(2)').addClass("second_child");
+            $('.fond_usporedba_table tr:nth-child(3)').addClass("third_child");
+            $('.fond_usporedba_table tr:nth-child(4)').addClass("fourth_child");
+
+            $('.prinosi_table th:nth-child(2)').addClass("second_child");
+            $('.prinosi_table th:nth-child(3)').addClass("third_child");
+            $('.prinosi_table th:nth-child(4)').addClass("fourth_child");
+            $('.prinosi_table th:nth-child(5)').addClass("fifth_child");
+
+        });
     </script>
 
     <asp:HiddenField ID="hidProizvoljno" runat="server" ClientIDMode="Static" />
@@ -38,28 +61,9 @@
                 <asp:MenuItem Text="3 godine" Value="3G"></asp:MenuItem>
                 <asp:MenuItem Text="5 godina" Value="5G"></asp:MenuItem>
                 <asp:MenuItem Text="MAX" Value="SVI"></asp:MenuItem>
-                <asp:MenuItem Text="Proizvoljno" Value="P" NavigateUrl="javascript: $('#divDatum').toggle(); "></asp:MenuItem>
+                <asp:MenuItem Text="Proizvoljno" Value="P" NavigateUrl="javascript: toggleDatum(); "></asp:MenuItem>
             </Items>
         </asp:Menu>
-
-        <div id="divDatum" class="search_item_group" style="display: none;">
-
-            <label class="search_label" for="tbDatumOd">Interval:</label>
-
-            <dx:ASPxDateEdit CssClass="search_control_date" ID="tbDatumOd" runat="server" ForeColor="#5F5F5F"
-                MaxDate="2100-01-01" MinDate="1900-01-01">
-                <CalendarProperties ClearButtonText="Briši" TodayButtonText="Danas">
-                </CalendarProperties>
-            </dx:ASPxDateEdit>
-
-            <dx:ASPxDateEdit CssClass="search_control_date" ID="tbDatumDo" runat="server" ForeColor="#5F5F5F"
-                MaxDate="2100-01-01" MinDate="1900-01-01">
-                <CalendarProperties ClearButtonText="Briši" TodayButtonText="Danas">
-                </CalendarProperties>
-            </dx:ASPxDateEdit>
-            <asp:LinkButton ID="btnTrazi" runat="server" OnClick="btnTrazi_Click" CssClass="search_button">Traži</asp:LinkButton>
-
-        </div>
 
         <div class="search_group">
 
@@ -68,6 +72,10 @@
                 <%--<label class="search_label" for="ddlInterval">Dodaj fond:</label>--%>
                 <div class="fond_usporedba_container_inner">
 
+                    <div class="fond_usporedba_select">
+                        <asp:DropDownList ID="ddlFondoviSvi" ClientIDMode="Static" runat="server" DataTextField="NAZIV" DataValueField="ID" CssClass="search_control"></asp:DropDownList>
+                        <asp:Button ID="btnDodajSvi" runat="server" Text="" OnClick="btnDodajSvi_Click" CssClass="btn_usporedba_dodaj" ToolTip="Dodaj" OnClientClick="return $('#ddlFondoviSvi').val() != -1;" />
+                    </div>
                     <div class="fond_usporedba_select">
                         <asp:DropDownList ID="ddlFondoviDionicki" ClientIDMode="Static" runat="server" DataTextField="NAZIV" DataValueField="ID" CssClass="search_control"></asp:DropDownList>
                         <asp:Button ID="btnDodajDionicki" runat="server" Text="" OnClick="btnDodajDionicki_Click" CssClass="btn_usporedba_dodaj" ToolTip="Dodaj" OnClientClick="return $('#ddlFondoviDionicki').val() != -1;" />
@@ -85,15 +93,6 @@
                         <asp:Button ID="btnDodajNovcani" runat="server" Text="" OnClick="btnDodajNovcani_Click" CssClass="btn_usporedba_dodaj" ToolTip="Dodaj" OnClientClick="return $('#ddlFondoviNovcani').val() != -1;" />
                     </div>
 
-                    <asp:GridView ID="gvFondovi" runat="server" AutoGenerateColumns="False" OnRowDeleting="gvFondovi_RowDeleting" CssClass="fond_usporedba_table" ShowHeader="false" DataKeyNames="ID">
-                        <Columns>
-                            <asp:BoundField DataField="ID" Visible="false" />
-                            <asp:BoundField DataField="NAZIV" />
-                            <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/cancel.png" ShowDeleteButton="True" ControlStyle-CssClass="fond_usporedba_delete">
-                                <ControlStyle Height="14px" Width="14px" />
-                            </asp:CommandField>
-                        </Columns>
-                    </asp:GridView>
                 </div>
 
             </div>
@@ -115,6 +114,26 @@
                             <asp:ListItem Value="P">Proizvoljno</asp:ListItem>
                         </asp:DropDownList>
                     </div>--%>
+
+            <div id="divDatum" class="search_item_group search_date_range" style="display: none;">
+
+                <label class="search_label" for="tbDatumOd">Interval:</label>
+
+                <dx:ASPxDateEdit CssClass="search_control_date" ID="tbDatumOd" runat="server" ForeColor="#5F5F5F"
+                    MaxDate="2100-01-01" MinDate="1900-01-01">
+                    <CalendarProperties ClearButtonText="Briši" TodayButtonText="Danas">
+                    </CalendarProperties>
+                </dx:ASPxDateEdit>
+
+                <dx:ASPxDateEdit CssClass="search_control_date" ID="tbDatumDo" runat="server" ForeColor="#5F5F5F"
+                    MaxDate="2100-01-01" MinDate="1900-01-01">
+                    <CalendarProperties ClearButtonText="Briši" TodayButtonText="Danas">
+                    </CalendarProperties>
+                </dx:ASPxDateEdit>
+                <asp:LinkButton ID="btnTrazi" runat="server" OnClick="btnTrazi_Click" CssClass="search_button">Traži</asp:LinkButton>
+
+            </div>
+
         </div>
 
 
@@ -128,6 +147,20 @@
             <dxchartsui:WebChartControl ID="chartUsporedba" runat="server" EnableClientSideAPI="false" CrosshairEnabled="false" Height="400px" Width="845px" CssClass="graf_usporedba">
             </dxchartsui:WebChartControl>
 
+            <div class="fond_usporedba_table">
+                <asp:GridView ID="gvFondovi" runat="server" AutoGenerateColumns="False" OnRowDeleting="gvFondovi_RowDeleting" ShowHeader="false" DataKeyNames="ID">
+                    <Columns>
+                        <asp:BoundField DataField="ID" Visible="false" />
+                        <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/delete_circle_red.png" ShowDeleteButton="True" ControlStyle-CssClass="fond_usporedba_delete">
+                        </asp:CommandField>
+                        <asp:TemplateField>
+                            <ItemTemplate><span class="fond_usporedba_color"></span></ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="NAZIV" />
+                    
+                    </Columns>
+                </asp:GridView>
+            </div>
 
         </div>
 
