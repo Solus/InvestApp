@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
     <title></title>
 
+    <link href='http://fonts.googleapis.com/css?family=Signika:400,600,700,300&subset=latin,latin-ext' rel='stylesheet prefetch' type='text/css'>
+
     <link href="~/Content/Site.css" rel="stylesheet" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -35,30 +37,50 @@
 
         <header>
 
-                <div class="site-title"><a id="A1" runat="server" href="~/Fond/FondPregled.aspx">Fondovi</a></div>
+            <section id="login">
 
-                <section id="login">
-                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled" >
-                        <AnonymousTemplate>
-                            <ul>
-                                <li><a id="registerLink" runat="server" href="~/Account/Register">Registracija</a></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login">Prijava</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <p>
-                                <a id="A2" runat="server" class="username" href="~/Account/Manage" title="Manage your account">
-                                    <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
-                                </a>
-                                <asp:LoginStatus ID="loginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log out" LogoutPageUrl="~/" OnLoggedOut="loginStatus_LoggedOut" />
-                            </p>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                </section>
+                <asp:SiteMapDataSource runat="server" ID="userSitemap" SiteMapProvider="adminSitemap" ShowStartingNode="false" />
+                <asp:Repeater ID="repeaterUserMenu" runat="server" DataSourceID="userSitemap">
+                    <HeaderTemplate>
+                        <ul>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <li><a id="A4" runat="server" title='<%# Eval("description") %>' href='<%# Eval("url") %>'><%# Eval("title") %></a></li>
+                    </ItemTemplate>
+                    <FooterTemplate>
+
+                        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                    <li><a id="registerLink" runat="server" href="~/Account/Register">Registracija</a></li>
+                                    <li><a id="loginLink" runat="server" href="~/Account/Login">Logiraj se</a></li>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                    <li>
+                                        <a id="A2" runat="server" class="username" href="~/Account/Manage" title="Manage your account">
+                                            <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <asp:LoginStatus ID="loginStatus" CssClass="log_out" runat="server" ToolTip="Odjava" LogoutAction="Redirect" LogoutText="" LogoutPageUrl="~/" OnLoggedOut="loginStatus_LoggedOut" />
+                                    </li>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+
+                        </ul>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+                <a id="A3" class="blog_link" runat="server" href="~/Blog.aspx">Blog</a>
+
+            </section>
+
+            <div class="menu_container">
 
                     <nav>
+
+                        <a id="A1" class="site-title" runat="server" href="http://www.investapp.host25.com/"></a>
                         
-                        <asp:SiteMapDataSource runat="server" ID="siteMapDataSource" ShowStartingNode="false" />
+                        <asp:SiteMapDataSource runat="server" ID="siteMapDataSource" SiteMapProvider="webSitemap" ShowStartingNode="false" />
                         <asp:Menu ID="menuMain" CssClass="main_menu" runat="server" SkipLinkText="" IncludeStyleBlock="false" Orientation="Horizontal" DataSourceID="siteMapDataSource" RenderingMode="List" OnPreRender="menuMain_PreRender"></asp:Menu>
 
                         <%--<div class="main_menu">
@@ -81,6 +103,8 @@
 
                     </nav>
 
+                </div>
+
         </header>
         <div id="body">
             <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
@@ -89,21 +113,14 @@
             <%--</section>--%>
         </div>
         <footer>
-            <div class="foot_copyright">
-                &copy; <%: DateTime.Now.Year %>
-            </div>
+            <%--<div class="foot_copyright">&copy; <%: DateTime.Now.Year %></div>--%>
 
             <div class="foot_info">
-                <img class="foot_logo" src="/Images/logo_white_small.png" alt="logo" />
-                <p>
-                    Inspire Capital Ltd.<br />
-                    Bogovićeva 7, HR-10000<br />
-                    Zagreb, Croatia<br />
-                    <br />
-                    +385 98 375 273<br />
-                    <a href="mailto:marko.varga@inspirecapital.biz">marko.varga@inspirecapital.biz</a><br />
-                    <a href="www.inspirecapital.biz">www.inspirecapital.biz</a>
-                </p>
+                <img class="foot_logo" src="/Images/investiraj_logo.png" alt="logo" />
+                <span>
+                    investiraj.net, Bogovićeva 7,  HR-10000 , Zagreb, Croatia, + 385 01 123  4567, 
+                    <a href="mailto:investiraj@investiraj.net">investiraj@investiraj.net</a>, <a href="http://www.investiraj.net">www.investiraj.net</a>
+                </span>
             </div>
 
             <asp:Label ID="lblLog" runat="server" Visible="false"></asp:Label>

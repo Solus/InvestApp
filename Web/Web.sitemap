@@ -5,12 +5,7 @@
     <siteMapNode url="~/FondUsporedba/FondUsporedba.aspx" title="Usporedba"  description="Usporedba fondova" />
     <siteMapNode url="~/Fond/FondKupnja.aspx" title="Kupnja"  description="Kupnja udjela u fondu" />
     <siteMapNode url="~/Fond/FondProdaja.aspx" title="Prodaja"  description="Prodaja udjela u fondu" />
-    <siteMapNode url="~/Blog.aspx" title="Blog"  description="Blog" />
     <siteMapNode url="~/Fond/FondZahtjeviPregled.aspx" title="Zahtjevi"  description="Pregled i realizacija zahtjeva" />
     <siteMapNode url="~/Fond/FondPortfeljPregled.aspx" title="Portfelj"  description="Pregled portfelja" />
-    <siteMapNode url="~/Fond/FondKorisnikDetalji.aspx" title="Korisnik"  description="Uređivanje podataka o korisniku" />
-    <siteMapNode url="~/Admin/FondCijeneUdjelaUredjivanje.aspx" title="Cijene udjela"  description="Uređivanje cijena udjela" />
-    <siteMapNode url="~/Admin/DrustvaPregled.aspx" title="Društva"  description="Pregled i ažuriranje društava" />
-    <siteMapNode title="Admin" url="~/Admin/AdminCP.aspx"  description="Uređivanje korisnika" />
   </siteMapNode>
 </siteMap>

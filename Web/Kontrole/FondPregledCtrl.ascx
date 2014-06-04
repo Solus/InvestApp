@@ -20,15 +20,18 @@
         //else
         //    $('#divNapredniUvjeti').slideUp();
 
-        $('#divNapredniUvjeti').toggle(checked);
+        $('#divNapredniUvjeti').toggle();
 
-        naprednaPretraga = checked;
+        naprednaPretraga = $('#divNapredniUvjeti').is(":visible");
+
+        $('.search_list a[href^=javascript]').toggleClass("opened", naprednaPretraga);
     }
 
     function NaprednaPretragaPrikaz() {
 
         $('#divNapredniUvjeti').toggle(naprednaPretraga);
-        $('#cbNaprednoToggle').prop('checked', naprednaPretraga);
+        $('.search_list a[href^=javascript]').toggleClass("opened", naprednaPretraga);
+        //$('#cbNaprednoToggle').prop('checked', naprednaPretraga);
     }
 
     function initAjax() {
@@ -145,18 +148,19 @@
 
         <div class="search_body">
 
-            <asp:Menu ID="menuKat" runat="server" CssClass="search_list" RenderingMode="List" IncludeStyleBlock="False" EnableViewState="true" OnMenuItemClick="menuKat_MenuItemClick" SkipLinkText="">
+            <asp:Menu ID="menuKat" runat="server" CssClass="search_list items6" RenderingMode="List" IncludeStyleBlock="False" EnableViewState="true" OnMenuItemClick="menuKat_MenuItemClick" SkipLinkText="">
                 <Items>
-                    <asp:MenuItem Text="--Svi--" Value="NULL" Selected="True"></asp:MenuItem>
-                    <asp:MenuItem Text="Dionički" Value="4"></asp:MenuItem>
-                    <asp:MenuItem Text="Mješoviti" Value="3"></asp:MenuItem>
-                    <asp:MenuItem Text="Obveznički" Value="2"></asp:MenuItem>
-                    <asp:MenuItem Text="Novčani" Value="1"></asp:MenuItem>
+                    <asp:MenuItem Text="SVI" Value="NULL" Selected="True"></asp:MenuItem>
+                    <asp:MenuItem Text="DIONIČKI" Value="4"></asp:MenuItem>
+                    <asp:MenuItem Text="MJEŠOVITI" Value="3"></asp:MenuItem>
+                    <asp:MenuItem Text="OBVEZNIČKI" Value="2"></asp:MenuItem>
+                    <asp:MenuItem Text="NOVČANI" Value="1"></asp:MenuItem>
+                    <asp:MenuItem Text="napredna pretraga" Value="" NavigateUrl="javascript: ToggleNaprednaPretraga(); " ></asp:MenuItem>
                 </Items>
             </asp:Menu>
 
-            <asp:CheckBox ID="cbNaprednoToggle" ClientIDMode="Static" runat="server" CssClass="search_extra_toggle" Text="&nbsp;" AutoPostBack="false" ToolTip="Napredni uvjeti pretraživanja"
-                onclick=" ToggleNaprednaPretraga(this.checked); " EnableViewState="true" ViewStateMode="Enabled" Checked="false" />
+            <%--<asp:CheckBox ID="cbNaprednoToggle" ClientIDMode="Static" runat="server" CssClass="search_extra_toggle" Text="&nbsp;" AutoPostBack="false" ToolTip="Napredni uvjeti pretraživanja"
+                onclick=" ToggleNaprednaPretraga(this.checked); " EnableViewState="true" ViewStateMode="Enabled" Checked="false" />--%>
 
             <div id="divNapredniUvjeti" class="search_extra_group" style="display: none;">
 
@@ -167,7 +171,7 @@
                     <span class="search_extra_label">UPRAVLJANJE</span>
 
                     <asp:RadioButtonList ID="rblUpravljanje" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Svi--" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Aktivno" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Pasivno" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -179,7 +183,7 @@
                     <span class="search_extra_label">CILJ PRINOSA</span>
 
                     <asp:RadioButtonList ID="rblCiljPrinosa" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Svi--" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Relativni" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Apsolutni" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -191,7 +195,7 @@
                     <span class="search_extra_label">ULAGANJE</span>
 
                     <asp:RadioButtonList ID="rblUlaganje" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Svi--" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Fond fondova" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Direktno ulaganje" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -203,7 +207,7 @@
                     <span class="search_extra_label">GEOGRAFSKA REGIJA</span>
 
                     <asp:RadioButtonList ID="rblRegija" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Svi--" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Globalni" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Europa" Value="2"></asp:ListItem>
                         <asp:ListItem Text="Ist. Europa" Value="6" title="Istočna Europa"></asp:ListItem>
@@ -220,7 +224,7 @@
                     <span class="search_extra_label">SEKTOR</span>
 
                     <asp:RadioButtonList ID="rblTrziste" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Sve --" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Sve" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Svi sektori" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Energija i robe" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -232,7 +236,7 @@
                     <span class="search_extra_label">TRŽIŠTE</span>
 
                     <asp:RadioButtonList ID="rblSektor" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Svi--" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Razvijena tržišta" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Tržišta u nastajanju" Value="2"></asp:ListItem>
                         <asp:ListItem Text="Granična tržišta" Value="3"></asp:ListItem>
@@ -245,7 +249,7 @@
                     <span class="search_extra_label">PROFIL RIZIČNOSTI I USPJEŠNOSTI</span>
 
                     <asp:RadioButtonList ID="rblProfilRizicnosti" runat="server" CssClass="search_list_extra small" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="--Svi--" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="1" Value="1"></asp:ListItem>
                         <asp:ListItem Text="2" Value="2"></asp:ListItem>
                         <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -304,7 +308,7 @@
             <dx:ASPxGridView ID="gvFondovi" runat="server" AutoGenerateColumns="False" EnableTheming="True" KeyFieldName="ID"
                 OnCustomButtonCallback="gvFondovi_CustomButtonCallback" OnCustomButtonInitialize="gvFondovi_CustomButtonInitialize" OnCustomColumnDisplayText="gvFondovi_CustomColumnDisplayText"
                 OnCustomGroupDisplayText="gvFondovi_CustomGroupDisplayText" OnDataBinding="gvFondovi_DataBinding"
-                SettingsPager-Mode="ShowAllRecords" Theme="Default" CssClass="data_table" ClientInstanceName="grid" >
+                SettingsPager-Mode="ShowAllRecords" CssClass="data_table" ClientInstanceName="grid" >
                 <Columns>
                     <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" Visible="false" VisibleIndex="0">
                     </dx:GridViewDataTextColumn>
@@ -318,12 +322,15 @@
                     <dx:GridViewDataTextColumn FieldName="NAZIV_KATEGORIJE" Visible="false" VisibleIndex="3">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="Cijena udjela" FieldName="VRIJEDNOST" Name="VRIJEDNOST_UDJELA" ToolTip="Trenutna cijena udjela" VisibleIndex="4" Width="85px">
+                    <dx:GridViewDataTextColumn Caption="Cijena udjela" FieldName="VRIJEDNOST" Name="VRIJEDNOST_UDJELA" ToolTip="Trenutna cijena udjela" VisibleIndex="4" Width="110px">
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
+                        <HeaderStyle HorizontalAlign="Right" />
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="Valuta" FieldName="VALUTA" ReadOnly="True" ToolTip="Valuta fonda" VisibleIndex="5" Width="33px">
+                    <dx:GridViewDataTextColumn Caption="Valuta" FieldName="VALUTA" ReadOnly="True" ToolTip="Valuta fonda" VisibleIndex="5" Width="52px">
+                        <HeaderStyle HorizontalAlign="Center" />
+                        <CellStyle HorizontalAlign="Center"></CellStyle>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn Caption="Promjena[%]" FieldName="POSTOTAK" Name="POSTOTAK" ToolTip="Dnevna promjena cijene" VisibleIndex="6" Width="30px">
@@ -349,7 +356,7 @@
                             </PropertiesDateEdit>
                         </dx:GridViewDataDateColumn>--%>
 
-                    <dx:GridViewDataTextColumn Caption="PTG[%]" FieldName="PTG" Name="PTG" ToolTip="Prinos u tekućoj godini [%]" VisibleIndex="8" Width="50px">
+                    <dx:GridViewDataTextColumn Caption="PTG[%]" FieldName="PTG" Name="PTG" ToolTip="Prinos u tekućoj godini [%]" VisibleIndex="8" Width="60px">
                         <HeaderStyle HorizontalAlign="Right" />
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
@@ -397,17 +404,18 @@
                             </CellStyle>
                         </dx:GridViewCommandColumn>--%>
 
-                    <dx:GridViewDataTextColumn Caption="#" Name="FOND_USPOREDI2" ToolTip="Odaberite fondove za usporedbu" VisibleIndex="15" Width="20px" HeaderStyle-HorizontalAlign="Center">
+                    <dx:GridViewDataTextColumn Caption="Usporedi" Name="FOND_USPOREDI2" ToolTip="Odaberite fondove za usporedbu" VisibleIndex="15" Width="20px" HeaderStyle-HorizontalAlign="Center">
+                        <CellStyle HorizontalAlign="Center"></CellStyle>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewCommandColumn ButtonType="Image" Caption="#" Name="FOND_KUPI" VisibleIndex="16" Width="25px" HeaderStyle-HorizontalAlign="Center" ToolTip="Kupi">
+                    <dx:GridViewCommandColumn ButtonType="Image" Caption="Kupi" Name="FOND_KUPI" VisibleIndex="16" Width="25px" HeaderStyle-HorizontalAlign="Center" ToolTip="Kupi">
                         <CustomButtons>
                             <dx:GridViewCommandColumnCustomButton ID="cbKupi" Text="Kupi">
-                                <Image Url="~/Images/cart.png" ToolTip="Kupi"></Image>
+                                <Image Url="~/Images/kupi.png" ToolTip="Kupi"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
                         <HeaderStyle HorizontalAlign="Center" />
-                        <CellStyle HorizontalAlign="Left">
+                        <CellStyle HorizontalAlign="Center">
                         </CellStyle>
                     </dx:GridViewCommandColumn>
 

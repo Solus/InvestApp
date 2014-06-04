@@ -452,22 +452,22 @@ namespace InvestApp.Web
 			DAL.Fond fondBlank = new DAL.Fond();
 			fondBlank.ID = -1;
 
-			fondBlank.NAZIV = "--Dionički--";
+			fondBlank.NAZIV = "DIONIČKI";
 			fondoviDionicki.Insert(0, fondBlank);
 
 			fondBlank = new DAL.Fond();
 			fondBlank.ID = -1;
-			fondBlank.NAZIV = "--Mješoviti--";
+			fondBlank.NAZIV = "MJEŠOVITI";
 			fondoviMjesoviti.Insert(0, fondBlank);
 
 			fondBlank = new DAL.Fond();
 			fondBlank.ID = -1;
-			fondBlank.NAZIV = "--Novčani--";
+			fondBlank.NAZIV = "NOVČANI";
 			fondoviNovcani.Insert(0, fondBlank);
 
 			fondBlank = new DAL.Fond();
 			fondBlank.ID = -1;
-			fondBlank.NAZIV = "--Obveznički--";
+			fondBlank.NAZIV = "OBVEZNIČKI";
 			fondoviObveznicki.Insert(0, fondBlank);
 
 			ddlFondoviDionicki.DataSource = fondoviDionicki;

@@ -16,10 +16,14 @@ namespace InvestApp.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-			vrijemePoc = DateTime.Now;
+            vrijemePoc = DateTime.Now;
 
-			this.Page.Title = "Pregled fondova";
-			//(this.Page.Master.FindControl("fondoviLink") as HtmlAnchor).Attributes["class"] = "current";
+            this.Page.Title = "Pregled fondova";
+            //(this.Page.Master.FindControl("fondoviLink") as HtmlAnchor).Attributes["class"] = "current";
+
+            divSiteEnter.Visible =
+            divBlogBanner.Visible =
+            divIntro.Visible = Request.QueryString != null && Request.QueryString["uvod"] == "D";
         }
 
         public override void VerifyRenderingInServerForm(Control control)

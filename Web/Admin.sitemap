@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode roles="*">
+    <siteMapNode url="~/Admin/FondCijeneUdjelaUredjivanje.aspx" title="Cijene udjela"  description="Uređivanje cijena udjela" />
+    <siteMapNode url="~/Admin/DrustvaPregled.aspx" title="Društva"  description="Pregled i ažuriranje društava" />
+    <siteMapNode title="Admin" url="~/Admin/AdminCP.aspx"  description="Uređivanje korisnika" />
+    <siteMapNode url="~/Fond/FondKorisnikDetalji.aspx" title="Korisnik"  description="Uređivanje podataka o korisniku" />
+  </siteMapNode>
+</siteMap>

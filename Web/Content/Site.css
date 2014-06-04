@@ -10,7 +10,7 @@ body {
     /*border-top: solid 10px #000;*/
     color: #333;
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    /*font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;*/
     margin: 0;
     padding: 0;
 }
@@ -128,24 +128,23 @@ footer {
 
 /* site title
 ----------------------------------------------------------*/
-.site-title {
+/*.site-title {
     color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
     font-size: 2.3em;
     margin: 0;
-}
+}*/
 
-.site-title a, .site-title a:hover, .site-title a:active {
+/*.site-title a, .site-title a:hover, .site-title a:active {
     background: none;
     color: #c8c8c8;
     outline: none;
     text-decoration: none;
-}
+}*/
 
 
 /* login
 ----------------------------------------------------------*/
-#login {
+/*#login {
     display: block;
     font-size: .85em;
     margin: 0 0 10px;
@@ -173,7 +172,7 @@ footer {
     #login li {
         display: inline;
         list-style: none;
-    }
+    }*/
 
 
 /* menu
@@ -752,34 +751,51 @@ form{
 
 body
 {
-	background: #f9f9f9;
+	background: #e6e6e6;
     font-size: 14px;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    /*font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;*/
+    font-family: 'Signika', sans-serif;
+    color: #32393b;
 }
 
 #body
 {
 	/*padding-top: 15px;*/
-    padding-bottom: 300px; /* visina footera + još malo */
+    padding-bottom: 100px; /* visina footera + još malo */
+}
+
+a{
+    padding: 0;
 }
 
 footer{
-	height: 220px;
+	height: 100px;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background-color: #f05a22;
 	color: #fff;
+    background: #f05a22 url(/Images/triangles.png) no-repeat center center;
 }
 
 footer .foot_info{
-	margin: 0 auto;
-	margin-top: 20px;
-	width: 70%;
-	padding-bottom: 10px;
-	font-size: 12px;
-	border-bottom: 2px solid #fff;
+    height: 34px;
+    position: absolute;
+    top: 50px;
+    margin-top: -17px;
+    width: 1000px;
+    left: 50%;
+    margin-left: -545px;
+}
+
+footer .foot_info span{
+	font-size: 15px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+footer .foot_info img{
+	vertical-align: middle;
 }
 
 footer .foot_info a{
@@ -806,28 +822,23 @@ header
 	background-repeat: no-repeat;
     box-shadow: inset 0 -8px 10px -5px rgba(0,0,0,0.3);*/
     position: relative;
-    height: 90px;
-	border-bottom: 1px solid #32393b;
+    /*height: 148px;*/
+    z-index: 1;
 }
 
-header .content-wrapper
-{
-	overflow: auto;
-	padding-top: 10px;
+header .menu_container{
+    background: #fff;
+    height: 100px;
+    overflow: auto;
 }
 
 .site-title
 {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}
-
-.site-title a,
-.site-title a:hover
-{
-	color: #222;
-	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    vertical-align: middle;
+    display: inline-block;
+    width: 247px;
+    height: 43px;
+    background: url(/Images/investiraj_logo_color.png) no-repeat center center;
 }
 
 ol li{
@@ -849,39 +860,107 @@ ol li{
 /*LOGIN podaci*/
 #login
 {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 48px;
+    background-color: rgba(239, 90, 33, .7);
+    position: relative;
+}
+
+#login ul {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 50%;
+    margin-right: -450px;
+}
+
+#login li{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: 46px;
+}
+
+#login li:not(:first-child){
+    margin-left: 20px;
 }
 
 #login,
 #login a
 {
-	color: #222;
-	background: none;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+	color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px rgba(190, 70, 20, .7);
+}
+
+#login .username{
+    text-decoration: underline;
+}
+
+#login .log_out{
+    display: inline-block;
+    width: 16px;
+    height: 18px;
+    vertical-align: middle;
+    background: url(/Images/log_out.png) no-repeat center center;
+}
+
+a.blog_link{
+    display: inline-block;
+    width: 100px;
+    height: 48px;
+    line-height: 48px;
+    position: absolute;
+    right: 50%;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #31393a;
+    color: #fff;
+    font-size: 21px;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#login a.blog_link{
+    margin-right: -585px;
 }
 
 /*GLAVNI MENU*/
 nav
 {
+	max-width: 1000px;
     position: absolute;
-    bottom: 5px;
-	width: 100%;
-	text-align: center;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -500px;
+    /*margin: 0 auto;
+    margin-top: 40px;*/
 }
 
 .main_menu
 {
 	float: none !important;
+    display: inline-block;
+    height: 47px;
+    margin-left: 20px;
 }
 
 .main_menu ul
 {
-	height: 30px;
+	/*height: 30px;*/
 	margin: 0;
 	padding: 0;
 	float: none !important;
 	position: static !important;
+    max-width: 700px;
+    vertical-align: middle;
+    height: 100%;
 }
 
 .main_menu ul li
@@ -890,22 +969,19 @@ nav
 	list-style-type: none;
 	float: none !important;
 	display: inline-block;
-	height: 100%;
+    vertical-align: middle;
 }
 
 .main_menu ul li a
 {
-	color: #555;
-	padding: 0px 10px;
-	font-size: 15px;
-	font-weight: bold;
+	color: #32393b;
+	padding: 0px 5px;
+	font-size: 21px;
 	text-transform: uppercase;
 	text-decoration: none;
-	height: 25px;
-	line-height: 25px;
-	display: block;
-	/*text-shadow: 1px 1px 5px rgba(0,0,0,0.5);*/
-	transition: 0.5s;
+	/*display: block;*/
+	transition: 0.3s;
+    line-height: 43px;
 }
 
 .main_menu ul li a:hover
@@ -921,7 +997,7 @@ nav
 	color: #2d2d2d;
 	border-radius: 3px 3px 0 0;
     box-shadow: 0 0px 7px 2px rgba(0,0,0,0.15);*/
-	color: #F05A22;
+	color: #f37e43;
 }
 
 .main_menu ul li a.text_highlight
@@ -992,6 +1068,159 @@ nav
   color: #ffffff;
   background-color: #444;
 }*/
+
+.site_enter{
+    width: 100%;
+    height: 661px;
+    background: url(/Images/triangles_large.png) no-repeat center center,
+                url(/Images/enter_bg.png) no-repeat center center;
+    margin-top: -148px;
+    position: relative;
+    overflow: auto;
+}
+
+.site_enter .inner_box{
+    width: 370px;
+    height: 270px;
+    background: rgba(255, 255, 255, .8);
+    margin: 0 auto;
+    margin-top: 240px;
+    overflow: auto;
+    font-size: 21px;
+}
+
+.site_enter .inner_box a.box_button{
+    display: block;
+    width: 230px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+}
+
+.site_enter .inner_box a.box_button:first-child{
+    margin-top: 40px;
+}
+
+a.box_button.help{
+    background: #ef5a21;
+}
+
+a.box_button.register{
+    background: #575b5a;
+}
+
+.site_enter .inner_box a.button_more{
+    display: inline-block;
+    font-weight: lighter;
+    text-decoration: none;
+    margin-left: 70px;
+    margin-top: 25px;
+}
+
+.site_introduction{
+    height: 794px;
+    width: 100%;
+    /*background: url(/Images/triangle_big_dark.png) left bottom no-repeat, 
+                url(/Images/triangle_big_light.png) right 20px top no-repeat;
+    background-color: #f1f1f1;*/
+    background: #f1f1f1 url(/Images/triangles_big.png) no-repeat center center;
+    text-align: center;
+    overflow: auto;
+}
+
+.site_introduction .title_zasto{
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #32393b;
+    border-bottom: 8px solid #ef5a21;
+}
+
+.site_introduction .columns{
+    width: 1200px;
+    margin: 0 auto;
+    display: table;
+    margin-top: 50px;
+}
+
+.site_introduction .columns .column{
+    display: table-cell;
+    padding: 5px;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.site_introduction .column.jednostavno{
+    background: url(/Images/jednostavno.png) no-repeat center top;
+}
+
+.site_introduction .column.pouzdano{
+    background: url(/Images/pouzdano.png) no-repeat center top;
+}
+
+.site_introduction .column.podrska{
+    background: url(/Images/podrska.png) no-repeat center top;
+}
+
+.site_introduction .columns .title{
+    color: #32393b;
+    font-weight: normal;
+    font-size: 36px;
+    text-align: center;
+}
+
+.site_introduction .columns .text{
+    font-size: 21px;
+    font-weight: lighter;
+}
+
+.blog_banner{
+    height: 399px;
+    width: 100%;
+    text-align: center;
+    background: #fff url(/Images/blog_banner.png) no-repeat center center;
+    position: relative;
+    overflow: auto;
+}
+
+.blog_banner .title_blog{
+    display: block;
+    margin-top: 40px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.blog_banner .text{
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    width: 1125px;
+    font-size: 21px;
+    font-weight: lighter;
+    color: #fff;
+}
+
+.blog_banner a.blog_link{
+    display: inline-block;
+    width: 230px;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    left: 50%;
+    margin-left: -115px;
+    top: 250px;
+    background: #575b5a;
+    color: #fff;
+    font-weight: bold;
+}
+
 /************/
 
 .clearfix:before,
@@ -1043,6 +1272,16 @@ nav
     overflow: auto;
 }
 
+.form_body_table{
+    width: 1170px;
+    margin: 0 auto;
+    margin-bottom: 140px;
+}
+
+.form_body.front{
+    margin-bottom: 100px;
+}
+
 .form_body.wide
 {
 	width: 900px;
@@ -1073,11 +1312,14 @@ nav
 .form_header
 {
     background-color: #32393b;
-    padding: 10px 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 	margin-top: 0;
     color: #fff;
-    font-size: 15px;
+    font-size: 36px;
 	cursor: default;
+    text-align: center;
+    text-transform: lowercase;
 }
 
 .form_header.bar{
@@ -1102,17 +1344,14 @@ nav
 {
 	width: 100% !important;
 	float: none !important;
-	height: 25px;
+	height: 46px;
 	padding: 0;
-    background-color: #4F97E3;
-	box-shadow: inset 0 5px 5px -5px rgba(0,0,0,0.3);
-    
+    background-color: #dcdad6;
     border-collapse: collapse;
 }
 
 .search_list ul li
 {
-	height: 100%;
 	display: inline-block;
 	width: 20%;
 	height: 100%;
@@ -1130,33 +1369,38 @@ nav
 	width: 14.28%;
 }
 
+.search_list.items6 ul li{
+    width: 16.66%;
+}
+
 .search_list li a
 {
-    font-size: 15px;
-    line-height: 25px;
-	text-decoration: none;
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	color: #fff;
+    font-size: 18px;
+    line-height: 46px;
+	text-decoration: none;
+    transition: 0.2s;
 }
 
 /* odabrana stavka menija */
-.search_list li a.selected
-{
-	background: #1E6DC2 linear-gradient(to bottom, #1E6DC2, #1C64B0);
-    /*box-shadow: 0 0 2px rgba(0,0,0,0.5);*/
-    /*height: 30px;
-    line-height: 30px;
-    margin-top: -2px;
-	z-index: 1;*/
-}
-
+.search_list li a.selected,
 .search_list li a.highlighted
 {
-    background-color: #1E6DC2;
+	background: #f6a47b;
+}
+
+/*napredna pretraga*/
+.search_list li a[href^=javascript]{
+    padding-right: 15px;
+	background: url(/Images/arrow_more.png) no-repeat center right 7px;
+}
+
+.search_list li a[href^=javascript].opened{
+    background-image: url(/Images/arrow_less.png);
 }
 
 /* dodatni uvjeti pretrage */
@@ -1210,41 +1454,25 @@ nav
 	/*background: rgba(79,151,227,0.04);*/
     /*border-top: 1px solid rgba(79,151,227,0.05);*/
 	padding: 0;
-    height: 28px;
+    height: 45px;
     position: relative;
-	border-top: 1px solid #e0e0e0;
-	box-shadow: inset 0 1px 0 #fff;
-}
-
-.search_extra:last-child
-{
-    border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #fff;
+    background: #fce5d9;
 }
 
 .search_extra_label
 {
     display: inline-block;
-	line-height: 28px;
-	width: 185px;
-	padding-left: 10px;
-    font-weight: bold;   
-    font-size: 11px;
-    opacity: 0.6;
-	transition: opacity 0.5s;
-}
-
-.search_extra:hover .search_extra_label
-{
-	opacity: 1;
+	line-height: 45px;
+	width: 221px;
+	padding-left: 15px;
+    font-weight: lighter;
+    text-transform: lowercase;
 }
 
 .search_list_extra
 {
     display: inline-block;
-    /*position: absolute;
-    top: 50%;
-    left: 100px;*/
-    margin-top: -11px;
 }
 
 .search_list_extra input[type=radio]
@@ -1254,29 +1482,26 @@ nav
 
 .search_list_extra input[type=radio] + label
 {
-	line-height: 22px;
+	line-height: 45px;
     display: inline-block;
-    width: 100px;
+    width: 123px;
 	cursor:pointer;
-	font-size: 10px;
+    font-weight: lighter;
     text-align: center;
-    background-color: #4F97E3;
-    margin: 0 1px;
-    color: #fff;
-	border-radius: 1px;
-	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    text-transform: lowercase;
+    background-color: #facbb3;
+    border-right: 1px solid #fff;
 }
 
 .search_list_extra > input[type=radio]:first-child + label,
 .search_list_extra.small input[type=radio] + label
 {
-	width: 49px;
+	width: 61px;
 }
 
 .search_list_extra input[type=radio]:checked + label
 {
-    background-color: #1E6DC2;
-	box-shadow: none;
+    background-color: #f6a47b;
 }
 
 input.btn_trazi
@@ -1310,9 +1535,14 @@ input.btn_trazi:focus
 }
 
 /* podaci u tablici */
+.dxgvControl, .dxgvDisabled{
+    font-family: inherit;
+    font-size: 15px;
+}
+
 .data_container
 {
-	margin: 10px 0 20px 0;
+	margin: 30px 0 20px 0;
 	position: relative;
 }
 
@@ -1320,6 +1550,10 @@ input.btn_trazi:focus
 {
 	width: 100%;
 	border: none;
+}
+
+.data_table td.dxgv{
+    color: #32393b;
 }
 
 .data_table.admin
@@ -1393,28 +1627,40 @@ input.btn_trazi:focus
 .data_table .dxgvFooter,
 .data_table .dxgvPagerBottomPanel
 {
-	background-color: #EEF5FC;
-	padding: 1px 2px;
+	background-color: #dcdad6;
+	padding: 0;
+    height: 30px;
+    font-weight: lighter;
 }
 
 .data_table tr.dxgvDataRow
 {
-	background-color: #fff;
+    background-color: #e6e6e6;
+    height: 30px;
 }
 
 .data_table .dxgvDataRow td.dxgv
 {
-	padding: 3px 4px;
+	/*padding: 3px 4px;*/
+    font-weight: lighter;
 }
 
 .data_table td.dxgvIndentCell
 {
-	background-color: #fff;	
+	background-color: #e6e6e6;	
 }
 
 .data_table tr.dxgvGroupRow
 {
-	background: #DCEAF9 linear-gradient(to bottom, #EEF5FC, #FFFFFF);
+	background: #f6a47b;
+    font-weight: 400;
+    height: 30px;
+}
+
+.data_table tr.dxgvGroupRow td.dxgv{
+    padding: 0;
+    padding-left: 21px;
+    line-height: 30px;
 }
 
 .data_table tr.dxgvGroupRow tr.dxgvGroupRow
@@ -1436,28 +1682,23 @@ input.btn_trazi:focus
 /*cijena fonda koja nije današnja*/
 .data_table .stara_cijena
 {
-	color: #999;
+    font-size: 15px;
+	color: #777;
 }
 
 a.updateCart:link /*link za uklanjanje iz usporedbe*/
 {
 	display: inline-block;
 	padding: 0;
-	/*width: 40px;
-	height: 20px;*/
-	line-height: 20px;
+	line-height: 30px;
 	text-align: center;
 	vertical-align:middle;
-	border-radius: 3px;
 	text-decoration: none;
 	font-size: 12px;
-	/*background: #2B82DE;
-	color: #fff;*/
-
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 24px;
 	color: transparent;
-	background: url(../Images/scale.png) no-repeat center center;
+	background: url(../Images/usporedi.png) no-repeat center center;
 	transition: 0.5s;
 }
 
@@ -1470,8 +1711,7 @@ a.updateCart.disabled
 
 a.updateCart.remove
 {
-	/*background-color: #f66;*/
-	background: #f66  url(../Images/scale_white.png) no-repeat center center;
+	background-color: #F6A47B;
 }
 
 a.updateCart.bigger:link
@@ -1480,32 +1720,28 @@ a.updateCart.bigger:link
 	width: 55px;
 	height: 25px;
 	line-height: 25px;
-
-	background: #2B82DE;
+	background: #F6A47B;
 	color: #fff;
 }
 
 a.updateCart.bigger.remove{
-	background: #f66;
+	background: #EF5A21;
 }
 
 .progress_message
 {
-	width: 120px;
-	height: 40px;
-	line-height: 40px;
 	position: absolute;
+	width: 120px;
 	left: 50%;
 	margin-left: -60px;
+	height: 50px;
+	line-height: 50px;
 	top:50%;
-	margin-top: -20px;
+	margin-top: -25px;
 	text-align: center;
-	border-radius: 5px;
 	background: #fff url('../Images/ajax-loader.GIF') no-repeat left 5px center;
 	padding-left: 20px;
-	border: 1px solid #ddd;
-	color: #222;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 2px 1px rgba(0,0,0,0.4);
 	z-index: 1;
 }
 
@@ -1813,21 +2049,14 @@ ul.fondovi_slicni .fond_naziv
 .form_group
 {
 	margin: 20px 10px 10px 10px;
-	font-size: 13px;
-    background: #1C64B0/*linear-gradient(to bottom, #1a5ea6, #175290)*/;
+	font-size: 15px;
+    color: inherit;
+    background: #F6A47B;
     padding: 6px 15px;
-    color: #eee;
-	border-radius: 2px;
-	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .level2 .form_group{
 	background-color: #2B82DE;
-}
-
-.readonly .form_group
-{
-    background: #2B82DE;
 }
 
 /* container za opis i vrijednost */
@@ -2184,13 +2413,12 @@ a.image_link:hover
 input.btn_navigation
 {
 	margin: 0 3px;
-	background-color: #2176cf;
-	border: 1px solid #1a5ea6;
+	background-color: #EF5A21;
+    border: none;
 	color: #fff;
 	padding: 5px 10px;
 	box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
 	background-repeat: no-repeat;
-	border-radius: 2px;
 }
 
 .btn_navigation.alone
@@ -2249,6 +2477,7 @@ input.btn_navigation:active
 {
 	position: relative;
 	top: 1px;
+    box-shadow: none;
 }
 
 input[type=button].btn_grid_akcija,
@@ -2327,36 +2556,29 @@ input[type=submit].btn_grid_akcija:active
 /*login*/
 .user_box
 {
-    background: #1C64B0;
+    background: rgba(255,255,255,.8);
     border: none;
     width: 500px;
-    color: #eee;
-    font-size: 16px;
-    border-radius: 5px;
-    /*position: absolute;
-    left: 50%;
-    margin-left: -250px;*/
 	margin: 20px auto 0 auto;
 	margin-top: 20px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
 	position: relative;
 }
 
 .user_box h2
 {
-    background-color: rgba(0,0,0,0.1);
+    background-color: #F6A47B;
     margin: 0;
     text-align: center;
-    color: #FFA100;
-    font-size: 22px;
+    color: inherit;
+    font-size: 21px;
     padding: 5px 0;
     font-weight: normal;
-    border-radius: 5px 5px 0 0;
 }
 
 .user_box ol
 {
 	margin-top: 15px;
+    list-style-type: none;
 }
 
 .user_box ol li
@@ -2388,15 +2610,15 @@ input[type=submit].btn_grid_akcija:active
     display: block !important;
     text-align: right;
     margin-right: 5px;
-    color: #FFF500;
+    color: #F05A22;
     font-weight: normal;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .user_box .validation-summary-errors
 {
-	font-size: 12px;
-	color: #FFF500;
+	font-size: 13px;
+	color: #F05A22;
 	padding: 0 10px;
 	text-align:center;
 }
@@ -2407,21 +2629,19 @@ input[type=submit].btn_grid_akcija:active
 {
     border: none;
     height: 25px;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.1);
     margin: 5px;
     padding-left: 10px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-    color: #eee;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
     outline: 0;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .user_box input[type=text]:focus,
 .user_box input[type=password]:focus,
 .user_box input[type=email]:focus
 {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(0,0,0,0.15);
 }
 
 .user_box .btn_group
@@ -2432,12 +2652,11 @@ input[type=submit].btn_grid_akcija:active
 
 .user_box input[type=submit]
 {
-    background-color: rgba(255,255,255,0.05);
-    border: 1px solid rgba(0,0,0,0.2);
+    background-color: #575B5A;
+    border: 1px solid #ccc;
     border-right: none;
     border-bottom: none;
-    border-radius: 5px 0 5px 0;
-    color: #eee;
+    color: #fff;
     margin: 0;
     padding: 10px 15px;
     outline: 0;
@@ -2445,17 +2664,17 @@ input[type=submit].btn_grid_akcija:active
 
 .user_box input[type=submit]:hover
 {
-    background-color: rgba(0,0,0,0.05);
+    background-color: #494e4c;
 }
 
 .user_box input[type=submit]:active
 {
-    background-color: rgba(0,0,0,0.2);
+    background-color: #424645;
 }
 
 .user_box a
 {
-	color: #eee;
+	color: inherit;
 }
 
 .user_box .register_link
@@ -2469,7 +2688,7 @@ input[type=submit].btn_grid_akcija:active
 
 .user_box a.register_link:hover
 {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .user_box .login_extra
@@ -2494,9 +2713,6 @@ input[type=submit].btn_grid_akcija:active
 /* user manage */
 #passwordForm
 {
-	background-color: #669FE1;
-	color: #f5f5f5;
-	box-shadow: none;
 }
 
 /*resetiranej lozinke*/

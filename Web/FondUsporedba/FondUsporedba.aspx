@@ -27,7 +27,7 @@
 
     <asp:Label ID="lblLog" runat="server"></asp:Label>
 
-    <div class="form_body wide">
+    <div class="form_body_table">
 
         <asp:Menu ID="menuPeriod" runat="server" CssClass="search_list items8" RenderingMode="List" IncludeStyleBlock="False" EnableViewState="true" SkipLinkText="" OnMenuItemClick="menuPeriod_MenuItemClick">
             <Items>

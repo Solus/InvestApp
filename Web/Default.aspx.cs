@@ -8,11 +8,14 @@ using InvestApp.DAL;
 
 namespace InvestApp.Web
 {
-    public partial class _Default : Page
+    public partial class _Default : InvestApp.UIControls.InvestAppPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-			Response.Redirect("Fond/FondPregled.aspx");
+            if(KorisnikID > 0)
+                Response.Redirect("Fond/FondPregled.aspx");
+            else
+                Response.Redirect("Fond/FondPregled.aspx?uvod=D");
         }
     }
 }

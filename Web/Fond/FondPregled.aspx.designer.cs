@@ -13,6 +13,15 @@ namespace InvestApp.Web {
     public partial class FondPregled {
         
         /// <summary>
+        /// divSiteEnter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSiteEnter;
+        
+        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,23 @@ namespace InvestApp.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::InvestApp.Web.FondPregledCtrl fondPregledControl;
+        
+        /// <summary>
+        /// divIntro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divIntro;
+        
+        /// <summary>
+        /// divBlogBanner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBlogBanner;
     }
 }

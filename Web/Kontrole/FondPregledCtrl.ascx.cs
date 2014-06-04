@@ -224,9 +224,9 @@ namespace InvestApp.Web
 					if (postotak.HasValue)
 					{
 						img =
-							postotak == 0 ? "jednako.gif" :
-							postotak > 0 ? "vise.gif" :
-							"manje.gif";
+							postotak == 0 ? "" :
+							postotak > 0 ? "gore_green.png" :
+							"dolje_red.png";
 					}
 
 					DateTime prethodniRadniDan = Common.Utility.PrethodniRadniDan();
@@ -263,7 +263,7 @@ namespace InvestApp.Web
 			}
 			else if (e.Column.Name == "CijeneDetalji")
 			{
-				string img = "../Images/chart-icon-16x16.gif";
+				string img = "../Images/graf.png";
 				string url = "../Fond/FondCijenePregledStandalone.aspx";
 
 				e.DisplayText = string.Format(@"<a class='thickbox' href='{0}?ID={1}&KeepThis=true&TB_iframe=true&height=780&width=900'><img title='Detalji cijena udjela' src='{2}' /></a>", url, fond.ID, img);
