@@ -103,6 +103,8 @@ namespace InvestApp.Web
 
 				if (fond != null)
 				{
+                    if(fond.OPIS.IsNullOrEmpty())
+                        (FormView1.FindControl("divOpis") as System.Web.UI.HtmlControls.HtmlGenericControl).Visible = false;
 
 					//sakrij dodatne podatke ako nije popunjeno
 					//if(fond.DODATNI_PODACI.IsNullOrEmpty())

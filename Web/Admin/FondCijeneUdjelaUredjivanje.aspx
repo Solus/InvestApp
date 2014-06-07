@@ -39,7 +39,7 @@
                 <dx:GridViewCommandColumn 
                     Name="COMMAND" ButtonType="Image" Caption="&nbsp;" 
                     ShowDeleteButton="True" 
-                    VisibleIndex="4" Width="60px" ShowCancelButton="True" ShowUpdateButton="True" ShowEditButton="True" ShowNewButtonInHeader="true">
+                    VisibleIndex="4" Width="80px" ShowCancelButton="True" ShowUpdateButton="True" ShowEditButton="True" ShowNewButtonInHeader="true">
                     <HeaderTemplate>
                         <asp:Button ID="btnNova" runat="server" OnClientClick="gridCijene.AddNewRow(); return false;" Text="Dodaj" UseSubmitBehavior="false" CssClass="btn_grid_akcija right" />
                     </HeaderTemplate>
@@ -82,10 +82,10 @@
                     <Image ToolTip="Odustani" Url="../Images/cancel.png"></Image>
                 </CancelButton>
                 <DeleteButton ButtonType="Image">
-                    <Image ToolTip="Obriši" Url="../Images/trash.png"></Image>
+                    <Image ToolTip="Obriši" Url="../Images/trash_light.png"></Image>
                 </DeleteButton>
                 <EditButton ButtonType="Image">
-                    <Image ToolTip="Ispravi" Url="../Images/edit.png"></Image>
+                    <Image ToolTip="Ispravi" Url="../Images/pencil.png"></Image>
                 </EditButton>
             </SettingsCommandButton>
             <Templates>

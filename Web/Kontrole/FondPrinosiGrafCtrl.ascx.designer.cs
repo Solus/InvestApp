@@ -8,10 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace InvestApp.Web {
-
-
-	public partial class FondPrinosiGrafCtrl
-	{
+    
+    
+    public partial class FondPrinosiGrafCtrl {
         
         /// <summary>
         /// chartCijene control.
@@ -21,5 +20,14 @@ namespace InvestApp.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.XtraCharts.Web.WebChartControl chartCijene;
+        
+        /// <summary>
+        /// repeaterLegend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterLegend;
     }
 }

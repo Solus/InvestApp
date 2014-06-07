@@ -61,6 +61,9 @@ namespace InvestApp.Web
 			Table table = new Table();
 			table.CssClass = "prinosi_table";
 
+            if (fondPrinosi.Count() == 1)
+                table.CssClass += " narrow";
+
 			//ako ima više od jedan, dodaje se i header
 			//if (fondPrinosi.Count() > 1)
 			{

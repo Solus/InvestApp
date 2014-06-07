@@ -106,10 +106,10 @@
                             //    $(origBtn).text('Dodaj').removeClass('remove').fadeIn(delay);
                             //});
 
-                            $(origBtn).text('Dodaj').removeClass('remove');
+                            $(origBtn).removeClass('remove');
 
                             if (otherBtn)
-                                $(otherBtn).text('Dodaj').removeClass('remove');
+                                $(otherBtn).removeClass('remove');
                         }
                         else { //gumb sad uklanja
 
@@ -117,10 +117,10 @@
                             //    $(origBtn).text('Ukloni').addClass('remove').fadeIn(delay);
                             //});
 
-                            $(origBtn).text('Ukloni').addClass('remove')
+                            $(origBtn).addClass('remove')
 
                             if (otherBtn)
-                                $(otherBtn).text('Ukloni').addClass('remove');
+                                $(otherBtn).addClass('remove');
                         }
 
                         //ako se ne može više dodavati, označi gumbe drugačije
@@ -188,7 +188,7 @@
                     <span class="search_extra_label">UPRAVLJANJE</span>
 
                     <asp:RadioButtonList ID="rblUpravljanje" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Sve" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Aktivno" Value="1" ></asp:ListItem>
                         <asp:ListItem Text="Pasivno" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -212,7 +212,7 @@
                     <span class="search_extra_label">ULAGANJE</span>
 
                     <asp:RadioButtonList ID="rblUlaganje" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Sve" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Fond fondova" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Direktno ulaganje" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -224,7 +224,7 @@
                     <span class="search_extra_label">GEOGRAFSKA REGIJA</span>
 
                     <asp:RadioButtonList ID="rblRegija" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Sve" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Globalni" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Europa" Value="2"></asp:ListItem>
                         <asp:ListItem Text="Ist. Europa" Value="6" title="Istočna Europa"></asp:ListItem>
@@ -241,7 +241,7 @@
                     <span class="search_extra_label">SEKTOR</span>
 
                     <asp:RadioButtonList ID="rblTrziste" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="Sve" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Svi sektori" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Energija i robe" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
@@ -253,7 +253,7 @@
                     <span class="search_extra_label">TRŽIŠTE</span>
 
                     <asp:RadioButtonList ID="rblSektor" runat="server" CssClass="search_list_extra" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="True" OnSelectedIndexChanged="_Trazi">
-                        <asp:ListItem Text="Svi" Value="NULL" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Sva" Value="NULL" Selected="True"></asp:ListItem>
                         <asp:ListItem Text="Razvijena tržišta" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Tržišta u nastajanju" Value="2"></asp:ListItem>
                         <asp:ListItem Text="Granična tržišta" Value="3"></asp:ListItem>
@@ -448,7 +448,7 @@
                     <dx:GridViewCommandColumn Name="Portfelj" ButtonType="Image" VisibleIndex="18" Width="25px" HeaderStyle-HorizontalAlign="Center" ToolTip="Portfelj fonda">
                         <CustomButtons>
                             <dx:GridViewCommandColumnCustomButton ID="btnFondPortfelj" Text="Portfelj">
-                                <Image Url="~/Images/table.png" ToolTip="Portfelj fonda (Admin)"></Image>
+                                <Image Url="~/Images/table_light.png" ToolTip="Portfelj fonda"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
                     </dx:GridViewCommandColumn>
@@ -456,7 +456,7 @@
                     <dx:GridViewCommandColumn Name="Brisanje" ButtonType="Image" VisibleIndex="19" Width="25px" HeaderStyle-HorizontalAlign="Center">
                         <CustomButtons>
                             <dx:GridViewCommandColumnCustomButton ID="btnDelete" Text="Brisanje" >
-                                <Image Url="~/Images/trash.png" ToolTip="Brisanje"></Image>
+                                <Image Url="~/Images/trash_light.png" ToolTip="Brisanje"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
                     </dx:GridViewCommandColumn>
@@ -464,7 +464,7 @@
                     <dx:GridViewCommandColumn Name="Ispravka" ButtonType="Image" VisibleIndex="20" Width="25px" HeaderStyle-HorizontalAlign="Center" ShowNewButtonInHeader="true">
                         <CustomButtons>
                             <dx:GridViewCommandColumnCustomButton ID="btnEdit" Text="Ispravka">
-                                <Image Url="~/Images/edit.png" ToolTip="Ispravka"></Image>
+                                <Image Url="~/Images/pencil.png" ToolTip="Ispravka"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
                         <HeaderTemplate>

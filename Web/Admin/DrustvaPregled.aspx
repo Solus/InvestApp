@@ -64,11 +64,11 @@
                     </Image>
                 </CancelButton>
                 <EditButton ButtonType="Image">
-                    <Image ToolTip="Ispravi" Url="../Images/edit.png">
+                    <Image ToolTip="Ispravi" Url="../Images/pencil.png">
                     </Image>
                 </EditButton>
                 <DeleteButton ButtonType="Image">
-                    <Image ToolTip="Obriši" Url="../Images/trash.png">
+                    <Image ToolTip="Obriši" Url="../Images/trash_light.png">
                     </Image>
                 </DeleteButton>
             </SettingsCommandButton>

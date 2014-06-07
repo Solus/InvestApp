@@ -195,9 +195,10 @@
                         <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                     </dx:GridViewCommandColumn>--%>
 
-                            <dx:GridViewDataHyperLinkColumn VisibleIndex="9" Name="ZahtjevPotvrda" ToolTip="Potvrda zahtjeva" Width="30px" Caption="#" HeaderStyle-HorizontalAlign="Center">
+                            <dx:GridViewDataHyperLinkColumn VisibleIndex="9" Name="ZahtjevPotvrda" ToolTip="Potvrda zahtjeva" 
+                                Width="33px" Caption="#" HeaderStyle-HorizontalAlign="Center">
                                 <DataItemTemplate>
-                                    <asp:HyperLink runat="server" ImageUrl="~/Images/pdf.gif" ToolTip="Ispis zahtjeva" NavigateUrl='<%# "~/Reports/ZahtjevIspis.aspx?ID=" + Eval("ID") %>'></asp:HyperLink>
+                                    <asp:HyperLink runat="server" ImageUrl="~/Images/pdf.png" ToolTip="Ispis zahtjeva" NavigateUrl='<%# "~/Reports/ZahtjevIspis.aspx?ID=" + Eval("ID") %>'></asp:HyperLink>
                                 </DataItemTemplate>
                             </dx:GridViewDataHyperLinkColumn>
 

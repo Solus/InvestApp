@@ -219,7 +219,7 @@ namespace InvestApp.DAL
 			{
 				var fondoviCijene = new List<FondCijene>();
 
-				var indeksni = context.Fondovi.Where(f => f.INDEKSNI.HasValue && f.INDEKSNI.Value);
+				var indeksni = context.Fondovi.Where(f => f.INDEKSNI.HasValue && f.INDEKSNI.Value).OrderBy(f=>f.NAZIV);
 				
 				foreach(var ind in indeksni)
 				{

@@ -57,26 +57,26 @@
                 
                 <dx:GridViewDataTextColumn Caption="Broj udjela" FieldName="BR_UDJELA"
                     Name="BROJ_UDJELA" ReadOnly="True" ToolTip="Broj udjela" VisibleIndex="2" 
-                    Width="80px">
+                    Width="85px">
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Nabavna vrijednost[kn]"
                     FieldName="NABAVNA_VRIJEDNOST_KN" ReadOnly="True"
-                    ToolTip="Nabavna vrijednost" VisibleIndex="3" Width="80px" Name="Nabavna">
+                    ToolTip="Nabavna vrijednost" VisibleIndex="3" Width="95px" Name="Nabavna">
                 </dx:GridViewDataTextColumn>
 
-                <dx:GridViewDataTextColumn Caption="Zadnja<br />cijena"
-                    Name="Cijena" ReadOnly="True"
-                    ToolTip="Zadnja cijena" VisibleIndex="4" Width="85px">
+                <dx:GridViewDataTextColumn Caption="Zadnja cijena" Name="Cijena" ReadOnly="True"
+                    ToolTip="Zadnja cijena" VisibleIndex="4" Width="110px">
                     <CellStyle HorizontalAlign="Right">
                     </CellStyle>
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Valuta" FieldName="VALUTA"
-                    ToolTip="Valuta" VisibleIndex="5" Name="Valuta" Width="38px" HeaderStyle-HorizontalAlign="Center" >
+                    ToolTip="Valuta" VisibleIndex="5" Name="Valuta" Width="45px" HeaderStyle-HorizontalAlign="Center" >
                 </dx:GridViewDataTextColumn>
 
-                <dx:GridViewDataTextColumn Caption="Promjena[%]" FieldName="POSTOTAK" Name="POSTOTAK" ToolTip="Dnevna promjena cijene" VisibleIndex="6" Width="75px">
+                <dx:GridViewDataTextColumn Caption="Promjena[%]" FieldName="POSTOTAK" Name="POSTOTAK" 
+                    ToolTip="Dnevna promjena cijene" VisibleIndex="6" Width="90px">
                     <PropertiesTextEdit DisplayFormatString="{0:n}">
                     </PropertiesTextEdit>
                 </dx:GridViewDataTextColumn>
@@ -95,7 +95,7 @@
 
                 <dx:GridViewDataTextColumn Caption="Vrijednost udjela[kn]"
                     Name="Vrijednost_udjela_kn" ReadOnly="True" ToolTip="Vrijednost udjela [kn]"
-                    VisibleIndex="7" Width="80px" FieldName="VRIJEDNOST_UDJELA_KN" PropertiesTextEdit-DisplayFormatString="n2" >
+                    VisibleIndex="7" Width="95px" FieldName="VRIJEDNOST_UDJELA_KN" PropertiesTextEdit-DisplayFormatString="n2" >
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Udio[%]"
@@ -104,16 +104,16 @@
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Dobit[kn]" Name="Dobit" ReadOnly="True"
-                    ToolTip="Dobit [kn]" VisibleIndex="9" Width="80px" FieldName="DOBIT_KN" PropertiesTextEdit-DisplayFormatString="n2" >
+                    ToolTip="Dobit [kn]" VisibleIndex="9" Width="95px" FieldName="DOBIT_KN" PropertiesTextEdit-DisplayFormatString="n2" >
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Prinos[%]" Name="Prinos" ReadOnly="True"
-                    ToolTip="Prinos" VisibleIndex="10" Width="60px" FieldName="PRINOS" PropertiesTextEdit-DisplayFormatString="n2" >
+                    ToolTip="Prinos" VisibleIndex="10" Width="75px" FieldName="PRINOS" PropertiesTextEdit-DisplayFormatString="n2" >
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewCommandColumn ButtonType="Image" Name="Dokupi"
-                    ToolTip="Kupi" VisibleIndex="12" Width="25px"
-                    AllowDragDrop="False" Caption="#">
+                    ToolTip="Kupi" VisibleIndex="12" Width="30px"
+                    AllowDragDrop="False" Caption="#" CellStyle-HorizontalAlign="Center">
                     <ClearFilterButton Visible="True">
                     </ClearFilterButton>
                     <CustomButtons>
@@ -126,8 +126,8 @@
                 </dx:GridViewCommandColumn>
 
                 <dx:GridViewCommandColumn ButtonType="Image" Name="Prodaj"
-                    ToolTip="Prodaj" VisibleIndex="13" Width="25px"
-                    AllowDragDrop="False" Caption="#">
+                    ToolTip="Prodaj" VisibleIndex="13" Width="30px"
+                    AllowDragDrop="False" Caption="#" CellStyle-HorizontalAlign="Center">
                     <ClearFilterButton Visible="True">
                     </ClearFilterButton>
                     <CustomButtons>

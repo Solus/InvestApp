@@ -20,6 +20,8 @@ namespace InvestApp.Web.Reports
 
 			if (zahtjev != null)
 			{
+                pbLogo.ImageUrl = zahtjev.Fond.DRUSTVO_LOGO_URL;
+
 				// KUPNJA ILI PRODAJA
 				if (zahtjev.TIP_ZAHTJEVA == "K")
 				{

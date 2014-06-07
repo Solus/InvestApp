@@ -26,7 +26,7 @@
                 <dx:GridViewCommandColumn ButtonType="Image" ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="16" Width="70px">
                     <CustomButtons>
                         <dx:GridViewCommandColumnCustomButton ID="btnEdit" Text="Ispravka">
-                            <Image ToolTip="Ispravka" Url="~/Images/edit.png">
+                            <Image ToolTip="Ispravka" Url="~/Images/pencil.png">
                             </Image>
                         </dx:GridViewCommandColumnCustomButton>
                     </CustomButtons>
@@ -53,11 +53,11 @@
                     </Image>
                 </CancelButton>
                 <EditButton ButtonType="Image">
-                    <Image ToolTip="Ispravi" Url="../Images/edit.png">
+                    <Image ToolTip="Ispravi" Url="../Images/pencil.png">
                     </Image>
                 </EditButton>
                 <DeleteButton ButtonType="Image">
-                    <Image ToolTip="Obriši" Url="../Images/trash.png">
+                    <Image ToolTip="Obriši" Url="../Images/trash_light.png">
                     </Image>
                 </DeleteButton>
             </SettingsCommandButton>

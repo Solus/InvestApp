@@ -2,6 +2,14 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
+    <script type="text/javascript">
+
+        function CheckBoxRequired_ClientValidate(sender, e) {
+            e.IsValid = $("#chkUvjeti").is(':checked');
+        }
+
+    </script>
+
     <div id="registerForm" class="user_box">
 
         <%--<h1><%: Title %>.</h1>--%>
@@ -62,6 +70,11 @@
                                         CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Potvrda lozinke mora biti upisana" />
                                     <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
                                         CssClass="field-validation-error" Display="Dynamic" ErrorMessage="Potvrda nije jednaka lozinci" />
+                                </li>
+                                <li>
+                                    <asp:CheckBox ID="chkUvjeti" runat="server" ClientIDMode="Static" Text="Prihvaćam &lt;a href=&quot;..&#47;UvjetiKoristenja.aspx&quot;&gt;uvjete korištenja&lt;&#47;a&gt;" />
+                                    <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Uvjeti korištenja moraju biti prihvaćeni" 
+                                        CssClass="field-validation-error" ClientValidationFunction="CheckBoxRequired_ClientValidate" ></asp:CustomValidator>
                                 </li>
                             </ol>
                             <div class="btn_group">

@@ -6,6 +6,9 @@
 
 <%@ Register assembly="DevExpress.Web.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dxe" %>
 
+<asp:Content runat="server" ContentPlaceHolderID="HeadContent">
+
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     <div id="divSiteEnter" class="site_enter" runat="server">
@@ -40,36 +43,43 @@
 
             <div class="column jednostavno">
                 <h2 class="title">Jednostavno</h2>
-                <p class="text">Integer sodales nisi facilisis purus viverra, sit amet posuere dolor posuere. 
-                    Donec aliquet, ipsum at blandit lacinia, mi nibh ornare orci, at scelerisque 
-                    velit turpis quis ipsum. Nulla in egestas magna. Nunc sed dignissim quam. 
-                    Suspendisse purus eros, pellentesque eu lorem at, tempus ullamcorper neque.</p>
+                <p class="text">
+                    investiraj.net omogućuje kupnju ili prodaje udjela u investicijskim fondovima na 
+                    najjednostavniji mogući način. Nakon vaše prve kupnje ili prodaje vaši podaci bit 
+                    će sačuvani što će vam omogućiti daljnje kupnje ili prodaje na najbrži način bez 
+                    potrebe ponovnog unošenja vaših podataka!
+                </p>
             </div>
 
             <div class="column pouzdano">
                 <h2 class="title">Pouzdano</h2>
-                <p class="text">Integer sodales nisi facilisis purus viverra, sit amet posuere dolor posuere. 
-                    Donec aliquet, ipsum at blandit lacinia, mi nibh ornare orci, at scelerisque 
-                    velit turpis quis ipsum. Nulla in egestas magna. Nunc sed dignissim quam. 
-                    Suspendisse purus eros, pellentesque eu lorem at, tempus ullamcorper neque.</p>
+                <p class="text">
+                    Vaš set dokumenata potreban za kupnju udjela bit će generiran direktno iz naše 
+                    aplikacije i na taj način pomoći ćemo Vam osigurati točnost i cjelovitost podataka. 
+                    Vaši podaci i dokumenti bit će pohranjeni sigurno na našim serverima zaštićeni Vašom lozinkom.
+                </p>
             </div>
 
             <div class="column podrska">
                 <h2 class="title">Podrška</h2>
-                <p class="text">Integer sodales nisi facilisis purus viverra, sit amet posuere dolor posuere. 
-                    Donec aliquet, ipsum at blandit lacinia, mi nibh ornare orci, at scelerisque 
-                    velit turpis quis ipsum. Nulla in egestas magna. Nunc sed dignissim quam. 
-                    Suspendisse purus eros, pellentesque eu lorem at, tempus ullamcorper neque.</p>
+                <p class="text">
+                    Spremi smo pomoći savjetima u svim fazama procesa kupnje ili prodaje udjela u 
+                    investicijskim fondovima. Ako trebate pomoć slobodno nas kontaktirajte telefonom, 
+                    e-mailom ili nas osobno posjetite u našim uredima. Svaki Vaš set dokumenata provjerit 
+                    ćemo prije prosljeđivanja društvu za upravljanje fondovima kako bi osigurali točnost i potpunost!
+                </p>
             </div>
 
         </div>
     </div>
 
     <div id="divBlogBanner" runat="server" class="blog_banner">
-        <h1 class="title_blog">Let Your Money Work For You!</h1>
-        <p class="text">Najbrži i najjednostavniji način upravljanja vašim udjelima u fondovima. 
-            Sed eu ipsum id odio ullamcorper ultricies id ac lectus. Pellentesque vitae quam congue, 
-            pharetra nunc id, aliquam massa. </p>
+        <h1 class="title_blog">Neka Vaš novac radi za Vas!</h1>
+        <p class="text">
+            Najbrži i najjednostavniji način upravljanja vašim udjelima u fondovima. 
+            Pročitajte naš blog o investiranju u investicijske fondovima i događanjem 
+            vezanim uz fondovsku industriju.
+        </p>
 
         <a class="blog_link" runat="server" href="~/Blog.aspx">Blog</a>
     </div>

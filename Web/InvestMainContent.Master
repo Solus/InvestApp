@@ -25,13 +25,54 @@
 
 
         <script src="<%: ResolveUrl("~/Scripts/jquery-ui-1.10.4.min.js") %>"></script>
+         
+        <script src="<%: ResolveUrl("~/Scripts/jquery.cookie.js") %>"></script>
 
 
         <script src="<%: ResolveUrl("~/Scripts/thickbox/thickbox.js") %>"></script>
         <link href="<%: ResolveUrl("~/Scripts/thickbox/thickbox.css") %>" rel="stylesheet" />
 
+        <script src="<%: ResolveUrl("~/Scripts/cookie_consent.js") %>"></script>
+
     </asp:PlaceHolder>
 
+    <script type="text/javascript">
+
+        //$(document).ready(function () {
+
+        //    $.cookie('investapp_accept');
+
+        //    var $div = $("<div>", { id: "cookie_consent" });
+        //    $div.text("investiraj.net koristi kolačiće za pružanje boljeg korisničkog iskustva, " +
+        //        "funkcionalnosti i prikaza sustava oglašavanja. Cookie postavke mogu se kontrolirati i " +
+        //        "konfigurirati u vašem web pregledniku. Više o ovome možete pročitati u uvjetima korištenja (hyperlink). " +
+        //        "Nastavkom pregleda web stranice investiraj.net slažete se sa korištenjem kolačića. " +
+        //        "Za nastavak pregleda i korištenja web stranice investiraj.net kliknite na 'Slažem se' ");
+
+        //    $(body).append($div);
+            
+        //    $div.click(function (event) {
+        //        event.stopPropagation();
+        //    });
+
+        //    $('html').click(function () {
+        //        acceptCookie();
+        //    });
+
+        //});
+
+        //function showConsentForm() {
+        //}
+
+        //function acceptCookie() {
+
+        //    $.cookie('investapp_accept', 'true', { expires: 7 });
+
+        //    $div = $('.cookie_consent');
+        //}
+
+    </script>
+    
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
@@ -42,6 +83,7 @@
             <Scripts>
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery.ui.combined" />
+                <asp:ScriptReference Path="~/Scripts/jquery.cookie.js" />
             </Scripts>
         </asp:ScriptManager>
 
@@ -97,7 +139,7 @@
 
                 <a id="A3" class="blog_link" runat="server" href="~/Blog.aspx">Blog</a>
 
-                </div>
+           </div>
 
         </header>
         <div id="body">
@@ -112,7 +154,7 @@
             <div class="foot_info">
                 <img class="foot_logo" src="/Images/investiraj_logo.png" alt="logo" />
                 <span>
-                    investiraj.net, Bogovićeva 7,  HR-10000 , Zagreb, Croatia, + 385 01 123  4567, 
+                    investiraj.net, Bogovićeva 7,  HR-10000 , Zagreb, tel: + 385 1 487 6738, 
                     <a href="mailto:investiraj@investiraj.net">investiraj@investiraj.net</a>, <a href="http://www.investiraj.net">www.investiraj.net</a>
                 </span>
             </div>

@@ -11,28 +11,30 @@
     <borderoptions visible="False" />
     <diagramserializable>
             <cc1:XYDiagram>
-                <axisx visibleinpanesserializable="-1" color="192, 192, 192">
+                <axisx visibleinpanesserializable="-1" color="White">
                     <autoscalebreaks maxcount="10" />
                     <tickmarks minorlength="3" />
                     <label staggered="False">
                     <datetimeoptions autoformat="False" format="Custom" formatstring="dd.MM.yyyy" />
                     </label>
-                    <numericscaleoptions autogrid="False" />
+                    <gridlines color="255, 255, 255" visible="True"></gridlines><numericscaleoptions autogrid="False" />
                     <datetimescaleoptions scalemode="Continuous">
                     </datetimescaleoptions>
                 </axisx>
-                <axisy visibleinpanesserializable="-1" color="192, 192, 192">
+                <axisy visibleinpanesserializable="-1" color="White">
                     <label endtext="%">
-                        <numericoptions format="Number" />
+                        <numericoptions format="Number" precision="0" />
                     </label>
-                </axisy>
-                <defaultpane bordercolor="192, 192, 192" backcolor="251, 251, 251">
+                <gridlines color="255, 255, 255"></gridlines></axisy>
+                <defaultpane bordercolor="White" backcolor="230, 230, 230">
                     <fillstyle fillmode="Solid">
                     </fillstyle>
                 </defaultpane>
             </cc1:XYDiagram>
         </diagramserializable>
-    <legend visible="False"></legend>
+    <legend alignmenthorizontal="Center" alignmentvertical="BottomOutside" backcolor="230, 230, 230" equallyspaceditems="False" visible="False">
+        <border visible="False" />
+    </legend>
     <seriesserializable>
             <cc1:Series Name="Series 1" ArgumentScaleType="DateTime">
                 <viewserializable>
@@ -55,3 +57,15 @@
         <cc1:ChartTitle Font="Tahoma, 10pt" Text="" Visible="False" Antialiasing="False" Indent="0" />
     </titles>
 </dxchartsui:WebChartControl>
+
+<asp:Repeater ID="repeaterLegend" runat="server" OnItemCreated="repeaterLegend_ItemCreated">
+    <HeaderTemplate>
+        <ul class="chart_legend">
+    </HeaderTemplate>
+    <ItemTemplate>
+        <li id="liItem" runat="server"><%# Container.DataItem %></li>
+    </ItemTemplate>
+    <FooterTemplate>
+        </ul>
+    </FooterTemplate>
+</asp:Repeater>

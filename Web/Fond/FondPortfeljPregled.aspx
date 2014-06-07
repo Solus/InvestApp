@@ -13,7 +13,7 @@
 
     <div class="content_tall">
 
-        <div class="form_body wide">
+        <div class="form_body portfelj">
 
             <uc1:FondPortfeljPregledCtrl runat="server" ID="FondPortfeljPregledCtrl" />
 

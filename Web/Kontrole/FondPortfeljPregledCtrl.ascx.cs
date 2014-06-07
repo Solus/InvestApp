@@ -72,9 +72,9 @@ namespace InvestApp.Web
 					if (postotak.HasValue)
 					{
 						img =
-							postotak == 0 ? "jednako.gif" :
-							postotak > 0 ? "vise.gif" :
-							"manje.gif";
+							postotak == 0 ? "" :
+							postotak > 0 ? "gore_green.png" :
+							"dolje_red.png";
 					}
 
 					e.DisplayText = string.Format(@"<span title='{0}'>{1}</span>&nbsp;<img src='../Images/{2}' />", datum, portfelj.CIJENA.Value.ToString("n4"), img);

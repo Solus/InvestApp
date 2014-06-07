@@ -305,6 +305,7 @@
     <Content Include="Reports\ZahtjevIspis.aspx" />
     <Content Include="Admin.sitemap" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\cookie_consent.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -312,6 +313,8 @@
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Content\css\site_content.css" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jqueryCookieGuard.1.0.min.js" />
     <Content Include="Scripts\skins\lightgray\content.inline.min.css" />
     <Content Include="Scripts\skins\lightgray\content.min.css" />
     <Content Include="Scripts\skins\lightgray\fonts\tinymce-small.eot" />
@@ -434,6 +437,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="test.aspx" />
+    <Content Include="UvjetiKoristenja.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -774,6 +778,13 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UvjetiKoristenja.aspx.cs">
+      <DependentUpon>UvjetiKoristenja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UvjetiKoristenja.aspx.designer.cs">
+      <DependentUpon>UvjetiKoristenja.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

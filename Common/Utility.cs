@@ -151,7 +151,10 @@ namespace InvestApp.Common
 
 		public static string NormalizeString(string value)
 		{
-			if (string.IsNullOrEmpty(value.Trim()))
+            if (value != null)
+                value = value.Trim();
+
+			if (string.IsNullOrEmpty(value))
 				return null;
 			else
 				return value;

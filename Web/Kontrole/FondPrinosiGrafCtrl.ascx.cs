@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Web;
 using System.Drawing;
+using System.Web.UI.HtmlControls;
 
 namespace InvestApp.Web
 {
@@ -26,7 +27,9 @@ namespace InvestApp.Web
 			set { ViewState["datumOd"] = value; }
 		}
 
-		static List<Color> GrafBoje = new List<Color>() { Color.CornflowerBlue, Color.OliveDrab, Color.Salmon, Color.Indigo, Color.Plum, Color.MediumTurquoise };
+        static List<Color> GrafBoje = new List<Color>() { ColorTranslator.FromHtml("#0070bb"), Color.OliveDrab, Color.Salmon, Color.Indigo, Color.Plum, Color.MediumTurquoise };
+
+        Color fondBoja = System.Drawing.ColorTranslator.FromHtml("#c1272c");
 
 		#endregion
 
@@ -135,17 +138,22 @@ namespace InvestApp.Web
 				//DevExpress.XtraCharts.Series series = new DevExpress.XtraCharts.Series("Series1", DevExpress.XtraCharts.ViewType.Line);
 				DevExpress.XtraCharts.Series series = chartCijene.Series[0];
 
-				((LineSeriesView)series.View).Color = System.Drawing.ColorTranslator.FromHtml("#C6234F");
+                ((LineSeriesView)series.View).Color = fondBoja;
 				series.DataSource = cijene;
 				//series.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
 				series.ArgumentDataMember = "DATUM";
 				//series.ValueScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
 				series.ValueDataMembers.AddRange(new string[] { "POSTOTAK" });
-				series.Name = DAL.FondDAC.VratiFondNaziv(FondID);
+
+                string fondNaziv = DAL.FondDAC.VratiFondNaziv(FondID);
+				series.Name = fondNaziv;
 				
 				//indeksni
 				if (indeksniCijene != null && indeksniCijene.Any())
 				{
+                    List<string> fondoviNazivi = new List<string>();
+                    fondoviNazivi.Add(fondNaziv);
+
 					int i = 0;
 					foreach (var ind in indeksniCijene)
 					{
@@ -155,13 +163,18 @@ namespace InvestApp.Web
 						seriesIndeksni.DataSource = ind.Cijene;
 
 						chartCijene.Series.Add(seriesIndeksni);
-						chartCijene.Legend.Visible = true;
+						//chartCijene.Legend.Visible = true;
 
 						seriesIndeksni.Name = ind.Naziv;
 
-						((LineSeriesView)series.View).LineStyle.Thickness = 1;
-						((LineSeriesView)seriesIndeksni.View).LineStyle.Thickness = 1;
+						((LineSeriesView)series.View).LineStyle.Thickness = 2;
+						((LineSeriesView)seriesIndeksni.View).LineStyle.Thickness = 2;
+
+                        fondoviNazivi.Add(ind.Naziv);
 					}
+
+                    repeaterLegend.DataSource = fondoviNazivi;
+                    repeaterLegend.DataBind();
 				}
 
 				//((XYDiagram)chartCijene.Diagram).AxisY.Label.EndText = "%";
@@ -214,5 +227,18 @@ namespace InvestApp.Web
 
 			}
 		}
+
+        protected void repeaterLegend_ItemCreated(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Color boja = fondBoja;
+
+                if(e.Item.ItemIndex > 0)
+                    boja = GrafBoje[e.Item.ItemIndex-1 % GrafBoje.Count];
+
+                (e.Item.FindControl("liItem") as HtmlGenericControl).Style.Value = "border-color: " + ColorTranslator.ToHtml(boja);
+            }
+        }
 	}
 }

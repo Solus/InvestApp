@@ -35,7 +35,7 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-        <div id="body">
+        <div id="body" class="standalone">
 
             <asp:Label ID="lblLog" runat="server"></asp:Label>
 
@@ -63,14 +63,14 @@
                             </div>
 
                             <div class="right align">
-                                <asp:Button ID="btnKupi" runat="server" Text="Kupi" CssClass="btn_navigation alone" OnClick="btnKupi_Click" UseSubmitBehavior="False" />
+                                <asp:Button ID="btnKupi" runat="server" Text="Kupi" CssClass="btn_kupi" OnClick="btnKupi_Click" UseSubmitBehavior="False" />
                             </div>
 
                             <div class="clearfix"></div>
 
                             <div class="left">
                                 <div class="form_item">
-                                    <uc1:FondPrinosiGrafCtrl runat="server" ID="chartPrinosi" Width="350" Height="200" Naslov="Prinos u zadnjih godinu dana" PrikaziIndeksni="true" />
+                                    <uc1:FondPrinosiGrafCtrl runat="server" ID="chartPrinosi" Width="350" Height="260" Naslov="Prinos u zadnjih godinu dana" PrikaziIndeksni="true" />
                                 </div>
                             </div>
 
@@ -82,7 +82,7 @@
 
                             <div class="clearfix"></div>
 
-                            <div class="form_item">
+                            <div id="divOpis" class="form_item" runat="server">
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("OPIS") %>' CssClass="form_item_value text" />
                             </div>
 
@@ -233,8 +233,8 @@
 
                             <div class="form_item">
                                 <uc1:FondStruktureUlaganjaCtrl runat="server" ID="struktUlaganjaTop10" Tip="Top10" />
-                                <uc1:FondStruktureUlaganjaCtrl runat="server" ID="struktUlaganjaGeo" Tip="GeografskaIzlozenost" />
                                 <uc1:FondStruktureUlaganjaCtrl runat="server" ID="struktUlaganjaSek" Tip="SektorskaIzlozenost" />
+                                <uc1:FondStruktureUlaganjaCtrl runat="server" ID="struktUlaganjaGeo" Tip="GeografskaIzlozenost" />
                                 <uc1:FondStruktureUlaganjaCtrl runat="server" ID="struktUlaganjaVal" Tip="ValutnaIzlozenost" />
                             </div>
 
@@ -330,9 +330,9 @@
                     </ItemTemplate>
                 </asp:FormView>
 
-                <div class="btn_navigation_group" id="btnGrupa" runat="server">
+                <div class="btn_navigation_group left_buttons" id="btnGrupa" runat="server">
                     <%--<asp:Button ID="btnDodajUsporedba" CssClass="btn_navigation" runat="server" CausesValidation="False" CommandName="Edit" Text="Dodaj u usporedbu" OnClick="btnDodajUsporedba_Click" />--%>
-                    Usporedba: <a id="btnUsporedba" class='updateCart bigger' href='javascript:void(0)' runat="server">Dodaj</a>
+                    <a id="btnUsporedba" class='updateCart bigger' href='javascript:void(0)' runat="server">usporedi</a>
                 </div>
             </div>
 
