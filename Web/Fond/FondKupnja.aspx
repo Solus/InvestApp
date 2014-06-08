@@ -831,7 +831,10 @@
 
                             <div class="form_item">
                                 <p class="form_text">
-                                    Sukladno Zakonu o sprječavanju pranja novca i financiranju terorizma, (NN br.: 87/08, 25/12), te podzakonskim aktima Hrvatske agencije za nadzor financijskih usluga i Ureda za sprječavanje pranja novca Ministarstva Financija Republike Hrvatske, kupci Udjela u investicijskim fondovima registriranim u Republici Hrvatskoj, dužni su ispuniti slijedeći obrazac.
+                                    Sukladno Zakonu o sprječavanju pranja novca i financiranju terorizma, (NN br.: 87/08, 25/12), te 
+                                    podzakonskim aktima Hrvatske agencije za nadzor financijskih usluga i Ureda za sprječavanje pranja 
+                                    novca Ministarstva Financija Republike Hrvatske, kupci Udjela u investicijskim fondovima registriranim 
+                                    u Republici Hrvatskoj, dužni su ispuniti slijedeći obrazac.
                                 </p>
                             </div>
 

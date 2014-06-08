@@ -25,16 +25,28 @@ namespace InvestApp.Web.Reports
 				// KUPNJA ILI PRODAJA
 				if (zahtjev.TIP_ZAHTJEVA == "K")
 				{
+                    if (zahtjev.PRAVNA == "P")
+                        ghKupnjaUlagateljFizicka.Visible = false;
+                    else
+                        ghKupnjaUlagateljPravna.Visible = false;
+
 					ghNaslovProdaja.Visible = false;
-					ghProdajaUlagatelj.Visible = false;
+					ghProdajaUlagateljPravna.Visible =
+                    ghProdajaUlagateljFizicka.Visible = false;
 					ghIsplata.Visible = false;
 					ghIsplataRacun.Visible = false;
 					ghCEBA.Visible = false;
 				}
 				else if (zahtjev.TIP_ZAHTJEVA == "P")
 				{
+                    if (zahtjev.PRAVNA == "P")
+                        ghProdajaUlagateljFizicka.Visible = false;
+                    else
+                        ghProdajaUlagateljPravna.Visible = false;
+
 					ghNaslovKupnja.Visible = false;
-					ghKupnjaUlagatelj.Visible = false;
+					ghKupnjaUlagateljPravna.Visible = 
+                    ghKupnjaUlagateljFizicka.Visible = false;
 					//ghKupnjaZakonski.Visible = false;
 					ghAdresaKorespondencije.Visible = false;
 					ghIzjavaUlagatelja.Visible = false;
@@ -104,6 +116,7 @@ namespace InvestApp.Web.Reports
 							ghVlasnik3PolitickaIzlozenost.Visible = true;
 					}
 
+                    tcJMBG.Text = "M.B.:";
 				}
 				else if (zahtjev.PRAVNA == "F")
 				{
@@ -238,8 +251,8 @@ namespace InvestApp.Web.Reports
 
 			if (zahtjev.PRAVNA == "P")
 			{
-				cbPravna.Checked = true;
-				cbPulagateljPravna.Checked = true;
+				cbPravna.Checked = cbPravna2.Checked = true;
+				cbPulagateljPravna.Checked = cbPulagateljPravna2.Checked = true;
 
 				if (zahtjev.VLASNISTVO_PODIJELJENO == "D")
 					chkVlasnistvoPodijeljenoDA.Checked = true;
@@ -268,8 +281,8 @@ namespace InvestApp.Web.Reports
 			}
 			else if (zahtjev.PRAVNA == "F")
 			{
-				cbFizicka.Checked = true;
-				cbPulagateljFizicka.Checked = true;
+				cbFizicka.Checked = cbFizicka2.Checked = true;
+				cbPulagateljFizicka.Checked = cbPulagateljFizicka2.Checked = true;
 
 				switch(zahtjev.FIZICKA_STATUS_ODABIR)
 				{
@@ -358,15 +371,15 @@ namespace InvestApp.Web.Reports
 
 			if (zahtjev.REZIDENTNOST == "R")
 			{
-				cbRezident.Checked = true;
+				cbRezident.Checked = cbRezident2.Checked = true;
 				cbZastupnikRezident.Checked = true;
-				cbPulagateljRezident.Checked = true;
+				cbPulagateljRezident.Checked = cbPulagateljRezident2.Checked = true;
 			}
 			else
 			{
-				cbNerezident.Checked = true;
+				cbNerezident.Checked = cbNerezident2.Checked = true;
 				cbZastupnikNerezident.Checked = true;
-				cbPulagateljNerezident.Checked = true;
+				cbPulagateljNerezident.Checked = cbPulagateljNerezident2.Checked = true;
 			}
 
 			if (zahtjev.ZELJENI_BROJ_UDJELA.HasValue)
