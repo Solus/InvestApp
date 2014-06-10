@@ -70,12 +70,12 @@
 
                             <div class="left">
                                 <div class="form_item">
-                                    <uc1:FondPrinosiGrafCtrl runat="server" ID="chartPrinosi" Width="350" Height="260" Naslov="Prinos u zadnjih godinu dana" PrikaziIndeksni="true" />
+                                    <uc1:FondPrinosiGrafCtrl runat="server" ID="chartPrinosi" Width="430" Height="260" Naslov="Prinos u zadnjih godinu dana" PrikaziIndeksni="true" />
                                 </div>
                             </div>
 
                             <div class="right">
-                                <div class="form_item">
+                                <div class="form_item top">
                                     <uc1:FondPrinosiTablicaCtrl runat="server" ID="tablePrinosi" DetaljneLabele="true" />
                                 </div>
                             </div>
@@ -88,18 +88,27 @@
 
                             <h3 class="form_group">DOKUMENTI FONDA</h3>
 
-                            <div class="form_item">
-                                <asp:HyperLink ID="HyperLink1" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("KIID_URL") %>'>Ključne informacije za ulagatelje</asp:HyperLink>
+                            <div class="left">
+
+                                <div class="form_item">
+                                    <asp:HyperLink ID="HyperLink1" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("KIID_URL") %>'>Ključne informacije za ulagatelje</asp:HyperLink>
+                                </div>
+                                <div class="form_item">
+                                    <asp:HyperLink ID="HyperLink2" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PRAVILA_URL") %>'>Pravila fonda</asp:HyperLink>
+                                </div>
                             </div>
-                            <div class="form_item">
-                                <asp:HyperLink ID="HyperLink2" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PRAVILA_URL") %>'>Pravila fonda</asp:HyperLink>
+
+                            <div class="right">
+                                <div class="form_item">
+                                    <asp:HyperLink ID="HyperLink3" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PROSPEKT_URL") %>'>Prospekt fonda</asp:HyperLink>
+                                </div>
+                                <div class="form_item">
+                                    <asp:HyperLink ID="HyperLink4" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
+                                </div>
+
                             </div>
-                            <div class="form_item">
-                                <asp:HyperLink ID="HyperLink3" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PROSPEKT_URL") %>'>Prospekt fonda</asp:HyperLink>
-                            </div>
-                            <div class="form_item">
-                                <asp:HyperLink ID="HyperLink4" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
-                            </div>
+
+                            <div class="clearfix"></div>
 
                             <h3 class="form_group">OSNOVNE INFORMACIJE</h3>
 

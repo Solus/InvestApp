@@ -236,6 +236,7 @@
     <Content Include="Images\blog_banner.png" />
     <Content Include="Images\cart.png" />
     <Content Include="Images\checkbox.png" />
+    <Content Include="Images\checkbox_darker.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\delete_circle_red.png" />
     <Content Include="Images\document.png" />
@@ -253,13 +254,19 @@
     <Content Include="Images\graf.png" />
     <Content Include="Images\header.png" />
     <Content Include="Images\info.png" />
+    <Content Include="Images\info_dark.png" />
     <Content Include="Images\invest capital logo.png" />
     <Content Include="Images\investiraj_logo.png" />
     <Content Include="Images\investiraj_logo_color.png" />
     <Content Include="Images\jednostavno.png" />
     <Content Include="Images\kupi.png" />
+    <Content Include="Images\kupi_white.png" />
     <Content Include="Images\logo_white_small.png" />
     <Content Include="Images\log_out.png" />
+    <Content Include="Images\log_out_bg.png" />
+    <Content Include="Images\log_out_fg.png" />
+    <Content Include="Images\pdf.png" />
+    <Content Include="Images\pencil.png" />
     <Content Include="Images\plus_circle.png" />
     <Content Include="Images\podrska.png" />
     <Content Include="Images\pouzdano.png" />
@@ -286,7 +293,9 @@
     <Content Include="Images\star_check.png" />
     <Content Include="Images\star_uncheck.png" />
     <Content Include="Images\table.png" />
+    <Content Include="Images\table_light.png" />
     <Content Include="Images\trash.png" />
+    <Content Include="Images\trash_light.png" />
     <Content Include="Images\triangles.png" />
     <Content Include="Images\triangles_big.png" />
     <Content Include="Images\triangles_large.png" />
@@ -295,6 +304,7 @@
     <Content Include="Images\triangle_dark.png" />
     <Content Include="Images\triangle_light.png" />
     <Content Include="Images\usporedi.png" />
+    <Content Include="Images\usporedi_black.png" />
     <Content Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx" />
     <Content Include="Kontrole\FondPortfeljVrijednostGrafCtrl.ascx" />
     <Content Include="Kontrole\FondStruktureUlaganjaCtrl.ascx" />

@@ -115,8 +115,8 @@ namespace InvestApp.Web.Reports
 						if (zahtjev.VLASNIK3_POLITICKA_IZLOZENOST == "D")
 							ghVlasnik3PolitickaIzlozenost.Visible = true;
 					}
-
-                    tcJMBG.Text = "M.B.:";
+                    tcJMBG.Text = "JMBG / MB:";
+                    tcPotpis.Text = "Žig i potpis odgovorne osobe";
 				}
 				else if (zahtjev.PRAVNA == "F")
 				{

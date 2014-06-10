@@ -78,13 +78,13 @@
 </head>
 <body>
     <form runat="server">
-        
+                
         <asp:ScriptManager runat="server">
-            <Scripts>
+            <%--<Scripts>
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery.ui.combined" />
                 <asp:ScriptReference Path="~/Scripts/jquery.cookie.js" />
-            </Scripts>
+            </Scripts>--%>
         </asp:ScriptManager>
 
         <header>

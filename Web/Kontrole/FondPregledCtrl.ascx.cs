@@ -258,7 +258,7 @@ namespace InvestApp.Web
 					else if (container.IsFull)
 						dodatnaKlasa = " disabled";
 
-					e.DisplayText = String.Format("<a class='updateCart{0}' href='javascript:void(0)' data-id='{1}' >{2}</a>", dodatnaKlasa, fond.ID, tekst);
+					e.DisplayText = String.Format("<a class='updateCart{0}' href='javascript:void(0)' data-id='{1}' ></a>", dodatnaKlasa, fond.ID);
 				}
 			}
 			else if (e.Column.Name == "CijeneDetalji")
@@ -266,7 +266,7 @@ namespace InvestApp.Web
 				string img = "../Images/graf.png";
 				string url = "../Fond/FondCijenePregledStandalone.aspx";
 
-				e.DisplayText = string.Format(@"<a class='thickbox' href='{0}?ID={1}&KeepThis=true&TB_iframe=true&height=780&width=900'><img title='Detalji cijena udjela' src='{2}' /></a>", url, fond.ID, img);
+				e.DisplayText = string.Format(@"<a class='thickbox' href='{0}?ID={1}&KeepThis=true&TB_iframe=true&height=825&width=900'><img title='Detalji cijena udjela' src='{2}' /></a>", url, fond.ID, img);
 			}
         }
         

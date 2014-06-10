@@ -44,7 +44,7 @@
             <div class="column jednostavno">
                 <h2 class="title">Jednostavno</h2>
                 <p class="text">
-                    investiraj.net omogućuje kupnju ili prodaje udjela u investicijskim fondovima na 
+                    investiraj.net omogućuje kupnju ili prodaju udjela u investicijskim fondovima na 
                     najjednostavniji mogući način. Nakon vaše prve kupnje ili prodaje vaši podaci bit 
                     će sačuvani što će vam omogućiti daljnje kupnje ili prodaje na najbrži način bez 
                     potrebe ponovnog unošenja vaših podataka!

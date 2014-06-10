@@ -20,9 +20,11 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
+        <div id="body" class="standalone">
+
         <h1 class="form_header bar"><asp:Label ID="lblFondNaziv" runat="server" Text=""></asp:Label>Prinos</h1>
 
-        <div class="form_body wide">
+        <%--<div class="form_body wide">--%>
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
@@ -51,6 +53,8 @@
                     <div class="progress_message">Učitavanje...</div>
                 </ProgressTemplate>
             </asp:UpdateProgress>
+
+        <%--</div>--%>
 
         </div>
 
