@@ -219,6 +219,9 @@
     <Content Include="Dokumenti\blank.txt" />
     <Content Include="Dokumenti\Fondovi\blank.txt" />
     <Content Include="Dokumenti\Korisnici\blank.txt" />
+    <Content Include="Dokumenti\Kupnja\blank.txt" />
+    <Content Include="Dokumenti\Potvrde\blank.txt" />
+    <Content Include="Dokumenti\Zahtjevi\blank.txt" />
     <Content Include="FondUsporedba\FondUsporedba.aspx" />
     <Content Include="Fond\FondCijenePregledStandalone.aspx" />
     <Content Include="Fond\FondDokumentStandalone.aspx" />
@@ -230,6 +233,7 @@
     <Content Include="Fond\FondRealizacija.aspx" />
     <Content Include="Fond\FondZahtjeviPregled.aspx" />
     <Content Include="Fond\FondZahtjevRealizacija.aspx" />
+    <Content Include="Fond\SlanjeZahtjeva.aspx" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\arrow_less.png" />
     <Content Include="Images\arrow_more.png" />
@@ -659,6 +663,13 @@
     <Compile Include="Fond\FondZahtjevRealizacija.aspx.designer.cs">
       <DependentUpon>FondZahtjevRealizacija.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Fond\SlanjeZahtjeva.aspx.cs">
+      <DependentUpon>SlanjeZahtjeva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fond\SlanjeZahtjeva.aspx.designer.cs">
+      <DependentUpon>SlanjeZahtjeva.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx.cs">
       <DependentUpon>FondPortfeljUdioGrafCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -811,7 +822,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dokumenti\Potvrde\" />
     <Folder Include="Slike\" />
   </ItemGroup>
   <ItemGroup>

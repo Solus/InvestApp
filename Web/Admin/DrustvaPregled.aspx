@@ -33,12 +33,15 @@
                 <dx:GridViewDataTextColumn Caption="Naziv" FieldName="NAZIV" ShowInCustomizationForm="True" VisibleIndex="1">
                 </dx:GridViewDataTextColumn>
 
-                <dx:GridViewDataImageColumn Caption="Logo" FieldName="LOGO_URL" ToolTip="Logo društva" VisibleIndex="2" Width="150px">
+                <dx:GridViewDataTextColumn Caption="E-mail" FieldName="EMAIL" ShowInCustomizationForm="True" VisibleIndex="2">
+                </dx:GridViewDataTextColumn>
+
+                <dx:GridViewDataImageColumn Caption="Logo" FieldName="LOGO_URL" ToolTip="Logo društva" VisibleIndex="3" Width="150px">
                     <PropertiesImage ImageAlign="Left" ImageHeight="15px">
                     </PropertiesImage>
                 </dx:GridViewDataImageColumn>
 
-                <dx:GridViewCommandColumn ButtonType="Image" ShowDeleteButton="false" ShowEditButton="true" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="3" Width="70px">
+                <dx:GridViewCommandColumn ButtonType="Image" ShowDeleteButton="false" ShowEditButton="true" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="4" Width="70px">
 
                     <HeaderStyle HorizontalAlign="Center" />
                     <HeaderTemplate>
@@ -86,6 +89,11 @@
                     <div class="form_item">
                         <label class="form_item_label_edit small">Adresa:</label>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ADRESA") %>' CssClass="form_item_value_edit" />
+                    </div>
+
+                    <div class="form_item">
+                        <label class="form_item_label_edit small">E-mail:</label>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("EMAIL") %>' CssClass="form_item_value_edit" />
                     </div>
 
                     <div class="form_item">

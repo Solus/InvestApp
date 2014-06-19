@@ -230,6 +230,7 @@
     <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="LOGO_URL" MaxLength="250" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="KORISNIKs" Relationship="FondModel.FK_KORISNIK_FOND_DRUSTVA" FromRole="Drustvo" ToRole="Korisnik" />
+    <Property Type="String" Name="EMAIL" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Kategorija">
     <Key>
@@ -466,6 +467,11 @@
     <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="PRAVNA_VLASNIK3_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="PRAVNA_VLASNIK3_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FIZICKA_SCAN_KARTICA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_SCAN_IZVOD_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
     <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />

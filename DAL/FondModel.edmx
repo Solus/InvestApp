@@ -306,6 +306,7 @@
           <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
           <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
           <Property Name="LOGO_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="FOND_KATEGORIJE">
           <Key>
@@ -592,6 +593,11 @@
           <Property Name="VLASNIK3_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
           <Property Name="VLASNIK3_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
           <Property Name="VLASNIK3_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+          <Property Name="FIZICKA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="FIZICKA_SCAN_KARTICA_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRAVNA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRAVNA_SCAN_IZVOD_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="KORISNIK">
           <Key>
@@ -1328,6 +1334,7 @@
           <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="LOGO_URL" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KORISNIKs" Relationship="FondModel.FK_KORISNIK_FOND_DRUSTVA" FromRole="Drustvo" ToRole="Korisnik" />
+          <Property Type="String" Name="EMAIL" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Kategorija">
           <Key>
@@ -1564,6 +1571,11 @@
           <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PRAVNA_VLASNIK3_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PRAVNA_VLASNIK3_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FIZICKA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FIZICKA_SCAN_KARTICA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PRAVNA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PRAVNA_SCAN_IZVOD_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
           <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />
@@ -2194,6 +2206,7 @@
           <EntitySetMapping Name="Drustva">
             <EntityTypeMapping TypeName="FondModel.Drustvo">
               <MappingFragment StoreEntitySet="FOND_DRUSTVA">
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="LOGO_URL" ColumnName="LOGO_URL" />
                 <ScalarProperty Name="NALOG_SIFRA_NAMJENE" ColumnName="NALOG_SIFRA_NAMJENE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2302,6 +2315,11 @@
                 <ScalarProperty Name="NALOG_OPIS_PLACANJA" ColumnName="NALOG_OPIS_PLACANJA" />
               </MappingFragment>
               <MappingFragment StoreEntitySet="FOND_ZAHTJEVI_DODATNO">
+                <ScalarProperty Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" ColumnName="PRAVNA_SCAN_POTPISNI_KARTON_URL" />
+                <ScalarProperty Name="PRAVNA_SCAN_IZVOD_URL" ColumnName="PRAVNA_SCAN_IZVOD_URL" />
+                <ScalarProperty Name="PRAVNA_SCAN_OSOBNA_URL" ColumnName="PRAVNA_SCAN_OSOBNA_URL" />
+                <ScalarProperty Name="FIZICKA_SCAN_KARTICA_URL" ColumnName="FIZICKA_SCAN_KARTICA_URL" />
+                <ScalarProperty Name="FIZICKA_SCAN_OSOBNA_URL" ColumnName="FIZICKA_SCAN_OSOBNA_URL" />
                 <ScalarProperty Name="VLASNIK3_POLITICKA_IZLOZENOST" ColumnName="VLASNIK3_POLITICKA_IZLOZENOST" />
                 <ScalarProperty Name="VLASNIK3_POSTOTAK_VLASNISTVA" ColumnName="VLASNIK3_POSTOTAK_VLASNISTVA" />
                 <ScalarProperty Name="VLASNIK3_VLASNISTVO_TIP" ColumnName="VLASNIK3_VLASNISTVO_TIP" />

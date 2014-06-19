@@ -1838,6 +1838,30 @@ namespace InvestApp.DAL
         private global::System.String _LOGO_URL;
         partial void OnLOGO_URLChanging(global::System.String value);
         partial void OnLOGO_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EMAIL
+        {
+            get
+            {
+                return _EMAIL;
+            }
+            set
+            {
+                OnEMAILChanging(value);
+                ReportPropertyChanging("EMAIL");
+                _EMAIL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EMAIL");
+                OnEMAILChanged();
+            }
+        }
+        private global::System.String _EMAIL;
+        partial void OnEMAILChanging(global::System.String value);
+        partial void OnEMAILChanged();
 
         #endregion
 
@@ -10191,6 +10215,126 @@ namespace InvestApp.DAL
         private global::System.String _PRAVNA_VLASNIK3_IZVOR_IMOVINE;
         partial void OnPRAVNA_VLASNIK3_IZVOR_IMOVINEChanging(global::System.String value);
         partial void OnPRAVNA_VLASNIK3_IZVOR_IMOVINEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FIZICKA_SCAN_OSOBNA_URL
+        {
+            get
+            {
+                return _FIZICKA_SCAN_OSOBNA_URL;
+            }
+            set
+            {
+                OnFIZICKA_SCAN_OSOBNA_URLChanging(value);
+                ReportPropertyChanging("FIZICKA_SCAN_OSOBNA_URL");
+                _FIZICKA_SCAN_OSOBNA_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FIZICKA_SCAN_OSOBNA_URL");
+                OnFIZICKA_SCAN_OSOBNA_URLChanged();
+            }
+        }
+        private global::System.String _FIZICKA_SCAN_OSOBNA_URL;
+        partial void OnFIZICKA_SCAN_OSOBNA_URLChanging(global::System.String value);
+        partial void OnFIZICKA_SCAN_OSOBNA_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FIZICKA_SCAN_KARTICA_URL
+        {
+            get
+            {
+                return _FIZICKA_SCAN_KARTICA_URL;
+            }
+            set
+            {
+                OnFIZICKA_SCAN_KARTICA_URLChanging(value);
+                ReportPropertyChanging("FIZICKA_SCAN_KARTICA_URL");
+                _FIZICKA_SCAN_KARTICA_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FIZICKA_SCAN_KARTICA_URL");
+                OnFIZICKA_SCAN_KARTICA_URLChanged();
+            }
+        }
+        private global::System.String _FIZICKA_SCAN_KARTICA_URL;
+        partial void OnFIZICKA_SCAN_KARTICA_URLChanging(global::System.String value);
+        partial void OnFIZICKA_SCAN_KARTICA_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PRAVNA_SCAN_OSOBNA_URL
+        {
+            get
+            {
+                return _PRAVNA_SCAN_OSOBNA_URL;
+            }
+            set
+            {
+                OnPRAVNA_SCAN_OSOBNA_URLChanging(value);
+                ReportPropertyChanging("PRAVNA_SCAN_OSOBNA_URL");
+                _PRAVNA_SCAN_OSOBNA_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PRAVNA_SCAN_OSOBNA_URL");
+                OnPRAVNA_SCAN_OSOBNA_URLChanged();
+            }
+        }
+        private global::System.String _PRAVNA_SCAN_OSOBNA_URL;
+        partial void OnPRAVNA_SCAN_OSOBNA_URLChanging(global::System.String value);
+        partial void OnPRAVNA_SCAN_OSOBNA_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PRAVNA_SCAN_IZVOD_URL
+        {
+            get
+            {
+                return _PRAVNA_SCAN_IZVOD_URL;
+            }
+            set
+            {
+                OnPRAVNA_SCAN_IZVOD_URLChanging(value);
+                ReportPropertyChanging("PRAVNA_SCAN_IZVOD_URL");
+                _PRAVNA_SCAN_IZVOD_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PRAVNA_SCAN_IZVOD_URL");
+                OnPRAVNA_SCAN_IZVOD_URLChanged();
+            }
+        }
+        private global::System.String _PRAVNA_SCAN_IZVOD_URL;
+        partial void OnPRAVNA_SCAN_IZVOD_URLChanging(global::System.String value);
+        partial void OnPRAVNA_SCAN_IZVOD_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PRAVNA_SCAN_POTPISNI_KARTON_URL
+        {
+            get
+            {
+                return _PRAVNA_SCAN_POTPISNI_KARTON_URL;
+            }
+            set
+            {
+                OnPRAVNA_SCAN_POTPISNI_KARTON_URLChanging(value);
+                ReportPropertyChanging("PRAVNA_SCAN_POTPISNI_KARTON_URL");
+                _PRAVNA_SCAN_POTPISNI_KARTON_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PRAVNA_SCAN_POTPISNI_KARTON_URL");
+                OnPRAVNA_SCAN_POTPISNI_KARTON_URLChanged();
+            }
+        }
+        private global::System.String _PRAVNA_SCAN_POTPISNI_KARTON_URL;
+        partial void OnPRAVNA_SCAN_POTPISNI_KARTON_URLChanging(global::System.String value);
+        partial void OnPRAVNA_SCAN_POTPISNI_KARTON_URLChanged();
 
         #endregion
 

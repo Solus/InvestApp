@@ -268,6 +268,22 @@ namespace InvestApp.Web
 
 				e.DisplayText = string.Format(@"<a class='thickbox' href='{0}?ID={1}&KeepThis=true&TB_iframe=true&height=825&width=900'><img title='Detalji cijena udjela' src='{2}' /></a>", url, fond.ID, img);
 			}
+            else if (e.Column.Name == "PRINOS_1M" && fond.PRINOS_1M == 100)
+            {
+                e.DisplayText = "-";
+            }
+            else if (e.Column.Name == "PRINOS_3M" && fond.PRINOS_3M == 100)
+            {
+                e.DisplayText = "-";
+            }
+            else if (e.Column.Name == "PRINOS_1G" && fond.PRINOS_1G == 100)
+            {
+                e.DisplayText = "-";
+            }
+            else if (e.Column.Name == "PRINOS_3G" && fond.PRINOS_3G == 100)
+            {
+                e.DisplayText = "-";
+            }
         }
         
         protected void gvFondovi_CustomButtonInitialize(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomButtonEventArgs e)

@@ -301,6 +301,7 @@
     <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
     <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
     <Property Name="LOGO_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="FOND_KATEGORIJE">
     <Key>
@@ -587,6 +588,11 @@
     <Property Name="VLASNIK3_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
     <Property Name="VLASNIK3_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
     <Property Name="VLASNIK3_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
+    <Property Name="FIZICKA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="FIZICKA_SCAN_KARTICA_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="PRAVNA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="PRAVNA_SCAN_IZVOD_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="KORISNIK">
     <Key>

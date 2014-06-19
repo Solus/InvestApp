@@ -58,13 +58,13 @@
     <Compile Include="AdminDAC.cs" />
     <Compile Include="DAC.cs" />
     <Compile Include="FondDAC.cs" />
-    <Compile Include="FondModel.Designer.cs">
+    <Compile Include="FondModel.Views.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FondModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FondModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="FondModel.Views.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="FondModelExtensions.cs" />
     <Compile Include="KorisnikDAC.cs" />
@@ -82,7 +82,7 @@
     </None>
     <EntityDeploy Include="FondModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FondModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FondModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <EmbeddedResource Include="FondModel.csdl" />
     <None Include="FondModel.edmx.diagram">

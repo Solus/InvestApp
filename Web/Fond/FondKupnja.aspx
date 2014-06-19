@@ -561,6 +561,49 @@
 
                             </div>
 
+                            <div id="divDokumenti" runat="server">
+
+                                <h3 class="form_group">Dokumenti</h3>
+
+                                <div id="divFizickaDokumenti" runat="server">
+
+                                    <div class="form_item">
+                                        <label class="form_item_label_edit">Scan osobne:</label>
+                                        <asp:FileUpload ID="fuFizickaOsobna" runat="server" CssClass="form_item_value_edit" />
+                                        <asp:HiddenField ID="hfFizickaOsobna" runat="server" Value='<%# Bind("FIZICKA_SCAN_OSOBNA_URL") %>' />
+                                    </div>
+
+                                    <div class="form_item">
+                                        <label class="form_item_label_edit">Scan kartice tekućeg računa:</label>
+                                        <asp:FileUpload ID="fuFizickaKartica" runat="server" CssClass="form_item_value_edit" />
+                                        <asp:HiddenField ID="hfFizickaKartica" runat="server" Value='<%# Bind("FIZICKA_SCAN_KARTICA_URL") %>' />
+                                    </div>
+
+                                </div>
+
+                                <div id="divPravnaDokumenti" runat="server">
+
+                                    <div class="form_item">
+                                        <label class="form_item_label_edit">Scan osobne osobe za zastupanje:</label>
+                                        <asp:FileUpload ID="fuPravnaOsobna" runat="server" CssClass="form_item_value_edit" />
+                                        <asp:HiddenField ID="hfPravnaOsobna" runat="server" Value='<%# Bind("PRAVNA_SCAN_OSOBNA_URL") %>' />
+                                    </div>
+
+                                    <div class="form_item">
+                                        <label class="form_item_label_edit">Scan izvoda iz Sudskog registra:</label>
+                                        <asp:FileUpload ID="fuPravnaIzvod" runat="server" CssClass="form_item_value_edit" />
+                                        <asp:HiddenField ID="hfPravnaIzvod" runat="server" Value='<%# Bind("PRAVNA_SCAN_IZVOD_URL") %>' />
+                                    </div>
+
+                                    <div class="form_item">
+                                        <label class="form_item_label_edit">Scan potpisnog kartona:</label>
+                                        <asp:FileUpload ID="fuPravnaPotpisniKarton" runat="server" CssClass="form_item_value_edit" />
+                                        <asp:HiddenField ID="hfPravnaPotpisniKarton" runat="server" Value='<%# Bind("PRAVNA_SCAN_POTPISNI_KARTON_URL") %>' />
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </asp:View>
 
                         <asp:View ID="View2a" runat="server">
@@ -1842,6 +1885,11 @@
             <asp:Parameter Name="DRUGA_FIZICKA_MOBITEL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="DRUGA_FIZICKA_FAX" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="DRUGA_FIZICKA_EMAIL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="FIZICKA_SCAN_OSOBNA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="FIZICKA_SCAN_KARTICA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="PRAVNA_SCAN_OSOBNA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="PRAVNA_SCAN_IZVOD_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" ConvertEmptyStringToNull="true" Type="String" />
 
         </InsertParameters>
     </asp:EntityDataSource>

@@ -49,5 +49,10 @@ namespace InvestApp.Web
 			Response.AddHeader("Content-Disposition", String.Format("attachment; filename=zahtjev.pdf"));
 			Response.End();
 		}
+
+        protected void btnDokumenti_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(ResolveUrl("~/Fond/SlanjeZahtjeva.aspx"));
+        }
 	}
 }

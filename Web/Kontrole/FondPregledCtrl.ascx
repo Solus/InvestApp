@@ -403,7 +403,7 @@
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="PGP[%]" FieldName="PGP" Name="PGP" ToolTip="Prosječni godišnji prinos [%]" VisibleIndex="14" Width="60px">
+                    <dx:GridViewDataTextColumn Caption="PGP[%]" FieldName="PGP" Name="PGP" ToolTip="Prosječni godišnji prinos [%]" VisibleIndex="14" Width="70px">
                         <PropertiesTextEdit DisplayFormatString="{0:n}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>

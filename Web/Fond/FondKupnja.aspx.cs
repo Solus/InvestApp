@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using InvestApp.Common;
+using System.IO;
 
 namespace InvestApp.Web
 {
@@ -341,6 +342,7 @@ namespace InvestApp.Web
 							mv.ActiveViewIndex = (int)Korak.B_OsobniPodaci;
 							break;
 						case Korak.B_OsobniPodaci:
+                            SpremiDokumente();
 							mv.ActiveViewIndex = SkupnoZastupanje ? (int)Korak.B2_PodaciDrugeOsobe : (int)Korak.C_Placanje;
 							break;
 						case Korak.B2_PodaciDrugeOsobe:
@@ -467,6 +469,52 @@ namespace InvestApp.Web
 				}
 			}
 		}
+
+        private void SpremiDokumente()
+        {
+            if (Pravna)
+            {
+                var fileOsobna = KontrolaFile("fuPravnaOsobna");
+                var fileIzvod = KontrolaFile("fuPravnaIzvod");
+                var filePotpisniKarton = KontrolaFile("fuPravnaPotpisniKarton");
+
+                var hfOsobna = KontrolaHidden("hfPravnaOsobna");
+                var hfIzvod = KontrolaHidden("hfPravnaIzvod");
+                var hfPotpisniKarton = KontrolaHidden("hfPravnaPotpisniKarton");
+                
+                SpremiDokument("p_osobna_", fileOsobna, hfOsobna);
+                SpremiDokument("p_izvod_", fileIzvod, hfIzvod);
+                SpremiDokument("p_potpisni_", filePotpisniKarton, hfPotpisniKarton);
+            }
+            else
+            {
+                var fileOsobna = KontrolaFile("fuFizickaOsobna");
+                var fileKartica = KontrolaFile("fuFizickaKartica");
+
+                var hfOsobna = KontrolaHidden("hfFizickaOsobna");
+                var hfKartica = KontrolaHidden("hfFizickaKartica");
+
+                SpremiDokument("f_osobna_", fileOsobna, hfOsobna);
+                SpremiDokument("f_kartica_", fileKartica, hfKartica);
+            }
+        }
+
+        private void SpremiDokument(string fileName, FileUpload fu, HiddenField hf)
+        {
+            if (fu.HasFile)
+            {
+                string folder = "~/Dokumenti/Kupnja/";
+                string postfix = KorisnikID > 0 ? KorisnikID.ToString() : Session.SessionID;
+
+                string filePath = folder + fileName + postfix + Path.GetExtension(fu.FileName);
+                string fileFullPath = Server.MapPath(filePath);
+
+                fu.SaveAs(fileFullPath);
+                hf.Value = filePath;
+            }
+            else
+                hf.Value = null;
+        }
 
 		/// <summary>
 		/// Spremanje odabira unutar trenutnog koraka
@@ -686,7 +734,18 @@ namespace InvestApp.Web
 		{
 			HtmlGenericControl divPravna = FormView1.FindControl("pravnaPodaci") as HtmlGenericControl;
 			divPravna.Visible = Pravna;
-			KontrolaHTML("divPravnaZastupanjePojedinacno").Visible = Pravna;
+
+            KontrolaHTML("divPravnaZastupanjePojedinacno").Visible = Pravna;
+
+            if (Kupnja)
+            {
+                KontrolaHTML("divFizickaDokumenti").Visible = !Pravna;
+                KontrolaHTML("divPravnaDokumenti").Visible = Pravna;
+            }
+            else
+            {
+                KontrolaHTML("divDokumenti").Visible = false;
+            }
 
 			DAL.Korisnik k = DAL.FondDAC.VratiKorisnika(KorisnikID);
 
@@ -922,6 +981,16 @@ namespace InvestApp.Web
 		{
 			return Kontrola(kontrolaID) as TextBox;
 		}
+
+        private FileUpload KontrolaFile(string kontrolaID)
+        {
+            return Kontrola(kontrolaID) as FileUpload;
+        }
+
+        private HiddenField KontrolaHidden(string kontrolaID)
+        {
+            return Kontrola(kontrolaID) as HiddenField;
+        }
 
 		private DropDownList KontrolaDdl(string kontrolaID)
 		{
