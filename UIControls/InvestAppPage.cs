@@ -108,5 +108,10 @@ namespace InvestApp.UIControls
 		{
 			DAL.DAC.Logiraj(tekst, ex);
 		}
+
+        protected override void InitializeCulture()
+        {
+            base.InitializeCulture();
+        }
     }
 }

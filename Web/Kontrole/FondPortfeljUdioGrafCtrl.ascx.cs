@@ -52,18 +52,18 @@ namespace InvestApp.Web
 
 			if (struktura.Any())
 			{
-				DevExpress.XtraCharts.Series s = new DevExpress.XtraCharts.Series("QtyOnHand", DevExpress.XtraCharts.ViewType.Pie3D);
+                DevExpress.XtraCharts.Series s = qtyChart.Series[0];// new DevExpress.XtraCharts.Series("QtyOnHand", DevExpress.XtraCharts.ViewType.Pie3D);
 				s.DataSource = struktura;
 				s.ValueScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
 				s.ValueDataMembers.AddRange(new string[] { "VRIJEDNOST" });
 				s.ArgumentDataMember = "KATEGORIJA";
-				((DevExpress.XtraCharts.PiePointOptions)s.Label.PointOptions).PercentOptions.ValueAsPercent = true;
-				((DevExpress.XtraCharts.PiePointOptions)s.Label.PointOptions).PercentOptions.PercentageAccuracy = 4;
-				((DevExpress.XtraCharts.PiePointOptions)s.Label.PointOptions).ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
+				//((DevExpress.XtraCharts.PiePointOptions)s.Label.PointOptions).PercentOptions.ValueAsPercent = true;
+				//((DevExpress.XtraCharts.PiePointOptions)s.Label.PointOptions).PercentOptions.PercentageAccuracy = 4;
+				//((DevExpress.XtraCharts.PiePointOptions)s.Label.PointOptions).ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
 				s.LegendPointOptions.Pattern = "{A} : {V}";
-				((DevExpress.XtraCharts.Pie3DSeriesView)s.View).ExplodeMode = DevExpress.XtraCharts.PieExplodeMode.All;
+				//((DevExpress.XtraCharts.Pie3DSeriesView)s.View).ExplodeMode = DevExpress.XtraCharts.PieExplodeMode.All;
 
-				qtyChart.Legend.Direction = DevExpress.XtraCharts.LegendDirection.BottomToTop;
+				//qtyChart.Legend.Direction = DevExpress.XtraCharts.LegendDirection.BottomToTop;
 
 				qtyChart.Width = new Unit(Width);
 				qtyChart.Height = new Unit(Height);

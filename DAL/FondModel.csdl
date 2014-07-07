@@ -47,7 +47,6 @@
       <Parameter Name="inDatumOd" Mode="In" Type="DateTime" />
       <Parameter Name="inDatumDo" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <EntitySet Name="FondPodaci" EntityType="FondModel.FondPodatak" />
     <EntitySet Name="Korisnici" EntityType="FondModel.Korisnik" />
     <EntitySet Name="BankeDomace" EntityType="FondModel.BankaDomaca" />
     <AssociationSet Name="FK_FOND_PROMETI_KORISNIK" Association="FondModel.FK_FOND_PROMETI_KORISNIK">
@@ -109,6 +108,7 @@
       <Parameter Name="inTrzisteId" Mode="In" Type="Int32" />
       <Parameter Name="inProfilRizicnosti" Mode="In" Type="Int32" />
       <Parameter Name="inKorisnikId" Mode="In" Type="Int32" />
+      <Parameter Name="inPrikaziSakrivene" Mode="In" Type="Boolean" />
     </FunctionImport>
     <EntitySet Name="FOND_CILJ_PRINOSA" EntityType="FondModel.FOND_CILJ_PRINOSA" />
     <EntitySet Name="FOND_PROFIL_RIZICNOSTI" EntityType="FondModel.FOND_PROFIL_RIZICNOSTI" />
@@ -207,6 +207,11 @@
     <Property Type="String" Name="POKAZATELJ_UKUPNIH_TROSKOVA" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Boolean" Name="INDEKSNI" />
     <Property Type="String" Name="GRUPE" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="ZADNJA_VRIJEDNOST" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="ZADNJA_VRIJEDNOST_DATUM" Precision="0" />
+    <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Precision="0" />
+    <Property Type="Boolean" Name="SAKRIVENI" />
   </EntityType>
   <EntityType Name="Drustvo">
     <Key>
@@ -467,11 +472,10 @@
     <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="PRAVNA_VLASNIK3_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="PRAVNA_VLASNIK3_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="FIZICKA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="FIZICKA_SCAN_KARTICA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="PRAVNA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="PRAVNA_SCAN_IZVOD_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SCAN_OSOBNA_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SCAN_KARTICA_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SCAN_IZVOD_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SCAN_POTPISNI_KARTON_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
     <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />
@@ -585,53 +589,6 @@
     <Property Type="DateTime" Name="VRIJEDI_DO" Nullable="true" />
     <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" />
   </ComplexType>
-  <EntityType Name="FondPodatak">
-    <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="VALUTA" />
-    </Key>
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="Int32" Name="KATEGORIJA_ID" />
-    <Property Type="Int32" Name="REGIJA_ID" />
-    <Property Type="Int32" Name="TIP_ULAGANJA_ID" />
-    <Property Type="Int32" Name="TIP_UPRAVLJANJA_ID" />
-    <Property Type="Int32" Name="DRUSTVA_ID" />
-    <Property Type="String" Name="RIZICNOST" MaxLength="2" FixedLength="true" Unicode="true" />
-    <Property Type="Decimal" Name="MINIMALNA_POCETNA_UPLATA" Precision="15" Scale="2" />
-    <Property Type="Decimal" Name="MINIMALNE_OSTALE_UPLATE" Precision="15" Scale="2" />
-    <Property Type="String" Name="VALUTA_SIFRA" MaxLength="3" FixedLength="false" Unicode="true" />
-    <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Precision="15" Scale="2" />
-    <Property Type="DateTime" Name="DATUM_OSNIVANJA" Precision="0" />
-    <Property Type="Decimal" Name="IMOVINA_FONDA" Precision="15" Scale="2" />
-    <Property Type="String" Name="NAKNADA_ULAZNA" MaxLength="4000" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAKNADA_IZLAZNA" MaxLength="4000" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" MaxLength="4000" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAKNADA_DEPOZITARNOJ_BANCI" MaxLength="4000" FixedLength="false" Unicode="true" />
-    <Property Type="Decimal" Name="NAKNADA_BANKA_FIKSNA" Precision="15" Scale="2" />
-    <Property Type="Decimal" Name="NAKNADA_BANKA_POSTO" Precision="15" Scale="2" />
-    <Property Type="Decimal" Name="NAKNADA_BANKA_MINIMALNI" Precision="15" Scale="2" />
-    <Property Type="Decimal" Name="NAKNADA_BANKA_MAKSIMALNI" Precision="15" Scale="2" />
-    <Property Type="String" Name="NAPOMENA_ZA_KUPNJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAPOMENA_ZA_PRODAJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAPOMENA_ZA_REGISTRACIJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="DODATNI_PODACI" MaxLength="4000" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="VRIJEDI_OD" Precision="0" />
-    <Property Type="DateTime" Name="VRIJEDI_DO" Precision="0" />
-    <Property Type="String" Name="NAZIV" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAPOMENA_ZA_ODREGISTRACIJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="ZAHTJEV_REPORT_ID" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NALOG_PRIMATELJ_VBDI" MaxLength="7" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NALOG_PRIMATELJ_RACUN" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NALOG_PBO_MODEL" MaxLength="2" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NALOG_PBO" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NALOG_OPIS_PLACANJA" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAZIV_VLASNIKA" MaxLength="4000" FixedLength="false" Unicode="true" />
-    <Property Type="Decimal" Name="VRIJEDNOST" Precision="15" Scale="4" />
-    <Property Type="DateTime" Name="VRIJEDNOST_DATUM" Precision="0" />
-    <Property Type="Decimal" Name="PROSLA_VRIJEDNOST" Precision="15" Scale="4" />
-    <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="NAZIV_KATEGORIJE" MaxLength="4000" FixedLength="false" Unicode="true" />
-  </EntityType>
   <ComplexType Name="TraziFondove_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="Int32" Name="KATEGORIJA_ID" Nullable="true" />
@@ -643,7 +600,7 @@
     <Property Type="Decimal" Name="MINIMALNA_POCETNA_UPLATA" Nullable="true" Precision="15" Scale="2" />
     <Property Type="Decimal" Name="MINIMALNE_OSTALE_UPLATE" Nullable="true" Precision="15" Scale="2" />
     <Property Type="String" Name="VALUTA_SIFRA" Nullable="true" MaxLength="3" />
-    <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Nullable="true" Precision="15" Scale="4" />
     <Property Type="DateTime" Name="DATUM_OSNIVANJA" Nullable="true" />
     <Property Type="Decimal" Name="IMOVINA_FONDA" Nullable="true" Precision="15" Scale="2" />
     <Property Type="String" Name="NAKNADA_ULAZNA" Nullable="true" MaxLength="4000" />
@@ -684,6 +641,15 @@
     <Property Type="Int32" Name="SEKTOR_ID" Nullable="true" />
     <Property Type="Int32" Name="TRZISTE_ID" Nullable="true" />
     <Property Type="Int32" Name="PROFIL_RIZICNOSTI_ID" Nullable="true" />
+    <Property Type="String" Name="OPIS" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="POKAZATELJ_UKUPNIH_TROSKOVA" Nullable="true" />
+    <Property Type="Boolean" Name="INDEKSNI" Nullable="true" />
+    <Property Type="String" Name="GRUPE" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="ZADNJA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="ZADNJA_VRIJEDNOST_DATUM" Nullable="true" />
+    <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Nullable="true" />
+    <Property Type="Boolean" Name="SAKRIVENI" Nullable="true" />
   </ComplexType>
   <EntityType Name="Korisnik">
     <Key>
@@ -758,6 +724,8 @@
     <NavigationProperty Name="FondFavoriti" Relationship="FondModel.KORISNIK_FOND_FAVORITI" FromRole="Korisnik" ToRole="Fond" />
     <NavigationProperty Name="NOVOSTIs" Relationship="FondModel.FK_NOVOSTI_KORISNIK" FromRole="Korisnik" ToRole="NOVOSTI" />
     <NavigationProperty Name="NOVOSTIs1" Relationship="FondModel.FK_NOVOSTI_KORISNIK1" FromRole="Korisnik" ToRole="Novost" />
+    <Property Type="String" Name="IZVOD_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="POTPISNI_KARTON_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="BankaDomaca">
     <Key>

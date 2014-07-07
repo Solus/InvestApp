@@ -18,8 +18,8 @@ namespace Service
 
 		public List<TraziFondove_Result> VratiFondove()
 		{
-			var data = FondDAC.TraziFondove(null, null, null, null, null, null, null, null, null).ToList();
-			return data;
+            //var data = FondDAC.TraziFondove(null, null, null, null, null, null, null, null, null).ToList();
+            return null;// data;
 		}
 
 		public CompositeType GetDataUsingDataContract(CompositeType composite)

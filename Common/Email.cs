@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net.Mail;
+using System.Web;
 
 namespace InvestApp.Common
 {
@@ -27,7 +28,15 @@ namespace InvestApp.Common
             {
                 foreach (var dok in privitciUrls)
                 {
-                    Attachment att = new Attachment(dok);
+                    if (string.IsNullOrEmpty(dok))
+                        continue;
+
+                    string file = System.IO.Path.IsPathRooted(dok) ? dok : HttpContext.Current.Server.MapPath(dok);
+
+                    if (!System.IO.File.Exists(file))
+                        continue;
+
+                    Attachment att = new Attachment(file);
                     mail.Attachments.Add(att);
                 }
             }

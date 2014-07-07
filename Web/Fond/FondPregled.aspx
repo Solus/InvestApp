@@ -28,7 +28,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 
-                <asp:Label ID="lblLog" runat="server"></asp:Label>
+                <asp:Label ID="lblLog" runat="server" Visible="false"></asp:Label>
 
             </ContentTemplate>
         </asp:UpdatePanel>

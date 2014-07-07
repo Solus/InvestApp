@@ -29,7 +29,7 @@
 
     <asp:Label ID="lblLog" runat="server"></asp:Label>
 
-    <h1 class="form_header bar" id="formHeader" runat="server">Uređivanje fonda</h1>
+    <h1 class="form_header bar normal" id="formHeader" runat="server">Uređivanje fonda</h1>
 
     <div class="form_body">
 

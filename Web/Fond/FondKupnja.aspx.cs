@@ -12,6 +12,11 @@ namespace InvestApp.Web
 {
 	public partial class FondKupnja : UIControls.InvestAppPage
 	{
+        public const string SESSION_SCAN_OSOBNA = "ssscos";
+        public const string SESSION_SCAN_KARTICA = "sssckr";
+        public const string SESSION_SCAN_IZVOD = "sssciz";
+        public const string SESSION_SCAN_POTPISNI_KARTON = "ssscpk";
+
 		private enum Korak
 		{
 			A_Uvod = 0,
@@ -177,6 +182,12 @@ namespace InvestApp.Web
 			set { ViewState["pravvlasnik3ime"] = value; }
 		}
 
+        private decimal? MaxBrojUdjela
+        {
+            get { return Session["brudjelamax"] == null ? null : (decimal?)Session["brudjelamax"]; }
+            set { Session["brudjelamax"] = value; }
+        }
+
 		//private int ZahtjevID
 		//{
 		//	get
@@ -219,6 +230,9 @@ namespace InvestApp.Web
 
 		protected void btnNextStep_Click(object sender, EventArgs e)
 		{
+            if (!IsValid)
+                return;
+
 			PromijeniKorak(NEXT_STEP);
 		}
 
@@ -349,10 +363,15 @@ namespace InvestApp.Web
 							mv.ActiveViewIndex = (int)Korak.C_Placanje;
 							break;
 						case Korak.C_Placanje:
-							if(!Kupnja)
-								mv.ActiveViewIndex = (int)Korak.Z_Zadnje;
-							else
-								mv.ActiveViewIndex = (int)Korak.D_PranjeNovcaFizickaPravna;
+                            if (!Kupnja)
+                            {
+                                //var kontrola = KontrolaTxt("ZELJENI_BROJ_UDJELATextBox");
+                                //kontrola.Text = kontrola.Text.Replace(',', '.');
+
+                                mv.ActiveViewIndex = (int)Korak.Z_Zadnje;
+                            }
+                            else
+                                mv.ActiveViewIndex = (int)Korak.D_PranjeNovcaFizickaPravna;
 							break;
 						case Korak.D_PranjeNovcaFizickaPravna:
 							mv.ActiveViewIndex = (int)Korak.E_PolitIzl_Vlasnistvno_FizickaPravna;
@@ -472,34 +491,41 @@ namespace InvestApp.Web
 
         private void SpremiDokumente()
         {
+            var fileOsobna = KontrolaFile("fuOsobna");
+            var hfOsobna = KontrolaAnchor("linkOsobna");
+
+            var k = KorisnikUneseniPodaci;
+
+            k.SLIKA_OSOBNE_URL = SpremiDokument("os_", fileOsobna, hfOsobna) ?? k.SLIKA_OSOBNE_URL;
+
             if (Pravna)
             {
-                var fileOsobna = KontrolaFile("fuPravnaOsobna");
-                var fileIzvod = KontrolaFile("fuPravnaIzvod");
-                var filePotpisniKarton = KontrolaFile("fuPravnaPotpisniKarton");
+                var fileIzvod = KontrolaFile("fuIzvod");
+                var filePotpisniKarton = KontrolaFile("fuPotpisniKarton");
 
-                var hfOsobna = KontrolaHidden("hfPravnaOsobna");
-                var hfIzvod = KontrolaHidden("hfPravnaIzvod");
-                var hfPotpisniKarton = KontrolaHidden("hfPravnaPotpisniKarton");
-                
-                SpremiDokument("p_osobna_", fileOsobna, hfOsobna);
-                SpremiDokument("p_izvod_", fileIzvod, hfIzvod);
-                SpremiDokument("p_potpisni_", filePotpisniKarton, hfPotpisniKarton);
+                var hfIzvod = KontrolaAnchor("linkIzvod");
+                var hfPotpisniKarton = KontrolaAnchor("linkPotpisniKarton");
+
+                k.IZVOD_SCAN_URL = SpremiDokument("iz_", fileIzvod, hfIzvod) ?? k.IZVOD_SCAN_URL;
+                k.POTPISNI_KARTON_SCAN_URL = SpremiDokument("pk_", filePotpisniKarton, hfPotpisniKarton) ?? k.POTPISNI_KARTON_SCAN_URL;
             }
             else
             {
-                var fileOsobna = KontrolaFile("fuFizickaOsobna");
-                var fileKartica = KontrolaFile("fuFizickaKartica");
-
-                var hfOsobna = KontrolaHidden("hfFizickaOsobna");
-                var hfKartica = KontrolaHidden("hfFizickaKartica");
-
-                SpremiDokument("f_osobna_", fileOsobna, hfOsobna);
-                SpremiDokument("f_kartica_", fileKartica, hfKartica);
+                var fileKartica = KontrolaFile("fuKartica");
+                var hfKartica = KontrolaAnchor("linkKartica");
+                
+                k.KARTICA_RACUNA_URL = SpremiDokument("kr_", fileKartica, hfKartica) ?? k.KARTICA_RACUNA_URL;
             }
+
+            Session[SESSION_SCAN_OSOBNA] = k.SLIKA_OSOBNE_URL;
+            Session[SESSION_SCAN_KARTICA] = k.KARTICA_RACUNA_URL;
+            Session[SESSION_SCAN_IZVOD] = k.IZVOD_SCAN_URL;
+            Session[SESSION_SCAN_POTPISNI_KARTON] = k.POTPISNI_KARTON_SCAN_URL;
+
+            KorisnikUneseniPodaci = k;
         }
 
-        private void SpremiDokument(string fileName, FileUpload fu, HiddenField hf)
+        private string SpremiDokument(string fileName, FileUpload fu, HtmlAnchor link)
         {
             if (fu.HasFile)
             {
@@ -510,10 +536,18 @@ namespace InvestApp.Web
                 string fileFullPath = Server.MapPath(filePath);
 
                 fu.SaveAs(fileFullPath);
-                hf.Value = filePath;
+                link.HRef = filePath;
+                link.Visible = true;
+
+                return filePath;
             }
             else
-                hf.Value = null;
+            {
+                //link.HRef = null;
+                //link.Visible = false;
+            }
+
+            return null;
         }
 
 		/// <summary>
@@ -603,6 +637,10 @@ namespace InvestApp.Web
 					k.ZASTUPNIK_MOBITEL = KontrolaTxt("FIZICKA_MOBITELTextBox").Text;
 					k.ZASTUPNIK_FAX = KontrolaTxt("FIZICKA_FAXTextBox").Text;
 					k.ZASTUPNIK_EMAIL = KontrolaTxt("FIZICKA_EMAILTextBox").Text;
+
+                    //dokumenti
+                    k.IZVOD_SCAN_URL = KontrolaAnchor("linkIzvod").HRef;
+                    k.POTPISNI_KARTON_SCAN_URL = KontrolaAnchor("linkPotpisniKarton").HRef;
 				}
 				else
 				{
@@ -624,7 +662,13 @@ namespace InvestApp.Web
 					k.MOBITEL = KontrolaTxt("FIZICKA_MOBITELTextBox").Text;
 					k.FAX = KontrolaTxt("FIZICKA_FAXTextBox").Text;
 					k.KONTAKT_EMAIL = KontrolaTxt("FIZICKA_EMAILTextBox").Text;
+
+                    //dokumenti
+                    k.KARTICA_RACUNA_URL = KontrolaAnchor("linkKartica").HRef;
 				}
+
+                //dokumenti
+                k.SLIKA_OSOBNE_URL = KontrolaAnchor("linkOsobna").HRef;
 
 				k.FIZICKA_DOKUMENT_TIP = KontrolaDdl("FIZICKA_DOKUMENT_TIP").SelectedValue;
 				k.FIZICKA_DOKUMENT_BROJ = KontrolaTxt("FIZICKA_DOKUMENT_BROJTextBox").Text;
@@ -703,13 +747,18 @@ namespace InvestApp.Web
 
 				//PostaviHeader();
 
-				DAL.Korisnik kor = DAL.FondDAC.VratiKorisnika(KorisnikID);
+				DAL.Korisnik kor = DAL.KorisnikDAC.VratiKorisnika(KorisnikID);
 
 				if (kor != null)
 				{
 					//postavi pravna / rezidentnost
 					KontrolaRbl("rblPravna").SelectedValue = kor.PRAVNA;
 					KontrolaRbl("rblRezident").SelectedValue = kor.REZIDENTNOST;
+
+                    Session[SESSION_SCAN_OSOBNA] = kor.SLIKA_OSOBNE_URL;
+                    Session[SESSION_SCAN_KARTICA] = kor.KARTICA_RACUNA_URL;
+                    Session[SESSION_SCAN_IZVOD] = kor.IZVOD_SCAN_URL;
+                    Session[SESSION_SCAN_POTPISNI_KARTON] = kor.POTPISNI_KARTON_SCAN_URL;
 				}
 
 				Korak1Init = true;
@@ -739,39 +788,51 @@ namespace InvestApp.Web
 
             if (Kupnja)
             {
-                KontrolaHTML("divFizickaDokumenti").Visible = !Pravna;
-                KontrolaHTML("divPravnaDokumenti").Visible = Pravna;
+                KontrolaHTML("divKartica").Visible = !Pravna;
+                KontrolaHTML("divIzvod").Visible = Pravna;
+                KontrolaHTML("divPotpisniKarton").Visible = Pravna;
             }
             else
             {
                 KontrolaHTML("divDokumenti").Visible = false;
             }
 
-			DAL.Korisnik k = DAL.FondDAC.VratiKorisnika(KorisnikID);
+			DAL.Korisnik k = DAL.KorisnikDAC.VratiKorisnika(KorisnikID);
+
+            var linkOsobna = KontrolaAnchor("linkOsobna");
+            var linkKartica = KontrolaAnchor("linkKartica");
+            var linkIzvod = KontrolaAnchor("linkIzvod");
+            var linkPotpisniKarton = KontrolaAnchor("linkPotpisniKarton");
 
 			if (k != null && !Korak2Init)
 			{
-				if (Pravna)
-				{
+                if (Pravna)
+                {
+                    //osnovni podaci
+                    KontrolaTxt("PRAVNA_IMETextBox").Text = k.IME;
+                    KontrolaTxt("PRAVNA_MBTextBox").Text = k.MB;
+                    KontrolaTxt("PRAVNA_OIBTextBox").Text = k.OIB;
+                    KontrolaTxt("PRAVNA_ADRESA_ULICATextBox").Text = k.ADRESA_ULICA;
+                    KontrolaTxt("PRAVNA_ADRESA_KUCNI_BROJTextBox").Text = k.ADRESA_KUCNI_BROJ;
+                    KontrolaTxt("PRAVNA_ADRESA_POSTANSKI_BROJTextBox").Text = k.ADRESA_POSTANSKI_BROJ;
+                    KontrolaTxt("PRAVNA_ADRESA_MJESTOTextBox").Text = k.ADRESA_MJESTO;
+                    KontrolaTxt("PRAVNA_ADRESA_DRZAVATextBox").Text = k.ADRESA_DRZAVA;
 
-					//osnovni podaci
-					KontrolaTxt("PRAVNA_IMETextBox").Text = k.IME;
-					KontrolaTxt("PRAVNA_MBTextBox").Text = k.MB;
-					KontrolaTxt("PRAVNA_OIBTextBox").Text = k.OIB;
-					KontrolaTxt("PRAVNA_ADRESA_ULICATextBox").Text = k.ADRESA_ULICA;
-					KontrolaTxt("PRAVNA_ADRESA_KUCNI_BROJTextBox").Text = k.ADRESA_KUCNI_BROJ;
-					KontrolaTxt("PRAVNA_ADRESA_POSTANSKI_BROJTextBox").Text = k.ADRESA_POSTANSKI_BROJ;
-					KontrolaTxt("PRAVNA_ADRESA_MJESTOTextBox").Text = k.ADRESA_MJESTO;
-					KontrolaTxt("PRAVNA_ADRESA_DRZAVATextBox").Text = k.ADRESA_DRZAVA;
+                    //kontakt
+                    KontrolaTxt("PRAVNA_TELEFONTextBox").Text = k.TELEFON;
+                    KontrolaTxt("PRAVNA_MOBITELTextBox").Text = k.MOBITEL;
+                    KontrolaTxt("PRAVNA_FAXTextBox").Text = k.FAX;
+                    KontrolaTxt("PRAVNA_EMAILTextBox").Text = k.KONTAKT_EMAIL;
 
-					//kontakt
-					KontrolaTxt("PRAVNA_TELEFONTextBox").Text = k.TELEFON;
-					KontrolaTxt("PRAVNA_MOBITELTextBox").Text = k.MOBITEL;
-					KontrolaTxt("PRAVNA_FAXTextBox").Text = k.FAX;
-					KontrolaTxt("PRAVNA_EMAILTextBox").Text = k.KONTAKT_EMAIL;
+                    //KontrolaRbl("rblPravnaZastupanjePojedinacno").SelectedValue
 
-					//KontrolaRbl("rblPravnaZastupanjePojedinacno").SelectedValue
-				}
+                    linkIzvod.HRef = k.IZVOD_SCAN_URL;
+                    linkPotpisniKarton.HRef = k.POTPISNI_KARTON_SCAN_URL;
+                }
+                else
+                {
+                    linkKartica.HRef = k.KARTICA_RACUNA_URL;
+                }
 
 				//nerezidenti ne trebaju unijeti JMBG i OIB
 				if (!Rezident)
@@ -821,8 +882,17 @@ namespace InvestApp.Web
 				KontrolaTxt("ADRESA_SLANJE_MJESTOTextBox").Text = k.ADRESA_SLANJE_MJESTO;
 				KontrolaTxt("ADRESA_SLANJE_DRZAVATextBox").Text = k.ADRESA_SLANJE_DRZAVA;
 
+                //dokumenti
+                linkOsobna.HRef = k.SLIKA_OSOBNE_URL;
+
 				Korak2Init = true;
 			}
+
+            //scanovi thumb
+            linkOsobna.Visible = !string.IsNullOrEmpty(linkOsobna.HRef);
+            linkKartica.Visible = !string.IsNullOrEmpty(linkKartica.HRef);
+            linkIzvod.Visible = !string.IsNullOrEmpty(linkIzvod.HRef);
+            linkPotpisniKarton.Visible = !string.IsNullOrEmpty(linkPotpisniKarton.HRef);
 		}
 
 		/// <summary>
@@ -830,7 +900,7 @@ namespace InvestApp.Web
 		/// </summary>
 		private void InitKorak2a()
 		{
-			DAL.Korisnik k = DAL.FondDAC.VratiKorisnika(KorisnikID);
+            DAL.Korisnik k = DAL.KorisnikDAC.VratiKorisnika(KorisnikID);
 
 			if (k != null && !Korak2aInit)
 			{
@@ -841,24 +911,35 @@ namespace InvestApp.Web
 
 		private void InitKorak3()
 		{
-			if (!Korak3Init)
-			{
-				////dohvati banke
-				//DropDownList ddlBanke = KontrolaDdl("ddlBanke");
-				//ddlBanke.DataSource = DAL.FondDAC.VratiBankeDS();
-				//ddlBanke.DataBind();
+            if (!Korak3Init)
+            {
+                ////dohvati banke
+                //DropDownList ddlBanke = KontrolaDdl("ddlBanke");
+                //ddlBanke.DataSource = DAL.FondDAC.VratiBankeDS();
+                //ddlBanke.DataBind();
 
-				DAL.Korisnik k = DAL.FondDAC.VratiKorisnika(KorisnikID);
+                DAL.Korisnik k = DAL.KorisnikDAC.VratiKorisnika(KorisnikID);
 
-				if (k != null)
-				{
-					//ddlBanke.SelectedValue = k.RACUN_VBDI;
-					//KontrolaTxt("VBDITextBox").Text = k.RACUN_VBDI;
-					KontrolaTxt("RACUN_BROJTextBox").Text = k.RACUN_BROJ;
-				}
+                if (k != null)
+                {
+                    //ddlBanke.SelectedValue = k.RACUN_VBDI;
+                    //KontrolaTxt("VBDITextBox").Text = k.RACUN_VBDI;
+                    KontrolaTxt("RACUN_BROJTextBox").Text = k.RACUN_BROJ;
+                }
 
-				Korak3Init = true;
-			}
+                if (!Kupnja)
+                {
+                    MaxBrojUdjela = DAL.FondDAC.VratiBrojUdjela(KorisnikID, FondID, DateTime.Today);
+                    KontrolaTxt("ZELJENI_BROJ_UDJELATextBox").Text = Utility.DecimalToString(MaxBrojUdjela, "n4");
+                }
+
+                Korak3Init = true;
+            }
+            else
+            {
+                //var kontrola = KontrolaTxt("ZELJENI_BROJ_UDJELATextBox");
+                //kontrola.Text = kontrola.Text.Replace('.', ',');
+            }
 
 			if (Kupnja)
 			{
@@ -870,18 +951,20 @@ namespace InvestApp.Web
 				KontrolaHTML("divIznos").Visible = false;
 				KontrolaHTML("divBrojUdjela").Visible = true;
 
-				decimal maxBrUdjela = DAL.FondDAC.VratiBrojUdjela(KorisnikID, FondID, DateTime.Today);
-				KontrolaValRange("valBrUdjelaMax").MaximumValue = ((int)maxBrUdjela).ToString();
-				KontrolaValRange("valBrUdjelaMax").ErrorMessage = "Max broj udjela: " + ((int)maxBrUdjela).ToString("n0");
+                //string strBrojUdjela = maxBrUdjela.ToString("n4");
 
-				KontrolaTxt("ZELJENI_BROJ_UDJELATextBox").Text = ((int)maxBrUdjela).ToString();
+                //KontrolaValRange("valBrUdjelaMax").MaximumValue = strBrojUdjela;
+
+                //strBrojUdjela = maxBrUdjela.ToString("n4").Replace(",", "").Replace(".", ",");
+
+                //KontrolaValRange("valBrUdjelaMax").ErrorMessage = "Max broj udjela: " + strBrojUdjela;
 			}
 
 		}
 
 		private void InitKorak4()
 		{
-			DAL.Korisnik k = DAL.FondDAC.VratiKorisnika(KorisnikID);
+            DAL.Korisnik k = DAL.KorisnikDAC.VratiKorisnika(KorisnikID);
 
 			if (Pravna)
 			{
@@ -919,7 +1002,7 @@ namespace InvestApp.Web
 
 		private void InitKorak5()
 		{
-			DAL.Korisnik k = DAL.FondDAC.VratiKorisnika(KorisnikID);
+            DAL.Korisnik k = DAL.KorisnikDAC.VratiKorisnika(KorisnikID);
 
 			if (Pravna)
 			{
@@ -1012,10 +1095,20 @@ namespace InvestApp.Web
 			return Kontrola(kontrolaID) as HtmlGenericControl;
 		}
 
+        private HtmlAnchor KontrolaAnchor(string kontrolaID)
+        {
+            return Kontrola(kontrolaID) as HtmlAnchor;
+        }
+
 		private RequiredFieldValidator KontrolaVal(string kontrolaID)
 		{
 			return Kontrola(kontrolaID) as RequiredFieldValidator;
 		}
+
+        private CustomValidator KontrolaCustomVal(string kontrolaID)
+        {
+            return Kontrola(kontrolaID) as CustomValidator;
+        }
 
 		private RangeValidator KontrolaValRange(string kontrolaID)
 		{
@@ -1044,8 +1137,11 @@ namespace InvestApp.Web
 				Log("Podnesen zahtjev za " + akcija + ". ID=" + zahtjev.ID);
 
 				//spremanje promijenjenih podataka korisnika
-				if (rblKorisnikPodaciSpremi.SelectedValue == "D")
-					DAL.KorisnikDAC.KorisnikAzuriraj(KorisnikID, KorisnikUneseniPodaci);
+                if (rblKorisnikPodaciSpremi.SelectedValue == "D")
+                {
+                    PrebaciKorisnikDokumente();
+                    DAL.KorisnikDAC.KorisnikAzuriraj(KorisnikID, KorisnikUneseniPodaci);
+                }
 			}
 			else
 			{
@@ -1054,17 +1150,105 @@ namespace InvestApp.Web
 				if (e.Exception.InnerException != null)
 					PorukaText += ". " + e.Exception.InnerException.Message;
 
-				Log( string.Format("Greška pri zahtjevu za {0}. Greška: {1}\n{2}", akcija, e.Exception.Message, e.Exception.StackTrace));
+				Log("Greška pri zahtjevu za " + akcija, e.Exception);
 			}
 
 			Response.Redirect(ResolveUrl("~/Fond/FondZahtjevPoruka.aspx"));
 
 		}
 
+        private void PrebaciKorisnikDokumente()
+        {
+            if (KorisnikUneseniPodaci != null)
+            {
+                var k = KorisnikUneseniPodaci;
+                string file = PrebaciKorisnikDokument(k.SLIKA_OSOBNE_URL);
+
+                if (file != null)
+                    k.SLIKA_OSOBNE_URL = file;
+
+                file = PrebaciKorisnikDokument(k.KARTICA_RACUNA_URL);
+
+                if (file != null)
+                    k.KARTICA_RACUNA_URL = file;
+
+                file = PrebaciKorisnikDokument(k.IZVOD_SCAN_URL);
+
+                if (file != null)
+                    k.IZVOD_SCAN_URL = file;
+
+                file = PrebaciKorisnikDokument(k.POTPISNI_KARTON_SCAN_URL);
+
+                if (file != null)
+                    k.POTPISNI_KARTON_SCAN_URL = file;
+
+                Session[SESSION_SCAN_OSOBNA] = k.SLIKA_OSOBNE_URL;
+                Session[SESSION_SCAN_KARTICA] = k.KARTICA_RACUNA_URL;
+                Session[SESSION_SCAN_IZVOD] = k.IZVOD_SCAN_URL;
+                Session[SESSION_SCAN_POTPISNI_KARTON] = k.POTPISNI_KARTON_SCAN_URL;
+
+                KorisnikUneseniPodaci = k;
+            }
+        }
+
+        private string PrebaciKorisnikDokument(string srcPath)
+        {
+            if (string.IsNullOrEmpty(srcPath))
+                return null;
+
+            string folder = "~/Dokumenti/Korisnici/";
+
+            string fileName = System.IO.Path.GetFileName(srcPath);
+            string destPath = System.IO.Path.Combine(folder, fileName);
+            string destFullPath = Server.MapPath(destPath);
+            string srcFullPath = Server.MapPath(srcPath);
+
+            try
+            {
+                if (srcFullPath != destFullPath && System.IO.File.Exists(srcFullPath))
+                {
+                    
+
+                    if (System.IO.File.Exists(destFullPath))
+                        System.IO.File.Delete(destFullPath);
+
+                    System.IO.File.Move(srcFullPath, destFullPath);
+
+                    return destPath;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log("Greška kod kopiranja dokumenta za korisnika kod kupnje", ex);
+            }
+
+            return null;
+        }
+
 		protected void EntityDataSourceZahtjev_Inserting(object sender, EntityDataSourceChangingEventArgs e)
 		{
 			(e.Entity as DAL.FondZahtjev).PODNOSENJE_KORISNIK_ID = KorisnikID;
 		}
+
+        protected void valBrojUdjela_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            decimal? brUdjela = Utility.StringToDecimal(args.Value);
+
+            args.IsValid = false;
+
+            if (!brUdjela.HasValue)
+            {
+                KontrolaCustomVal("valBrojUdjela").ErrorMessage = "Broj mora biti u formatu 1234,0000";
+                return;
+            }
+            else if (brUdjela > MaxBrojUdjela)
+            {
+                KontrolaCustomVal("valBrojUdjela").ErrorMessage = "Maksimalan broj udjela: " + Utility.DecimalToString(MaxBrojUdjela, "n4");
+                return;
+            }
+            else
+                args.IsValid = true;
+        }
 
 
 	}

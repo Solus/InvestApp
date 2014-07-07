@@ -1413,6 +1413,9 @@ a.box_button.register:hover{
 
 #body.standalone .form_header{
     padding: 10px 0;
+}
+
+.form_header.normal{
     text-transform: none;
 }
 
@@ -1845,6 +1848,27 @@ a.updateCart.bigger.remove{
 	background-color: #f7a57b;
 }
 
+a.blacklist:link /*link za sakrivanje fondova*/
+{
+	display: inline-block;
+	padding: 0;
+	line-height: 30px;
+	text-align: center;
+	vertical-align:middle;
+	text-decoration: none;
+	font-size: 12px;
+	width: 30px;
+	height: 24px;
+	color: transparent;
+	background: url(../Images/hide_visible.png) no-repeat center center;
+	transition: 0.5s;
+}
+
+a.blacklist.blacklisted /*link za sakrivanje fondova*/
+{
+	background: url(../Images/hide_hidden.png) no-repeat center center;
+}
+
 .progress_message
 {
 	position: absolute;
@@ -1867,6 +1891,26 @@ a.updateCart.bigger.remove{
 .cell_btn_zahtjev_izvrsi
 {
 	padding: 5px 0 4px 0 !important;
+}
+
+.portfelj select.search_control{
+    padding: 0 5px;
+    height: 27px;
+    border: 2px solid #ddd;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.portfelj .search_control_date{
+    padding: 0;
+    height: 23px;
+    border: 2px solid #ddd;
+}
+
+.portfelj .search_control_date input{
+    height: 100%;
+    font-family: inherit;
+    font-size: 14px;
 }
 
 /* USPOREDBA FONDOVA */
@@ -1952,12 +1996,15 @@ a.search_button
 
 .search_button.search_clear
 {
-	display: none;
+    opacity: 0;
+	display: none\9;
+    transition: .2s;
 }
 
 .search_group:hover .search_button.search_clear
 {
-	display: inline-block;
+    opacity: 1;
+	display: inline-block\9;
 }
 
 input.btn_usporedba_dodaj
@@ -2150,27 +2197,29 @@ ul.chart_legend li{
 }
 
 /* dodatne kontrole na stranici */
+.form_body_extra_container{
+    margin: 0 auto;
+    text-align: center;
+}
+
 .form_body_extra
 {
-	background: #F5F5F5;
 	width: 450px;
 	min-height: 370px;
 	padding: 5px;
-	border: 1px solid #d0d0d0;
-	border-radius: 5px;
 	margin-top: 20px;
 	text-align: center;
 	position: relative;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .form_body_extra.body_left{
-	float: left;
-	margin-left: 20px;
+	margin-right: 40px;
 }
 
 .form_body_extra.body_right{
-	float: right;
-	margin-right: 20px;
+	margin-left: 40px;
 }
 
 /*pretraživanje unutar user kontroli*/
@@ -2178,6 +2227,14 @@ ul.chart_legend li{
 {
 	margin: 7px 0;
 }
+
+.ctrl_search select{
+    padding: 3px 5px;
+    border: 2px solid #ddd;
+    margin-left: 5px;
+    font-family: inherit;
+}
+
 
 .prinosi_table
 {
@@ -2195,7 +2252,6 @@ ul.chart_legend li{
 .prinosi_table th
 {
     text-align: left;
-    vertical-align: bottom;
     padding-bottom: 5px;
     font-weight: bold;
     vertical-align: top;
@@ -2567,6 +2623,11 @@ textarea:focus
     background-color: #fff;
 }
 
+.form_item a.file_thumb img{
+    vertical-align: middle;
+}
+
+
 /*input[type="radio"] + label
 {
 	display: inline-block;
@@ -2706,17 +2767,24 @@ a.image_link:hover
 input.btn_navigation
 {
 	margin: 0 3px;
-	background-color: #EF5A21;
+	background-color: #f15b23;
     border: none;
 	color: #fff;
-	padding: 5px 10px;
-	box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+	padding: 0 15px;
+    height: 45px;
+    line-height: 45px;
 	background-repeat: no-repeat;
+    text-transform: uppercase;
 }
 
 .btn_navigation.alone
 {
 	margin: 10px;
+}
+
+.btn_navigation.rucna_realizacija{
+    float: right;
+    margin-top: 20px;
 }
 
 input.btn_navigation:hover
@@ -2732,7 +2800,7 @@ input.btn_navigation.next
 {
 	background-image: url(../Images/arrow_right_white.png);
 	background-position: right 5px center;
-	width: 145px;
+	width: 190px;
 	text-align:left;
 }
 
@@ -2740,7 +2808,7 @@ input.btn_navigation.prev
 {
 	background-image: url(../Images/arrow_left_white.png);
 	background-position: left 5px center;
-	width: 155px;
+	width: 205px;
 	text-align:right;
 }
 
@@ -2749,20 +2817,20 @@ input.btn_navigation.save
 {
 	background-image: url(../Images/check_white.png);
 	background-position: right 5px center;
-	width: 85px;
+	width: 105px;
 	text-align:left;
 }
 
 input.btn_navigation.save
 {
-	width: 95px;
+	width: 110px;
 }
 
 input.btn_navigation.cancel
 {
 	background-image: url(../Images/cancel_white.png);
 	background-position: right 5px center;
-	width: 105px;
+	width: 130px;
 	text-align:left;
 }
 
@@ -2887,6 +2955,24 @@ input[type=submit].btn_dark{
     height: 25px;
     vertical-align: middle;
     margin-right: 10px;
+}
+
+input[type=file]{
+    position: relative;
+    border: 1px solid #d0d0d0;
+    background: #ececec;
+    box-shadow: none;
+}
+
+input[type=file]:after{
+    content: "bmp, jpg, png";
+    position: absolute;
+    right: 5px;
+    line-height: 22px;
+    font-size: 11px;
+    padding: 0 5px;
+    color: #F37D43;
+    background: #ececec;
 }
 
 /*login*/

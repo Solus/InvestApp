@@ -9,6 +9,14 @@ namespace InvestApp.DAL
 {
 	public class KorisnikDAC
 	{
+        public static Korisnik VratiKorisnika(int ID)
+        {
+            using (var context = new FondEntities())
+            {
+                return context.Korisnici.FirstOrDefault(k => k.ID == ID);
+            }
+        }
+
 		public static int NoviKorisnik(string username)
 		{
 			var user = Membership.GetUser(username);
@@ -198,7 +206,9 @@ namespace InvestApp.DAL
 							Utility.StringPromijenjen(k.ZASTUPNIK_FAX, korisnikUsporedba.ZASTUPNIK_FAX) ||
 							Utility.StringPromijenjen(k.ZASTUPNIK_EMAIL, korisnikUsporedba.ZASTUPNIK_EMAIL) ||
 							Utility.StringPromijenjen(k.PRAVNA_PLANIRANA_GOD_ULAGANJA, korisnikUsporedba.PRAVNA_PLANIRANA_GOD_ULAGANJA) ||
-							Utility.StringPromijenjen(k.PRAVNA_VLASNISTVO_PODIJELJENO, korisnikUsporedba.PRAVNA_VLASNISTVO_PODIJELJENO);
+							Utility.StringPromijenjen(k.PRAVNA_VLASNISTVO_PODIJELJENO, korisnikUsporedba.PRAVNA_VLASNISTVO_PODIJELJENO) ||
+                            Utility.StringPromijenjen(k.IZVOD_SCAN_URL, korisnikUsporedba.IZVOD_SCAN_URL) ||
+                            Utility.StringPromijenjen(k.POTPISNI_KARTON_SCAN_URL, korisnikUsporedba.POTPISNI_KARTON_SCAN_URL);
 					}
 					else //fizička
 					{
@@ -225,7 +235,8 @@ namespace InvestApp.DAL
 							Utility.StringPromijenjen(k.FIZICKA_ZANIMANJE, korisnikUsporedba.FIZICKA_ZANIMANJE) ||
 							Utility.StringPromijenjen(k.FIZICKA_PLANIRANA_GOD_ULAGANJA, korisnikUsporedba.FIZICKA_PLANIRANA_GOD_ULAGANJA) ||
 							Utility.StringPromijenjen(k.FIZICKA_SREDSTVA_OSTVARENA, korisnikUsporedba.FIZICKA_SREDSTVA_OSTVARENA) ||
-							Utility.StringPromijenjen(k.FIZICKA_POLITICKA_IZLOZENOST, korisnikUsporedba.FIZICKA_POLITICKA_IZLOZENOST);
+							Utility.StringPromijenjen(k.FIZICKA_POLITICKA_IZLOZENOST, korisnikUsporedba.FIZICKA_POLITICKA_IZLOZENOST) ||
+                            Utility.StringPromijenjen(k.KARTICA_RACUNA_URL, korisnikUsporedba.KARTICA_RACUNA_URL);
 					}
 				}
 
@@ -249,7 +260,8 @@ namespace InvestApp.DAL
 						Utility.StringPromijenjen(k.ADRESA_SLANJE_DRZAVA, korisnikUsporedba.ADRESA_SLANJE_DRZAVA) ||
 						//ostalo
 						Utility.StringPromijenjen(k.RACUN_VBDI, korisnikUsporedba.RACUN_VBDI) ||
-						Utility.StringPromijenjen(k.RACUN_BROJ, korisnikUsporedba.RACUN_BROJ);
+						Utility.StringPromijenjen(k.RACUN_BROJ, korisnikUsporedba.RACUN_BROJ) ||
+                        Utility.StringPromijenjen(k.SLIKA_OSOBNE_URL, korisnikUsporedba.SLIKA_OSOBNE_URL);
 				}
 
 				return promijenjeno;
@@ -299,6 +311,9 @@ namespace InvestApp.DAL
 					k.ZASTUPNIK_EMAIL = Utility.NormalizeString(korisnikUsporedba.ZASTUPNIK_EMAIL);
 					k.PRAVNA_PLANIRANA_GOD_ULAGANJA = Utility.NormalizeString(korisnikUsporedba.PRAVNA_PLANIRANA_GOD_ULAGANJA);
 					k.PRAVNA_VLASNISTVO_PODIJELJENO = Utility.NormalizeString(korisnikUsporedba.PRAVNA_VLASNISTVO_PODIJELJENO);
+                    //dokumenti
+                    k.IZVOD_SCAN_URL = Utility.NormalizeString(korisnikUsporedba.IZVOD_SCAN_URL);
+                    k.POTPISNI_KARTON_SCAN_URL = Utility.NormalizeString(korisnikUsporedba.POTPISNI_KARTON_SCAN_URL);
 				}
 				else //fizička
 				{
@@ -325,6 +340,8 @@ namespace InvestApp.DAL
 					k.FIZICKA_PLANIRANA_GOD_ULAGANJA = Utility.NormalizeString(korisnikUsporedba.FIZICKA_PLANIRANA_GOD_ULAGANJA);
 					k.FIZICKA_SREDSTVA_OSTVARENA = Utility.NormalizeString(korisnikUsporedba.FIZICKA_SREDSTVA_OSTVARENA);
 					k.FIZICKA_POLITICKA_IZLOZENOST = Utility.NormalizeString(korisnikUsporedba.FIZICKA_POLITICKA_IZLOZENOST);
+                    //dokumenti
+                    k.KARTICA_RACUNA_URL = Utility.NormalizeString(korisnikUsporedba.KARTICA_RACUNA_URL);
 				}
 				k.FIZICKA_DOKUMENT_TIP = Utility.NormalizeString(korisnikUsporedba.FIZICKA_DOKUMENT_TIP);
 				k.FIZICKA_DOKUMENT_BROJ = Utility.NormalizeString(korisnikUsporedba.FIZICKA_DOKUMENT_BROJ);
@@ -344,11 +361,15 @@ namespace InvestApp.DAL
 				//ostalo
 				k.RACUN_VBDI = Utility.NormalizeString(korisnikUsporedba.RACUN_VBDI);
 				k.RACUN_BROJ = Utility.NormalizeString(korisnikUsporedba.RACUN_BROJ);
+                //dokumenti
+                k.SLIKA_OSOBNE_URL = Utility.NormalizeString(korisnikUsporedba.SLIKA_OSOBNE_URL);
 
 				context.SaveChanges();
 			}
 
 		}
+
+        
 
 	}
 }

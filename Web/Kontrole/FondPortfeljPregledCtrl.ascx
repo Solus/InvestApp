@@ -146,7 +146,7 @@
             </Columns>
         </dx:ASPxGridView>
 
-        <asp:Button ID="btnRucno" CssClass="btn_navigation" runat="server" CausesValidation="False" Text="Ručna realizacija" OnClick="btnRucno_Click" />
+        <asp:Button ID="btnRucno" CssClass="btn_navigation rucna_realizacija" runat="server" CausesValidation="False" Text="Ručna realizacija" OnClick="btnRucno_Click" />
 
 
     </div>

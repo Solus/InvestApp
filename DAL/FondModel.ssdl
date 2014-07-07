@@ -37,51 +37,6 @@
     <EntitySet Name="KORISNIK_FOND_FAVORITI" EntityType="FondModel.Store.KORISNIK_FOND_FAVORITI" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NOVOSTI" EntityType="FondModel.Store.NOVOSTI" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="VALUTE" EntityType="FondModel.Store.VALUTE" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="FondPodaci" EntityType="FondModel.Store.FondPodaci" store:Type="Views" store:Schema="dbo" store:Name="FondPodaci">
-      <DefiningQuery>SELECT 
-      [FondPodaci].[ID] AS [ID], 
-      [FondPodaci].[KATEGORIJA_ID] AS [KATEGORIJA_ID], 
-      [FondPodaci].[REGIJA_ID] AS [REGIJA_ID], 
-      [FondPodaci].[TIP_ULAGANJA_ID] AS [TIP_ULAGANJA_ID], 
-      [FondPodaci].[TIP_UPRAVLJANJA_ID] AS [TIP_UPRAVLJANJA_ID], 
-      [FondPodaci].[DRUSTVA_ID] AS [DRUSTVA_ID], 
-      [FondPodaci].[RIZICNOST] AS [RIZICNOST], 
-      [FondPodaci].[MINIMALNA_POCETNA_UPLATA] AS [MINIMALNA_POCETNA_UPLATA], 
-      [FondPodaci].[MINIMALNE_OSTALE_UPLATE] AS [MINIMALNE_OSTALE_UPLATE], 
-      [FondPodaci].[VALUTA_SIFRA] AS [VALUTA_SIFRA], 
-      [FondPodaci].[POCETNA_CIJENA_UDJELA] AS [POCETNA_CIJENA_UDJELA], 
-      [FondPodaci].[DATUM_OSNIVANJA] AS [DATUM_OSNIVANJA], 
-      [FondPodaci].[IMOVINA_FONDA] AS [IMOVINA_FONDA], 
-      [FondPodaci].[NAKNADA_ULAZNA] AS [NAKNADA_ULAZNA], 
-      [FondPodaci].[NAKNADA_IZLAZNA] AS [NAKNADA_IZLAZNA], 
-      [FondPodaci].[NAKNADA_ZA_UPRAVLJANJEM_FONDA] AS [NAKNADA_ZA_UPRAVLJANJEM_FONDA], 
-      [FondPodaci].[NAKNADA_DEPOZITARNOJ_BANCI] AS [NAKNADA_DEPOZITARNOJ_BANCI], 
-      [FondPodaci].[NAKNADA_BANKA_FIKSNA] AS [NAKNADA_BANKA_FIKSNA], 
-      [FondPodaci].[NAKNADA_BANKA_POSTO] AS [NAKNADA_BANKA_POSTO], 
-      [FondPodaci].[NAKNADA_BANKA_MINIMALNI] AS [NAKNADA_BANKA_MINIMALNI], 
-      [FondPodaci].[NAKNADA_BANKA_MAKSIMALNI] AS [NAKNADA_BANKA_MAKSIMALNI], 
-      [FondPodaci].[NAPOMENA_ZA_KUPNJU] AS [NAPOMENA_ZA_KUPNJU], 
-      [FondPodaci].[NAPOMENA_ZA_PRODAJU] AS [NAPOMENA_ZA_PRODAJU], 
-      [FondPodaci].[NAPOMENA_ZA_REGISTRACIJU] AS [NAPOMENA_ZA_REGISTRACIJU], 
-      [FondPodaci].[DODATNI_PODACI] AS [DODATNI_PODACI], 
-      [FondPodaci].[VRIJEDI_OD] AS [VRIJEDI_OD], 
-      [FondPodaci].[VRIJEDI_DO] AS [VRIJEDI_DO], 
-      [FondPodaci].[NAZIV] AS [NAZIV], 
-      [FondPodaci].[NAPOMENA_ZA_ODREGISTRACIJU] AS [NAPOMENA_ZA_ODREGISTRACIJU], 
-      [FondPodaci].[ZAHTJEV_REPORT_ID] AS [ZAHTJEV_REPORT_ID], 
-      [FondPodaci].[NALOG_PRIMATELJ_VBDI] AS [NALOG_PRIMATELJ_VBDI], 
-      [FondPodaci].[NALOG_PRIMATELJ_RACUN] AS [NALOG_PRIMATELJ_RACUN], 
-      [FondPodaci].[NALOG_PBO_MODEL] AS [NALOG_PBO_MODEL], 
-      [FondPodaci].[NALOG_PBO] AS [NALOG_PBO], 
-      [FondPodaci].[NALOG_OPIS_PLACANJA] AS [NALOG_OPIS_PLACANJA], 
-      [FondPodaci].[NAZIV_VLASNIKA] AS [NAZIV_VLASNIKA], 
-      [FondPodaci].[VRIJEDNOST] AS [VRIJEDNOST], 
-      [FondPodaci].[VRIJEDNOST_DATUM] AS [VRIJEDNOST_DATUM], 
-      [FondPodaci].[PROSLA_VRIJEDNOST] AS [PROSLA_VRIJEDNOST], 
-      [FondPodaci].[VALUTA] AS [VALUTA], 
-      [FondPodaci].[NAZIV_KATEGORIJE] AS [NAZIV_KATEGORIJE]
-      FROM [dbo].[FondPodaci] AS [FondPodaci]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_FOND_DEF_FOND_CILJ_PRINOSA" Association="FondModel.Store.FK_FOND_DEF_FOND_CILJ_PRINOSA">
       <End Role="FOND_CILJ_PRINOSA" EntitySet="FOND_CILJ_PRINOSA" />
       <End Role="FOND_DEF" EntitySet="FOND_DEF" />
@@ -280,6 +235,11 @@
     <Property Name="POKAZATELJ_UKUPNIH_TROSKOVA" Type="nvarchar(max)" />
     <Property Name="INDEKSNI" Type="bit" />
     <Property Name="GRUPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="ZADNJA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="ZADNJA_VRIJEDNOST_DATUM" Type="date" />
+    <Property Name="PREDZADNJA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+    <Property Name="PREDZADNJA_VRIJEDNOST_DATUM" Type="date" />
+    <Property Name="SAKRIVENI" Type="bit" />
   </EntityType>
   <EntityType Name="FOND_DRUSTVA">
     <Key>
@@ -588,11 +548,10 @@
     <Property Name="VLASNIK3_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
     <Property Name="VLASNIK3_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
     <Property Name="VLASNIK3_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
-    <Property Name="FIZICKA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
-    <Property Name="FIZICKA_SCAN_KARTICA_URL" Type="nvarchar" MaxLength="250" />
-    <Property Name="PRAVNA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
-    <Property Name="PRAVNA_SCAN_IZVOD_URL" Type="nvarchar" MaxLength="250" />
-    <Property Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="SCAN_OSOBNA_URL" Type="nvarchar(max)" />
+    <Property Name="SCAN_KARTICA_URL" Type="nvarchar(max)" />
+    <Property Name="SCAN_IZVOD_URL" Type="nvarchar(max)" />
+    <Property Name="SCAN_POTPISNI_KARTON_URL" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="KORISNIK">
     <Key>
@@ -668,6 +627,8 @@
     <Property Name="RACUN_BROJ" Type="varchar" MaxLength="21" />
     <Property Name="FIZICKA_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
     <Property Name="PRAVNA_VLASNISTVO_PODIJELJENO" Type="nvarchar" MaxLength="1" />
+    <Property Name="IZVOD_SCAN_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="POTPISNI_KARTON_SCAN_URL" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="KORISNIK_FOND_FAVORITI">
     <Key>
@@ -698,56 +659,6 @@
     <Property Name="APOEN" Type="numeric" Nullable="false" Precision="3" />
     <Property Name="NAZIV" Type="nvarchar" Nullable="false" MaxLength="30" />
     <Property Name="MASKA" Type="nvarchar" Nullable="false" MaxLength="5" />
-  </EntityType>
-  <!--Errors Found During Generation:
-      warning 6002: The table/view 'InvestApp.dbo.FondPodaci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-  <EntityType Name="FondPodaci">
-    <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="VALUTA" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="KATEGORIJA_ID" Type="int" />
-    <Property Name="REGIJA_ID" Type="int" />
-    <Property Name="TIP_ULAGANJA_ID" Type="int" />
-    <Property Name="TIP_UPRAVLJANJA_ID" Type="int" />
-    <Property Name="DRUSTVA_ID" Type="int" />
-    <Property Name="RIZICNOST" Type="nchar" MaxLength="2" />
-    <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
-    <Property Name="POCETNA_CIJENA_UDJELA" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="DATUM_OSNIVANJA" Type="date" />
-    <Property Name="IMOVINA_FONDA" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="NAKNADA_ULAZNA" Type="nvarchar" />
-    <Property Name="NAKNADA_IZLAZNA" Type="nvarchar" />
-    <Property Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" Type="nvarchar" />
-    <Property Name="NAKNADA_DEPOZITARNOJ_BANCI" Type="nvarchar" />
-    <Property Name="NAKNADA_BANKA_FIKSNA" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="NAKNADA_BANKA_POSTO" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="NAKNADA_BANKA_MINIMALNI" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="NAKNADA_BANKA_MAKSIMALNI" Type="numeric" Precision="15" Scale="2" />
-    <Property Name="NAPOMENA_ZA_KUPNJU" Type="ntext" />
-    <Property Name="NAPOMENA_ZA_PRODAJU" Type="ntext" />
-    <Property Name="NAPOMENA_ZA_REGISTRACIJU" Type="ntext" />
-    <Property Name="DODATNI_PODACI" Type="nvarchar" />
-    <Property Name="VRIJEDI_OD" Type="date" />
-    <Property Name="VRIJEDI_DO" Type="date" />
-    <Property Name="NAZIV" Type="nvarchar" MaxLength="200" />
-    <Property Name="NAPOMENA_ZA_ODREGISTRACIJU" Type="ntext" />
-    <Property Name="ZAHTJEV_REPORT_ID" Type="nvarchar" MaxLength="200" />
-    <Property Name="NALOG_PRIMATELJ_VBDI" Type="nvarchar" MaxLength="7" />
-    <Property Name="NALOG_PRIMATELJ_RACUN" Type="nvarchar" MaxLength="10" />
-    <Property Name="NALOG_PBO_MODEL" Type="nvarchar" MaxLength="2" />
-    <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
-    <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
-    <Property Name="NAZIV_VLASNIKA" Type="nvarchar" />
-    <Property Name="VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
-    <Property Name="VRIJEDNOST_DATUM" Type="date" />
-    <Property Name="PROSLA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
-    <Property Name="VALUTA" Type="nvarchar" Nullable="false" MaxLength="3" />
-    <Property Name="NAZIV_KATEGORIJE" Type="nvarchar" />
   </EntityType>
   <Association Name="FK_FOND_DEF_FOND_CILJ_PRINOSA">
     <End Role="FOND_CILJ_PRINOSA" Type="FondModel.Store.FOND_CILJ_PRINOSA" Multiplicity="0..1" />
@@ -1087,6 +998,7 @@
     <Parameter Name="inTrzisteId" Type="int" Mode="In" />
     <Parameter Name="inProfilRizicnosti" Type="int" Mode="In" />
     <Parameter Name="inKorisnikId" Type="int" Mode="In" />
+    <Parameter Name="inPrikaziSakrivene" Type="bit" Mode="In" />
   </Function>
   <Function Name="ZadnjaCijena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inFondId" Type="int" Mode="In" />

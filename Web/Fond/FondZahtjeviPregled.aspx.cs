@@ -91,7 +91,9 @@ namespace InvestApp.Web
 
 		private void InitSearchKontrole()
 		{
-			ddlFond.DataSource = DAL.FondDAC.VratiFondove(true);
+            bool prikaziSakrivene = KorisnikJeAdmin;
+
+			ddlFond.DataSource = DAL.FondDAC.VratiFondove(true, prikaziSakrivene: prikaziSakrivene);
 			ddlFond.DataBind();
 		}
 

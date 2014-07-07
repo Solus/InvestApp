@@ -42,51 +42,6 @@
           <EntitySet Name="KORISNIK_FOND_FAVORITI" EntityType="FondModel.Store.KORISNIK_FOND_FAVORITI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="NOVOSTI" EntityType="FondModel.Store.NOVOSTI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VALUTE" EntityType="FondModel.Store.VALUTE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="FondPodaci" EntityType="FondModel.Store.FondPodaci" store:Type="Views" store:Schema="dbo" store:Name="FondPodaci">
-            <DefiningQuery>SELECT 
-      [FondPodaci].[ID] AS [ID], 
-      [FondPodaci].[KATEGORIJA_ID] AS [KATEGORIJA_ID], 
-      [FondPodaci].[REGIJA_ID] AS [REGIJA_ID], 
-      [FondPodaci].[TIP_ULAGANJA_ID] AS [TIP_ULAGANJA_ID], 
-      [FondPodaci].[TIP_UPRAVLJANJA_ID] AS [TIP_UPRAVLJANJA_ID], 
-      [FondPodaci].[DRUSTVA_ID] AS [DRUSTVA_ID], 
-      [FondPodaci].[RIZICNOST] AS [RIZICNOST], 
-      [FondPodaci].[MINIMALNA_POCETNA_UPLATA] AS [MINIMALNA_POCETNA_UPLATA], 
-      [FondPodaci].[MINIMALNE_OSTALE_UPLATE] AS [MINIMALNE_OSTALE_UPLATE], 
-      [FondPodaci].[VALUTA_SIFRA] AS [VALUTA_SIFRA], 
-      [FondPodaci].[POCETNA_CIJENA_UDJELA] AS [POCETNA_CIJENA_UDJELA], 
-      [FondPodaci].[DATUM_OSNIVANJA] AS [DATUM_OSNIVANJA], 
-      [FondPodaci].[IMOVINA_FONDA] AS [IMOVINA_FONDA], 
-      [FondPodaci].[NAKNADA_ULAZNA] AS [NAKNADA_ULAZNA], 
-      [FondPodaci].[NAKNADA_IZLAZNA] AS [NAKNADA_IZLAZNA], 
-      [FondPodaci].[NAKNADA_ZA_UPRAVLJANJEM_FONDA] AS [NAKNADA_ZA_UPRAVLJANJEM_FONDA], 
-      [FondPodaci].[NAKNADA_DEPOZITARNOJ_BANCI] AS [NAKNADA_DEPOZITARNOJ_BANCI], 
-      [FondPodaci].[NAKNADA_BANKA_FIKSNA] AS [NAKNADA_BANKA_FIKSNA], 
-      [FondPodaci].[NAKNADA_BANKA_POSTO] AS [NAKNADA_BANKA_POSTO], 
-      [FondPodaci].[NAKNADA_BANKA_MINIMALNI] AS [NAKNADA_BANKA_MINIMALNI], 
-      [FondPodaci].[NAKNADA_BANKA_MAKSIMALNI] AS [NAKNADA_BANKA_MAKSIMALNI], 
-      [FondPodaci].[NAPOMENA_ZA_KUPNJU] AS [NAPOMENA_ZA_KUPNJU], 
-      [FondPodaci].[NAPOMENA_ZA_PRODAJU] AS [NAPOMENA_ZA_PRODAJU], 
-      [FondPodaci].[NAPOMENA_ZA_REGISTRACIJU] AS [NAPOMENA_ZA_REGISTRACIJU], 
-      [FondPodaci].[DODATNI_PODACI] AS [DODATNI_PODACI], 
-      [FondPodaci].[VRIJEDI_OD] AS [VRIJEDI_OD], 
-      [FondPodaci].[VRIJEDI_DO] AS [VRIJEDI_DO], 
-      [FondPodaci].[NAZIV] AS [NAZIV], 
-      [FondPodaci].[NAPOMENA_ZA_ODREGISTRACIJU] AS [NAPOMENA_ZA_ODREGISTRACIJU], 
-      [FondPodaci].[ZAHTJEV_REPORT_ID] AS [ZAHTJEV_REPORT_ID], 
-      [FondPodaci].[NALOG_PRIMATELJ_VBDI] AS [NALOG_PRIMATELJ_VBDI], 
-      [FondPodaci].[NALOG_PRIMATELJ_RACUN] AS [NALOG_PRIMATELJ_RACUN], 
-      [FondPodaci].[NALOG_PBO_MODEL] AS [NALOG_PBO_MODEL], 
-      [FondPodaci].[NALOG_PBO] AS [NALOG_PBO], 
-      [FondPodaci].[NALOG_OPIS_PLACANJA] AS [NALOG_OPIS_PLACANJA], 
-      [FondPodaci].[NAZIV_VLASNIKA] AS [NAZIV_VLASNIKA], 
-      [FondPodaci].[VRIJEDNOST] AS [VRIJEDNOST], 
-      [FondPodaci].[VRIJEDNOST_DATUM] AS [VRIJEDNOST_DATUM], 
-      [FondPodaci].[PROSLA_VRIJEDNOST] AS [PROSLA_VRIJEDNOST], 
-      [FondPodaci].[VALUTA] AS [VALUTA], 
-      [FondPodaci].[NAZIV_KATEGORIJE] AS [NAZIV_KATEGORIJE]
-      FROM [dbo].[FondPodaci] AS [FondPodaci]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_FOND_DEF_FOND_CILJ_PRINOSA" Association="FondModel.Store.FK_FOND_DEF_FOND_CILJ_PRINOSA">
             <End Role="FOND_CILJ_PRINOSA" EntitySet="FOND_CILJ_PRINOSA" />
             <End Role="FOND_DEF" EntitySet="FOND_DEF" />
@@ -285,6 +240,11 @@
           <Property Name="POKAZATELJ_UKUPNIH_TROSKOVA" Type="nvarchar(max)" />
           <Property Name="INDEKSNI" Type="bit" />
           <Property Name="GRUPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZADNJA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="ZADNJA_VRIJEDNOST_DATUM" Type="date" />
+          <Property Name="PREDZADNJA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PREDZADNJA_VRIJEDNOST_DATUM" Type="date" />
+          <Property Name="SAKRIVENI" Type="bit" />
         </EntityType>
         <EntityType Name="FOND_DRUSTVA">
           <Key>
@@ -593,11 +553,10 @@
           <Property Name="VLASNIK3_VLASNISTVO_TIP" Type="nvarchar" MaxLength="1" />
           <Property Name="VLASNIK3_POSTOTAK_VLASNISTVA" Type="numeric" Precision="5" Scale="2" />
           <Property Name="VLASNIK3_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
-          <Property Name="FIZICKA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
-          <Property Name="FIZICKA_SCAN_KARTICA_URL" Type="nvarchar" MaxLength="250" />
-          <Property Name="PRAVNA_SCAN_OSOBNA_URL" Type="nvarchar" MaxLength="250" />
-          <Property Name="PRAVNA_SCAN_IZVOD_URL" Type="nvarchar" MaxLength="250" />
-          <Property Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="SCAN_OSOBNA_URL" Type="nvarchar(max)" />
+          <Property Name="SCAN_KARTICA_URL" Type="nvarchar(max)" />
+          <Property Name="SCAN_IZVOD_URL" Type="nvarchar(max)" />
+          <Property Name="SCAN_POTPISNI_KARTON_URL" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KORISNIK">
           <Key>
@@ -673,6 +632,8 @@
           <Property Name="RACUN_BROJ" Type="varchar" MaxLength="21" />
           <Property Name="FIZICKA_POLITICKA_IZLOZENOST" Type="nvarchar" MaxLength="1" />
           <Property Name="PRAVNA_VLASNISTVO_PODIJELJENO" Type="nvarchar" MaxLength="1" />
+          <Property Name="IZVOD_SCAN_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="POTPISNI_KARTON_SCAN_URL" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="KORISNIK_FOND_FAVORITI">
           <Key>
@@ -703,56 +664,6 @@
           <Property Name="APOEN" Type="numeric" Nullable="false" Precision="3" />
           <Property Name="NAZIV" Type="nvarchar" Nullable="false" MaxLength="30" />
           <Property Name="MASKA" Type="nvarchar" Nullable="false" MaxLength="5" />
-        </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'InvestApp.dbo.FondPodaci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="FondPodaci">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="VALUTA" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="KATEGORIJA_ID" Type="int" />
-          <Property Name="REGIJA_ID" Type="int" />
-          <Property Name="TIP_ULAGANJA_ID" Type="int" />
-          <Property Name="TIP_UPRAVLJANJA_ID" Type="int" />
-          <Property Name="DRUSTVA_ID" Type="int" />
-          <Property Name="RIZICNOST" Type="nchar" MaxLength="2" />
-          <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
-          <Property Name="POCETNA_CIJENA_UDJELA" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="DATUM_OSNIVANJA" Type="date" />
-          <Property Name="IMOVINA_FONDA" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="NAKNADA_ULAZNA" Type="nvarchar" />
-          <Property Name="NAKNADA_IZLAZNA" Type="nvarchar" />
-          <Property Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" Type="nvarchar" />
-          <Property Name="NAKNADA_DEPOZITARNOJ_BANCI" Type="nvarchar" />
-          <Property Name="NAKNADA_BANKA_FIKSNA" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="NAKNADA_BANKA_POSTO" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="NAKNADA_BANKA_MINIMALNI" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="NAKNADA_BANKA_MAKSIMALNI" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="NAPOMENA_ZA_KUPNJU" Type="ntext" />
-          <Property Name="NAPOMENA_ZA_PRODAJU" Type="ntext" />
-          <Property Name="NAPOMENA_ZA_REGISTRACIJU" Type="ntext" />
-          <Property Name="DODATNI_PODACI" Type="nvarchar" />
-          <Property Name="VRIJEDI_OD" Type="date" />
-          <Property Name="VRIJEDI_DO" Type="date" />
-          <Property Name="NAZIV" Type="nvarchar" MaxLength="200" />
-          <Property Name="NAPOMENA_ZA_ODREGISTRACIJU" Type="ntext" />
-          <Property Name="ZAHTJEV_REPORT_ID" Type="nvarchar" MaxLength="200" />
-          <Property Name="NALOG_PRIMATELJ_VBDI" Type="nvarchar" MaxLength="7" />
-          <Property Name="NALOG_PRIMATELJ_RACUN" Type="nvarchar" MaxLength="10" />
-          <Property Name="NALOG_PBO_MODEL" Type="nvarchar" MaxLength="2" />
-          <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
-          <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
-          <Property Name="NAZIV_VLASNIKA" Type="nvarchar" />
-          <Property Name="VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="VRIJEDNOST_DATUM" Type="date" />
-          <Property Name="PROSLA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="VALUTA" Type="nvarchar" Nullable="false" MaxLength="3" />
-          <Property Name="NAZIV_KATEGORIJE" Type="nvarchar" />
         </EntityType>
         <Association Name="FK_FOND_DEF_FOND_CILJ_PRINOSA">
           <End Role="FOND_CILJ_PRINOSA" Type="FondModel.Store.FOND_CILJ_PRINOSA" Multiplicity="0..1" />
@@ -1092,6 +1003,7 @@
           <Parameter Name="inTrzisteId" Type="int" Mode="In" />
           <Parameter Name="inProfilRizicnosti" Type="int" Mode="In" />
           <Parameter Name="inKorisnikId" Type="int" Mode="In" />
+          <Parameter Name="inPrikaziSakrivene" Type="bit" Mode="In" />
         </Function>
         <Function Name="ZadnjaCijena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="inFondId" Type="int" Mode="In" />
@@ -1151,7 +1063,6 @@
             <Parameter Name="inDatumOd" Mode="In" Type="DateTime" />
             <Parameter Name="inDatumDo" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="FondPodaci" EntityType="FondModel.FondPodatak" />
           <EntitySet Name="Korisnici" EntityType="FondModel.Korisnik" />
           <EntitySet Name="BankeDomace" EntityType="FondModel.BankaDomaca" />
           <AssociationSet Name="FK_FOND_PROMETI_KORISNIK" Association="FondModel.FK_FOND_PROMETI_KORISNIK">
@@ -1213,6 +1124,7 @@
             <Parameter Name="inTrzisteId" Mode="In" Type="Int32" />
             <Parameter Name="inProfilRizicnosti" Mode="In" Type="Int32" />
             <Parameter Name="inKorisnikId" Mode="In" Type="Int32" />
+            <Parameter Name="inPrikaziSakrivene" Mode="In" Type="Boolean" />
           </FunctionImport>
           <EntitySet Name="FOND_CILJ_PRINOSA" EntityType="FondModel.FOND_CILJ_PRINOSA" />
           <EntitySet Name="FOND_PROFIL_RIZICNOSTI" EntityType="FondModel.FOND_PROFIL_RIZICNOSTI" />
@@ -1311,6 +1223,11 @@
           <Property Type="String" Name="POKAZATELJ_UKUPNIH_TROSKOVA" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="INDEKSNI" />
           <Property Type="String" Name="GRUPE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ZADNJA_VRIJEDNOST" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="ZADNJA_VRIJEDNOST_DATUM" Precision="0" />
+          <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Precision="0" />
+          <Property Type="Boolean" Name="SAKRIVENI" />
         </EntityType>
         <EntityType Name="Drustvo">
           <Key>
@@ -1571,11 +1488,10 @@
           <Property Type="String" Name="PRAVNA_VLASNIK3_POL_IZLOZEN_PITANJE_9" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PRAVNA_VLASNIK3_OBAVLJANJE_DUZNOSTI" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PRAVNA_VLASNIK3_IZVOR_IMOVINE" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FIZICKA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FIZICKA_SCAN_KARTICA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PRAVNA_SCAN_OSOBNA_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PRAVNA_SCAN_IZVOD_URL" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SCAN_OSOBNA_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SCAN_KARTICA_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SCAN_IZVOD_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SCAN_POTPISNI_KARTON_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
           <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />
@@ -1689,53 +1605,6 @@
           <Property Type="DateTime" Name="VRIJEDI_DO" Nullable="true" />
           <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" />
         </ComplexType>
-        <EntityType Name="FondPodatak">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="VALUTA" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="KATEGORIJA_ID" />
-          <Property Type="Int32" Name="REGIJA_ID" />
-          <Property Type="Int32" Name="TIP_ULAGANJA_ID" />
-          <Property Type="Int32" Name="TIP_UPRAVLJANJA_ID" />
-          <Property Type="Int32" Name="DRUSTVA_ID" />
-          <Property Type="String" Name="RIZICNOST" MaxLength="2" FixedLength="true" Unicode="true" />
-          <Property Type="Decimal" Name="MINIMALNA_POCETNA_UPLATA" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="MINIMALNE_OSTALE_UPLATE" Precision="15" Scale="2" />
-          <Property Type="String" Name="VALUTA_SIFRA" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Precision="15" Scale="2" />
-          <Property Type="DateTime" Name="DATUM_OSNIVANJA" Precision="0" />
-          <Property Type="Decimal" Name="IMOVINA_FONDA" Precision="15" Scale="2" />
-          <Property Type="String" Name="NAKNADA_ULAZNA" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAKNADA_IZLAZNA" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAKNADA_DEPOZITARNOJ_BANCI" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="NAKNADA_BANKA_FIKSNA" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="NAKNADA_BANKA_POSTO" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="NAKNADA_BANKA_MINIMALNI" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="NAKNADA_BANKA_MAKSIMALNI" Precision="15" Scale="2" />
-          <Property Type="String" Name="NAPOMENA_ZA_KUPNJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAPOMENA_ZA_PRODAJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAPOMENA_ZA_REGISTRACIJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="DODATNI_PODACI" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="VRIJEDI_OD" Precision="0" />
-          <Property Type="DateTime" Name="VRIJEDI_DO" Precision="0" />
-          <Property Type="String" Name="NAZIV" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAPOMENA_ZA_ODREGISTRACIJU" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ZAHTJEV_REPORT_ID" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NALOG_PRIMATELJ_VBDI" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NALOG_PRIMATELJ_RACUN" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NALOG_PBO_MODEL" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NALOG_PBO" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NALOG_OPIS_PLACANJA" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAZIV_VLASNIKA" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="VRIJEDNOST" Precision="15" Scale="4" />
-          <Property Type="DateTime" Name="VRIJEDNOST_DATUM" Precision="0" />
-          <Property Type="Decimal" Name="PROSLA_VRIJEDNOST" Precision="15" Scale="4" />
-          <Property Type="String" Name="VALUTA" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="NAZIV_KATEGORIJE" MaxLength="4000" FixedLength="false" Unicode="true" />
-        </EntityType>
         <ComplexType Name="TraziFondove_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="Int32" Name="KATEGORIJA_ID" Nullable="true" />
@@ -1747,7 +1616,7 @@
           <Property Type="Decimal" Name="MINIMALNA_POCETNA_UPLATA" Nullable="true" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="MINIMALNE_OSTALE_UPLATE" Nullable="true" Precision="15" Scale="2" />
           <Property Type="String" Name="VALUTA_SIFRA" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="POCETNA_CIJENA_UDJELA" Nullable="true" Precision="15" Scale="4" />
           <Property Type="DateTime" Name="DATUM_OSNIVANJA" Nullable="true" />
           <Property Type="Decimal" Name="IMOVINA_FONDA" Nullable="true" Precision="15" Scale="2" />
           <Property Type="String" Name="NAKNADA_ULAZNA" Nullable="true" MaxLength="4000" />
@@ -1788,6 +1657,15 @@
           <Property Type="Int32" Name="SEKTOR_ID" Nullable="true" />
           <Property Type="Int32" Name="TRZISTE_ID" Nullable="true" />
           <Property Type="Int32" Name="PROFIL_RIZICNOSTI_ID" Nullable="true" />
+          <Property Type="String" Name="OPIS" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="POKAZATELJ_UKUPNIH_TROSKOVA" Nullable="true" />
+          <Property Type="Boolean" Name="INDEKSNI" Nullable="true" />
+          <Property Type="String" Name="GRUPE" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="ZADNJA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="ZADNJA_VRIJEDNOST_DATUM" Nullable="true" />
+          <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Nullable="true" />
+          <Property Type="Boolean" Name="SAKRIVENI" Nullable="true" />
         </ComplexType>
         <EntityType Name="Korisnik">
           <Key>
@@ -1862,6 +1740,8 @@
           <NavigationProperty Name="FondFavoriti" Relationship="FondModel.KORISNIK_FOND_FAVORITI" FromRole="Korisnik" ToRole="Fond" />
           <NavigationProperty Name="NOVOSTIs" Relationship="FondModel.FK_NOVOSTI_KORISNIK" FromRole="Korisnik" ToRole="NOVOSTI" />
           <NavigationProperty Name="NOVOSTIs1" Relationship="FondModel.FK_NOVOSTI_KORISNIK1" FromRole="Korisnik" ToRole="Novost" />
+          <Property Type="String" Name="IZVOD_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="POTPISNI_KARTON_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BankaDomaca">
           <Key>
@@ -2152,6 +2032,11 @@
           <EntitySetMapping Name="Fondovi">
             <EntityTypeMapping TypeName="FondModel.Fond">
               <MappingFragment StoreEntitySet="FOND_DEF">
+                <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
+                <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
+                <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
+                <ScalarProperty Name="ZADNJA_VRIJEDNOST_DATUM" ColumnName="ZADNJA_VRIJEDNOST_DATUM" />
+                <ScalarProperty Name="ZADNJA_VRIJEDNOST" ColumnName="ZADNJA_VRIJEDNOST" />
                 <ScalarProperty Name="GRUPE" ColumnName="GRUPE" />
                 <ScalarProperty Name="INDEKSNI" ColumnName="INDEKSNI" />
                 <ScalarProperty Name="POKAZATELJ_UKUPNIH_TROSKOVA" ColumnName="POKAZATELJ_UKUPNIH_TROSKOVA" />
@@ -2315,11 +2200,10 @@
                 <ScalarProperty Name="NALOG_OPIS_PLACANJA" ColumnName="NALOG_OPIS_PLACANJA" />
               </MappingFragment>
               <MappingFragment StoreEntitySet="FOND_ZAHTJEVI_DODATNO">
-                <ScalarProperty Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" ColumnName="PRAVNA_SCAN_POTPISNI_KARTON_URL" />
-                <ScalarProperty Name="PRAVNA_SCAN_IZVOD_URL" ColumnName="PRAVNA_SCAN_IZVOD_URL" />
-                <ScalarProperty Name="PRAVNA_SCAN_OSOBNA_URL" ColumnName="PRAVNA_SCAN_OSOBNA_URL" />
-                <ScalarProperty Name="FIZICKA_SCAN_KARTICA_URL" ColumnName="FIZICKA_SCAN_KARTICA_URL" />
-                <ScalarProperty Name="FIZICKA_SCAN_OSOBNA_URL" ColumnName="FIZICKA_SCAN_OSOBNA_URL" />
+                <ScalarProperty Name="SCAN_POTPISNI_KARTON_URL" ColumnName="SCAN_POTPISNI_KARTON_URL" />
+                <ScalarProperty Name="SCAN_IZVOD_URL" ColumnName="SCAN_IZVOD_URL" />
+                <ScalarProperty Name="SCAN_KARTICA_URL" ColumnName="SCAN_KARTICA_URL" />
+                <ScalarProperty Name="SCAN_OSOBNA_URL" ColumnName="SCAN_OSOBNA_URL" />
                 <ScalarProperty Name="VLASNIK3_POLITICKA_IZLOZENOST" ColumnName="VLASNIK3_POLITICKA_IZLOZENOST" />
                 <ScalarProperty Name="VLASNIK3_POSTOTAK_VLASNISTVA" ColumnName="VLASNIK3_POSTOTAK_VLASNISTVA" />
                 <ScalarProperty Name="VLASNIK3_VLASNISTVO_TIP" ColumnName="VLASNIK3_VLASNISTVO_TIP" />
@@ -2490,53 +2374,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="FondPodaci">
-            <EntityTypeMapping TypeName="FondModel.FondPodatak">
-              <MappingFragment StoreEntitySet="FondPodaci">
-                <ScalarProperty Name="NAZIV_KATEGORIJE" ColumnName="NAZIV_KATEGORIJE" />
-                <ScalarProperty Name="VALUTA" ColumnName="VALUTA" />
-                <ScalarProperty Name="PROSLA_VRIJEDNOST" ColumnName="PROSLA_VRIJEDNOST" />
-                <ScalarProperty Name="VRIJEDNOST_DATUM" ColumnName="VRIJEDNOST_DATUM" />
-                <ScalarProperty Name="VRIJEDNOST" ColumnName="VRIJEDNOST" />
-                <ScalarProperty Name="NAZIV_VLASNIKA" ColumnName="NAZIV_VLASNIKA" />
-                <ScalarProperty Name="NALOG_OPIS_PLACANJA" ColumnName="NALOG_OPIS_PLACANJA" />
-                <ScalarProperty Name="NALOG_PBO" ColumnName="NALOG_PBO" />
-                <ScalarProperty Name="NALOG_PBO_MODEL" ColumnName="NALOG_PBO_MODEL" />
-                <ScalarProperty Name="NALOG_PRIMATELJ_RACUN" ColumnName="NALOG_PRIMATELJ_RACUN" />
-                <ScalarProperty Name="NALOG_PRIMATELJ_VBDI" ColumnName="NALOG_PRIMATELJ_VBDI" />
-                <ScalarProperty Name="ZAHTJEV_REPORT_ID" ColumnName="ZAHTJEV_REPORT_ID" />
-                <ScalarProperty Name="NAPOMENA_ZA_ODREGISTRACIJU" ColumnName="NAPOMENA_ZA_ODREGISTRACIJU" />
-                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
-                <ScalarProperty Name="VRIJEDI_DO" ColumnName="VRIJEDI_DO" />
-                <ScalarProperty Name="VRIJEDI_OD" ColumnName="VRIJEDI_OD" />
-                <ScalarProperty Name="DODATNI_PODACI" ColumnName="DODATNI_PODACI" />
-                <ScalarProperty Name="NAPOMENA_ZA_REGISTRACIJU" ColumnName="NAPOMENA_ZA_REGISTRACIJU" />
-                <ScalarProperty Name="NAPOMENA_ZA_PRODAJU" ColumnName="NAPOMENA_ZA_PRODAJU" />
-                <ScalarProperty Name="NAPOMENA_ZA_KUPNJU" ColumnName="NAPOMENA_ZA_KUPNJU" />
-                <ScalarProperty Name="NAKNADA_BANKA_MAKSIMALNI" ColumnName="NAKNADA_BANKA_MAKSIMALNI" />
-                <ScalarProperty Name="NAKNADA_BANKA_MINIMALNI" ColumnName="NAKNADA_BANKA_MINIMALNI" />
-                <ScalarProperty Name="NAKNADA_BANKA_POSTO" ColumnName="NAKNADA_BANKA_POSTO" />
-                <ScalarProperty Name="NAKNADA_BANKA_FIKSNA" ColumnName="NAKNADA_BANKA_FIKSNA" />
-                <ScalarProperty Name="NAKNADA_DEPOZITARNOJ_BANCI" ColumnName="NAKNADA_DEPOZITARNOJ_BANCI" />
-                <ScalarProperty Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" ColumnName="NAKNADA_ZA_UPRAVLJANJEM_FONDA" />
-                <ScalarProperty Name="NAKNADA_IZLAZNA" ColumnName="NAKNADA_IZLAZNA" />
-                <ScalarProperty Name="NAKNADA_ULAZNA" ColumnName="NAKNADA_ULAZNA" />
-                <ScalarProperty Name="IMOVINA_FONDA" ColumnName="IMOVINA_FONDA" />
-                <ScalarProperty Name="DATUM_OSNIVANJA" ColumnName="DATUM_OSNIVANJA" />
-                <ScalarProperty Name="POCETNA_CIJENA_UDJELA" ColumnName="POCETNA_CIJENA_UDJELA" />
-                <ScalarProperty Name="VALUTA_SIFRA" ColumnName="VALUTA_SIFRA" />
-                <ScalarProperty Name="MINIMALNE_OSTALE_UPLATE" ColumnName="MINIMALNE_OSTALE_UPLATE" />
-                <ScalarProperty Name="MINIMALNA_POCETNA_UPLATA" ColumnName="MINIMALNA_POCETNA_UPLATA" />
-                <ScalarProperty Name="RIZICNOST" ColumnName="RIZICNOST" />
-                <ScalarProperty Name="DRUSTVA_ID" ColumnName="DRUSTVA_ID" />
-                <ScalarProperty Name="TIP_UPRAVLJANJA_ID" ColumnName="TIP_UPRAVLJANJA_ID" />
-                <ScalarProperty Name="TIP_ULAGANJA_ID" ColumnName="TIP_ULAGANJA_ID" />
-                <ScalarProperty Name="REGIJA_ID" ColumnName="REGIJA_ID" />
-                <ScalarProperty Name="KATEGORIJA_ID" ColumnName="KATEGORIJA_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Korisnici">
             <EntityTypeMapping TypeName="FondModel.Korisnik">
               <MappingFragment StoreEntitySet="KORISNIK">
@@ -2550,6 +2387,8 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
               <MappingFragment StoreEntitySet="KORISNIK_DODATNO">
+                <ScalarProperty Name="POTPISNI_KARTON_SCAN_URL" ColumnName="POTPISNI_KARTON_SCAN_URL" />
+                <ScalarProperty Name="IZVOD_SCAN_URL" ColumnName="IZVOD_SCAN_URL" />
                 <ScalarProperty Name="PRAVNA_VLASNISTVO_PODIJELJENO" ColumnName="PRAVNA_VLASNISTVO_PODIJELJENO" />
                 <ScalarProperty Name="FIZICKA_POLITICKA_IZLOZENOST" ColumnName="FIZICKA_POLITICKA_IZLOZENOST" />
                 <ScalarProperty Name="RACUN_BROJ" ColumnName="RACUN_BROJ" />
@@ -2762,6 +2601,15 @@
                 <ScalarProperty Name="SEKTOR_ID" ColumnName="SEKTOR_ID" />
                 <ScalarProperty Name="TRZISTE_ID" ColumnName="TRZISTE_ID" />
                 <ScalarProperty Name="PROFIL_RIZICNOSTI_ID" ColumnName="PROFIL_RIZICNOSTI_ID" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+                <ScalarProperty Name="POKAZATELJ_UKUPNIH_TROSKOVA" ColumnName="POKAZATELJ_UKUPNIH_TROSKOVA" />
+                <ScalarProperty Name="INDEKSNI" ColumnName="INDEKSNI" />
+                <ScalarProperty Name="GRUPE" ColumnName="GRUPE" />
+                <ScalarProperty Name="ZADNJA_VRIJEDNOST" ColumnName="ZADNJA_VRIJEDNOST" />
+                <ScalarProperty Name="ZADNJA_VRIJEDNOST_DATUM" ColumnName="ZADNJA_VRIJEDNOST_DATUM" />
+                <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
+                <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
+                <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

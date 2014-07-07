@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" Culture="hr-HR" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondKupnja.aspx.cs" Inherits="InvestApp.Web.FondKupnja" %>
+﻿<%@ Page Title="" Language="C#" Culture="de-DE" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondKupnja.aspx.cs" Inherits="InvestApp.Web.FondKupnja" %>
 
 <asp:Content ID="Content4" runat="server" ContentPlaceHolderID="HeadContent">
 
@@ -85,7 +85,7 @@
             console.log(vlasnikEnabled);
 
             //validatori
-            document.getElementById('valVLASNIK2_IME_PREZIME').enabled = 
+            document.getElementById('valVLASNIK2_IME_PREZIME').enabled =
             document.getElementById('valVLASNIK2_RODJENJE').enabled =
             document.getElementById('valVLASNIK2_PREBIVALISTE').enabled =
             document.getElementById('valVLASNIK2_DRZAVLJANSTVO').enabled =
@@ -102,7 +102,7 @@
             var chk = document.getElementById('chkVlasnik3');
 
             if (chk == null) return;
-            
+
             var vlasnikEnabled = chk.checked;
 
             //validatori
@@ -170,7 +170,8 @@
 
                     <asp:MultiView ID="mvFondKupnja" runat="server" ActiveViewIndex="0" OnActiveViewChanged="mvFondKupnja_ActiveViewChanged">
 
-                        <asp:View ID="View1" runat="server"> <!-- uvod -->
+                        <asp:View ID="View1" runat="server">
+                            <!-- uvod -->
 
                             <div class="form_item">
                                 <label class="form_item_label_edit small" for="ddlFondovi">Fond:</label>
@@ -200,7 +201,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View2" runat="server"> <!-- osobni podaci -->
+                        <asp:View ID="View2" runat="server">
+                            <!-- osobni podaci -->
 
                             <div id="pravnaPodaci" runat="server">
 
@@ -565,43 +567,38 @@
 
                                 <h3 class="form_group">Dokumenti</h3>
 
-                                <div id="divFizickaDokumenti" runat="server">
-
-                                    <div class="form_item">
-                                        <label class="form_item_label_edit">Scan osobne:</label>
-                                        <asp:FileUpload ID="fuFizickaOsobna" runat="server" CssClass="form_item_value_edit" />
-                                        <asp:HiddenField ID="hfFizickaOsobna" runat="server" Value='<%# Bind("FIZICKA_SCAN_OSOBNA_URL") %>' />
-                                    </div>
-
-                                    <div class="form_item">
-                                        <label class="form_item_label_edit">Scan kartice tekućeg računa:</label>
-                                        <asp:FileUpload ID="fuFizickaKartica" runat="server" CssClass="form_item_value_edit" />
-                                        <asp:HiddenField ID="hfFizickaKartica" runat="server" Value='<%# Bind("FIZICKA_SCAN_KARTICA_URL") %>' />
-                                    </div>
-
+                                <div class="form_item">
+                                    <label class="form_item_label_edit">Scan osobne:</label>
+                                    <asp:FileUpload ID="fuOsobna" runat="server" CssClass="form_item_value_edit" />
+                                    <a id="linkOsobna" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_OSOBNA_URL") %>' title="Spremljena slika" visible="false" >
+                                        <img runat="server" src='~/Images/img_thumb_small.png' />
+                                    </a>
                                 </div>
 
-                                <div id="divPravnaDokumenti" runat="server">
-
-                                    <div class="form_item">
-                                        <label class="form_item_label_edit">Scan osobne osobe za zastupanje:</label>
-                                        <asp:FileUpload ID="fuPravnaOsobna" runat="server" CssClass="form_item_value_edit" />
-                                        <asp:HiddenField ID="hfPravnaOsobna" runat="server" Value='<%# Bind("PRAVNA_SCAN_OSOBNA_URL") %>' />
-                                    </div>
-
-                                    <div class="form_item">
-                                        <label class="form_item_label_edit">Scan izvoda iz Sudskog registra:</label>
-                                        <asp:FileUpload ID="fuPravnaIzvod" runat="server" CssClass="form_item_value_edit" />
-                                        <asp:HiddenField ID="hfPravnaIzvod" runat="server" Value='<%# Bind("PRAVNA_SCAN_IZVOD_URL") %>' />
-                                    </div>
-
-                                    <div class="form_item">
-                                        <label class="form_item_label_edit">Scan potpisnog kartona:</label>
-                                        <asp:FileUpload ID="fuPravnaPotpisniKarton" runat="server" CssClass="form_item_value_edit" />
-                                        <asp:HiddenField ID="hfPravnaPotpisniKarton" runat="server" Value='<%# Bind("PRAVNA_SCAN_POTPISNI_KARTON_URL") %>' />
-                                    </div>
-
+                                <div class="form_item" id="divKartica" runat="server">
+                                    <label class="form_item_label_edit">Scan kartice tekućeg računa:</label>
+                                    <asp:FileUpload ID="fuKartica" runat="server" CssClass="form_item_value_edit" />
+                                    <a id="linkKartica" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_KARTICA_URL") %>' title="Spremljena slika" visible="false" >
+                                        <img id="Img46" runat="server" src='~/Images/img_thumb_small.png' />
+                                    </a>
                                 </div>
+
+                                <div class="form_item" id="divIzvod" runat="server">
+                                    <label class="form_item_label_edit">Scan izvoda iz Sudskog registra:</label>
+                                    <asp:FileUpload ID="fuIzvod" runat="server" CssClass="form_item_value_edit" />
+                                    <a id="linkIzvod" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_IZVOD_URL") %>' title="Spremljena slika" visible="false" >
+                                        <img id="Img47" runat="server" src='~/Images/img_thumb_small.png' />
+                                    </a>
+                                </div>
+
+                                <div class="form_item" id="divPotpisniKarton" runat="server">
+                                    <label class="form_item_label_edit">Scan potpisnog kartona:</label>
+                                    <asp:FileUpload ID="fuPotpisniKarton" runat="server" CssClass="form_item_value_edit" />
+                                    <a id="linkPotpisniKarton" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_POTPISNI_KARTON_URL") %>' title="Spremljena slika" visible="false" >
+                                        <img id="Img48" runat="server" src='~/Images/img_thumb_small.png' />
+                                    </a>
+                                </div>
+
                             </div>
 
                         </asp:View>
@@ -791,7 +788,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View3" runat="server"> <!-- plaćanje -->
+                        <asp:View ID="View3" runat="server">
+                            <!-- plaćanje -->
 
                             <h3 class="form_group">Račun za isplatu kod prodaje udjela</h3>
 
@@ -815,16 +813,15 @@
                             <div class="form_item">
                                 <label class="form_item_label_edit" for="ddlBanke">IBAN:</label>
                                 <%--<asp:TextBox ID="VBDITextBox" placeholder="VBDI" CssClass="form_item_value_edit small" runat="server" ClientIDMode="Static" Text='<%# Bind("VBDI") %>' />--%>
-                                
+
                                 <asp:TextBox ID="RACUN_BROJTextBox" ClientIDMode="Static" CssClass="form_item_value_edit" runat="server" Text='<%# Bind("RACUN_BROJ") %>' />
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator65" ControlToValidate="RACUN_BROJTextBox" ErrorMessage="IBAN mora biti upisan" runat="server" Display="Dynamic">
-                                        <img id="Img45" src="~/Images/Upozorenje.gif" runat="server" />
-                                    </asp:RequiredFieldValidator>
+                                    <img id="Img45" src="~/Images/Upozorenje.gif" runat="server" />
+                                </asp:RequiredFieldValidator>
                                 <%--<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="" ValidateEmptyText="true" ClientValidationFunction="ValidateRacun" Display="Dynamic">
                                     <img src="~/Images/Upozorenje.gif" runat="server" />
                                 </asp:CustomValidator>--%>
-
                             </div>
 
                             <div id="divIznos" runat="server">
@@ -848,16 +845,20 @@
 
                                 <div class="form_item">
                                     <label class="form_item_label_edit">Broj udjela:</label>
-                                    <asp:TextBox ID="ZELJENI_BROJ_UDJELATextBox" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("ZELJENI_BROJ_UDJELA") %>' />
+                                    <asp:TextBox ID="ZELJENI_BROJ_UDJELATextBox" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("ZELJENI_BROJ_UDJELA", "n4") %>' />
 
-                                    <asp:RangeValidator ID="valBrUdjelaMax" Type="Integer" runat="server" ControlToValidate="ZELJENI_BROJ_UDJELATextBox" ErrorMessage="Broj udjela nije ispravan" Display="Dynamic" MinimumValue="0" CssClass="validate_error_inline">
-                                    </asp:RangeValidator>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="ZELJENI_BROJ_UDJELATextBox" ErrorMessage="Broj udjela mora biti upisan" runat="server" Display="Dynamic">
                                         <img id="Img1" src="~/Images/Upozorenje.gif" runat="server" />
                                     </asp:RequiredFieldValidator>
-                                    <asp:CompareValidator ID="CompareValidator4" ControlToValidate="ZELJENI_BROJ_UDJELATextBox" Type="Integer" Operator="DataTypeCheck" runat="server"
-                                        ErrorMessage="Broj udjela mora biti u formatu 1234" CssClass="validate_error_inline" Display="Dynamic">
-                                    </asp:CompareValidator>
+                                    <asp:CustomValidator ID="valBrojUdjela" runat="server" Display="Dynamic" ErrorMessage="Broj udjela nije ispravan" 
+                                        OnServerValidate="valBrojUdjela_ServerValidate" ControlToValidate="ZELJENI_BROJ_UDJELATextBox" 
+                                        CssClass="validate_error_inline"></asp:CustomValidator>
+
+                                    <%--<asp:RangeValidator ID="valBrUdjelaMax" Type="Double" runat="server" ControlToValidate="ZELJENI_BROJ_UDJELATextBox" ErrorMessage="Broj udjela nije ispravan" Display="Dynamic" MinimumValue="0" CssClass="validate_error_inline">
+                                    </asp:RangeValidator>
+                                    <asp:CompareValidator ID="CompareValidator4" ControlToValidate="ZELJENI_BROJ_UDJELATextBox" Type="Double" Operator="DataTypeCheck" runat="server"
+                                        ErrorMessage="Broj udjela mora biti u formatu 1234,0000" CssClass="validate_error_inline" Display="Dynamic">
+                                    </asp:CompareValidator>--%>
                                 </div>
                             </div>
 
@@ -868,7 +869,8 @@
                             </div>
                         </asp:View>
 
-                        <asp:View ID="View4" runat="server"> <!-- izjava o pranju novca -->
+                        <asp:View ID="View4" runat="server">
+                            <!-- izjava o pranju novca -->
 
                             <h3 class="form_group">Ostali podaci</h3>
 
@@ -1049,7 +1051,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View5" runat="server"> <!-- politička izloženost fizičke i vlasništvo pravne -->
+                        <asp:View ID="View5" runat="server">
+                            <!-- politička izloženost fizičke i vlasništvo pravne -->
 
                             <div id="divFizickaZadnje" runat="server">
                                 <h1 class="form_group">Strana politički izložena osoba</h1>
@@ -1096,7 +1099,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View6" runat="server"> <!-- politička izloženost fizičke osobe -->
+                        <asp:View ID="View6" runat="server">
+                            <!-- politička izloženost fizičke osobe -->
 
                             <h3 class="form_group">Upitnik za STRANE POLITIČKI IZLOŽENE OSOBE</h3>
 
@@ -1200,7 +1204,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View7" runat="server"> <!-- Stvarni vlasnici -->
+                        <asp:View ID="View7" runat="server">
+                            <!-- Stvarni vlasnici -->
 
                             <h3 class="form_group">Podaci o stvarnim / beneficijarnim vlasnicima</h3>
 
@@ -1292,8 +1297,8 @@
                                     <img id="Img28" src="~/Images/Upozorenje.gif" runat="server" />
                                 </asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="CompareValidator7" ControlToValidate="TextBox27" Type="Currency" Operator="DataTypeCheck" runat="server"
-                                        ErrorMessage="Iznos mora biti u formatu 23,45" CssClass="validate_error_inline" Display="Dynamic">
-                                 </asp:CompareValidator>
+                                    ErrorMessage="Iznos mora biti u formatu 23,45" CssClass="validate_error_inline" Display="Dynamic">
+                                </asp:CompareValidator>
                                 <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox27" Type="Currency" MinimumValue="0" MaximumValue="100" CssClass="validate_error_inline" ErrorMessage="Uneseni postotak je izvan dopuštenih granica"></asp:RangeValidator>
 
                             </div>
@@ -1312,13 +1317,14 @@
                                 <asp:CheckBox ID="chkVlasnik2" ClientIDMode="Static" runat="server" Checked='<%# Bind("PRAVNA_VLASNIK2_POSTOJI") %>' CssClass="form_item_value_edit" Text="Postoji vlasnik 2" onclick="ToggleVlasnik2(this);" />
                             </div>
 
-                            <div id="divVlasnik2"> <!-- Vlasnik 2 -->
+                            <div id="divVlasnik2">
+                                <!-- Vlasnik 2 -->
 
                                 <div class="form_item">
                                     <label class="form_item_label_edit">Ime i prezime:</label>
                                     <asp:TextBox ID="txtPravnaVlasnik2ImePRezime" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("VLASNIK2_IME_PREZIME") %>' MaxLength="250" />
 
-                                    <asp:RequiredFieldValidator Enabled="false"  ID="valVLASNIK2_IME_PREZIME" ClientIDMode="Static" ControlToValidate="txtPravnaVlasnik2ImePRezime" ErrorMessage="Ime i prezime mora biti uneseno" runat="server" Display="Dynamic">
+                                    <asp:RequiredFieldValidator Enabled="false" ID="valVLASNIK2_IME_PREZIME" ClientIDMode="Static" ControlToValidate="txtPravnaVlasnik2ImePRezime" ErrorMessage="Ime i prezime mora biti uneseno" runat="server" Display="Dynamic">
                                         <img id="Img29" src="~/Images/Upozorenje.gif" runat="server" />
                                     </asp:RequiredFieldValidator>
                                 </div>
@@ -1398,7 +1404,8 @@
                                 <asp:CheckBox ID="chkVlasnik3" ClientIDMode="Static" runat="server" Checked='<%# Bind("PRAVNA_VLASNIK3_POSTOJI") %>' CssClass="form_item_value_edit" Text="Postoji vlasnik 3" onclick="ToggleVlasnik3(this);" />
                             </div>
 
-                            <div id="divVlasnik3"> <!-- Vlasnik 3 -->
+                            <div id="divVlasnik3">
+                                <!-- Vlasnik 3 -->
 
                                 <div class="form_item">
                                     <label class="form_item_label_edit">Ime i prezime:</label>
@@ -1466,7 +1473,7 @@
                                         ErrorMessage="Iznos mora biti u formatu 23,45" CssClass="validate_error_inline" Display="Dynamic">
                                     </asp:CompareValidator>
                                     <asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="TextBox37" Type="Currency" MinimumValue="0" MaximumValue="100" CssClass="validate_error_inline" ErrorMessage="Uneseni postotak je izvan dopuštenih granica"></asp:RangeValidator>
-                                
+
                                 </div>
 
                                 <div class="form_item">
@@ -1481,7 +1488,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View7a" runat="server"> <!-- Politička izloženost vlasnika 1 -->
+                        <asp:View ID="View7a" runat="server">
+                            <!-- Politička izloženost vlasnika 1 -->
 
                             <h3 class="form_group"><%: PravnaVlasnik1ImePrezime %> - Upitnik za STRANE POLITIČKI IZLOŽENE OSOBE</h3>
 
@@ -1585,7 +1593,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View7b" runat="server"> <!-- Politička izloženost vlasnika 2 -->
+                        <asp:View ID="View7b" runat="server">
+                            <!-- Politička izloženost vlasnika 2 -->
 
                             <h3 class="form_group"><%: PravnaVlasnik2ImePrezime %> - Upitnik za STRANE POLITIČKI IZLOŽENE OSOBE</h3>
 
@@ -1689,7 +1698,8 @@
 
                         </asp:View>
 
-                        <asp:View ID="View7c" runat="server"> <!-- Politička izloženost vlasnika 3 -->
+                        <asp:View ID="View7c" runat="server">
+                            <!-- Politička izloženost vlasnika 3 -->
 
                             <h3 class="form_group"><%: PravnaVlasnik3ImePrezime %> - Upitnik za STRANE POLITIČKI IZLOŽENE OSOBE</h3>
 
@@ -1794,8 +1804,18 @@
                         </asp:View>
 
                         <asp:View ID="View99" runat="server">
-                            
-                            <asp:Label ID="lblStatusPoruka" runat="server" CssClass="poruka">Pregledajte unesene podatke ako želite, te unesite zahtjev.</asp:Label>
+
+                            <p ID="lblStatusPoruka" runat="server" CssClass="poruka">
+                                Klikom na tipku <em>Završi</em> bit će generirana pristupna izjava. 
+                                Kako bi proces kupnje bio završen potrebno je:
+                                <ol>
+                                    <li>Pritiskom na tipku <em>„Preuzmi pristupnu izjavu“</em> preuzeti pristupnu izjavu</li>
+                                    <li>Isprintati je</li>
+                                    <li>Potpisati</li>
+                                    <li>Scanirati i</li>
+                                    <li>Pritiskom na tipku <em>„Predaj pristupnu izjavu“ predajte</em> scaniranu pristupnu izjavu
+                                </ol>
+                            </p>
 
                         </asp:View>
 
@@ -1885,11 +1905,10 @@
             <asp:Parameter Name="DRUGA_FIZICKA_MOBITEL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="DRUGA_FIZICKA_FAX" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="DRUGA_FIZICKA_EMAIL" ConvertEmptyStringToNull="true" Type="String" />
-            <asp:Parameter Name="FIZICKA_SCAN_OSOBNA_URL" ConvertEmptyStringToNull="true" Type="String" />
-            <asp:Parameter Name="FIZICKA_SCAN_KARTICA_URL" ConvertEmptyStringToNull="true" Type="String" />
-            <asp:Parameter Name="PRAVNA_SCAN_OSOBNA_URL" ConvertEmptyStringToNull="true" Type="String" />
-            <asp:Parameter Name="PRAVNA_SCAN_IZVOD_URL" ConvertEmptyStringToNull="true" Type="String" />
-            <asp:Parameter Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="SCAN_OSOBNA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="SCAN_KARTICA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="SCAN_IZVOD_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="SCAN_POTPISNI_KARTON_URL" ConvertEmptyStringToNull="true" Type="String" />
 
         </InsertParameters>
     </asp:EntityDataSource>
@@ -1902,7 +1921,7 @@
         EntitySetName="Fondovi"
         EntityTypeFilter="Fond"
         OrderBy="it.[NAZIV]"
-        Where="it.INDEKSNI IS NULL OR it.INDEKSNI = FALSE">
+        Where="(it.INDEKSNI IS NULL OR it.INDEKSNI = FALSE) AND (it.SAKRIVENI IS NULL OR it.SAKRIVENI = false)">
     </asp:EntityDataSource>
 
     <asp:EntityDataSource ID="EntityDataSourceBanke" runat="server" ContextTypeName="InvestApp.DAL.FondEntities" ConnectionString="name=FondEntities" DefaultContainerName="FondEntities" EnableFlattening="False" EntitySetName="BankeDomace" EntityTypeFilter="BankaDomaca">

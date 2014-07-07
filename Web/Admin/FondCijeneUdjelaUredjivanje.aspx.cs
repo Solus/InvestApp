@@ -66,9 +66,9 @@ namespace InvestApp.Web
 			ICollection<DAL.Fond> fondovi = null;
 
 			if(drustvoID.HasValue)
-				fondovi = DAL.FondDAC.VratiFondove(true, "--Odaberite fond--", drustvoID: drustvoID);
+				fondovi = DAL.FondDAC.VratiFondove(true, "--Odaberite fond--", drustvoID: drustvoID, prikaziSakrivene: true);
 			else if(KorisnikJeAdmin)
-				fondovi = DAL.FondDAC.VratiFondove(true, "--Odaberite fond--");
+				fondovi = DAL.FondDAC.VratiFondove(true, "--Odaberite fond--", prikaziSakrivene: true);
 			
 			ddlFondovi.DataSource = fondovi;
 			ddlFondovi.DataBind();

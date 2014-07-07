@@ -74,7 +74,7 @@ namespace InvestApp.Web
 				divKupnja.Visible = false;
 				divProdaja.Visible = true;
 
-				lblProdanoBrojUdjela.Text = zahtjev.ZELJENI_BROJ_UDJELA.Value.ToString("n0");
+				lblProdanoBrojUdjela.Text = zahtjev.ZELJENI_BROJ_UDJELA.Value.ToString("n4");
 			}
 
 			lblFondNaziv.Text += zahtjev.FOND_NAZIV;

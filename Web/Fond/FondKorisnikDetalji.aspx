@@ -399,7 +399,7 @@
 
                 </div>
 
-                <div class="form_item">
+                <div class="form_item" id="divKarticaRacuna" runat="server">
                     <label class="form_item_label_edit">Kartica računa:</label>
                     <br />
                     <a class="image_link thickbox" href='<%# Bind("KARTICA_RACUNA_URL") %>' target="_blank" runat="server" id="lightboxKARTICA_RACUNA">
@@ -410,6 +410,31 @@
                     <asp:FileUpload ID="fileKartica" runat="server" />
                     <asp:LinkButton ID="btnSpremiKarticu" runat="server" CausesValidation="True" CommandName="slika_kartica" Text="Spremi karticu" />
                 </div>
+
+                <div class="form_item" id="divIzvod" runat="server">
+                    <label class="form_item_label_edit">Scan izvoda iz Sudskog registra:</label>
+                    <br />
+                    <a class="image_link thickbox" href='<%# Bind("IZVOD_SCAN_URL") %>' target="_blank" runat="server" id="lightboxIZVOD_SCAN_URL">
+                        <asp:Image ID="imgIZVOD_SCAN_URL" runat="server" ImageUrl='<%# Eval("IZVOD_SCAN_THUMB_URL") %>' CssClass="form_item_value_edit" />
+                    </a>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="izvod_clear" Text="X" ToolTip="Obriši izvod" />
+                    <br />
+                    <asp:FileUpload ID="fileIzvod" runat="server" />
+                    <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="True" CommandName="slika_izvod" Text="Spremi izvod" />
+                </div>
+
+                <div class="form_item" id="divPotpisniKarton" runat="server">
+                    <label class="form_item_label_edit">Scan potpisnog kartona:</label>
+                    <br />
+                    <a class="image_link thickbox" href='<%# Bind("POTPISNI_KARTON_SCAN_URL") %>' target="_blank" runat="server" id="lightboxPOTPISNI_KARTON_SCAN_URL">
+                        <asp:Image ID="imgPOTPISNI_KARTON_SCAN_URL" runat="server" ImageUrl='<%# Eval("POTPISNI_KARTON_SCAN_THUMB_URL") %>' CssClass="form_item_value_edit" />
+                    </a>
+                    <asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="True" CommandName="potpisni_karton_clear" Text="X" ToolTip="Obriši postpisni karton" />
+                    <br />
+                    <asp:FileUpload ID="filePotpisniKarton" runat="server" />
+                    <asp:LinkButton ID="LinkButton4" runat="server" CausesValidation="True" CommandName="slika_postpisni_karton" Text="Spremi potpisni karton" />
+                </div>
+
             </div>
 
             <div class="btn_navigation_group">
@@ -719,16 +744,32 @@
                         <label class="form_item_label">Osobna:</label>
                         <br />
                         <a class="image_link" href='<%# Bind("SLIKA_OSOBNE_URL") %>' target="_blank" runat="server" id="lightboxSLIKA_OSOBNE">
-                            <asp:Image ID="imgSLIKA_OSOBNE" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_THUMB_URL") %>' CssClass="form_item_value" />
+                            <asp:Image ID="imgSLIKA_OSOBNE" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_THUMB_URL") + "?t=" + DateTime.Now.Ticks %>' CssClass="form_item_value" />
                         </a>
 
                     </div>
 
-                    <div class="form_item inline">
+                    <div class="form_item inline" id="divKarticaRacuna" runat="server">
                         <label class="form_item_label">Kartica računa:</label>
                         <br />
                         <a class="image_link" href='<%# Bind("KARTICA_RACUNA_URL") %>' target="_blank" runat="server" id="lightboxKARTICA_RACUNA">
                             <asp:Image ID="imgKARTICA_RACUNA" runat="server" ImageUrl='<%# Eval("KARTICA_RACUNA_THUMB_URL") %>' CssClass="form_item_value" />
+                        </a>
+                    </div>
+
+                    <div class="form_item inline" id="divIzvod" runat="server">
+                        <label class="form_item_label">Izvod iz Sudskog Registra:</label>
+                        <br />
+                        <a class="image_link" href='<%# Bind("IZVOD_SCAN_URL") %>' target="_blank" runat="server" id="lightboxIZVOD_SCAN_URL">
+                            <asp:Image ID="imgIZVOD_SCAN_URL" runat="server" ImageUrl='<%# Eval("IZVOD_SCAN_THUMB_URL") %>' CssClass="form_item_value" />
+                        </a>
+                    </div>
+
+                    <div class="form_item inline" id="divPotpisniKarton" runat="server">
+                        <label class="form_item_label">Potpisni karton:</label>
+                        <br />
+                        <a class="image_link" href='<%# Bind("POTPISNI_KARTON_SCAN_URL") %>' target="_blank" runat="server" id="lightboxPOTPISNI_KARTON_SCAN_URL">
+                            <asp:Image ID="imgPOTPISNI_KARTON_SCAN_URL" runat="server" ImageUrl='<%# Eval("POTPISNI_KARTON_SCAN_THUMB_URL") %>' CssClass="form_item_value" />
                         </a>
                     </div>
 
@@ -744,7 +785,28 @@
 
     </div>
 
-    <asp:EntityDataSource ID="EntityDataSourceKorisnikDodatno" ContextTypeName="InvestApp.DAL.FondEntities" runat="server" ConnectionString="name=FondEntities" DefaultContainerName="FondEntities" EnableFlattening="False" EnableUpdate="True" EntitySetName="Korisnici" EntityTypeFilter="Korisnik" AutoGenerateWhereClause="True" OnSelecting="EntityDataSourceKorisnikDodatno_Selecting" >
+    <asp:EntityDataSource 
+        ID="EntityDataSourceKorisnikDodatno" 
+        ContextTypeName="InvestApp.DAL.FondEntities" 
+        runat="server" 
+        ConnectionString="name=FondEntities" 
+        DefaultContainerName="FondEntities" EnableFlattening="False" EnableUpdate="True" 
+        EntitySetName="Korisnici" 
+        EntityTypeFilter="Korisnik" 
+        AutoGenerateWhereClause="True" 
+        OnSelecting="EntityDataSourceKorisnikDodatno_Selecting" >
+        <InsertParameters>
+            <asp:Parameter Name="SLIKA_OSOBNE_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="KARTICA_RACUNA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="IZVOD_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="POTPISNI_KARTON_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="SLIKA_OSOBNE_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="KARTICA_RACUNA_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="IZVOD_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="POTPISNI_KARTON_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
+        </UpdateParameters>
     </asp:EntityDataSource>
 
 </asp:Content>

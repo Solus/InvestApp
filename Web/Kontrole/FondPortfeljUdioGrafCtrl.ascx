@@ -28,49 +28,38 @@
                                 </asp:DropDownList>
             </div>
 
-            <dxchartsui:WebChartControl ID="qtyChart" runat="server" BackColor="WhiteSmoke" CrosshairEnabled="True" CssClass="portfelj_piechart" Height="200px" Width="300px">
+            <dxchartsui:WebChartControl ID="qtyChart" runat="server" BackColor="#E6E6E6" CrosshairEnabled="True" CssClass="portfelj_piechart" Height="200px" Width="300px">
+                <smallcharttext text="Increase the chart's size to view its layout.
+    " />
                 <borderoptions color="Transparent" visible="False" />
                 <diagramserializable>
-                <cc1:SimpleDiagram3D RotationMatrixSerializable="0.999154553954964;-0.0337947317408854;-0.0234113950379048;0;0;0.569457293236016;-0.822020918943256;0;0.0411117660902466;0.821325944608398;0.568975847819634;0;0;0;0;1" RotationType="UseMouseStandard">
-                </cc1:SimpleDiagram3D>
-            </diagramserializable>
-                <legend alignmenthorizontal="Right"></legend>
+                
+            <cc1:SimpleDiagram EqualPieSize="False"></cc1:SimpleDiagram></diagramserializable>
+                <legend alignmenthorizontal="Center" alignmentvertical="BottomOutside" backcolor="Transparent" markersize="20, 20" textcolor="64, 64, 64">
+                    <border visible="False" />
+                </legend>
                 <seriesserializable>
                 <cc1:Series Name="Series 1">
                     <viewserializable>
-                        <cc1:Pie3DSeriesView ExplodeMode="All" SizeAsPercentage="100">
-                        </cc1:Pie3DSeriesView>
-                    </viewserializable>
+                        
+                    <cc1:PieSeriesView ExplodeMode="All" RuntimeExploding="False"><fillstyle fillmode="Solid"></fillstyle></cc1:PieSeriesView></viewserializable>
                     <labelserializable>
-                        <cc1:Pie3DSeriesLabel>
-                            <pointoptionsserializable>
-                                <cc1:PiePointOptions Pattern="{A} : {V}" PointView="ArgumentAndValues">
-                                    <valuenumericoptions format="Percent" />
-                                </cc1:PiePointOptions>
-                            </pointoptionsserializable>
-                        </cc1:Pie3DSeriesLabel>
-                    </labelserializable>
+                        
+                    <cc1:PieSeriesLabel BackColor="Transparent" TextColor="64, 64, 64" Position="TwoColumns"><border visible="False" /><fillstyle fillmode="Empty"></fillstyle><pointoptionsserializable><cc1:PiePointOptions PercentOptions-PercentageAccuracy="3"><valuenumericoptions format="Percent" precision="1" /></cc1:PiePointOptions></pointoptionsserializable></cc1:PieSeriesLabel></labelserializable>
                     <legendpointoptionsserializable>
-                        <cc1:PiePointOptions Pattern="{A} : {V}" PointView="ArgumentAndValues">
-                            <valuenumericoptions format="Percent" />
+                        <cc1:PiePointOptions PercentOptions-PercentageAccuracy="3">
+                            <valuenumericoptions format="Percent" precision="1" />
                         </cc1:PiePointOptions>
                     </legendpointoptionsserializable>
                 </cc1:Series>
             </seriesserializable>
                 <seriestemplate>
                 <viewserializable>
-                    <cc1:Pie3DSeriesView SizeAsPercentage="100">
-                    </cc1:Pie3DSeriesView>
-                </viewserializable>
+                    
+                <cc1:PieSeriesView RuntimeExploding="False"></cc1:PieSeriesView></viewserializable>
                 <labelserializable>
-                    <cc1:Pie3DSeriesLabel>
-                        <pointoptionsserializable>
-                            <cc1:PiePointOptions>
-                                <valuenumericoptions format="General" />
-                            </cc1:PiePointOptions>
-                        </pointoptionsserializable>
-                    </cc1:Pie3DSeriesLabel>
-                </labelserializable>
+                    
+                <cc1:PieSeriesLabel><pointoptionsserializable><cc1:PiePointOptions><valuenumericoptions format="General" /></cc1:PiePointOptions></pointoptionsserializable></cc1:PieSeriesLabel></labelserializable>
                 <legendpointoptionsserializable>
                     <cc1:PiePointOptions>
                         <valuenumericoptions format="General" />

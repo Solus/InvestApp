@@ -12,7 +12,7 @@ using System.Drawing;
 
 namespace InvestApp.Web
 {
-	public partial class FondUsporedba : System.Web.UI.Page
+	public partial class FondUsporedba : UIControls.InvestAppPage
 	{
 		DateTime vrijemePoc;
 		TimeSpan vrijemeGraf, vrijemeFondovi, vrijemePrinosi;
@@ -465,7 +465,9 @@ namespace InvestApp.Web
 
 			var fondoviUsporedba = container.Fondovi();
 
-			var fondovi = DAL.FondDAC.VratiFondove().Where(f=> !fondoviUsporedba.Contains(f.ID) && f.INDEKSNI != true).OrderBy(f=>f.NAZIV).ToList();
+            bool prikaziSakrivene = KorisnikJeAdmin;
+
+			var fondovi = DAL.FondDAC.VratiFondove(prikaziSakrivene: prikaziSakrivene).Where(f=> !fondoviUsporedba.Contains(f.ID) && f.INDEKSNI != true).OrderBy(f=>f.NAZIV).ToList();
 			
 			var fondoviDionicki = fondovi.Where(f => f.KATEGORIJA_ID == (int)Common.FondoviHelper.Kategorija.DIONICKI).ToList();
 			var fondoviMjesoviti = fondovi.Where(f => f.KATEGORIJA_ID == (int)Common.FondoviHelper.Kategorija.MJESOVITI).ToList();

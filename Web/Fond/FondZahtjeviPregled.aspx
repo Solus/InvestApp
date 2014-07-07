@@ -25,7 +25,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 
-                <div class="search_group">
+                <div class="search_group portfelj">
 
                     <div class="search_item_group block">
                         <label class="search_label" for="ddlTip">Tip:</label>
@@ -160,7 +160,7 @@
                             <dx:GridViewDataTextColumn Caption="Broj udjela" FieldName="ZELJENI_BROJ_UDJELA"
                                 Name="ZELJENI_BROJ_UDJELA" ReadOnly="True" ToolTip="Broj udjela" VisibleIndex="4" HeaderStyle-HorizontalAlign="Right" PropertiesTextEdit-DisplayFormatString="n0"
                                 Width="80px">
-                                <PropertiesTextEdit DisplayFormatString="n0"></PropertiesTextEdit>
+                                <PropertiesTextEdit DisplayFormatString="n4"></PropertiesTextEdit>
 
                                 <HeaderStyle HorizontalAlign="Right"></HeaderStyle>
                             </dx:GridViewDataTextColumn>

@@ -4,6 +4,11 @@
     <EntitySetMapping Name="Fondovi">
       <EntityTypeMapping TypeName="FondModel.Fond">
         <MappingFragment StoreEntitySet="FOND_DEF">
+          <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
+          <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
+          <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
+          <ScalarProperty Name="ZADNJA_VRIJEDNOST_DATUM" ColumnName="ZADNJA_VRIJEDNOST_DATUM" />
+          <ScalarProperty Name="ZADNJA_VRIJEDNOST" ColumnName="ZADNJA_VRIJEDNOST" />
           <ScalarProperty Name="GRUPE" ColumnName="GRUPE" />
           <ScalarProperty Name="INDEKSNI" ColumnName="INDEKSNI" />
           <ScalarProperty Name="POKAZATELJ_UKUPNIH_TROSKOVA" ColumnName="POKAZATELJ_UKUPNIH_TROSKOVA" />
@@ -167,11 +172,10 @@
           <ScalarProperty Name="NALOG_OPIS_PLACANJA" ColumnName="NALOG_OPIS_PLACANJA" />
         </MappingFragment>
         <MappingFragment StoreEntitySet="FOND_ZAHTJEVI_DODATNO">
-          <ScalarProperty Name="PRAVNA_SCAN_POTPISNI_KARTON_URL" ColumnName="PRAVNA_SCAN_POTPISNI_KARTON_URL" />
-          <ScalarProperty Name="PRAVNA_SCAN_IZVOD_URL" ColumnName="PRAVNA_SCAN_IZVOD_URL" />
-          <ScalarProperty Name="PRAVNA_SCAN_OSOBNA_URL" ColumnName="PRAVNA_SCAN_OSOBNA_URL" />
-          <ScalarProperty Name="FIZICKA_SCAN_KARTICA_URL" ColumnName="FIZICKA_SCAN_KARTICA_URL" />
-          <ScalarProperty Name="FIZICKA_SCAN_OSOBNA_URL" ColumnName="FIZICKA_SCAN_OSOBNA_URL" />
+          <ScalarProperty Name="SCAN_POTPISNI_KARTON_URL" ColumnName="SCAN_POTPISNI_KARTON_URL" />
+          <ScalarProperty Name="SCAN_IZVOD_URL" ColumnName="SCAN_IZVOD_URL" />
+          <ScalarProperty Name="SCAN_KARTICA_URL" ColumnName="SCAN_KARTICA_URL" />
+          <ScalarProperty Name="SCAN_OSOBNA_URL" ColumnName="SCAN_OSOBNA_URL" />
           <ScalarProperty Name="VLASNIK3_POLITICKA_IZLOZENOST" ColumnName="VLASNIK3_POLITICKA_IZLOZENOST" />
           <ScalarProperty Name="VLASNIK3_POSTOTAK_VLASNISTVA" ColumnName="VLASNIK3_POSTOTAK_VLASNISTVA" />
           <ScalarProperty Name="VLASNIK3_VLASNISTVO_TIP" ColumnName="VLASNIK3_VLASNISTVO_TIP" />
@@ -342,53 +346,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="FondPodaci">
-      <EntityTypeMapping TypeName="FondModel.FondPodatak">
-        <MappingFragment StoreEntitySet="FondPodaci">
-          <ScalarProperty Name="NAZIV_KATEGORIJE" ColumnName="NAZIV_KATEGORIJE" />
-          <ScalarProperty Name="VALUTA" ColumnName="VALUTA" />
-          <ScalarProperty Name="PROSLA_VRIJEDNOST" ColumnName="PROSLA_VRIJEDNOST" />
-          <ScalarProperty Name="VRIJEDNOST_DATUM" ColumnName="VRIJEDNOST_DATUM" />
-          <ScalarProperty Name="VRIJEDNOST" ColumnName="VRIJEDNOST" />
-          <ScalarProperty Name="NAZIV_VLASNIKA" ColumnName="NAZIV_VLASNIKA" />
-          <ScalarProperty Name="NALOG_OPIS_PLACANJA" ColumnName="NALOG_OPIS_PLACANJA" />
-          <ScalarProperty Name="NALOG_PBO" ColumnName="NALOG_PBO" />
-          <ScalarProperty Name="NALOG_PBO_MODEL" ColumnName="NALOG_PBO_MODEL" />
-          <ScalarProperty Name="NALOG_PRIMATELJ_RACUN" ColumnName="NALOG_PRIMATELJ_RACUN" />
-          <ScalarProperty Name="NALOG_PRIMATELJ_VBDI" ColumnName="NALOG_PRIMATELJ_VBDI" />
-          <ScalarProperty Name="ZAHTJEV_REPORT_ID" ColumnName="ZAHTJEV_REPORT_ID" />
-          <ScalarProperty Name="NAPOMENA_ZA_ODREGISTRACIJU" ColumnName="NAPOMENA_ZA_ODREGISTRACIJU" />
-          <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
-          <ScalarProperty Name="VRIJEDI_DO" ColumnName="VRIJEDI_DO" />
-          <ScalarProperty Name="VRIJEDI_OD" ColumnName="VRIJEDI_OD" />
-          <ScalarProperty Name="DODATNI_PODACI" ColumnName="DODATNI_PODACI" />
-          <ScalarProperty Name="NAPOMENA_ZA_REGISTRACIJU" ColumnName="NAPOMENA_ZA_REGISTRACIJU" />
-          <ScalarProperty Name="NAPOMENA_ZA_PRODAJU" ColumnName="NAPOMENA_ZA_PRODAJU" />
-          <ScalarProperty Name="NAPOMENA_ZA_KUPNJU" ColumnName="NAPOMENA_ZA_KUPNJU" />
-          <ScalarProperty Name="NAKNADA_BANKA_MAKSIMALNI" ColumnName="NAKNADA_BANKA_MAKSIMALNI" />
-          <ScalarProperty Name="NAKNADA_BANKA_MINIMALNI" ColumnName="NAKNADA_BANKA_MINIMALNI" />
-          <ScalarProperty Name="NAKNADA_BANKA_POSTO" ColumnName="NAKNADA_BANKA_POSTO" />
-          <ScalarProperty Name="NAKNADA_BANKA_FIKSNA" ColumnName="NAKNADA_BANKA_FIKSNA" />
-          <ScalarProperty Name="NAKNADA_DEPOZITARNOJ_BANCI" ColumnName="NAKNADA_DEPOZITARNOJ_BANCI" />
-          <ScalarProperty Name="NAKNADA_ZA_UPRAVLJANJEM_FONDA" ColumnName="NAKNADA_ZA_UPRAVLJANJEM_FONDA" />
-          <ScalarProperty Name="NAKNADA_IZLAZNA" ColumnName="NAKNADA_IZLAZNA" />
-          <ScalarProperty Name="NAKNADA_ULAZNA" ColumnName="NAKNADA_ULAZNA" />
-          <ScalarProperty Name="IMOVINA_FONDA" ColumnName="IMOVINA_FONDA" />
-          <ScalarProperty Name="DATUM_OSNIVANJA" ColumnName="DATUM_OSNIVANJA" />
-          <ScalarProperty Name="POCETNA_CIJENA_UDJELA" ColumnName="POCETNA_CIJENA_UDJELA" />
-          <ScalarProperty Name="VALUTA_SIFRA" ColumnName="VALUTA_SIFRA" />
-          <ScalarProperty Name="MINIMALNE_OSTALE_UPLATE" ColumnName="MINIMALNE_OSTALE_UPLATE" />
-          <ScalarProperty Name="MINIMALNA_POCETNA_UPLATA" ColumnName="MINIMALNA_POCETNA_UPLATA" />
-          <ScalarProperty Name="RIZICNOST" ColumnName="RIZICNOST" />
-          <ScalarProperty Name="DRUSTVA_ID" ColumnName="DRUSTVA_ID" />
-          <ScalarProperty Name="TIP_UPRAVLJANJA_ID" ColumnName="TIP_UPRAVLJANJA_ID" />
-          <ScalarProperty Name="TIP_ULAGANJA_ID" ColumnName="TIP_ULAGANJA_ID" />
-          <ScalarProperty Name="REGIJA_ID" ColumnName="REGIJA_ID" />
-          <ScalarProperty Name="KATEGORIJA_ID" ColumnName="KATEGORIJA_ID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Korisnici">
       <EntityTypeMapping TypeName="FondModel.Korisnik">
         <MappingFragment StoreEntitySet="KORISNIK">
@@ -402,6 +359,8 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
         <MappingFragment StoreEntitySet="KORISNIK_DODATNO">
+          <ScalarProperty Name="POTPISNI_KARTON_SCAN_URL" ColumnName="POTPISNI_KARTON_SCAN_URL" />
+          <ScalarProperty Name="IZVOD_SCAN_URL" ColumnName="IZVOD_SCAN_URL" />
           <ScalarProperty Name="PRAVNA_VLASNISTVO_PODIJELJENO" ColumnName="PRAVNA_VLASNISTVO_PODIJELJENO" />
           <ScalarProperty Name="FIZICKA_POLITICKA_IZLOZENOST" ColumnName="FIZICKA_POLITICKA_IZLOZENOST" />
           <ScalarProperty Name="RACUN_BROJ" ColumnName="RACUN_BROJ" />
@@ -614,6 +573,15 @@
           <ScalarProperty Name="SEKTOR_ID" ColumnName="SEKTOR_ID" />
           <ScalarProperty Name="TRZISTE_ID" ColumnName="TRZISTE_ID" />
           <ScalarProperty Name="PROFIL_RIZICNOSTI_ID" ColumnName="PROFIL_RIZICNOSTI_ID" />
+          <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+          <ScalarProperty Name="POKAZATELJ_UKUPNIH_TROSKOVA" ColumnName="POKAZATELJ_UKUPNIH_TROSKOVA" />
+          <ScalarProperty Name="INDEKSNI" ColumnName="INDEKSNI" />
+          <ScalarProperty Name="GRUPE" ColumnName="GRUPE" />
+          <ScalarProperty Name="ZADNJA_VRIJEDNOST" ColumnName="ZADNJA_VRIJEDNOST" />
+          <ScalarProperty Name="ZADNJA_VRIJEDNOST_DATUM" ColumnName="ZADNJA_VRIJEDNOST_DATUM" />
+          <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
+          <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
+          <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

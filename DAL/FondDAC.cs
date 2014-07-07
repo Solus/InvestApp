@@ -8,14 +8,6 @@ namespace InvestApp.DAL
 {
     public class FondDAC
     {
-		public static Korisnik VratiKorisnika(int ID)
-		{
-			using (var context = new FondEntities())
-			{
-				return context.Korisnici.FirstOrDefault(k => k.ID == ID);
-			}
-		}
-
 		public static List<Drustvo> VratiDrustva()
 		{
 			using (var context = new FondEntities())
@@ -24,23 +16,26 @@ namespace InvestApp.DAL
 			}
 		}
 
-        public static ICollection<Fond> VratiFondove(bool dodatniZapisZaSve = false, string dodatniZapisText = null, int? drustvoID = null)
+        public static ICollection<Fond> VratiFondove(bool dodatniZapisZaSve = false, string dodatniZapisText = null, int? drustvoID = null, bool prikaziSakrivene = false)
         {
             using (var context = new FondEntities())
             {
                 var fondovi = context.Fondovi
-					.Where(f=> !drustvoID.HasValue || f.DRUSTVA_ID == drustvoID)
-					.OrderBy(f=>f.NAZIV).ToList();
+                    .Where(f =>
+                        (!drustvoID.HasValue || f.DRUSTVA_ID == drustvoID) &&
+                        (!f.SAKRIVENI.HasValue || f.SAKRIVENI == false || prikaziSakrivene)
+                        )
+                    .OrderBy(f => f.NAZIV).ToList();
 
-				if (dodatniZapisZaSve)
-				{
-					var fondSvi = new DAL.Fond();
-					fondSvi.NAZIV = dodatniZapisText ?? "--Svi--";
-					fondSvi.ID = -1;
-					fondovi.Insert(0, fondSvi);
-				}
+                if (dodatniZapisZaSve)
+                {
+                    var fondSvi = new DAL.Fond();
+                    fondSvi.NAZIV = dodatniZapisText ?? "--Svi--";
+                    fondSvi.ID = -1;
+                    fondovi.Insert(0, fondSvi);
+                }
 
-				return fondovi;
+                return fondovi;
             }
         }
 
@@ -82,11 +77,11 @@ namespace InvestApp.DAL
 			}
 		}
 
-        public static IEnumerable<TraziFondove_Result> TraziFondove(int? kategorijaID, int? regijaID, int? ulaganjeTipID, int? upravljanjeTipID, int? ciljPrinosaID, int? sektorID, int? trzisteID, int? profilRizicnostiID, int? korisnikID)
+        public static IEnumerable<TraziFondove_Result> TraziFondove(int? kategorijaID, int? regijaID, int? ulaganjeTipID, int? upravljanjeTipID, int? ciljPrinosaID, int? sektorID, int? trzisteID, int? profilRizicnostiID, int? korisnikID, bool prikaziSakrivene)
         {
             using (var context = new FondEntities())
             {
-                var fondovi = context.TraziFondove(null, DateTime.Today, null, kategorijaID, null, null, regijaID, ulaganjeTipID, upravljanjeTipID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, korisnikID);
+                var fondovi = context.TraziFondove(null, DateTime.Today, null, kategorijaID, null, null, regijaID, ulaganjeTipID, upravljanjeTipID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, korisnikID, prikaziSakrivene);
 
                 return fondovi.ToList();
             }
@@ -100,7 +95,7 @@ namespace InvestApp.DAL
 			{
 				foreach (int id in fondIDs)
 				{
-					var fond = context.TraziFondove(id, DateTime.Today, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+					var fond = context.TraziFondove(id, DateTime.Today, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 
 					if (fond != null && fond.Count == 1)
 						fondovi.Add(fond[0]);
@@ -201,6 +196,29 @@ namespace InvestApp.DAL
                     context.AddToFondovi(fondNew);
 
                     context.SaveChanges();
+                }
+            }
+        }
+
+        public static bool FondToggleBlacklist(int id)
+        {
+            using (var context = new FondEntities())
+            {
+                try
+                {
+                    var fond = context.Fondovi.Single(f => f.ID == id);
+
+                    if (fond.SAKRIVENI.HasValue && fond.SAKRIVENI.Value)
+                        fond.SAKRIVENI = null;
+                    else
+                        fond.SAKRIVENI = true;
+
+                    return context.SaveChanges() > 0;
+                }
+                catch (Exception ex)
+                {
+                    DAC.Logiraj("Greška kod mijenjanja blackliste: FondID = " + id, ex);
+                    return false;
                 }
             }
         }

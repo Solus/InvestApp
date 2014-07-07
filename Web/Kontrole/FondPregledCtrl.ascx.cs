@@ -52,7 +52,8 @@ namespace InvestApp.Web
 
 			gvFondovi.Columns["Portfelj"].Visible =
 			gvFondovi.Columns["Ispravka"].Visible = Roditelj.KorisnikJeAdmin || Roditelj.KorisnikJeDrustvo;
-			gvFondovi.Columns["Brisanje"].Visible = Roditelj.KorisnikJeAdmin;
+			gvFondovi.Columns["Brisanje"].Visible =
+            gvFondovi.Columns["Sakriveni"].Visible = Roditelj.KorisnikJeAdmin;
 			gvFondovi.Columns["FavoritOznaka"].Visible = HttpContext.Current.User.Identity.IsAuthenticated;
         }
 
@@ -88,7 +89,9 @@ namespace InvestApp.Web
 			if (rblTrziste.SelectedItem != null)
 				trzisteID = Common.Utility.StringToInt(rblTrziste.SelectedItem.Value);
 
-			var fondovi = DAL.FondDAC.TraziFondove(kategorijaID, regijaID, ulaganjeID, upravljanjeID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, Roditelj.KorisnikID);
+            bool prikaziSakrivene = Roditelj.KorisnikJeAdmin;
+
+			var fondovi = DAL.FondDAC.TraziFondove(kategorijaID, regijaID, ulaganjeID, upravljanjeID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, Roditelj.KorisnikID, prikaziSakrivene);
 			
 			gvFondovi.DataSource = fondovi;
 
@@ -98,6 +101,7 @@ namespace InvestApp.Web
 				(gvFondovi.Columns["FAVORIT"] as GridViewDataColumn).GroupIndex = 0;
 				(gvFondovi.Columns["FAVORIT"] as GridViewDataColumn).SortOrder = DevExpress.Data.ColumnSortOrder.Descending;
 			}
+
 			(gvFondovi.Columns["KATEGORIJA_ID"] as GridViewDataColumn).GroupIndex = 1;
 			gvFondovi.ExpandAll();
 
@@ -224,7 +228,7 @@ namespace InvestApp.Web
 					if (postotak.HasValue)
 					{
 						img =
-							postotak == 0 ? "" :
+							postotak == 0 ? "jednako.png" :
 							postotak > 0 ? "gore_green.png" :
 							"dolje_red.png";
 					}
@@ -240,7 +244,7 @@ namespace InvestApp.Web
 			else if (e.Column.Name == "FOND_NAZIV")
 			{
 				if (fond != null)
-					e.DisplayText = String.Format("<a class='thickbox' href='../Fond/FondDokumentStandalone.aspx?ID={0}&usporedba=1&KeepThis=true&TB_iframe=true&height=700&width=800' >{1}</a>", fond.ID, fond.NAZIV);
+                    e.DisplayText = String.Format("<a class='thickbox' href='../Fond/FondDokumentStandalone.aspx?ID={0}&usporedba=1&KeepThis=true&TB_iframe=true&width=800' >{1}</a>", fond.ID, fond.NAZIV);
 			}
 			else if (e.Column.Name == "FOND_USPOREDI2")
 			{
@@ -261,12 +265,21 @@ namespace InvestApp.Web
 					e.DisplayText = String.Format("<a class='updateCart{0}' href='javascript:void(0)' data-id='{1}' ></a>", dodatnaKlasa, fond.ID);
 				}
 			}
+            else if (e.Column.Name == "Sakriveni")
+            {
+                if (fond != null)
+                {
+                    string klasa = fond.SAKRIVENI == true ? " blacklisted" : "";
+
+                    e.DisplayText = String.Format("<a class='blacklist{0}' href='javascript:void(0)' data-id='{1}' ></a>", klasa, fond.ID);
+                }
+            }
 			else if (e.Column.Name == "CijeneDetalji")
 			{
 				string img = "../Images/graf.png";
 				string url = "../Fond/FondCijenePregledStandalone.aspx";
-
-				e.DisplayText = string.Format(@"<a class='thickbox' href='{0}?ID={1}&KeepThis=true&TB_iframe=true&height=825&width=900'><img title='Detalji cijena udjela' src='{2}' /></a>", url, fond.ID, img);
+                //&KeepThis=true&TB_iframe=true&height=825&width=900
+                e.DisplayText = string.Format(@"<a class='thickbox' href='{0}?ID={1}&KeepThis=true&TB_iframe=true&width=900'><img title='Detalji cijena udjela' src='{2}' /></a>", url, fond.ID, img);
 			}
             else if (e.Column.Name == "PRINOS_1M" && fond.PRINOS_1M == 100)
             {

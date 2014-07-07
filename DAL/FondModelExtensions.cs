@@ -392,6 +392,28 @@ namespace InvestApp.DAL
 			}
 		}
 
+        public string IZVOD_SCAN_THUMB_URL
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(IZVOD_SCAN_URL))
+                    return "";
+                else
+                    return Common.Utility.VratiDatotekaIkonaUrl(IZVOD_SCAN_URL);
+            }
+        }
+
+        public string POTPISNI_KARTON_SCAN_THUMB_URL
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(POTPISNI_KARTON_SCAN_URL))
+                    return "";
+                else
+                    return Common.Utility.VratiDatotekaIkonaUrl(POTPISNI_KARTON_SCAN_URL);
+            }
+        }
+
 	}
 
 	public partial class FondZahtjev
@@ -486,7 +508,7 @@ namespace InvestApp.DAL
 			get
 			{
 				if (this.CIJENA.HasValue && this.PREDZADNJA_CIJENA.HasValue && this.PREDZADNJA_CIJENA != 0)
-					return this.CIJENA.Value - this.PREDZADNJA_CIJENA.Value / this.PREDZADNJA_CIJENA.Value * 100;
+					return (this.CIJENA.Value - this.PREDZADNJA_CIJENA.Value) / this.PREDZADNJA_CIJENA.Value * 100;
 				else if (this.CIJENA.HasValue)
 					return 0;
 				else

@@ -22,7 +22,6 @@
         <AssociationConnector Association="FondModel.FK_FOND_ZAHTJEVI_FOND_DEF" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FondModel.FOND_REGIJA" Width="1.5" PointX="0.75" PointY="4.625" />
         <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_GEO1" />
-        <EntityTypeShape EntityType="FondModel.FondPodatak" Width="1.5" PointX="14.375" PointY="4.5" />
         <EntityTypeShape EntityType="FondModel.Korisnik" Width="2.25" PointX="11.375" PointY="1" />
         <EntityTypeShape EntityType="FondModel.BankaDomaca" Width="1.5" PointX="14.375" PointY="13.75" />
         <AssociationConnector Association="FondModel.FK_FOND_PROMETI_KORISNIK" />

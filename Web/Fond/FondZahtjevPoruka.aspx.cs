@@ -23,10 +23,20 @@ namespace InvestApp.Web
 
 				int zahtjevID = ViewState["fondzahtjevID"] == null ? -1 : (int)ViewState["fondzahtjevID"];
 
-				if (zahtjevID <= 0)
-					btnZahtjev.Visible = false;
-				else
-					btnZahtjev.Visible = true;
+                if (zahtjevID <= 0)
+                    btnZahtjev.Visible = false;
+                else
+                {
+                    btnZahtjev.Visible = true;
+
+                    var zahtjev = DAL.FondDAC.VratiZahtjev(zahtjevID);
+
+                    if (zahtjev != null && zahtjev.Tip == Common.FondZahtjevHelper.Tip.Prodaja)
+                    {
+                        btnZahtjev.Text = "Preuzmi zahtjev za otkup";
+                        btnDokumenti.Text = "Predaj zahtjev za otkup";
+                    }
+                }
 			}
 		}
 

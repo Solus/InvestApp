@@ -33,22 +33,26 @@ namespace InvestApp.Web.Reports
 					ghNaslovProdaja.Visible = false;
 					ghProdajaUlagateljPravna.Visible =
                     ghProdajaUlagateljFizicka.Visible = false;
-					ghIsplata.Visible = false;
+					ghIsplataPodaci.Visible = false;
 					ghIsplataRacun.Visible = false;
 					ghCEBA.Visible = false;
 				}
 				else if (zahtjev.TIP_ZAHTJEVA == "P")
 				{
-                    if (zahtjev.PRAVNA == "P")
-                        ghProdajaUlagateljFizicka.Visible = false;
-                    else
-                        ghProdajaUlagateljPravna.Visible = false;
+                    lblNaslov.Text = "Zahtjev za otkup udjela u otvorenom investicijskom fondu";
 
-					ghNaslovKupnja.Visible = false;
-					ghKupnjaUlagateljPravna.Visible = 
-                    ghKupnjaUlagateljFizicka.Visible = false;
+                    tcProdajaPotpis.Text = "Žig i potpis odgovorne osobe";
+
+                    ghProdajaUlagateljFizicka.Visible = 
+                    ghProdajaUlagateljPravna.Visible = false;
+
+                    if (zahtjev.PRAVNA == "P")
+                        ghKupnjaUlagateljFizicka.Visible = false;
+                    else
+                        ghKupnjaUlagateljPravna.Visible = false;
+
 					//ghKupnjaZakonski.Visible = false;
-					ghAdresaKorespondencije.Visible = false;
+					//ghAdresaKorespondencije.Visible = false;
 					ghIzjavaUlagatelja.Visible = false;
 					ghIzjava.Visible = false;
 
@@ -382,10 +386,10 @@ namespace InvestApp.Web.Reports
 				cbPulagateljNerezident.Checked = cbPulagateljNerezident2.Checked = true;
 			}
 
-			if (zahtjev.ZELJENI_BROJ_UDJELA.HasValue)
-				cbIsplataBroj.Checked = true;
-			else if (zahtjev.ZELJENI_IZNOS_UDJELA.HasValue)
-				cbIsplataIznos.Checked = true;
+			//if (zahtjev.ZELJENI_BROJ_UDJELA.HasValue)
+			//	cbIsplataBroj.Checked = true;
+			//else if (zahtjev.ZELJENI_IZNOS_UDJELA.HasValue)
+			//	cbIsplataIznos.Checked = true;
 		}
 
 	}

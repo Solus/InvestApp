@@ -78,22 +78,22 @@
                 <borderoptions visible="False" />
                 <diagramserializable>
             <cc1:XYDiagram>
-                <axisx visibleinpanesserializable="-1" color="192, 192, 192">
+                <axisx visibleinpanesserializable="-1" color="White">
                     <autoscalebreaks maxcount="10" />
                     <tickmarks minorlength="3" />
                     <label staggered="False">
                     <datetimeoptions autoformat="False" format="Custom" formatstring="dd.MM.yyyy" />
                     </label>
-                    <numericscaleoptions autogrid="False" />
+                    <gridlines color="255, 255, 255" visible="True"></gridlines><numericscaleoptions autogrid="False" />
                     <datetimescaleoptions scalemode="Continuous">
                     </datetimescaleoptions>
                 </axisx>
-                <axisy visibleinpanesserializable="-1" color="192, 192, 192">
+                <axisy visibleinpanesserializable="-1" color="White">
                     <label>
-                        <numericoptions format="Number" />
+                        <numericoptions format="Number" precision="0" />
                     </label>
-                </axisy>
-                <defaultpane bordercolor="192, 192, 192" backcolor="251, 251, 251">
+                <gridlines color="255, 255, 255"></gridlines></axisy>
+                <defaultpane bordercolor="White" backcolor="230, 230, 230">
                     <fillstyle fillmode="Solid">
                     </fillstyle>
                 </defaultpane>
@@ -103,7 +103,7 @@
                 <seriesserializable>
             <cc1:Series Name="Series 1" ArgumentScaleType="DateTime">
                 <viewserializable>
-                    <cc1:LineSeriesView MarkerVisibility="False" Color="198, 35, 79">
+                    <cc1:LineSeriesView MarkerVisibility="False" Color="193, 39, 45">
                         <linemarkeroptions bordervisible="False" color="Transparent">
                             <fillstyle fillmode="Solid">
                             </fillstyle>

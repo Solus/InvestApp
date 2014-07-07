@@ -35,10 +35,11 @@ namespace InvestApp.Web
 		{
 			TimeSpan vrijemeTotal = DateTime.Now - vrijemePoc;
 
-			//lblLog.Text = "Stranica: " + (int)vrijemeTotal.TotalMilliseconds + " ms";
+			lblLog.Text = "Stranica: " + (int)vrijemeTotal.TotalMilliseconds + " ms";
 		}
 
-		//ajax
+        #region AJAX metode
+
 		[WebMethod]
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 		public static Common.UpdateCartResult UpdateCart(int ID)
@@ -59,6 +60,15 @@ namespace InvestApp.Web
 			result.IsFull = container.IsFull;
 
 			return result;
-		}
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static bool BlacklistToggle(int ID)
+        {
+            return DAL.FondDAC.FondToggleBlacklist(ID);
+        }
+
+        #endregion AJAX metode
     }
 }

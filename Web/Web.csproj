@@ -257,11 +257,15 @@
     <Content Include="Images\gore_green.png" />
     <Content Include="Images\graf.png" />
     <Content Include="Images\header.png" />
+    <Content Include="Images\hide_hidden.png" />
+    <Content Include="Images\hide_visible.png" />
+    <Content Include="Images\img_thumb_small.png" />
     <Content Include="Images\info.png" />
     <Content Include="Images\info_dark.png" />
     <Content Include="Images\invest capital logo.png" />
     <Content Include="Images\investiraj_logo.png" />
     <Content Include="Images\investiraj_logo_color.png" />
+    <Content Include="Images\jednako.png" />
     <Content Include="Images\jednostavno.png" />
     <Content Include="Images\kupi.png" />
     <Content Include="Images\kupi_white.png" />

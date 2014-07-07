@@ -46,8 +46,10 @@
 
                 // Add the page method call as an onclick handler for the div.
                 $(".updateCart").click(updateCartAjax);
+                $(".blacklist").click(toggleBlacklistAjax);
 
                 usporedbaTooltipovi();
+                blacklistTooltipovi();
 
                 $('.search_list_extra > input[type=radio]:first-child').addClass('first_child');
 
@@ -59,6 +61,20 @@
 
                     setRadioButtonCheckedClass();
                 });
+
+                var links = $('a.thickbox');
+
+                $.each(links, function (key, value) {
+                    
+                    var href = $(value).attr('href');
+                    if (href.indexOf('height') < 0) {
+
+                        var height = screen.height / 1.5;
+
+                        $(value).attr('href', href + '&height=' + height);
+                    }
+                });
+
             });
 
         }
@@ -68,6 +84,12 @@
             $(".updateCart").attr('title', 'Dodaj u usporedbu');
             $(".updateCart.remove").attr('title', 'Ukloni iz usporedbe');
             $(".updateCart.disabled").attr('title', 'Ne može se dodati više fondova u usporedbu');
+        }
+
+        function blacklistTooltipovi() {
+
+            $(".blacklist").attr('title', 'Sakrij fond');
+            $(".blacklist.blacklisted").attr('title', 'Prikaži fond');
         }
 
         function updateCartAjax(event) {
@@ -137,6 +159,29 @@
 
                         usporedbaTooltipovi();
 
+                    }
+                }
+            });
+        }
+
+        function toggleBlacklistAjax(event) {
+
+            var origBtn = $(this);
+            var dataID = $(origBtn).attr("data-id");
+
+            $.ajax({
+                type: "POST",
+                url: "../Fond/FondPregled.aspx/BlacklistToggle",
+                data: "{'ID': '" + dataID + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    console.log(msg);
+
+                    if (msg.d) {
+                        $(origBtn).toggleClass('blacklisted');
+
+                        blacklistTooltipovi();
                     }
                 }
             });
@@ -422,6 +467,7 @@
                         </dx:GridViewCommandColumn>--%>
 
                     <dx:GridViewDataTextColumn Caption="Usporedi" Name="FOND_USPOREDI2" ToolTip="Odaberite fondove za usporedbu" VisibleIndex="15" Width="20px" HeaderStyle-HorizontalAlign="Center">
+                        <HeaderStyle HorizontalAlign="Center" />
                         <CellStyle HorizontalAlign="Center"></CellStyle>
                     </dx:GridViewDataTextColumn>
 
@@ -451,6 +497,7 @@
                                 <Image Url="~/Images/table_light.png" ToolTip="Portfelj fonda"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
+                        <HeaderStyle HorizontalAlign="Center" />
                     </dx:GridViewCommandColumn>
 
                     <dx:GridViewCommandColumn Name="Brisanje" ButtonType="Image" VisibleIndex="19" Width="25px" HeaderStyle-HorizontalAlign="Center">
@@ -459,6 +506,7 @@
                                 <Image Url="~/Images/trash_light.png" ToolTip="Brisanje"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
+                        <HeaderStyle HorizontalAlign="Center" />
                     </dx:GridViewCommandColumn>
 
                     <dx:GridViewCommandColumn Name="Ispravka" ButtonType="Image" VisibleIndex="20" Width="25px" HeaderStyle-HorizontalAlign="Center" ShowNewButtonInHeader="true">
@@ -467,10 +515,16 @@
                                 <Image Url="~/Images/pencil.png" ToolTip="Ispravka"></Image>
                             </dx:GridViewCommandColumnCustomButton>
                         </CustomButtons>
+                        <HeaderStyle HorizontalAlign="Center" />
                         <HeaderTemplate>
                             <asp:Button ID="btnNovi" runat="server" Text="Novi" ToolTip="Novi fond" UseSubmitBehavior="false" CssClass="btn_grid_akcija right" OnClick="btnNovi_Click" />
                         </HeaderTemplate>
                     </dx:GridViewCommandColumn>
+
+                    <dx:GridViewDataTextColumn Caption="X" Name="Sakriveni" ToolTip="Označite sakrivene fondove" VisibleIndex="21" Width="20px" HeaderStyle-HorizontalAlign="Center">
+                        <HeaderStyle HorizontalAlign="Center" />
+                        <CellStyle HorizontalAlign="Center"></CellStyle>
+                    </dx:GridViewDataTextColumn>
 
                 </Columns>
                 <SettingsPager Mode="ShowAllRecords">
@@ -481,6 +535,8 @@
                 <SettingsDataSecurity AllowDelete="false" AllowEdit="true" AllowInsert="False" />
                 <SettingsBehavior ConfirmDelete="true" />
                 <Styles Header-Wrap="True">
+                    <Header Wrap="True">
+                    </Header>
                     <CommandColumnItem Font-Underline="False">
                     </CommandColumnItem>
                     <TitlePanel HorizontalAlign="Left"></TitlePanel>

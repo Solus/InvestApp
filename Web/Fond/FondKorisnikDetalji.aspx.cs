@@ -24,7 +24,9 @@ namespace InvestApp.Web
         private enum DokTip
         {
             Osobna,
-            Kartica
+            Kartica,
+            Izvod,
+            PotpisniKarton
         }
 
 		#endregion
@@ -40,7 +42,7 @@ namespace InvestApp.Web
 				
 				EntityDataSourceKorisnikDodatno.WhereParameters["ID"] = new Parameter("ID", System.Data.DbType.Int32, KorisnikID.ToString());
 
-				//Pravna = DAL.FondDAC.VratiKorisnika(KorisnikID).IsPravna;
+				Pravna = DAL.KorisnikDAC.VratiKorisnika(KorisnikID).IsPravna;
 			}
 		}
 
@@ -70,6 +72,16 @@ namespace InvestApp.Web
                 SpremiDokument(DokTip.Kartica);
                 return;
 			}
+            else if (e.CommandName == "slika_izvod")
+            {
+                SpremiDokument(DokTip.Izvod);
+                return;
+            }
+            else if (e.CommandName == "slika_postpisni_karton")
+            {
+                SpremiDokument(DokTip.PotpisniKarton);
+                return;
+            }
 			else if (e.CommandName == "slika_osobna_clear")
 			{
 				HtmlAnchor linkOsobna = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxSLIKA_OSOBNE");
@@ -88,19 +100,62 @@ namespace InvestApp.Web
 				linkKartica.HRef = null;
 				linkKartica.Attributes["class"] = VratiKlasuLightboxLinka(null);
 			}
+
+            else if (e.CommandName == "izvod_clear")
+            {
+                HtmlAnchor link = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxIZVOD_SCAN_URL");
+                Image imgThumbnail = (Image)FormViewKorisnik.FindControl("imgIZVOD_SCAN_URL");
+                imgThumbnail.ImageUrl = null;
+
+                link.HRef = null;
+                link.Attributes["class"] = VratiKlasuLightboxLinka(null);
+            }
+            else if (e.CommandName == "potpisni_karton_clear")
+            {
+                HtmlAnchor link = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxPOTPISNI_KARTON_SCAN_URL");
+                Image imgThumbnail = (Image)FormViewKorisnik.FindControl("imgPOTPISNI_KARTON_SCAN_URL");
+                imgThumbnail.ImageUrl = null;
+
+                link.HRef = null;
+                link.Attributes["class"] = VratiKlasuLightboxLinka(null);
+            }
 		}
 
         private void SpremiDokument(DokTip tip)
         {
-            FileUpload upload = (FileUpload)FormViewKorisnik.FindControl(tip == DokTip.Osobna ? "fileOsobna" : "fileKartica");
+            string fileUploadName = "";
+
+            switch (tip)
+            {
+                case DokTip.Osobna: fileUploadName = "fileOsobna"; break;
+                case DokTip.Kartica: fileUploadName = "fileKartica"; break;
+                case DokTip.Izvod: fileUploadName = "fileIzvod"; break;
+                case DokTip.PotpisniKarton: fileUploadName = "filePotpisniKarton"; break;
+                default:
+                    return;
+            }
+
+            FileUpload upload = (FileUpload)FormViewKorisnik.FindControl(fileUploadName);
 
             if (upload.HasFile)
             {
                 string ext = Path.GetExtension(upload.FileName);
-				string fileName = (tip == DokTip.Osobna ? "os_" : "kr_") + KorisnikID;
+                string fileName, imgName, lightboxName;
+
+                switch (tip)
+                {
+                    case DokTip.Osobna: fileName = "os_"; imgName = "imgSLIKA_OSOBNE"; lightboxName = "lightboxSLIKA_OSOBNE"; break;
+                    case DokTip.Kartica: fileName = "kr_"; imgName = "imgKARTICA_RACUNA"; lightboxName = "lightboxKARTICA_RACUNA"; break;
+                    case DokTip.Izvod: fileName = "iz_"; imgName = "imgIZVOD_SCAN_URL"; lightboxName = "lightboxIZVOD_SCAN_URL"; break;
+                    case DokTip.PotpisniKarton: fileName = "pk_"; imgName = "imgPOTPISNI_KARTON_SCAN_URL"; lightboxName = "lightboxPOTPISNI_KARTON_SCAN_URL"; break;
+                    default:
+                        return;
+                }
+
+                fileName += KorisnikID;
+                
 				string folder = "~/Dokumenti/Korisnici/";
 				string filePath = folder + fileName + ext;
-                //string fileThumbName = folder + "os_" + KorisnikID + "_thumb.jpg";
 
                 string fullFilePath = Server.MapPath(filePath);
 
@@ -111,13 +166,9 @@ namespace InvestApp.Web
 				}
 
                 upload.SaveAs(fullFilePath);
-                
-                ////generiranje i spremanje thumbnaila
-                //System.Drawing.Bitmap thumbnail = Common.Utility.CreateThumbnail(fullImagePath, 100, 100);
-                //thumbnail.Save(Server.MapPath(fileThumbName));
 
-                Image imgThumbnail = (Image)FormViewKorisnik.FindControl(tip == DokTip.Osobna ? "imgSLIKA_OSOBNE" : "imgKARTICA_RACUNA");
-                HtmlAnchor linkDatoteka = (HtmlAnchor)FormViewKorisnik.FindControl(tip == DokTip.Osobna ? "lightboxSLIKA_OSOBNE" : "lightboxKARTICA_RACUNA");
+                Image imgThumbnail = (Image)FormViewKorisnik.FindControl(imgName);
+                HtmlAnchor linkDatoteka = (HtmlAnchor)FormViewKorisnik.FindControl(lightboxName);
 
 				//Common.DatotekaTip dokTip = Common.Utility.VratiTipDatoteke(filePath);
                 string previewUrl = Common.Utility.VratiDatotekaIkonaUrl(filePath);
@@ -131,9 +182,6 @@ namespace InvestApp.Web
 
                 //samo slika koristi lightbox
                 linkDatoteka.Attributes["class"] = VratiKlasuLightboxLinka(filePath);
-
-                //if (osobnaFull != null)
-                //    osobnaFull.HRef = fileName/* + "?t=" + DateTime.Now.Ticks.ToString()*/;
             }
         }
 
@@ -151,6 +199,10 @@ namespace InvestApp.Web
 				KontrolaHTML("divPrezime").Visible = false;
 				KontrolaHTML("lblMB").InnerText = "MB:";
 				KontrolaHTML("lblIme").InnerText = "Naziv pravne osobe:";
+
+                KontrolaHTML("divKarticaRacuna").Visible = false;
+                KontrolaHTML("divIzvod").Visible = true;
+                KontrolaHTML("divPotpisniKarton").Visible = true;
 			}
 			else // fizička
 			{
@@ -161,6 +213,10 @@ namespace InvestApp.Web
 				KontrolaHTML("divPrezime").Visible = true;
 				KontrolaHTML("lblMB").InnerText = "JMBG:";
 				KontrolaHTML("lblIme").InnerText = "Ime:";
+
+                KontrolaHTML("divKarticaRacuna").Visible = true;
+                KontrolaHTML("divIzvod").Visible = false;
+                KontrolaHTML("divPotpisniKarton").Visible = false;
 			}
 		}
 
@@ -171,9 +227,13 @@ namespace InvestApp.Web
         {
             HtmlAnchor linkOsobna = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxSLIKA_OSOBNE");
             HtmlAnchor linkKartica = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxKARTICA_RACUNA");
+            HtmlAnchor linkIzvod = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxIZVOD_SCAN_URL");
+            HtmlAnchor linkPotpisniKarton = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxPOTPISNI_KARTON_SCAN_URL");
 
             linkOsobna.Attributes["class"] = VratiKlasuLightboxLinka(linkOsobna.HRef);
             linkKartica.Attributes["class"] = VratiKlasuLightboxLinka(linkKartica.HRef);
+            linkIzvod.Attributes["class"] = VratiKlasuLightboxLinka(linkIzvod.HRef);
+            linkPotpisniKarton.Attributes["class"] = VratiKlasuLightboxLinka(linkPotpisniKarton.HRef);
         }
 
         /// <summary>
@@ -223,7 +283,6 @@ namespace InvestApp.Web
 		{
 			//ispravi URL slika
 			string osUrl = (string)e.NewValues["SLIKA_OSOBNE_URL"];
-
 			if (osUrl.Contains('?'))
 				 e.NewValues["SLIKA_OSOBNE_URL"] = osUrl.Remove(osUrl.IndexOf('?'));
 
@@ -231,6 +290,14 @@ namespace InvestApp.Web
 			string krUrl = (string)e.NewValues["KARTICA_RACUNA_URL"];
 			if (krUrl.Contains('?'))
 				e.NewValues["KARTICA_RACUNA_URL"] = krUrl.Remove(krUrl.IndexOf('?'));
+
+            string izvUrl = (string)e.NewValues["IZVOD_SCAN_URL"];
+			if (izvUrl.Contains('?'))
+				e.NewValues["IZVOD_SCAN_URL"] = izvUrl.Remove(izvUrl.IndexOf('?'));
+
+            string pkUrl = (string)e.NewValues["POTPISNI_KARTON_SCAN_URL"];
+            if (pkUrl.Contains('?'))
+                e.NewValues["POTPISNI_KARTON_SCAN_URL"] = pkUrl.Remove(pkUrl.IndexOf('?'));    
 		}
 
 		protected void EntityDataSourceKorisnikDodatno_Selecting(object sender, EntityDataSourceSelectingEventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondRealizacija.aspx.cs" Inherits="InvestApp.Web.FondRealizacija" %>
+﻿<%@ Page Title="" Culture="de-DE" UICulture="hr" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondRealizacija.aspx.cs" Inherits="InvestApp.Web.FondRealizacija" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -6,7 +6,10 @@
 
     <div class="form_body">
 
-        <asp:FormView ID="fvPromet" runat="server" DefaultMode="Insert" DataSourceID="EntityDataSourcePromet" RenderOuterTable="False" OnDataBound="fvPromet_DataBound" OnItemInserted="fvPromet_ItemInserted" OnModeChanging="fvPromet_ModeChanging"  >
+        <asp:FormView ID="fvPromet" runat="server" DefaultMode="Insert" DataSourceID="EntityDataSourcePromet" RenderOuterTable="False" 
+            OnDataBound="fvPromet_DataBound" 
+            OnItemInserted="fvPromet_ItemInserted" 
+            OnModeChanging="fvPromet_ModeChanging" >
             <InsertItemTemplate>
 
                 <div class="form_item" id="divTipZahtjeva" runat="server" >
@@ -37,7 +40,7 @@
 
                     <div class="form_item">
                         <label class="form_item_label_edit" for="TextBox1">Iznos (kn):</label>
-                        <asp:TextBox ID="txtIznos" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("IZNOS_KN") %>' />
+                        <asp:TextBox ID="txtIznos" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("IZNOS_KN", "n2") %>' />
 
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtIznos" ErrorMessage="Iznos mora biti upisan" runat="server" Display="Dynamic" CssClass="validate_error_inline">
                         </asp:RequiredFieldValidator>
@@ -48,13 +51,18 @@
 
                     <div class="form_item">
                         <label class="form_item_label_edit" for="ddlFondovi">Broj udjela:</label>
-                        <asp:TextBox ID="txtBrojUdjela" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("BROJ_UDJELA") %>' />
+                        <asp:TextBox ID="txtBrojUdjela" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("BROJ_UDJELA", "n4") %>' />
 
                         <asp:RequiredFieldValidator ID="valBrojUdjelaReq" ControlToValidate="txtBrojUdjela" ErrorMessage="Broj udjela mora biti upisan" runat="server" Display="Dynamic" CssClass="validate_error_inline">
                         </asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="CompareValidator2" ControlToValidate="txtBrojUdjela" Type="Integer" Operator="DataTypeCheck" runat="server"
-                            ErrorMessage="Broj udjela mora biti u formatu 1234" CssClass="validate_error_inline" Display="Dynamic">
-                        </asp:CompareValidator>
+
+                        <asp:CustomValidator ID="valBrojUdjela" runat="server" Display="Dynamic" ErrorMessage="Broj udjela nije ispravan" 
+                                        OnServerValidate="valBrojUdjela_ServerValidate" ControlToValidate="txtBrojUdjela" 
+                                        CssClass="validate_error_inline"></asp:CustomValidator>
+
+                        <%--<asp:CompareValidator ID="CompareValidator2" ControlToValidate="txtBrojUdjela" Type="Integer" Operator="DataTypeCheck" runat="server"
+                            ErrorMessage="Broj udjela mora biti u formatu 1234,0000" CssClass="validate_error_inline" Display="Dynamic">
+                        </asp:CompareValidator>--%>
                     </div>
 
                 </div>

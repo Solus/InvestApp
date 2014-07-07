@@ -17,8 +17,17 @@ namespace InvestApp.DAL
 			{
 				tekst += Environment.NewLine + ex.Message;
 
-				if (ex.InnerException != null)
-					tekst += Environment.NewLine + ex.InnerException.Message;
+                tekst += Environment.NewLine + ex.StackTrace;
+
+                if (ex.InnerException != null)
+                {
+                    tekst += Environment.NewLine + ex.InnerException.Message;
+                }
+
+                if (ex.InnerException.InnerException != null)
+                {
+                    tekst += Environment.NewLine + ex.InnerException.InnerException.Message;
+                }
 			}
 
 			using (var context = new FondEntities())

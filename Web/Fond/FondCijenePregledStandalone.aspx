@@ -22,7 +22,7 @@
 
         <div id="body" class="standalone">
 
-        <h1 class="form_header bar"><asp:Label ID="lblFondNaziv" runat="server" Text=""></asp:Label>Prinos</h1>
+        <h1 class="form_header bar normal"><asp:Label ID="lblFondNaziv" runat="server" Text=""></asp:Label>Prinos</h1>
 
         <%--<div class="form_body wide">--%>
 

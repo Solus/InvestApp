@@ -255,4 +255,9 @@ Fizička osoba koja vrši ili je vršila istaknutu ili visoku javnu funkciju, č
   <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
   </metadata>
+  <data name="xrLabel49.Text" xml:space="preserve">
+    <value>Podnositelj Zahtjeva izjavljuje da je u potpunosti upoznat s Prospektom i Pravilima fonda, te da ih u cijelosti prihvaća. 
+Društvo koje upravlja gore navedenim fondom obvezuje se prema odredbama Prospekta i Pravila fonda isplatiti prodavatelja.
+U ovom su Zahtjevu/Ugovoru suglasnošću ugovornih strana upisani osobni podaci podnositelja Zahtjeva, uključivo i njegov MBG i OIB, koji predstavljaju poslovnu tajnu. Podnositelj Zahtjeva svojevoljno daje društvu koje upravlja gore navedenim fondom svoj jMBG i OIB, te izjavljuje da je upoznat sa svrhom prikupljanja osobnih podataka te da ni na koji način nije uvjetovan davanjem navedenih podataka. Podnositelj Zahtjeva je suglasan da se osobni podaci mogu koristiti radi realizacije prava i obveza iz ovog Zahtjeva/Ugovora, te radi povezanih poslova i obaveza koje proizlaze iz Zakona o investicijskim fondovima, sve radi nedvojbene identifikacije klijenata, zaštite njihovih privatnih imovinskih interesa u poslovanju sa društvo koje upravlja gore navedenim fondom i to u vremenu koje je nužno za ostvarenje ovdje navedene svrhe, odnosno za duže razdoblje ako je to određeno drugim zakonom.</value>
+  </data>
 </root>

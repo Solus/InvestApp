@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using InvestApp.Common;
 
 namespace InvestApp.Web
 {
@@ -51,5 +52,20 @@ namespace InvestApp.Web
 			if (e.CancelingEdit)
 				_Povratak();
 		}
+
+        protected void valBrojUdjela_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            decimal? brUdjela = Utility.StringToDecimal(args.Value);
+
+            args.IsValid = false;
+
+            if (!brUdjela.HasValue)
+            {
+                (fvPromet.FindControl("valBrojUdjela") as CustomValidator).ErrorMessage = "Broj mora biti u formatu 1234,0000";
+                return;
+            }
+            else
+                args.IsValid = true;
+        }
 	}
 }

@@ -19,12 +19,14 @@
 
         </div>
 
-        <div class="form_body_extra body_left">
-            <uc1:FondPortfeljVrijednostGrafCtrl runat="server" id="portfeljVrijednostiGraf"  Width="449px" Height="305px" />
-        </div>
+        <div class="form_body_extra_container">
+            <div class="form_body_extra body_left">
+                <uc1:FondPortfeljVrijednostGrafCtrl runat="server" ID="portfeljVrijednostiGraf" Width="449px" Height="265px" />
+            </div>
 
-        <div class="form_body_extra body_right">
-            <uc1:FondPortfeljUdioGrafCtrl runat="server" ID="portfeljUdioGraf" Width="449px" Height="305px" />
+            <div class="form_body_extra body_right">
+                <uc1:FondPortfeljUdioGrafCtrl runat="server" ID="portfeljUdioGraf" Width="449px" Height="350px" />
+            </div>
         </div>
 
     </div>

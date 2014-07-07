@@ -83,19 +83,26 @@ namespace InvestApp.Common
 			return dateTime.HasValue ? dateTime.Value.ToString("dd.MM.yyyy") : "";
 		}
 
-		public static string DecimalToString(decimal? value)
+		public static string DecimalToString(decimal? value, string format = "n", bool hrFormat = false)
 		{
 			if(!value.HasValue)
 				value = 0;
 
-			return value.Value.ToString("n");
+			string strValue = value.Value.ToString(format);
+
+            if (hrFormat)
+                strValue = strValue.Replace(",", "").Replace(".", ",");
+
+            return strValue;
 		}
 
 		public static decimal? StringToDecimal(string value)
 		{
 			decimal valDecimal;
 
-			if (value.IsNullOrEmpty() || !decimal.TryParse(value, out valDecimal))
+            var culture = System.Globalization.CultureInfo.CreateSpecificCulture("hr-HR");
+
+			if (value.IsNullOrEmpty() || !decimal.TryParse(value, System.Globalization.NumberStyles.Any, culture, out valDecimal))
 				return null;
 			else
 				return valDecimal;
