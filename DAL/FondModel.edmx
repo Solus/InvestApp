@@ -203,7 +203,7 @@
           <Property Name="SEKTOR_ID" Type="int" />
           <Property Name="TRZISTE_ID" Type="int" />
           <Property Name="PROFIL_RIZICNOSTI_ID" Type="int" />
-          <Property Name="RIZICNOST" Type="nchar" MaxLength="2" />
+          <Property Name="RIZICNOST" Type="nvarchar" MaxLength="50" />
           <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
           <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
           <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
@@ -232,10 +232,10 @@
           <Property Name="NALOG_PBO" Type="nvarchar" MaxLength="50" />
           <Property Name="NALOG_OPIS_PLACANJA" Type="nvarchar" MaxLength="500" />
           <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
-          <Property Name="KIID_URL" Type="nchar" MaxLength="255" />
-          <Property Name="PRAVILA_URL" Type="nchar" MaxLength="255" />
-          <Property Name="PROSPEKT_URL" Type="nchar" MaxLength="255" />
-          <Property Name="OSOBNA_ISKAZNICA_URL" Type="nchar" MaxLength="255" />
+          <Property Name="KIID_URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="PRAVILA_URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="PROSPEKT_URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="OSOBNA_ISKAZNICA_URL" Type="nvarchar" MaxLength="255" />
           <Property Name="OPIS" Type="text" />
           <Property Name="POKAZATELJ_UKUPNIH_TROSKOVA" Type="nvarchar(max)" />
           <Property Name="INDEKSNI" Type="bit" />
@@ -440,7 +440,7 @@
           <Property Name="NALOG_PRIMATELJ_ADRESA" Type="nvarchar" MaxLength="100" />
           <Property Name="NALOG_MODEL" Type="nvarchar" MaxLength="4" />
           <Property Name="NALOG_VBDI" Type="nvarchar" MaxLength="7" />
-          <Property Name="NALOG_BROJ_RACUNA" Type="nvarchar" MaxLength="10" />
+          <Property Name="NALOG_BROJ_RACUNA" Type="nvarchar" MaxLength="21" />
           <Property Name="NALOG_SIFRA_NAMJENE" Type="nvarchar" MaxLength="4" />
           <Property Name="ODBIJANJE_RAZLOG" Type="nvarchar" MaxLength="500" />
           <Property Name="ZAHTJEV_ISPISAN" Type="nchar" MaxLength="2" />
@@ -557,6 +557,7 @@
           <Property Name="SCAN_KARTICA_URL" Type="nvarchar(max)" />
           <Property Name="SCAN_IZVOD_URL" Type="nvarchar(max)" />
           <Property Name="SCAN_POTPISNI_KARTON_URL" Type="nvarchar(max)" />
+          <Property Name="SCAN_OSOBNA_DRUGI_URL" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KORISNIK">
           <Key>
@@ -634,6 +635,7 @@
           <Property Name="PRAVNA_VLASNISTVO_PODIJELJENO" Type="nvarchar" MaxLength="1" />
           <Property Name="IZVOD_SCAN_URL" Type="nvarchar" MaxLength="250" />
           <Property Name="POTPISNI_KARTON_SCAN_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="SLIKA_OSOBNE_DRUGI_URL" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="KORISNIK_FOND_FAVORITI">
           <Key>
@@ -678,7 +680,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
-          <End Role="FOND_DRUSTVA" Type="FondModel.Store.FOND_DRUSTVA" Multiplicity="0..1" />
+          <End Role="FOND_DRUSTVA" Type="FondModel.Store.FOND_DRUSTVA" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FOND_DRUSTVA">
@@ -1165,7 +1169,7 @@
           <Property Name="TIP_ULAGANJA_ID" Type="Int32" />
           <Property Name="TIP_UPRAVLJANJA_ID" Type="Int32" />
           <Property Name="DRUSTVA_ID" Type="Int32" />
-          <Property Name="RIZICNOST" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="RIZICNOST" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MINIMALNA_POCETNA_UPLATA" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="MINIMALNE_OSTALE_UPLATE" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="VALUTA_SIFRA" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
@@ -1204,10 +1208,10 @@
           <Property Type="Int32" Name="REGIJA_ID" />
           <NavigationProperty Name="FOND_REGIJA" Relationship="FondModel.FK_FOND_DEF_FOND_GEO1" FromRole="Fond" ToRole="FOND_REGIJA" />
           <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KIID_URL" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="PRAVILA_URL" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="PROSPEKT_URL" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="OSOBNA_ISKAZNICA_URL" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="KIID_URL" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PRAVILA_URL" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PROSPEKT_URL" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OSOBNA_ISKAZNICA_URL" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="VALUTA_REF" Relationship="FondModel.FK_FOND_DEF_VALUTE" FromRole="Fond" ToRole="VALUTE" />
           <NavigationProperty Name="StrukturaUlaganja" Relationship="FondModel.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" FromRole="Fond" ToRole="FOND_STRUKTURA_ULAGANJA_ZAG" />
           <NavigationProperty Name="KORISNIKs" Relationship="FondModel.KORISNIK_FOND_FAVORITI" FromRole="Fond" ToRole="Korisnik" />
@@ -1333,7 +1337,7 @@
           <Property Name="NALOG_PRIMATELJ_ADRESA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="NALOG_MODEL" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
           <Property Name="NALOG_VBDI" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
-          <Property Name="NALOG_BROJ_RACUNA" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="NALOG_BROJ_RACUNA" Type="String" MaxLength="21" Unicode="true" FixedLength="false" />
           <Property Name="ODBIJANJE_RAZLOG" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="ZAHTJEV_ISPISAN" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
           <Property Name="NALOG_KREIRAN" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
@@ -1492,6 +1496,7 @@
           <Property Type="String" Name="SCAN_KARTICA_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SCAN_IZVOD_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SCAN_POTPISNI_KARTON_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SCAN_OSOBNA_DRUGI_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
           <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />
@@ -1742,6 +1747,7 @@
           <NavigationProperty Name="NOVOSTIs1" Relationship="FondModel.FK_NOVOSTI_KORISNIK1" FromRole="Korisnik" ToRole="Novost" />
           <Property Type="String" Name="IZVOD_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="POTPISNI_KARTON_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SLIKA_OSOBNE_DRUGI_URL" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BankaDomaca">
           <Key>
@@ -2200,6 +2206,7 @@
                 <ScalarProperty Name="NALOG_OPIS_PLACANJA" ColumnName="NALOG_OPIS_PLACANJA" />
               </MappingFragment>
               <MappingFragment StoreEntitySet="FOND_ZAHTJEVI_DODATNO">
+                <ScalarProperty Name="SCAN_OSOBNA_DRUGI_URL" ColumnName="SCAN_OSOBNA_DRUGI_URL" />
                 <ScalarProperty Name="SCAN_POTPISNI_KARTON_URL" ColumnName="SCAN_POTPISNI_KARTON_URL" />
                 <ScalarProperty Name="SCAN_IZVOD_URL" ColumnName="SCAN_IZVOD_URL" />
                 <ScalarProperty Name="SCAN_KARTICA_URL" ColumnName="SCAN_KARTICA_URL" />
@@ -2387,6 +2394,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
               <MappingFragment StoreEntitySet="KORISNIK_DODATNO">
+                <ScalarProperty Name="SLIKA_OSOBNE_DRUGI_URL" ColumnName="SLIKA_OSOBNE_DRUGI_URL" />
                 <ScalarProperty Name="POTPISNI_KARTON_SCAN_URL" ColumnName="POTPISNI_KARTON_SCAN_URL" />
                 <ScalarProperty Name="IZVOD_SCAN_URL" ColumnName="IZVOD_SCAN_URL" />
                 <ScalarProperty Name="PRAVNA_VLASNISTVO_PODIJELJENO" ColumnName="PRAVNA_VLASNISTVO_PODIJELJENO" />

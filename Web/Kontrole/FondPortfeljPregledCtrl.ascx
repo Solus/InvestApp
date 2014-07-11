@@ -108,7 +108,7 @@
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Prinos[%]" Name="Prinos" ReadOnly="True"
-                    ToolTip="Prinos" VisibleIndex="10" Width="75px" FieldName="PRINOS" PropertiesTextEdit-DisplayFormatString="n2" >
+                    ToolTip="Prinos" VisibleIndex="10" Width="85px" FieldName="PRINOS" PropertiesTextEdit-DisplayFormatString="n2" >
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewCommandColumn ButtonType="Image" Name="Dokupi"

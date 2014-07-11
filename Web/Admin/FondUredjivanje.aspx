@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" Culture="hr-HR" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondUredjivanje.aspx.cs" Inherits="InvestApp.Web.FondUredjivanje" ValidateRequest="false" %>
+﻿<%@ Page Title="" Language="C#" Culture="de-DE" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondUredjivanje.aspx.cs" Inherits="InvestApp.Web.FondUredjivanje" ValidateRequest="false" %>
 
 <asp:Content ID="contentHead" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src='<%= ResolveUrl("~/Scripts/tinymce.min.js") %>'></script>
@@ -25,6 +25,11 @@
             control.value = window.escape(document.getElementById('TextBox1').value);
         };
 
+        function clearDocLink(linkID, hiddenFieldID) {
+            $('#' + linkID).removeAttr('href');
+            $('#' + hiddenFieldID).removeAttr('value');
+        }
+
     </script>
 
     <asp:Label ID="lblLog" runat="server"></asp:Label>
@@ -44,46 +49,62 @@
                     </div>
 
                     <div class="form_item">
-                        <label class="form_item_label_edit" title="Svako uneseno slovo predstavlja zasebnu grupu" >Grupe:</label>
+                        <label class="form_item_label_edit" title="Svako uneseno slovo predstavlja zasebnu grupu">Grupe:</label>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("GRUPE") %>' CssClass="form_item_value_edit" />
                     </div>
 
                     <h3 class="form_group">DOKUMENTI FONDA</h3>
 
                     <div class="form_item">
-                        <asp:HyperLink ID="HyperLink1" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("KIID_URL") %>'>Ključne informacije za ulagatelje</asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink2" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PRAVILA_URL") %>'>Pravila fonda</asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink3" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PROSPEKT_URL") %>'>Prospekt fonda</asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink4" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
+                        <a href="javascript: void(0);" class="link_add_file" onclick="$('#divDokKIID').toggle();" title="Odaberi"></a>
+                        <asp:HyperLink ID="linkDokKIID" ClientIDMode="Static" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Eval("KIID_URL") %>'>Ključne informacije za ulagatelje</asp:HyperLink>
+                        <asp:HiddenField ID="hfDokKIID" ClientIDMode="Static" runat="server" Value='<%# Bind("KIID_URL") %>' />
+                        <a href="javascript: void(0);" class="link_clear_file" onclick="clearDocLink('linkDokKIID', 'hfDokKIID');" title="Obriši"></a>
+                        <div id="divDokKIID" class="form_item" style="display: none;">
+                            <label class="form_item_label_edit">Ključne informacije za ulagatelje (PDF):</label>
+                            <asp:FileUpload ID="fileKIID" runat="server" CssClass="form_item_value_edit pdf" />
+                        </div>
                     </div>
 
                     <div class="form_item">
+                        <a href="javascript: void(0);" class="link_add_file" onclick="$('#divDokPravila').toggle();" title="Odaberi"></a>
+                        <asp:HyperLink ID="linkDokPravila" ClientIDMode="Static" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Eval("PRAVILA_URL") %>'>Pravila fonda</asp:HyperLink>
+                        <asp:HiddenField ID="hfDokPravila" ClientIDMode="Static" runat="server" Value='<%# Bind("PRAVILA_URL") %>' />
+                        <a href="javascript: void(0);" class="link_clear_file" onclick="clearDocLink('linkDokPravila', 'hfDokPravila');" title="Obriši"></a>
+                        <div id="divDokPravila" class="form_item" style="display: none;">
+                            <label class="form_item_label_edit">Pravila fonda (PDF):</label>
+                            <asp:FileUpload ID="filePravila" runat="server" CssClass="form_item_value_edit pdf" />
+                        </div>
+                    </div>
+
+                    <div class="form_item">
+                        <a href="javascript: void(0);" class="link_add_file" onclick="$('#divDokProspekt').toggle();" title="Odaberi"></a>
+                        <asp:HyperLink ID="linkDokProspekt" ClientIDMode="Static" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Eval("PROSPEKT_URL") %>'>Prospekt fonda</asp:HyperLink>
+                        <asp:HiddenField ID="hfDokProspekt" ClientIDMode="Static" runat="server" Value='<%# Bind("PROSPEKT_URL") %>' />
+                        <a href="javascript: void(0);" class="link_clear_file" onclick="clearDocLink('linkDokProspekt', 'hfDokProspekt');" title="Obriši"></a>
+                        <div id="divDokProspekt" class="form_item" style="display: none;">
+                            <label class="form_item_label_edit">Prospekt fonda (PDF):</label>
+                            <asp:FileUpload ID="fileProspekt" runat="server" CssClass="form_item_value_edit pdf" />
+                        </div>
+                    </div>
+
+                    <div class="form_item">
+                        <a href="javascript: void(0);" class="link_add_file" onclick="$('#divDokOsobna').toggle();" title="Odaberi"></a>
+                        <asp:HyperLink ID="linkDokOsobna" ClientIDMode="Static" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Eval("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
+                        <asp:HiddenField ID="hfkDokOsobna" ClientIDMode="Static" runat="server" Value='<%# Bind("OSOBNA_ISKAZNICA_URL") %>' />
+                        <a href="javascript: void(0);" class="link_clear_file" onclick="clearDocLink('linkDokOsobna', 'hfkDokOsobna');" title="Obriši"></a>
+                        <div id="divDokOsobna" class="form_item" style="display: none;">
+                            <label class="form_item_label_edit">Osobna iskaznica (PDF):</label>
+                            <asp:FileUpload ID="fileOsobna" runat="server" CssClass="form_item_value_edit pdf" />
+                        </div>
+                    </div>
+
+                    <%--<div class="form_item">
                         <asp:CheckBox ID="chkDok" runat="server" Text="Promijeni dokumente" CssClass="form_item_value_edit" AutoPostBack="true" OnCheckedChanged="chkDok_CheckedChanged" />
                     </div>
 
                     <div id="divDokUpload" runat="server" visible="false">
-
-                        <div class="form_item">
-                            <label class="form_item_label_edit">Ključne informacije za ulagatelje (PDF):</label>
-                            <asp:FileUpload ID="fileKIID" runat="server" CssClass="form_item_value_edit" />
-                        </div>
-
-                        <div class="form_item">
-                            <label class="form_item_label_edit">Pravila fonda (PDF):</label>
-                            <asp:FileUpload ID="filePravila" runat="server" CssClass="form_item_value_edit" />
-                        </div>
-
-                        <div class="form_item">
-                            <label class="form_item_label_edit">Prospekt fonda (PDF):</label>
-                            <asp:FileUpload ID="fileProspekt" runat="server" CssClass="form_item_value_edit" />
-                        </div>
-
-                        <div class="form_item">
-                            <label class="form_item_label_edit">Osobna iskaznica (PDF):</label>
-                            <asp:FileUpload ID="fileOsobna" runat="server" CssClass="form_item_value_edit" />
-                        </div>
-
-                    </div>
+                    </div>--%>
 
                     <h3 class="form_group">OSNOVNE INFORMACIJE</h3>
 
@@ -261,10 +282,10 @@
                         <label class="form_item_label_edit">Opis plaćanja:</label>
                         <asp:TextBox ID="txtOpisPlacanja" runat="server" Text='<%# Bind("NALOG_OPIS_PLACANJA") %>' CssClass="form_item_value_edit" MaxLength="500" TextMode="MultiLine" />
                     </div>
-                    
+
                     <h3 class="form_group">DODATNI PODACI</h3>
 
-                     <div class="form_item">
+                    <div class="form_item">
                         <label class="form_item_label_edit">Minimalna početna uplata:</label>
                         <asp:TextBox ID="MINIMALNA_POCETNA_UPLATALabel" runat="server" Text='<%# Bind("MINIMALNA_POCETNA_UPLATA", "{0:n2}") %>' CssClass="form_item_value_edit" />
 
@@ -313,38 +334,27 @@
                     </div>
 
                     <h3 class="form_group">DOKUMENTI FONDA</h3>
-
-                    <div class="form_item">
-                        <asp:HyperLink ID="HyperLink1" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("KIID_URL") %>'>Ključne informacije za ulagatelje</asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink2" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PRAVILA_URL") %>'>Pravila fonda</asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink3" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PROSPEKT_URL") %>'>Prospekt fonda</asp:HyperLink>
-                        <asp:HyperLink ID="HyperLink4" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
-                    </div>
-
-                    <div class="form_item">
-                        <asp:CheckBox ID="chkDok" runat="server" Text="Promijeni dokumente" CssClass="form_item_value_edit" AutoPostBack="true" OnCheckedChanged="chkDok_CheckedChanged" />
-                    </div>
-
-                    <div id="divDokUpload" runat="server" visible="false">
+                    
+                    <div id="divDokUpload" runat="server">
 
                         <div class="form_item">
                             <label class="form_item_label_edit">Ključne informacije za ulagatelje (PDF):</label>
-                            <asp:FileUpload ID="fileKIID" runat="server" CssClass="form_item_value_edit" />
+                            <asp:FileUpload ID="fileKIID" runat="server" CssClass="form_item_value_edit pdf" />
                         </div>
 
                         <div class="form_item">
                             <label class="form_item_label_edit">Pravila fonda (PDF):</label>
-                            <asp:FileUpload ID="filePravila" runat="server" CssClass="form_item_value_edit" />
+                            <asp:FileUpload ID="filePravila" runat="server" CssClass="form_item_value_edit pdf" />
                         </div>
 
                         <div class="form_item">
                             <label class="form_item_label_edit">Prospekt fonda (PDF):</label>
-                            <asp:FileUpload ID="fileProspekt" runat="server" CssClass="form_item_value_edit" />
+                            <asp:FileUpload ID="fileProspekt" runat="server" CssClass="form_item_value_edit pdf" />
                         </div>
 
                         <div class="form_item">
                             <label class="form_item_label_edit">Osobna iskaznica (PDF):</label>
-                            <asp:FileUpload ID="fileOsobna" runat="server" CssClass="form_item_value_edit" />
+                            <asp:FileUpload ID="fileOsobna" runat="server" CssClass="form_item_value_edit pdf" />
                         </div>
 
                     </div>
@@ -578,7 +588,8 @@
             EnableFlattening="False" EnableUpdate="True"
             EntitySetName="Fondovi" EntityTypeFilter="Fond"
             OnSelecting="EntityDataSourceFond_Selecting"
-            AutoGenerateWhereClause="True" OnInserted="EntityDataSourceFond_Inserted"  EnableInsert="True">
+            AutoGenerateWhereClause="True" OnInserted="EntityDataSourceFond_Inserted"
+            EnableInsert="True" OnUpdating="EntityDataSourceFond_Updating" OnUpdated="EntityDataSourceFond_Updated" >
             <InsertParameters>
                 <asp:Parameter Name="KIID_URL" ConvertEmptyStringToNull="true" Type="String" />
                 <asp:Parameter Name="PRAVILA_URL" ConvertEmptyStringToNull="true" Type="String" />

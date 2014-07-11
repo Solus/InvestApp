@@ -16,6 +16,7 @@ namespace InvestApp.Web
         public const string SESSION_SCAN_KARTICA = "sssckr";
         public const string SESSION_SCAN_IZVOD = "sssciz";
         public const string SESSION_SCAN_POTPISNI_KARTON = "ssscpk";
+        public const string SESSION_SCAN_OSOBNA_DRUGI = "ssscosdr";
 
 		private enum Korak
 		{
@@ -360,6 +361,7 @@ namespace InvestApp.Web
 							mv.ActiveViewIndex = SkupnoZastupanje ? (int)Korak.B2_PodaciDrugeOsobe : (int)Korak.C_Placanje;
 							break;
 						case Korak.B2_PodaciDrugeOsobe:
+                            SpremiDokumenteDrugaOsoba();
 							mv.ActiveViewIndex = (int)Korak.C_Placanje;
 							break;
 						case Korak.C_Placanje:
@@ -525,6 +527,20 @@ namespace InvestApp.Web
             KorisnikUneseniPodaci = k;
         }
 
+        private void SpremiDokumenteDrugaOsoba()
+        {
+            var k = KorisnikUneseniPodaci;
+            
+            var fileOsobnaDrugi = KontrolaFile("fuOsobnaDrugi");
+            var hfOsobnaDrugi = KontrolaAnchor("linkOsobnaDrugi");
+            
+            k.SLIKA_OSOBNE_DRUGI_URL = SpremiDokument("osd_", fileOsobnaDrugi, hfOsobnaDrugi) ?? k.SLIKA_OSOBNE_DRUGI_URL;
+            
+            Session[SESSION_SCAN_OSOBNA_DRUGI] = k.SLIKA_OSOBNE_DRUGI_URL;
+
+            KorisnikUneseniPodaci = k;
+        }
+
         private string SpremiDokument(string fileName, FileUpload fu, HtmlAnchor link)
         {
             if (fu.HasFile)
@@ -534,6 +550,8 @@ namespace InvestApp.Web
 
                 string filePath = folder + fileName + postfix + Path.GetExtension(fu.FileName);
                 string fileFullPath = Server.MapPath(filePath);
+
+                File.Delete(fileFullPath);
 
                 fu.SaveAs(fileFullPath);
                 link.HRef = filePath;
@@ -688,35 +706,39 @@ namespace InvestApp.Web
 				k.ADRESA_SLANJE_MJESTO = KontrolaTxt("ADRESA_SLANJE_MJESTOTextBox").Text;
 				k.ADRESA_SLANJE_DRZAVA = KontrolaTxt("ADRESA_SLANJE_DRZAVATextBox").Text;
 			}
-			else if (TrenutniKorak == Korak.C_Placanje)
-			{
-				//k.RACUN_VBDI = KontrolaTxt("VBDITextBox").Text;
-				k.RACUN_BROJ = KontrolaTxt("RACUN_BROJTextBox").Text;
-			}
-			else if (TrenutniKorak == Korak.D_PranjeNovcaFizickaPravna)
-			{
-				if (Pravna)
-				{
-					k.PRAVNA_PLANIRANA_GOD_ULAGANJA = KontrolaDdl("PRAVNA_PLANIRANA_GOD_ULAGANJA").SelectedValue;
-				}
-				else
-				{
-					k.FIZICKA_STATUS_ODABIR = KontrolaDdl("DropDownList1FIZICKA_STATUS_ODABIR").SelectedValue;
-					k.FIZICKA_VRSTA_POSLODAVCA = KontrolaDdl("FIZICKA_VRSTA_POSLODAVCA").SelectedValue;
-					k.FIZICKA_STRUCNA_SPREMA = KontrolaDdl("FIZICKA_STRUCNA_SPREMA").SelectedValue;
-					k.FIZICKA_ZVANJE = KontrolaTxt("FIZICKA_ZVANJETextBox").Text;
-					k.FIZICKA_ZANIMANJE = KontrolaTxt("FIZICKA_ZANIMANJETextBox").Text;
-					k.FIZICKA_PLANIRANA_GOD_ULAGANJA = KontrolaDdl("FIZICKA_PLANIRANA_GOD_ULAGANJA").SelectedValue;
-					k.FIZICKA_SREDSTVA_OSTVARENA = KontrolaDdl("FIZICKA_SREDSTVA_OSTVARENA").SelectedValue;
-				}
-			}
-			else if (TrenutniKorak == Korak.E_PolitIzl_Vlasnistvno_FizickaPravna)
-			{
-				if(Pravna)
-					k.PRAVNA_VLASNISTVO_PODIJELJENO = KontrolaRbl("VLASNISTVO_PODIJELJENORbl").SelectedValue;
-				else
-					k.FIZICKA_POLITICKA_IZLOZENOST = KontrolaRbl("POLITICKA_IZLOZENOSTRbl").SelectedValue;
-			}
+            else if (TrenutniKorak == Korak.B2_PodaciDrugeOsobe)
+            {
+                k.SLIKA_OSOBNE_DRUGI_URL = KontrolaAnchor("linkOsobnaDrugi").HRef;
+            }
+            else if (TrenutniKorak == Korak.C_Placanje)
+            {
+                //k.RACUN_VBDI = KontrolaTxt("VBDITextBox").Text;
+                k.RACUN_BROJ = KontrolaTxt("RACUN_BROJTextBox").Text;
+            }
+            else if (TrenutniKorak == Korak.D_PranjeNovcaFizickaPravna)
+            {
+                if (Pravna)
+                {
+                    k.PRAVNA_PLANIRANA_GOD_ULAGANJA = KontrolaDdl("PRAVNA_PLANIRANA_GOD_ULAGANJA").SelectedValue;
+                }
+                else
+                {
+                    k.FIZICKA_STATUS_ODABIR = KontrolaDdl("DropDownList1FIZICKA_STATUS_ODABIR").SelectedValue;
+                    k.FIZICKA_VRSTA_POSLODAVCA = KontrolaDdl("FIZICKA_VRSTA_POSLODAVCA").SelectedValue;
+                    k.FIZICKA_STRUCNA_SPREMA = KontrolaDdl("FIZICKA_STRUCNA_SPREMA").SelectedValue;
+                    k.FIZICKA_ZVANJE = KontrolaTxt("FIZICKA_ZVANJETextBox").Text;
+                    k.FIZICKA_ZANIMANJE = KontrolaTxt("FIZICKA_ZANIMANJETextBox").Text;
+                    k.FIZICKA_PLANIRANA_GOD_ULAGANJA = KontrolaDdl("FIZICKA_PLANIRANA_GOD_ULAGANJA").SelectedValue;
+                    k.FIZICKA_SREDSTVA_OSTVARENA = KontrolaDdl("FIZICKA_SREDSTVA_OSTVARENA").SelectedValue;
+                }
+            }
+            else if (TrenutniKorak == Korak.E_PolitIzl_Vlasnistvno_FizickaPravna)
+            {
+                if (Pravna)
+                    k.PRAVNA_VLASNISTVO_PODIJELJENO = KontrolaRbl("VLASNISTVO_PODIJELJENORbl").SelectedValue;
+                else
+                    k.FIZICKA_POLITICKA_IZLOZENOST = KontrolaRbl("POLITICKA_IZLOZENOSTRbl").SelectedValue;
+            }
 
 			KorisnikUneseniPodaci = k;
 		}
@@ -759,6 +781,7 @@ namespace InvestApp.Web
                     Session[SESSION_SCAN_KARTICA] = kor.KARTICA_RACUNA_URL;
                     Session[SESSION_SCAN_IZVOD] = kor.IZVOD_SCAN_URL;
                     Session[SESSION_SCAN_POTPISNI_KARTON] = kor.POTPISNI_KARTON_SCAN_URL;
+                    Session[SESSION_SCAN_OSOBNA_DRUGI] = kor.SLIKA_OSOBNE_DRUGI_URL;
 				}
 
 				Korak1Init = true;
@@ -824,7 +847,7 @@ namespace InvestApp.Web
                     KontrolaTxt("PRAVNA_FAXTextBox").Text = k.FAX;
                     KontrolaTxt("PRAVNA_EMAILTextBox").Text = k.KONTAKT_EMAIL;
 
-                    //KontrolaRbl("rblPravnaZastupanjePojedinacno").SelectedValue
+                    KontrolaRbl("rblPravnaZastupanjePojedinacno").SelectedValue = SkupnoZastupanje ? "S" : "P";
 
                     linkIzvod.HRef = k.IZVOD_SCAN_URL;
                     linkPotpisniKarton.HRef = k.POTPISNI_KARTON_SCAN_URL;
@@ -904,6 +927,9 @@ namespace InvestApp.Web
 
 			if (k != null && !Korak2aInit)
 			{
+                var linkOsobnaDrugi = KontrolaAnchor("linkOsobnaDrugi");
+                linkOsobnaDrugi.HRef = k.SLIKA_OSOBNE_DRUGI_URL;
+                linkOsobnaDrugi.Visible = !string.IsNullOrEmpty(linkOsobnaDrugi.HRef);
 
 				Korak2aInit = true;
 			}
@@ -1182,10 +1208,16 @@ namespace InvestApp.Web
                 if (file != null)
                     k.POTPISNI_KARTON_SCAN_URL = file;
 
+                file = PrebaciKorisnikDokument(k.SLIKA_OSOBNE_DRUGI_URL);
+
+                if (file != null)
+                    k.SLIKA_OSOBNE_DRUGI_URL = file;
+
                 Session[SESSION_SCAN_OSOBNA] = k.SLIKA_OSOBNE_URL;
                 Session[SESSION_SCAN_KARTICA] = k.KARTICA_RACUNA_URL;
                 Session[SESSION_SCAN_IZVOD] = k.IZVOD_SCAN_URL;
                 Session[SESSION_SCAN_POTPISNI_KARTON] = k.POTPISNI_KARTON_SCAN_URL;
+                Session[SESSION_SCAN_OSOBNA_DRUGI] = k.SLIKA_OSOBNE_DRUGI_URL;
 
                 KorisnikUneseniPodaci = k;
             }

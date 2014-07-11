@@ -24,6 +24,7 @@ namespace InvestApp.Web
         private enum DokTip
         {
             Osobna,
+            OsobnaDrugeOsobe,
             Kartica,
             Izvod,
             PotpisniKarton
@@ -67,6 +68,11 @@ namespace InvestApp.Web
                 SpremiDokument(DokTip.Osobna);
                 return;
 			}
+            else if (e.CommandName == "slika_osobna_drugi")
+            {
+                SpremiDokument(DokTip.OsobnaDrugeOsobe);
+                return;
+            }
 			else if (e.CommandName == "slika_kartica")
 			{
                 SpremiDokument(DokTip.Kartica);
@@ -91,6 +97,15 @@ namespace InvestApp.Web
 				linkOsobna.HRef = null;
 				linkOsobna.Attributes["class"] = VratiKlasuLightboxLinka(null);
 			}
+            else if (e.CommandName == "slika_osobna_drugi_clear")
+            {
+                HtmlAnchor linkOsobnaDrugi = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxSLIKA_OSOBNE_DRUGI");
+                Image imgThumbnailDrugi = (Image)FormViewKorisnik.FindControl("imgSLIKA_OSOBNE_DRUGI");
+                imgThumbnailDrugi.ImageUrl = null;
+
+                linkOsobnaDrugi.HRef = null;
+                linkOsobnaDrugi.Attributes["class"] = VratiKlasuLightboxLinka(null);
+            }
 			else if (e.CommandName == "slika_kartica_clear")
 			{
 				HtmlAnchor linkKartica = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxKARTICA_RACUNA");
@@ -131,6 +146,7 @@ namespace InvestApp.Web
                 case DokTip.Kartica: fileUploadName = "fileKartica"; break;
                 case DokTip.Izvod: fileUploadName = "fileIzvod"; break;
                 case DokTip.PotpisniKarton: fileUploadName = "filePotpisniKarton"; break;
+                case DokTip.OsobnaDrugeOsobe: fileUploadName = "fileOsobnaDrugi"; break;
                 default:
                     return;
             }
@@ -148,6 +164,7 @@ namespace InvestApp.Web
                     case DokTip.Kartica: fileName = "kr_"; imgName = "imgKARTICA_RACUNA"; lightboxName = "lightboxKARTICA_RACUNA"; break;
                     case DokTip.Izvod: fileName = "iz_"; imgName = "imgIZVOD_SCAN_URL"; lightboxName = "lightboxIZVOD_SCAN_URL"; break;
                     case DokTip.PotpisniKarton: fileName = "pk_"; imgName = "imgPOTPISNI_KARTON_SCAN_URL"; lightboxName = "lightboxPOTPISNI_KARTON_SCAN_URL"; break;
+                    case DokTip.OsobnaDrugeOsobe: fileName = "osd_"; imgName = "imgSLIKA_OSOBNE_DRUGI"; lightboxName = "lightboxSLIKA_OSOBNE_DRUGI"; break;
                     default:
                         return;
                 }
@@ -203,6 +220,7 @@ namespace InvestApp.Web
                 KontrolaHTML("divKarticaRacuna").Visible = false;
                 KontrolaHTML("divIzvod").Visible = true;
                 KontrolaHTML("divPotpisniKarton").Visible = true;
+                KontrolaHTML("divOsobnaDruga").Visible = true;
 			}
 			else // fizička
 			{
@@ -217,6 +235,7 @@ namespace InvestApp.Web
                 KontrolaHTML("divKarticaRacuna").Visible = true;
                 KontrolaHTML("divIzvod").Visible = false;
                 KontrolaHTML("divPotpisniKarton").Visible = false;
+                KontrolaHTML("divOsobnaDruga").Visible = false;
 			}
 		}
 
@@ -229,11 +248,13 @@ namespace InvestApp.Web
             HtmlAnchor linkKartica = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxKARTICA_RACUNA");
             HtmlAnchor linkIzvod = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxIZVOD_SCAN_URL");
             HtmlAnchor linkPotpisniKarton = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxPOTPISNI_KARTON_SCAN_URL");
+            HtmlAnchor linkOsobnaDrugi = (HtmlAnchor)FormViewKorisnik.FindControl("lightboxSLIKA_OSOBNE_DRUGI");
 
             linkOsobna.Attributes["class"] = VratiKlasuLightboxLinka(linkOsobna.HRef);
             linkKartica.Attributes["class"] = VratiKlasuLightboxLinka(linkKartica.HRef);
             linkIzvod.Attributes["class"] = VratiKlasuLightboxLinka(linkIzvod.HRef);
             linkPotpisniKarton.Attributes["class"] = VratiKlasuLightboxLinka(linkPotpisniKarton.HRef);
+            linkOsobnaDrugi.Attributes["class"] = VratiKlasuLightboxLinka(linkOsobnaDrugi.HRef);
         }
 
         /// <summary>
@@ -285,8 +306,7 @@ namespace InvestApp.Web
 			string osUrl = (string)e.NewValues["SLIKA_OSOBNE_URL"];
 			if (osUrl.Contains('?'))
 				 e.NewValues["SLIKA_OSOBNE_URL"] = osUrl.Remove(osUrl.IndexOf('?'));
-
-			
+            			
 			string krUrl = (string)e.NewValues["KARTICA_RACUNA_URL"];
 			if (krUrl.Contains('?'))
 				e.NewValues["KARTICA_RACUNA_URL"] = krUrl.Remove(krUrl.IndexOf('?'));
@@ -297,7 +317,11 @@ namespace InvestApp.Web
 
             string pkUrl = (string)e.NewValues["POTPISNI_KARTON_SCAN_URL"];
             if (pkUrl.Contains('?'))
-                e.NewValues["POTPISNI_KARTON_SCAN_URL"] = pkUrl.Remove(pkUrl.IndexOf('?'));    
+                e.NewValues["POTPISNI_KARTON_SCAN_URL"] = pkUrl.Remove(pkUrl.IndexOf('?'));
+
+            string osdUrl = (string)e.NewValues["SLIKA_OSOBNE_DRUGI_URL"];
+            if (osdUrl.Contains('?'))
+                e.NewValues["SLIKA_OSOBNE_DRUGI_URL"] = osdUrl.Remove(osdUrl.IndexOf('?'));    
 		}
 
 		protected void EntityDataSourceKorisnikDodatno_Selecting(object sender, EntityDataSourceSelectingEventArgs e)

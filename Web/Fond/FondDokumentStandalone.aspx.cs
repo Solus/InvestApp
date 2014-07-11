@@ -215,7 +215,7 @@ namespace InvestApp.Web
 				if (!strClass.Contains(dodatnaKlasa))
 					button.Attributes["class"] = strClass + dodatnaKlasa;
 
-				button.InnerText = "Ukloni";
+				//button.InnerText = "Ukloni";
 			}
 			else if (container.IsFull) //ako je puno, ne može se dodati
 				button.Attributes["class"] = strClass + " disabled";

@@ -41,7 +41,7 @@
                     </PropertiesImage>
                 </dx:GridViewDataImageColumn>
 
-                <dx:GridViewCommandColumn ButtonType="Image" ShowDeleteButton="false" ShowEditButton="true" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="4" Width="70px">
+                <dx:GridViewCommandColumn ButtonType="Image" ShowDeleteButton="true" ShowEditButton="true" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="4" Width="70px">
 
                     <HeaderStyle HorizontalAlign="Center" />
                     <HeaderTemplate>
@@ -56,7 +56,7 @@
             </SettingsEditing>
             <SettingsPopup EditForm-HorizontalAlign="Center" EditForm-VerticalAlign="TopSides"></SettingsPopup>
             <Settings ShowStatusBar="Hidden" />
-            <SettingsText ConfirmDelete="Želite li obrisati društvo?" EmptyDataRow="Nema podataka" PopupEditFormCaption="Društvo" />
+            <SettingsText ConfirmDelete="Ova akcija će obrisati društvo, njegove fondove i sve vezane podatke. Želite li nastaviti?" EmptyDataRow="Nema podataka" PopupEditFormCaption="Društvo" />
             <SettingsCommandButton>
                 <UpdateButton ButtonType="Image">
                     <Image ToolTip="Spremi" Url="../Images/check.png">
@@ -103,7 +103,7 @@
                         <asp:FileUpload ID="fileLogo" runat="server" ToolTip="Odaberite sliku" />
                     </div>
 
-                    <h3 class="form_group">PODACI ZA UPLATU</h3>
+                    <%--<h3 class="form_group">PODACI ZA UPLATU</h3>
 
                     <div class="form_item">
                         <label class="form_item_label_edit">IBAN:</label>
@@ -124,7 +124,7 @@
                     <div class="form_item">
                         <label class="form_item_label_edit">Opis plaćanja:</label>
                         <asp:TextBox ID="txtOpisPlacanja" runat="server" Text='<%# Bind("NALOG_OPIS_PLACANJA") %>' CssClass="form_item_value_edit" MaxLength="500" TextMode="MultiLine" />
-                    </div>
+                    </div>--%>
 
                     <div class="btn_navigation_group">
 

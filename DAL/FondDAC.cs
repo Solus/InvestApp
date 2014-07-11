@@ -865,10 +865,17 @@ namespace InvestApp.DAL
 			{
 				var fond = context.Fondovi.Single(f => f.ID == fondID);
 
-				fond.KIID_URL = kiidDokURL;
-				fond.PRAVILA_URL = pravilaDokURL;
-				fond.PROSPEKT_URL = prospektDokURL;
-				fond.OSOBNA_ISKAZNICA_URL = osobnaDokURL;
+                if (!string.IsNullOrEmpty(kiidDokURL))
+                    fond.KIID_URL = kiidDokURL;
+
+                if (!string.IsNullOrEmpty(pravilaDokURL))
+                    fond.PRAVILA_URL = pravilaDokURL;
+
+                if (!string.IsNullOrEmpty(prospektDokURL))
+                    fond.PROSPEKT_URL = prospektDokURL;
+
+                if (!string.IsNullOrEmpty(osobnaDokURL))
+                    fond.OSOBNA_ISKAZNICA_URL = osobnaDokURL;
 
 				context.SaveChanges();
 

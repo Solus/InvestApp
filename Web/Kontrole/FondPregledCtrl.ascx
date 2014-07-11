@@ -529,7 +529,7 @@
                 </Columns>
                 <SettingsPager Mode="ShowAllRecords">
                 </SettingsPager>
-                <SettingsLoadingPanel ImagePosition="Left" ShowImage="true" Text="Učitavanje..." Mode="Default" Delay="300" />
+                <SettingsLoadingPanel ImagePosition="Left" ShowImage="true" Text="Učitavanje..." Mode="Disabled" Delay="300" />
                 <Settings ShowGroupButtons="False" GroupFormat="{1}" />
                 <SettingsText EmptyDataRow="Nema podataka za zadane uvjete pretraživanja." Title="PREGLED FONDOVA" />
                 <SettingsDataSecurity AllowDelete="false" AllowEdit="true" AllowInsert="False" />
@@ -541,7 +541,21 @@
                     </CommandColumnItem>
                     <TitlePanel HorizontalAlign="Left"></TitlePanel>
                 </Styles>
-                <ClientSideEvents CustomButtonClick="function(s,e){ if(e.buttonID == 'btnDelete'){ e.processOnServer = confirm('Želite li obrisati fond? Ova akcija je nepovratna.');}else e.processOnServer = true; }" />
+                <ClientSideEvents 
+                    CustomButtonClick="function(s,e){ 
+                        if(e.buttonID == 'btnDelete'){ 
+                            e.processOnServer = confirm('Želite li obrisati fond? Ova akcija je nepovratna.');
+                        }
+                        else e.processOnServer = true; 
+                    }" 
+                    BeginCallback="function(s, e) {	
+                        /*loadingPanel.Show();*/
+                        $('[id$=UpdateProgress1]').show();
+                    }" 
+                    EndCallback="function(s, e) { 
+                        /*loadingPanel.Hide();*/
+                        $('[id$=UpdateProgress1]').hide();
+                    }" />
             </dx:ASPxGridView>
 
             <asp:Label ID="lblLog" runat="server"></asp:Label>

@@ -49,8 +49,7 @@ namespace InvestApp.Common
 			}
 			catch (SmtpException)
 			{
-				return false;
-				//TODO log exception
+                return false;
 			}
 		}
 	}

@@ -3299,15 +3299,15 @@
             // lblNaslov
             // 
             this.lblNaslov.Dpi = 254F;
-            this.lblNaslov.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lblNaslov.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblNaslov.LocationFloat = new DevExpress.Utils.PointFloat(25F, 25F);
             this.lblNaslov.Name = "lblNaslov";
             this.lblNaslov.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lblNaslov.SizeF = new System.Drawing.SizeF(1000F, 50.00002F);
             this.lblNaslov.StylePriority.UseFont = false;
             this.lblNaslov.StylePriority.UseTextAlignment = false;
-            this.lblNaslov.Text = "Pristupna izjava u otvoreni investicĳski fond";
-            this.lblNaslov.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.lblNaslov.Text = "Zahtjev za izdavanje udjela u otvorenom investicijskom fondu";
+            this.lblNaslov.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLabel1
             // 

@@ -786,6 +786,16 @@
                                 </asp:RegularExpressionValidator>
                             </div>
 
+                            <h3 class="form_group">Dokumenti</h3>
+
+                            <div class="form_item" id="divOsobnaDrugaOsoba" runat="server">
+                                <label class="form_item_label_edit">Scan osobne druge osobe:</label>
+                                <asp:FileUpload ID="fuOsobnaDrugi" runat="server" CssClass="form_item_value_edit" />
+                                <a id="linkOsobnaDrugi" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_OSOBNA_DRUGI_URL") %>' title="Spremljena slika" visible="false">
+                                    <img id="Img49" runat="server" src='~/Images/img_thumb_small.png' />
+                                </a>
+                            </div>
+
                         </asp:View>
 
                         <asp:View ID="View3" runat="server">

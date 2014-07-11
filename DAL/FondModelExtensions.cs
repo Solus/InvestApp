@@ -381,6 +381,17 @@ namespace InvestApp.DAL
 			}
 		}
 
+        public string SLIKA_OSOBNE_DRUGI_THUMB_URL
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_SLIKA_OSOBNE_DRUGI_URL))
+                    return "";
+                else
+                    return Common.Utility.VratiDatotekaIkonaUrl(SLIKA_OSOBNE_DRUGI_URL);
+            }
+        }
+
 		public string KARTICA_RACUNA_THUMB_URL
 		{
 			get

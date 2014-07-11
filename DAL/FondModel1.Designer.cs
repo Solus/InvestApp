@@ -9396,6 +9396,30 @@ namespace InvestApp.DAL
         private global::System.String _SCAN_POTPISNI_KARTON_URL;
         partial void OnSCAN_POTPISNI_KARTON_URLChanging(global::System.String value);
         partial void OnSCAN_POTPISNI_KARTON_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SCAN_OSOBNA_DRUGI_URL
+        {
+            get
+            {
+                return _SCAN_OSOBNA_DRUGI_URL;
+            }
+            set
+            {
+                OnSCAN_OSOBNA_DRUGI_URLChanging(value);
+                ReportPropertyChanging("SCAN_OSOBNA_DRUGI_URL");
+                _SCAN_OSOBNA_DRUGI_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SCAN_OSOBNA_DRUGI_URL");
+                OnSCAN_OSOBNA_DRUGI_URLChanged();
+            }
+        }
+        private global::System.String _SCAN_OSOBNA_DRUGI_URL;
+        partial void OnSCAN_OSOBNA_DRUGI_URLChanging(global::System.String value);
+        partial void OnSCAN_OSOBNA_DRUGI_URLChanged();
 
         #endregion
 
@@ -11186,6 +11210,30 @@ namespace InvestApp.DAL
         private global::System.String _POTPISNI_KARTON_SCAN_URL;
         partial void OnPOTPISNI_KARTON_SCAN_URLChanging(global::System.String value);
         partial void OnPOTPISNI_KARTON_SCAN_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SLIKA_OSOBNE_DRUGI_URL
+        {
+            get
+            {
+                return _SLIKA_OSOBNE_DRUGI_URL;
+            }
+            set
+            {
+                OnSLIKA_OSOBNE_DRUGI_URLChanging(value);
+                ReportPropertyChanging("SLIKA_OSOBNE_DRUGI_URL");
+                _SLIKA_OSOBNE_DRUGI_URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SLIKA_OSOBNE_DRUGI_URL");
+                OnSLIKA_OSOBNE_DRUGI_URLChanged();
+            }
+        }
+        private global::System.String _SLIKA_OSOBNE_DRUGI_URL;
+        partial void OnSLIKA_OSOBNE_DRUGI_URLChanging(global::System.String value);
+        partial void OnSLIKA_OSOBNE_DRUGI_URLChanged();
 
         #endregion
 

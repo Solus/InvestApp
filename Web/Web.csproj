@@ -243,6 +243,7 @@
     <Content Include="Images\checkbox_darker.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\delete_circle_red.png" />
+    <Content Include="Images\delete_red.png" />
     <Content Include="Images\document.png" />
     <Content Include="Images\dok_default.png" />
     <Content Include="Images\dok_image.png" />
@@ -265,6 +266,10 @@
     <Content Include="Images\invest capital logo.png" />
     <Content Include="Images\investiraj_logo.png" />
     <Content Include="Images\investiraj_logo_color.png" />
+    <Content Include="Images\i_icon.ico" />
+    <Content Include="Images\i_icon.png" />
+    <Content Include="Images\i_icon_transparent.ico" />
+    <Content Include="Images\i_icon_transparent.png" />
     <Content Include="Images\jednako.png" />
     <Content Include="Images\jednostavno.png" />
     <Content Include="Images\kupi.png" />
@@ -320,6 +325,7 @@
     <Content Include="Kontrole\FondPortfeljPregledCtrl.ascx" />
     <Content Include="Kontrole\FondPrinosiTablicaCtrl.ascx" />
     <Content Include="Blog.aspx" />
+    <Content Include="promjene.txt" />
     <Content Include="Reports\ZahtjevIspis.aspx" />
     <Content Include="Admin.sitemap" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />

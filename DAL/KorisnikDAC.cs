@@ -208,7 +208,8 @@ namespace InvestApp.DAL
 							Utility.StringPromijenjen(k.PRAVNA_PLANIRANA_GOD_ULAGANJA, korisnikUsporedba.PRAVNA_PLANIRANA_GOD_ULAGANJA) ||
 							Utility.StringPromijenjen(k.PRAVNA_VLASNISTVO_PODIJELJENO, korisnikUsporedba.PRAVNA_VLASNISTVO_PODIJELJENO) ||
                             Utility.StringPromijenjen(k.IZVOD_SCAN_URL, korisnikUsporedba.IZVOD_SCAN_URL) ||
-                            Utility.StringPromijenjen(k.POTPISNI_KARTON_SCAN_URL, korisnikUsporedba.POTPISNI_KARTON_SCAN_URL);
+                            Utility.StringPromijenjen(k.POTPISNI_KARTON_SCAN_URL, korisnikUsporedba.POTPISNI_KARTON_SCAN_URL) ||
+                            Utility.StringPromijenjen(k.SLIKA_OSOBNE_DRUGI_URL, korisnikUsporedba.SLIKA_OSOBNE_DRUGI_URL);
 					}
 					else //fizička
 					{
@@ -314,6 +315,7 @@ namespace InvestApp.DAL
                     //dokumenti
                     k.IZVOD_SCAN_URL = Utility.NormalizeString(korisnikUsporedba.IZVOD_SCAN_URL);
                     k.POTPISNI_KARTON_SCAN_URL = Utility.NormalizeString(korisnikUsporedba.POTPISNI_KARTON_SCAN_URL);
+                    k.SLIKA_OSOBNE_DRUGI_URL = Utility.NormalizeString(korisnikUsporedba.SLIKA_OSOBNE_DRUGI_URL);
 				}
 				else //fizička
 				{

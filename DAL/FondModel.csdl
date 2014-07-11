@@ -149,7 +149,7 @@
     <Property Name="TIP_ULAGANJA_ID" Type="Int32" />
     <Property Name="TIP_UPRAVLJANJA_ID" Type="Int32" />
     <Property Name="DRUSTVA_ID" Type="Int32" />
-    <Property Name="RIZICNOST" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+    <Property Name="RIZICNOST" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="MINIMALNA_POCETNA_UPLATA" Type="Decimal" Precision="15" Scale="2" />
     <Property Name="MINIMALNE_OSTALE_UPLATE" Type="Decimal" Precision="15" Scale="2" />
     <Property Name="VALUTA_SIFRA" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
@@ -188,10 +188,10 @@
     <Property Type="Int32" Name="REGIJA_ID" />
     <NavigationProperty Name="FOND_REGIJA" Relationship="FondModel.FK_FOND_DEF_FOND_GEO1" FromRole="Fond" ToRole="FOND_REGIJA" />
     <Property Type="String" Name="NALOG_SIFRA_NAMJENE" MaxLength="4" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="KIID_URL" MaxLength="255" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="PRAVILA_URL" MaxLength="255" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="PROSPEKT_URL" MaxLength="255" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="OSOBNA_ISKAZNICA_URL" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="KIID_URL" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PRAVILA_URL" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PROSPEKT_URL" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OSOBNA_ISKAZNICA_URL" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="VALUTA_REF" Relationship="FondModel.FK_FOND_DEF_VALUTE" FromRole="Fond" ToRole="VALUTE" />
     <NavigationProperty Name="StrukturaUlaganja" Relationship="FondModel.FK_FOND_STRUKTURA_ULAGANJA_ZAG_FOND_DEF" FromRole="Fond" ToRole="FOND_STRUKTURA_ULAGANJA_ZAG" />
     <NavigationProperty Name="KORISNIKs" Relationship="FondModel.KORISNIK_FOND_FAVORITI" FromRole="Fond" ToRole="Korisnik" />
@@ -317,7 +317,7 @@
     <Property Name="NALOG_PRIMATELJ_ADRESA" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
     <Property Name="NALOG_MODEL" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
     <Property Name="NALOG_VBDI" Type="String" MaxLength="7" Unicode="true" FixedLength="false" />
-    <Property Name="NALOG_BROJ_RACUNA" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="NALOG_BROJ_RACUNA" Type="String" MaxLength="21" Unicode="true" FixedLength="false" />
     <Property Name="ODBIJANJE_RAZLOG" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
     <Property Name="ZAHTJEV_ISPISAN" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
     <Property Name="NALOG_KREIRAN" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
@@ -476,6 +476,7 @@
     <Property Type="String" Name="SCAN_KARTICA_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="SCAN_IZVOD_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="SCAN_POTPISNI_KARTON_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SCAN_OSOBNA_DRUGI_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
     <End Role="FOND_DRUSTVA" Type="FondModel.Drustvo" Multiplicity="0..1" />
@@ -726,6 +727,7 @@
     <NavigationProperty Name="NOVOSTIs1" Relationship="FondModel.FK_NOVOSTI_KORISNIK1" FromRole="Korisnik" ToRole="Novost" />
     <Property Type="String" Name="IZVOD_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="POTPISNI_KARTON_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SLIKA_OSOBNE_DRUGI_URL" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="BankaDomaca">
     <Key>

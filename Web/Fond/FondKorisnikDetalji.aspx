@@ -399,6 +399,19 @@
 
                 </div>
 
+                <div class="form_item" id="divOsobnaDruga" runat="server">
+                    <label class="form_item_label_edit">Osobna druge osobe:</label>
+                    <br />
+                    <a class="image_link thickbox" href='<%# Bind("SLIKA_OSOBNE_DRUGI_URL") %>' target="_blank" runat="server" id="lightboxSLIKA_OSOBNE_DRUGI">
+                        <asp:Image ID="imgSLIKA_OSOBNE_DRUGI" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_DRUGI_THUMB_URL") %>' CssClass="form_item_value_edit" />
+                    </a>
+                    <asp:LinkButton ID="linkOsobnaDrugiClear" runat="server" CausesValidation="True" CommandName="slika_osobna_drugi_clear" Text="X" ToolTip="Obriši osobnu" />
+                    <br />
+                    <asp:FileUpload ID="fileOsobnaDrugi" runat="server" />
+                    <asp:LinkButton ID="btnSpremiOsobnuDrugi" runat="server" CausesValidation="True" CommandName="slika_osobna_drugi" Text="Spremi osobnu" />
+
+                </div>
+
                 <div class="form_item" id="divKarticaRacuna" runat="server">
                     <label class="form_item_label_edit">Kartica računa:</label>
                     <br />
@@ -744,9 +757,17 @@
                         <label class="form_item_label">Osobna:</label>
                         <br />
                         <a class="image_link" href='<%# Bind("SLIKA_OSOBNE_URL") %>' target="_blank" runat="server" id="lightboxSLIKA_OSOBNE">
-                            <asp:Image ID="imgSLIKA_OSOBNE" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_THUMB_URL") + "?t=" + DateTime.Now.Ticks %>' CssClass="form_item_value" />
+                            <asp:Image ID="imgSLIKA_OSOBNE" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_THUMB_URL") %>' CssClass="form_item_value" />
                         </a>
 
+                    </div>
+
+                    <div class="form_item inline" id="divOsobnaDruga" runat="server">
+                        <label class="form_item_label">Osobna druge osobe:</label>
+                        <br />
+                        <a class="image_link" href='<%# Bind("SLIKA_OSOBNE_DRUGI_URL") %>' target="_blank" runat="server" id="lightboxSLIKA_OSOBNE_DRUGI">
+                            <asp:Image ID="imgSLIKA_OSOBNE_DRUGI" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_DRUGI_THUMB_URL") %>' CssClass="form_item_value" />
+                        </a>
                     </div>
 
                     <div class="form_item inline" id="divKarticaRacuna" runat="server">
@@ -800,12 +821,14 @@
             <asp:Parameter Name="KARTICA_RACUNA_URL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="IZVOD_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="POTPISNI_KARTON_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="SLIKA_OSOBNE_DRUGI_URL" ConvertEmptyStringToNull="true" Type="String" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="SLIKA_OSOBNE_URL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="KARTICA_RACUNA_URL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="IZVOD_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
             <asp:Parameter Name="POTPISNI_KARTON_SCAN_URL" ConvertEmptyStringToNull="true" Type="String" />
+            <asp:Parameter Name="SLIKA_OSOBNE_DRUGI_URL" ConvertEmptyStringToNull="true" Type="String" />
         </UpdateParameters>
     </asp:EntityDataSource>
 

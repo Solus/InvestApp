@@ -131,17 +131,21 @@ namespace InvestApp.Web
 		protected void FormViewFond_ItemUpdating(object sender, FormViewUpdateEventArgs e)
 		{
 			//spremanje datoteka
-			if ((FormViewFond.FindControl("chkDok") as CheckBox).Checked)
+			//if ((FormViewFond.FindControl("chkDok") as CheckBox).Checked)
 			{
 				string kiid = SpremiDatoteku("fileKIID", DokKIID);
 				string pravila = SpremiDatoteku("filePravila", DokPravila);
 				string prospekt = SpremiDatoteku("fileProspekt", DokProspekt);
 				string osobna = SpremiDatoteku("fileOsobna", DokOsobna);
 
-				e.NewValues["KIID_URL"] = kiid;
-				e.NewValues["PRAVILA_URL"] = pravila;
-				e.NewValues["PROSPEKT_URL"] = prospekt;
-				e.NewValues["OSOBNA_ISKAZNICA_URL"] = osobna;
+                if (!string.IsNullOrEmpty(kiid))
+                    e.NewValues["KIID_URL"] = kiid;
+                if (!string.IsNullOrEmpty(pravila))
+                    e.NewValues["PRAVILA_URL"] = pravila;
+                if (!string.IsNullOrEmpty(prospekt))
+                    e.NewValues["PROSPEKT_URL"] = prospekt;
+                if (!string.IsNullOrEmpty(osobna))
+                    e.NewValues["OSOBNA_ISKAZNICA_URL"] = osobna;
 			}
 		}
 
@@ -149,17 +153,17 @@ namespace InvestApp.Web
 		{
 			FileUpload upload = KontrolaFile(fileUpload);
 
-			//brisanje postojeće
-			if (!string.IsNullOrEmpty(postojecaDatoteka))
-			{
-				string fullPath = Server.MapPath(postojecaDatoteka);
-
-				if (File.Exists(fullPath))
-					File.Delete(fullPath);
-			}
-
 			if (upload.HasFile)
 			{
+                //brisanje postojeće
+                if (!string.IsNullOrEmpty(postojecaDatoteka))
+                {
+                    string fullPath = Server.MapPath(postojecaDatoteka);
+
+                    if (File.Exists(fullPath))
+                        File.Delete(fullPath);
+                }
+
 				string fondFolder = (fondId ?? FondID).ToString();
 
 				string fileName = Path.GetFileName(upload.FileName);
@@ -180,17 +184,17 @@ namespace InvestApp.Web
 			return null;
 		}
 
-		protected void chkDok_CheckedChanged(object sender, EventArgs e)
-		{
-			(FormViewFond.FindControl("divDokUpload") as HtmlGenericControl).Visible = (sender as CheckBox).Checked;
-		}
+        //protected void chkDok_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    (FormViewFond.FindControl("divDokUpload") as HtmlGenericControl).Visible = (sender as CheckBox).Checked;
+        //}
 
 		protected void EntityDataSourceFond_Inserted(object sender, EntityDataSourceChangedEventArgs e)
-		{
+		{//TODO
 			var fond = e.Entity as DAL.Fond;
 
 			//spremanje datoteka
-			if ((FormViewFond.FindControl("chkDok") as CheckBox).Checked)
+			//if ((FormViewFond.FindControl("chkDok") as CheckBox).Checked)
 			{
 				string kiid = SpremiDatoteku("fileKIID", fondId: fond.ID);
 				string pravila = SpremiDatoteku("filePravila", fondId: fond.ID);
@@ -213,6 +217,16 @@ namespace InvestApp.Web
 				(FormViewFond.FindControl("VALUTA_SIFRALabel") as DropDownList).SelectedValue = "191";
 			}
 		}
+
+        protected void EntityDataSourceFond_Updating(object sender, EntityDataSourceChangingEventArgs e)
+        {
+
+        }
+
+        protected void EntityDataSourceFond_Updated(object sender, EntityDataSourceChangedEventArgs e)
+        {
+
+        }
 
 	}
 }

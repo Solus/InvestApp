@@ -770,6 +770,7 @@ body
 
 a{
     padding: 0;
+    text-decoration: none;
 }
 
 footer{
@@ -1871,18 +1872,19 @@ a.blacklist.blacklisted /*link za sakrivanje fondova*/
 
 .progress_message
 {
-	position: absolute;
+	position: fixed;
 	width: 120px;
 	left: 50%;
 	margin-left: -60px;
 	height: 50px;
 	line-height: 50px;
-	top:50%;
-	margin-top: -25px;
+	top: 50%;
+    margin-top: -25px;
 	text-align: center;
     background: #fff url('../Images/ajax-loader.GIF') no-repeat left center;
 	background: #fff url('../Images/ajax-loader.GIF') no-repeat left 5px center;
 	padding-left: 20px;
+    border-radius: 2px;
 	box-shadow: 0 1px 2px 1px rgba(0,0,0,0.4);
 	z-index: 1;
 }
@@ -2502,12 +2504,29 @@ ul.fondovi_slicni .fond_naziv
 
 a.form_item_link
 {
-	padding: 4px 20px 4px 30px;
+	padding: 4px 2px 4px 30px;
 	margin-left: 5px;
 	width: auto;
 	color: #1E6DC2;
 	text-decoration: none;
 	background: url('../Images/pdf.png') no-repeat center left;
+    transition: .2s;
+}
+
+a.link_add_file{
+    background: url('../Images/plus.png') no-repeat center center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+a.link_clear_file{
+    background: url('../Images/delete_red.png') no-repeat center center;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
 }
 
 input[type="text"].dxeEditArea
@@ -2523,7 +2542,7 @@ a.form_item_link:not([href])
 
 .edit a.form_item_link
 {
-	display: block;
+	display: inline;
 }
 
 .edit a.form_item_link:not([href])
@@ -2973,6 +2992,11 @@ input[type=file]:after{
     padding: 0 5px;
     color: #F37D43;
     background: #ececec;
+}
+
+input[type=file].pdf:after
+{
+    content: "pdf";
 }
 
 /*login*/

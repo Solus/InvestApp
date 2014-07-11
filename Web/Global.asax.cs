@@ -16,12 +16,14 @@ namespace InvestApp.Web
 			// Code that runs on application startup
 			AuthConfig.RegisterOpenAuth();
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            DAL.DAC.Logiraj("Application Start", noContext: true);
 		}
 
 		void Application_End(object sender, EventArgs e)
 		{
 			//  Code that runs on application shutdown
-
+            DAL.DAC.Logiraj("Application End", noContext: true);
 		}
 
 		static T DirectCast<T>(object o) where T : class
