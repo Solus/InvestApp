@@ -400,7 +400,7 @@
                 </div>
 
                 <div class="form_item" id="divOsobnaDruga" runat="server">
-                    <label class="form_item_label_edit">Osobna druge osobe:</label>
+                    <label class="form_item_label_edit">Osobna drugog zastupnika:</label>
                     <br />
                     <a class="image_link thickbox" href='<%# Bind("SLIKA_OSOBNE_DRUGI_URL") %>' target="_blank" runat="server" id="lightboxSLIKA_OSOBNE_DRUGI">
                         <asp:Image ID="imgSLIKA_OSOBNE_DRUGI" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_DRUGI_THUMB_URL") %>' CssClass="form_item_value_edit" />
@@ -763,7 +763,7 @@
                     </div>
 
                     <div class="form_item inline" id="divOsobnaDruga" runat="server">
-                        <label class="form_item_label">Osobna druge osobe:</label>
+                        <label class="form_item_label">Osobna drugog zastupnika:</label>
                         <br />
                         <a class="image_link" href='<%# Bind("SLIKA_OSOBNE_DRUGI_URL") %>' target="_blank" runat="server" id="lightboxSLIKA_OSOBNE_DRUGI">
                             <asp:Image ID="imgSLIKA_OSOBNE_DRUGI" runat="server" ImageUrl='<%# Eval("SLIKA_OSOBNE_DRUGI_THUMB_URL") %>' CssClass="form_item_value" />
