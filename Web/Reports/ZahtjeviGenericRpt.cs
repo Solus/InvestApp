@@ -95,6 +95,9 @@ namespace InvestApp.Web.Reports
 					this.Parameters["parPulagateljImePrezime"].Value = "";
 					this.Parameters["parPulagateljNazivPravne"].Value = zahtjev.PRAVNA_IME;
 					this.Parameters["parPulagateljOIB"].Value = zahtjev.PRAVNA_OIB;
+
+                    parNalogPBO.Value = zahtjev.PRAVNA_OIB != null ? zahtjev.PRAVNA_OIB.Replace("HR", "") : null;
+
 					this.Parameters["parPulagateljOdgovornaOsoba"].Value = zahtjev.FIZICKA_IME + " " + zahtjev.FIZICKA_PREZIME;
 
 					this.Parameters["parAdresa"].Value = zahtjev.PRAVNA_ADRESA_ULICA + " " + zahtjev.PRAVNA_ADRESA_KUCNI_BROJ + ", " + zahtjev.PRAVNA_ADRESA_POSTANSKI_BROJ + " " + zahtjev.PRAVNA_ADRESA_MJESTO;
@@ -159,6 +162,8 @@ namespace InvestApp.Web.Reports
 					this.Parameters["parPulagateljImePrezime"].Value = zahtjev.FIZICKA_IME + " " + zahtjev.FIZICKA_PREZIME;
 					this.Parameters["parPulagateljNazivPravne"].Value = "";
 					this.Parameters["parPulagateljOIB"].Value = zahtjev.FIZICKA_OIB;
+
+                    parNalogPBO.Value = zahtjev.FIZICKA_OIB != null ? zahtjev.FIZICKA_OIB.Replace("HR", "") : null;
 
 					this.Parameters["parPulagateljOdgovornaOsoba"].Value = "";
 
@@ -230,8 +235,10 @@ namespace InvestApp.Web.Reports
 				#region Podaci o plaćanje
 
 				parNalogOpisPlacanja.Value = Utility.StringNvl(zahtjev.NALOG_OPIS_PLACANJA, zahtjev.Fond.NALOG_OPIS_PLACANJA, zahtjev.Fond.Drustvo.NALOG_OPIS_PLACANJA);
-				parNalogPBO.Value = Utility.StringNvl(zahtjev.NALOG_PBO, zahtjev.Fond.NALOG_PBO, zahtjev.Fond.Drustvo.NALOG_PBO);
-				parNalogPBO_Model.Value = Utility.StringNvl(zahtjev.NALOG_MODEL, zahtjev.Fond.NALOG_PBO_MODEL, zahtjev.Fond.Drustvo.NALOG_PBO_MODEL);
+				
+                //parNalogPBO.Value = Utility.StringNvl(zahtjev.NALOG_PBO, zahtjev.Fond.NALOG_PBO);
+				
+                parNalogPBO_Model.Value = Utility.StringNvl(zahtjev.NALOG_MODEL, zahtjev.Fond.NALOG_PBO_MODEL, zahtjev.Fond.Drustvo.NALOG_PBO_MODEL);
 				parNalogPrimateljAdresa.Value = Utility.StringNvl(zahtjev.NALOG_PRIMATELJ_ADRESA, zahtjev.Fond.Drustvo.ADRESA);
 				parNalogPrimateljIme.Value = Utility.StringNvl(zahtjev.NALOG_PRIMATELJ_IME, zahtjev.Fond.Drustvo.NAZIV);
 				parNalogRacun.Value = Utility.StringNvl(zahtjev.NALOG_BROJ_RACUNA, zahtjev.Fond.NALOG_PRIMATELJ_RACUN, zahtjev.Fond.Drustvo.NALOG_PRIMATELJ_RACUN);
