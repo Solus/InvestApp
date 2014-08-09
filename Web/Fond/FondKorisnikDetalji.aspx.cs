@@ -58,7 +58,7 @@ namespace InvestApp.Web
 		protected void rblPravna_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			Pravna = (sender as RadioButtonList).SelectedValue == "P";
-			PostaviFizickaPravna();
+			PostaviSucelje();
 		}
 
 		protected void FormViewKorisnik_ItemCommand(object sender, FormViewCommandEventArgs e)
@@ -205,7 +205,7 @@ namespace InvestApp.Web
 		/// <summary>
 		/// Mijenja sučelje ovisno o tome da li je korisnik fizička ili pravna
 		/// </summary>
-		private void PostaviFizickaPravna()
+		private void PostaviSucelje()
 		{
 			if (Pravna)
 			{
@@ -237,6 +237,10 @@ namespace InvestApp.Web
                 KontrolaHTML("divPotpisniKarton").Visible = false;
                 KontrolaHTML("divOsobnaDruga").Visible = false;
 			}
+
+            //ako nema adrese za slanje, sakrije se
+            if (FormViewKorisnik.CurrentMode == FormViewMode.ReadOnly && (FormViewKorisnik.FindControl("ADRESA_SLANJE_ULICATextBox") as Label).Text.Length == 0)
+                KontrolaHTML("divAdresaSlanje").Visible = false;
 		}
 
         /// <summary>
@@ -295,7 +299,7 @@ namespace InvestApp.Web
 		{
 			if ((sender as FormView).DataItem != null)
 			{
-				PostaviFizickaPravna();
+				PostaviSucelje();
 				PostaviLightbox();
 			}
 		}
