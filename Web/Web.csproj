@@ -253,6 +253,7 @@
     <Content Include="Images\Drustva\kdinvestments.png" />
     <Content Include="Images\Drustva\pbzinvest.gif" />
     <Content Include="Images\edit.png" />
+    <Content Include="Images\edit_white.png" />
     <Content Include="Images\enter_bg.png" />
     <Content Include="Images\file_pdf.png" />
     <Content Include="Images\gore_green.png" />

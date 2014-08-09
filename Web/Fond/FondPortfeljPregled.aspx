@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondPortfeljPregled.aspx.cs" Inherits="InvestApp.Web.FondPortfeljPregled" %>
+﻿<%@ Page Title="" Language="C#" Culture="de-DE" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="FondPortfeljPregled.aspx.cs" Inherits="InvestApp.Web.FondPortfeljPregled" %>
 
 <%@ Register Src="~/Kontrole/FondPortfeljPregledCtrl.ascx" TagPrefix="uc1" TagName="FondPortfeljPregledCtrl" %>
 <%@ Register Src="~/Kontrole/FondPortfeljUdioGrafCtrl.ascx" TagPrefix="uc1" TagName="FondPortfeljUdioGrafCtrl" %>

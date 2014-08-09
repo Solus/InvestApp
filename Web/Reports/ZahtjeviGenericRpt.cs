@@ -90,7 +90,7 @@ namespace InvestApp.Web.Reports
 					if (!string.IsNullOrEmpty(zahtjev.ADRESA_SLANJE_ULICA))
 						this.Parameters["parAdresaKorespondencije"].Value = zahtjev.ADRESA_SLANJE_ULICA + " " + zahtjev.ADRESA_SLANJE_KUCNI_BROJ + ", " + zahtjev.ADRESA_SLANJE_POSTANSKI_BROJ + " " + zahtjev.ADRESA_SLANJE_MJESTO + ", " + zahtjev.ADRESA_SLANJE_DRZAVA;
 					else
-						this.Parameters["parAdresaKorespondencije"].Value = zahtjev.PRAVNA_ADRESA_ULICA + " " + zahtjev.ADRESA_SLANJE_KUCNI_BROJ + ", " + zahtjev.PRAVNA_ADRESA_POSTANSKI_BROJ + " " + zahtjev.PRAVNA_ADRESA_MJESTO + ", " + zahtjev.PRAVNA_ADRESA_DRZAVA;
+						this.Parameters["parAdresaKorespondencije"].Value = zahtjev.PRAVNA_ADRESA_ULICA + " " + zahtjev.PRAVNA_ADRESA_KUCNI_BROJ + ", " + zahtjev.PRAVNA_ADRESA_POSTANSKI_BROJ + " " + zahtjev.PRAVNA_ADRESA_MJESTO + ", " + zahtjev.PRAVNA_ADRESA_DRZAVA;
 
 					this.Parameters["parPulagateljImePrezime"].Value = "";
 					this.Parameters["parPulagateljNazivPravne"].Value = zahtjev.PRAVNA_IME;
@@ -154,7 +154,7 @@ namespace InvestApp.Web.Reports
 					if (!string.IsNullOrEmpty(zahtjev.ADRESA_SLANJE_ULICA))
 						this.Parameters["parAdresaKorespondencije"].Value = zahtjev.ADRESA_SLANJE_ULICA + " " + zahtjev.ADRESA_SLANJE_KUCNI_BROJ + ", " + zahtjev.ADRESA_SLANJE_POSTANSKI_BROJ + " " + zahtjev.ADRESA_SLANJE_MJESTO + ", " + zahtjev.ADRESA_SLANJE_DRZAVA;
 					else
-						this.Parameters["parAdresaKorespondencije"].Value = zahtjev.FIZICKA_ADRESA_ULICA + ", " + zahtjev.FIZICKA_ADRESA_POSTANSKI_BROJ + " " + zahtjev.FIZICKA_ADRESA_MJESTO + ", " + zahtjev.FIZICKA_ADRESA_DRZAVA;
+						this.Parameters["parAdresaKorespondencije"].Value = zahtjev.FIZICKA_ADRESA_ULICA + " " + zahtjev.FIZICKA_ADRESA_KUCNI_BROJ + ", " + zahtjev.FIZICKA_ADRESA_POSTANSKI_BROJ + " " + zahtjev.FIZICKA_ADRESA_MJESTO + ", " + zahtjev.FIZICKA_ADRESA_DRZAVA;
 
 					this.Parameters["parPulagateljImePrezime"].Value = zahtjev.FIZICKA_IME + " " + zahtjev.FIZICKA_PREZIME;
 					this.Parameters["parPulagateljNazivPravne"].Value = "";

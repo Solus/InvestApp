@@ -17,8 +17,8 @@
     <div class="data_container">
 
         <dx:ASPxGridView ID="gvPortfelj" runat="server" AutoGenerateColumns="False" EnableTheming="True" KeyFieldName="ID"
-                    SettingsPager-Mode="ShowPager" Theme="Default" Width="100%" OnDataBinding="gvPortfelj_DataBinding" CssClass="data_table" OnCustomColumnDisplayText="gvPortfelj_CustomColumnDisplayText" OnCustomButtonCallback="gvPortfelj_CustomButtonCallback" OnCustomSummaryCalculate="gvPortfelj_CustomSummaryCalculate">
-            <Styles Header-Wrap="True" Header-HorizontalAlign="Right" >
+            SettingsPager-Mode="ShowPager" Theme="Default" Width="100%" OnDataBinding="gvPortfelj_DataBinding" CssClass="data_table" OnCustomColumnDisplayText="gvPortfelj_CustomColumnDisplayText" OnCustomButtonCallback="gvPortfelj_CustomButtonCallback" OnCustomSummaryCalculate="gvPortfelj_CustomSummaryCalculate">
+            <Styles Header-Wrap="True" Header-HorizontalAlign="Right">
                 <CommandColumnItem Font-Underline="False">
                 </CommandColumnItem>
                 <TitlePanel HorizontalAlign="Left"></TitlePanel>
@@ -50,13 +50,13 @@
 
             <Columns>
 
-                <dx:GridViewDataTextColumn SortIndex="0" SortOrder="Ascending" Caption="Naziv fonda" 
+                <dx:GridViewDataTextColumn SortIndex="0" SortOrder="Ascending" Caption="Naziv fonda"
                     VisibleIndex="0" ReadOnly="True" Name="FOND_NAZIV" HeaderStyle-HorizontalAlign="Left"
                     ToolTip="Naziv fonda">
                 </dx:GridViewDataTextColumn>
-                
+
                 <dx:GridViewDataTextColumn Caption="Broj udjela" FieldName="BR_UDJELA"
-                    Name="BROJ_UDJELA" ReadOnly="True" ToolTip="Broj udjela" VisibleIndex="2" 
+                    Name="BROJ_UDJELA" ReadOnly="True" ToolTip="Broj udjela" VisibleIndex="2"
                     Width="85px">
                 </dx:GridViewDataTextColumn>
 
@@ -72,10 +72,10 @@
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Valuta" FieldName="VALUTA"
-                    ToolTip="Valuta" VisibleIndex="5" Name="Valuta" Width="45px" HeaderStyle-HorizontalAlign="Center" >
+                    ToolTip="Valuta" VisibleIndex="5" Name="Valuta" Width="45px" HeaderStyle-HorizontalAlign="Center">
                 </dx:GridViewDataTextColumn>
 
-                <dx:GridViewDataTextColumn Caption="Promjena[%]" FieldName="POSTOTAK" Name="POSTOTAK" 
+                <dx:GridViewDataTextColumn Caption="Promjena[%]" FieldName="POSTOTAK" Name="POSTOTAK"
                     ToolTip="Dnevna promjena cijene" VisibleIndex="6" Width="90px">
                     <PropertiesTextEdit DisplayFormatString="{0:n}">
                     </PropertiesTextEdit>
@@ -95,20 +95,20 @@
 
                 <dx:GridViewDataTextColumn Caption="Vrijednost udjela[kn]"
                     Name="Vrijednost_udjela_kn" ReadOnly="True" ToolTip="Vrijednost udjela [kn]"
-                    VisibleIndex="7" Width="95px" FieldName="VRIJEDNOST_UDJELA_KN" PropertiesTextEdit-DisplayFormatString="n2" >
+                    VisibleIndex="7" Width="95px" FieldName="VRIJEDNOST_UDJELA_KN" PropertiesTextEdit-DisplayFormatString="n2">
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Udio[%]"
                     Name="Udio" ReadOnly="True" ToolTip="Udio u portfelju [kn]"
-                    VisibleIndex="8" Width="60px" FieldName="UDIO" PropertiesTextEdit-DisplayFormatString="n2" >
+                    VisibleIndex="8" Width="60px" FieldName="UDIO" PropertiesTextEdit-DisplayFormatString="n2">
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Dobit[kn]" Name="Dobit" ReadOnly="True"
-                    ToolTip="Dobit [kn]" VisibleIndex="9" Width="95px" FieldName="DOBIT_KN" PropertiesTextEdit-DisplayFormatString="n2" >
+                    ToolTip="Dobit [kn]" VisibleIndex="9" Width="95px" FieldName="DOBIT_KN" PropertiesTextEdit-DisplayFormatString="n2">
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewDataTextColumn Caption="Prinos[%]" Name="Prinos" ReadOnly="True"
-                    ToolTip="Prinos" VisibleIndex="10" Width="85px" FieldName="PRINOS" PropertiesTextEdit-DisplayFormatString="n2" >
+                    ToolTip="Prinos" VisibleIndex="10" Width="85px" FieldName="PRINOS" PropertiesTextEdit-DisplayFormatString="n2">
                 </dx:GridViewDataTextColumn>
 
                 <dx:GridViewCommandColumn ButtonType="Image" Name="Dokupi"
@@ -117,9 +117,9 @@
                     <ClearFilterButton Visible="True">
                     </ClearFilterButton>
                     <CustomButtons>
-                        <dx:gridviewcommandcolumncustombutton id="cbKupi" text="Dokupi">
-								<Image Url="~/Images/plus.png" />
-							</dx:gridviewcommandcolumncustombutton>
+                        <dx:GridViewCommandColumnCustomButton ID="cbKupi" Text="Dokupi">
+                            <Image Url="~/Images/plus.png" />
+                        </dx:GridViewCommandColumnCustomButton>
                     </CustomButtons>
                     <CellStyle CssClass="PtCmdCellBtn">
                     </CellStyle>
@@ -131,9 +131,9 @@
                     <ClearFilterButton Visible="True">
                     </ClearFilterButton>
                     <CustomButtons>
-                        <dx:gridviewcommandcolumncustombutton id="cbProdaj" text="Prodaj">
-								<Image Url="~/Images/minus.png" />
-							</dx:gridviewcommandcolumncustombutton>
+                        <dx:GridViewCommandColumnCustomButton ID="cbProdaj" Text="Prodaj">
+                            <Image Url="~/Images/minus.png" />
+                        </dx:GridViewCommandColumnCustomButton>
                     </CustomButtons>
                     <CellStyle CssClass="PtCmdCellBtn">
                     </CellStyle>
@@ -146,8 +146,39 @@
             </Columns>
         </dx:ASPxGridView>
 
-        <asp:Button ID="btnRucno" CssClass="btn_navigation rucna_realizacija" runat="server" CausesValidation="False" Text="Ručna realizacija" OnClick="btnRucno_Click" />
+        <asp:Button ID="btnRucno" CssClass="btn_navigation rucna_realizacija" runat="server" UseSubmitBehavior="false" CausesValidation="False" Text="Ručna realizacija" OnClick="btnRucno_Click" />
 
+        <asp:UpdatePanel ID="upNovac" runat="server">
+            <ContentTemplate>
+
+                <div class="portfelj_bottom_extra">
+
+                    <div id="divNovacView" runat="server">
+                        <label for="txtNovac">Novac:</label>&nbsp;
+                        <asp:Label ID="lblNovac" runat="server" Text=""></asp:Label>&nbsp;kn
+
+                        <asp:Button ID="btnNovacEdit" CssClass="btn_navigation small edit" runat="server" CausesValidation="False" Text="" ToolTip="Promijeni" OnClick="btnNovacEdit_Click" />
+                    </div>
+
+                    <div id="divNovacEdit" runat="server" visible="false">
+                        <label for="txtNovac">Novac[kn]:</label>
+                        <asp:TextBox ID="txtNovac" runat="server"></asp:TextBox>
+
+                        <asp:Button ID="btnNovacSave" CssClass="btn_navigation small save" runat="server" CausesValidation="true" Text="" ToolTip="Spremi" OnClick="btnNovacSave_Click" />
+                        <asp:Button ID="btnNovacCancel" CssClass="btn_navigation small cancel" runat="server" CausesValidation="False" Text="" ToolTip="Odustani" OnClick="btnNovacCancel_Click" />
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ControlToValidate="txtNovac" CssClass="validate_error_inline v2" ErrorMessage="Iznos mora biti upisan" runat="server" Display="Dynamic">
+                        </asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="CompareValidator3" ControlToValidate="txtNovac" Type="Currency" Operator="DataTypeCheck" runat="server"
+                            ErrorMessage="Iznos mora biti u formatu 1234,00" CssClass="validate_error_inline v2" Display="Dynamic">
+                        </asp:CompareValidator>
+
+                    </div>
+
+                </div>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
     </div>
 

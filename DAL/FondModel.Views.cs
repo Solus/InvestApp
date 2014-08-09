@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets24D560104C86FB9DB7FB24A6C99836C90C7486407845987FF402FD9F530051F6))]
+[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsAD2E94AC72FDD0BE8E5E791EC5351C6F60A720B10F2EE1C2991441C027CE9502))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -17,18 +17,18 @@ namespace Edm_EntityMappingGeneratedViews
     /// <Summary>
     /// The type contains views for EntitySets and AssociationSets that were generated at design time.
     /// </Summary>
-    public sealed class ViewsForBaseEntitySets24D560104C86FB9DB7FB24A6C99836C90C7486407845987FF402FD9F530051F6 : System.Data.Mapping.EntityViewContainer
+    public sealed class ViewsForBaseEntitySetsAD2E94AC72FDD0BE8E5E791EC5351C6F60A720B10F2EE1C2991441C027CE9502 : System.Data.Mapping.EntityViewContainer
     {
         
         /// <Summary>
         /// The constructor stores the views for the extents and also the hash values generated based on the metadata and mapping closure and views.
         /// </Summary>
-        public ViewsForBaseEntitySets24D560104C86FB9DB7FB24A6C99836C90C7486407845987FF402FD9F530051F6()
+        public ViewsForBaseEntitySetsAD2E94AC72FDD0BE8E5E791EC5351C6F60A720B10F2EE1C2991441C027CE9502()
         {
             this.EdmEntityContainerName = "FondEntities";
             this.StoreEntityContainerName = "FondModelStoreContainer";
-            this.HashOverMappingClosure = "2a513fc0a005783edfcc1c73acb9a54ff65808e4255f5cb8fdbee9e17754762b";
-            this.HashOverAllExtentViews = "4dc1b5585a0eb8bbd119d994648ad98892c2204a09b7cda04c5ce1c9a2fcc893";
+            this.HashOverMappingClosure = "6287612fbabf71434d1f446fe7dc8a061bb79fe3b85e4908490822ac76b27f2b";
+            this.HashOverAllExtentViews = "ca3d7438a121c23b7d044a0802ef26754ccec22029c00999fa1e812ac3b7e73a";
             this.ViewCount = 47;
         }
         
@@ -845,7 +845,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView12()
         {
-            System.Text.StringBuilder viewString = new System.Text.StringBuilder(7242);
+            System.Text.StringBuilder viewString = new System.Text.StringBuilder(7322);
             viewString.Append("\r\n    SELECT VALUE -- Constructing KORISNIK_DODATNO\r\n        [FondModel.Store.KO");
             viewString.Append("RISNIK_DODATNO](T1.[KORISNIK_DODATNO.ID], T1.[KORISNIK_DODATNO.IME], T1.[KORISNI");
             viewString.Append("K_DODATNO.PREZIME], T1.[KORISNIK_DODATNO.MB], T1.[KORISNIK_DODATNO.OIB], T1.[KOR");
@@ -878,64 +878,65 @@ namespace Edm_EntityMappingGeneratedViews
             viewString.Append("IK_DODATNO.RACUN_BROJ], T1.[KORISNIK_DODATNO.FIZICKA_POLITICKA_IZLOZENOST], T1.[");
             viewString.Append("KORISNIK_DODATNO.PRAVNA_VLASNISTVO_PODIJELJENO], T1.[KORISNIK_DODATNO.IZVOD_SCAN");
             viewString.Append("_URL], T1.[KORISNIK_DODATNO.POTPISNI_KARTON_SCAN_URL], T1.[KORISNIK_DODATNO.SLIK");
-            viewString.Append("A_OSOBNE_DRUGI_URL])\r\n    FROM (\r\n        SELECT \r\n            T.ID AS [KORISNIK");
-            viewString.Append("_DODATNO.ID], \r\n            T.IME AS [KORISNIK_DODATNO.IME], \r\n            T.PRE");
-            viewString.Append("ZIME AS [KORISNIK_DODATNO.PREZIME], \r\n            T.MB AS [KORISNIK_DODATNO.MB],");
-            viewString.Append(" \r\n            T.OIB AS [KORISNIK_DODATNO.OIB], \r\n            T.ADRESA_ULICA AS ");
-            viewString.Append("[KORISNIK_DODATNO.ADRESA_ULICA], \r\n            T.ADRESA_KUCNI_BROJ AS [KORISNIK_");
-            viewString.Append("DODATNO.ADRESA_KUCNI_BROJ], \r\n            T.ADRESA_POSTANSKI_BROJ AS [KORISNIK_D");
-            viewString.Append("ODATNO.ADRESA_POSTANSKI_BROJ], \r\n            T.ADRESA_MJESTO AS [KORISNIK_DODATN");
-            viewString.Append("O.ADRESA_MJESTO], \r\n            T.ADRESA_DRZAVA AS [KORISNIK_DODATNO.ADRESA_DRZA");
-            viewString.Append("VA], \r\n            T.TELEFON AS [KORISNIK_DODATNO.TELEFON], \r\n            T.MOBI");
-            viewString.Append("TEL AS [KORISNIK_DODATNO.MOBITEL], \r\n            T.FAX AS [KORISNIK_DODATNO.FAX]");
-            viewString.Append(", \r\n            T.KONTAKT_EMAIL AS [KORISNIK_DODATNO.KONTAKT_EMAIL], \r\n         ");
-            viewString.Append("   T.FIZICKA_DATUM_RODENJA AS [KORISNIK_DODATNO.FIZICKA_DATUM_RODENJA], \r\n      ");
-            viewString.Append("      T.FIZICKA_MJESTO_RODENJA AS [KORISNIK_DODATNO.FIZICKA_MJESTO_RODENJA], \r\n ");
-            viewString.Append("           T.FIZICKA_DRZAVA_RODENJA AS [KORISNIK_DODATNO.FIZICKA_DRZAVA_RODENJA]");
-            viewString.Append(", \r\n            T.FIZICKA_DRZAVLJANSTVO AS [KORISNIK_DODATNO.FIZICKA_DRZAVLJANST");
-            viewString.Append("VO], \r\n            T.FIZICKA_STATUS_ODABIR AS [KORISNIK_DODATNO.FIZICKA_STATUS_O");
-            viewString.Append("DABIR], \r\n            T.FIZICKA_STATUS_OSTALO AS [KORISNIK_DODATNO.FIZICKA_STATU");
-            viewString.Append("S_OSTALO], \r\n            T.FIZICKA_VRSTA_POSLODAVCA AS [KORISNIK_DODATNO.FIZICKA");
-            viewString.Append("_VRSTA_POSLODAVCA], \r\n            T.FIZICKA_STRUCNA_SPREMA AS [KORISNIK_DODATNO.");
-            viewString.Append("FIZICKA_STRUCNA_SPREMA], \r\n            T.FIZICKA_ZVANJE AS [KORISNIK_DODATNO.FIZ");
-            viewString.Append("ICKA_ZVANJE], \r\n            T.FIZICKA_ZANIMANJE AS [KORISNIK_DODATNO.FIZICKA_ZAN");
-            viewString.Append("IMANJE], \r\n            T.FIZICKA_PLANIRANA_GOD_ULAGANJA AS [KORISNIK_DODATNO.FIZ");
-            viewString.Append("ICKA_PLANIRANA_GOD_ULAGANJA], \r\n            T.FIZICKA_SREDSTVA_OSTVARENA AS [KOR");
-            viewString.Append("ISNIK_DODATNO.FIZICKA_SREDSTVA_OSTVARENA], \r\n            T.FIZICKA_DOKUMENT_TIP ");
-            viewString.Append("AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_TIP], \r\n            T.FIZICKA_DOKUMENT_BRO");
-            viewString.Append("J AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_BROJ], \r\n            T.FIZICKA_DOKUMENT_");
-            viewString.Append("IZDAVATELJ AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_IZDAVATELJ], \r\n            T.FI");
-            viewString.Append("ZICKA_DOKUMENT_VRIJEDI_DO AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_VRIJEDI_DO], \r\n ");
-            viewString.Append("           T.PRAVNA_PLANIRANA_GOD_ULAGANJA AS [KORISNIK_DODATNO.PRAVNA_PLANIRANA");
-            viewString.Append("_GOD_ULAGANJA], \r\n            T.ZASTUPNIK_IME AS [KORISNIK_DODATNO.ZASTUPNIK_IME");
-            viewString.Append("], \r\n            T.ZASTUPNIK_PREZIME AS [KORISNIK_DODATNO.ZASTUPNIK_PREZIME], \r\n");
-            viewString.Append("            T.ZASTUPNIK_JMBG AS [KORISNIK_DODATNO.ZASTUPNIK_JMBG], \r\n           ");
-            viewString.Append(" T.ZASTUPNIK_OIB AS [KORISNIK_DODATNO.ZASTUPNIK_OIB], \r\n            T.ZASTUPNIK_");
-            viewString.Append("ADRESA_ULICA AS [KORISNIK_DODATNO.ZASTUPNIK_ADRESA_ULICA], \r\n            T.ZASTU");
-            viewString.Append("PNIK_ADRESA_KUCNI_BROJ AS [KORISNIK_DODATNO.ZASTUPNIK_ADRESA_KUCNI_BROJ], \r\n    ");
-            viewString.Append("        T.ZASTUPNIK_ADRESA_P_BROJ AS [KORISNIK_DODATNO.ZASTUPNIK_ADRESA_P_BROJ],");
-            viewString.Append(" \r\n            T.ZASTUPNIK_ADRESA_MJESTO AS [KORISNIK_DODATNO.ZASTUPNIK_ADRESA_M");
-            viewString.Append("JESTO], \r\n            T.ZASTUPNIK_ADRESA_DRZAVA AS [KORISNIK_DODATNO.ZASTUPNIK_A");
-            viewString.Append("DRESA_DRZAVA], \r\n            T.ZASTUPNIK_TELEFON AS [KORISNIK_DODATNO.ZASTUPNIK_");
-            viewString.Append("TELEFON], \r\n            T.ZASTUPNIK_MOBITEL AS [KORISNIK_DODATNO.ZASTUPNIK_MOBIT");
-            viewString.Append("EL], \r\n            T.ZASTUPNIK_FAX AS [KORISNIK_DODATNO.ZASTUPNIK_FAX], \r\n      ");
-            viewString.Append("      T.ZASTUPNIK_EMAIL AS [KORISNIK_DODATNO.ZASTUPNIK_EMAIL], \r\n            T.A");
-            viewString.Append("DRESA_SLANJE_ULICA AS [KORISNIK_DODATNO.ADRESA_SLANJE_ULICA], \r\n            T.AD");
-            viewString.Append("RESA_SLANJE_KUCNI_BROJ AS [KORISNIK_DODATNO.ADRESA_SLANJE_KUCNI_BROJ], \r\n       ");
-            viewString.Append("     T.ADRESA_SLANJE_POSTANSKI_BROJ AS [KORISNIK_DODATNO.ADRESA_SLANJE_POSTANSKI");
-            viewString.Append("_BROJ], \r\n            T.ADRESA_SLANJE_MJESTO AS [KORISNIK_DODATNO.ADRESA_SLANJE_");
-            viewString.Append("MJESTO], \r\n            T.ADRESA_SLANJE_DRZAVA AS [KORISNIK_DODATNO.ADRESA_SLANJE");
-            viewString.Append("_DRZAVA], \r\n            T.SLIKA_OSOBNE_URL AS [KORISNIK_DODATNO.SLIKA_OSOBNE_URL");
-            viewString.Append("], \r\n            T.KARTICA_RACUNA_URL AS [KORISNIK_DODATNO.KARTICA_RACUNA_URL], ");
-            viewString.Append("\r\n            T.PRAVNA AS [KORISNIK_DODATNO.PRAVNA], \r\n            T.REZIDENTNOS");
-            viewString.Append("T AS [KORISNIK_DODATNO.REZIDENTNOST], \r\n            T.RACUN_VBDI AS [KORISNIK_DO");
-            viewString.Append("DATNO.RACUN_VBDI], \r\n            T.RACUN_BROJ AS [KORISNIK_DODATNO.RACUN_BROJ], ");
-            viewString.Append("\r\n            T.FIZICKA_POLITICKA_IZLOZENOST AS [KORISNIK_DODATNO.FIZICKA_POLITI");
-            viewString.Append("CKA_IZLOZENOST], \r\n            T.PRAVNA_VLASNISTVO_PODIJELJENO AS [KORISNIK_DODA");
-            viewString.Append("TNO.PRAVNA_VLASNISTVO_PODIJELJENO], \r\n            T.IZVOD_SCAN_URL AS [KORISNIK_");
-            viewString.Append("DODATNO.IZVOD_SCAN_URL], \r\n            T.POTPISNI_KARTON_SCAN_URL AS [KORISNIK_D");
-            viewString.Append("ODATNO.POTPISNI_KARTON_SCAN_URL], \r\n            T.SLIKA_OSOBNE_DRUGI_URL AS [KOR");
-            viewString.Append("ISNIK_DODATNO.SLIKA_OSOBNE_DRUGI_URL], \r\n            True AS _from0\r\n        FRO");
+            viewString.Append("A_OSOBNE_DRUGI_URL], T1.[KORISNIK_DODATNO.NOVAC])\r\n    FROM (\r\n        SELECT \r\n");
+            viewString.Append("            T.ID AS [KORISNIK_DODATNO.ID], \r\n            T.IME AS [KORISNIK_DODA");
+            viewString.Append("TNO.IME], \r\n            T.PREZIME AS [KORISNIK_DODATNO.PREZIME], \r\n            T");
+            viewString.Append(".MB AS [KORISNIK_DODATNO.MB], \r\n            T.OIB AS [KORISNIK_DODATNO.OIB], \r\n ");
+            viewString.Append("           T.ADRESA_ULICA AS [KORISNIK_DODATNO.ADRESA_ULICA], \r\n            T.AD");
+            viewString.Append("RESA_KUCNI_BROJ AS [KORISNIK_DODATNO.ADRESA_KUCNI_BROJ], \r\n            T.ADRESA_");
+            viewString.Append("POSTANSKI_BROJ AS [KORISNIK_DODATNO.ADRESA_POSTANSKI_BROJ], \r\n            T.ADRE");
+            viewString.Append("SA_MJESTO AS [KORISNIK_DODATNO.ADRESA_MJESTO], \r\n            T.ADRESA_DRZAVA AS ");
+            viewString.Append("[KORISNIK_DODATNO.ADRESA_DRZAVA], \r\n            T.TELEFON AS [KORISNIK_DODATNO.T");
+            viewString.Append("ELEFON], \r\n            T.MOBITEL AS [KORISNIK_DODATNO.MOBITEL], \r\n            T.");
+            viewString.Append("FAX AS [KORISNIK_DODATNO.FAX], \r\n            T.KONTAKT_EMAIL AS [KORISNIK_DODATN");
+            viewString.Append("O.KONTAKT_EMAIL], \r\n            T.FIZICKA_DATUM_RODENJA AS [KORISNIK_DODATNO.FIZ");
+            viewString.Append("ICKA_DATUM_RODENJA], \r\n            T.FIZICKA_MJESTO_RODENJA AS [KORISNIK_DODATNO");
+            viewString.Append(".FIZICKA_MJESTO_RODENJA], \r\n            T.FIZICKA_DRZAVA_RODENJA AS [KORISNIK_DO");
+            viewString.Append("DATNO.FIZICKA_DRZAVA_RODENJA], \r\n            T.FIZICKA_DRZAVLJANSTVO AS [KORISNI");
+            viewString.Append("K_DODATNO.FIZICKA_DRZAVLJANSTVO], \r\n            T.FIZICKA_STATUS_ODABIR AS [KORI");
+            viewString.Append("SNIK_DODATNO.FIZICKA_STATUS_ODABIR], \r\n            T.FIZICKA_STATUS_OSTALO AS [K");
+            viewString.Append("ORISNIK_DODATNO.FIZICKA_STATUS_OSTALO], \r\n            T.FIZICKA_VRSTA_POSLODAVCA");
+            viewString.Append(" AS [KORISNIK_DODATNO.FIZICKA_VRSTA_POSLODAVCA], \r\n            T.FIZICKA_STRUCNA");
+            viewString.Append("_SPREMA AS [KORISNIK_DODATNO.FIZICKA_STRUCNA_SPREMA], \r\n            T.FIZICKA_ZV");
+            viewString.Append("ANJE AS [KORISNIK_DODATNO.FIZICKA_ZVANJE], \r\n            T.FIZICKA_ZANIMANJE AS ");
+            viewString.Append("[KORISNIK_DODATNO.FIZICKA_ZANIMANJE], \r\n            T.FIZICKA_PLANIRANA_GOD_ULAG");
+            viewString.Append("ANJA AS [KORISNIK_DODATNO.FIZICKA_PLANIRANA_GOD_ULAGANJA], \r\n            T.FIZIC");
+            viewString.Append("KA_SREDSTVA_OSTVARENA AS [KORISNIK_DODATNO.FIZICKA_SREDSTVA_OSTVARENA], \r\n      ");
+            viewString.Append("      T.FIZICKA_DOKUMENT_TIP AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_TIP], \r\n     ");
+            viewString.Append("       T.FIZICKA_DOKUMENT_BROJ AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_BROJ], \r\n  ");
+            viewString.Append("          T.FIZICKA_DOKUMENT_IZDAVATELJ AS [KORISNIK_DODATNO.FIZICKA_DOKUMENT_IZ");
+            viewString.Append("DAVATELJ], \r\n            T.FIZICKA_DOKUMENT_VRIJEDI_DO AS [KORISNIK_DODATNO.FIZI");
+            viewString.Append("CKA_DOKUMENT_VRIJEDI_DO], \r\n            T.PRAVNA_PLANIRANA_GOD_ULAGANJA AS [KORI");
+            viewString.Append("SNIK_DODATNO.PRAVNA_PLANIRANA_GOD_ULAGANJA], \r\n            T.ZASTUPNIK_IME AS [K");
+            viewString.Append("ORISNIK_DODATNO.ZASTUPNIK_IME], \r\n            T.ZASTUPNIK_PREZIME AS [KORISNIK_D");
+            viewString.Append("ODATNO.ZASTUPNIK_PREZIME], \r\n            T.ZASTUPNIK_JMBG AS [KORISNIK_DODATNO.Z");
+            viewString.Append("ASTUPNIK_JMBG], \r\n            T.ZASTUPNIK_OIB AS [KORISNIK_DODATNO.ZASTUPNIK_OIB");
+            viewString.Append("], \r\n            T.ZASTUPNIK_ADRESA_ULICA AS [KORISNIK_DODATNO.ZASTUPNIK_ADRESA_");
+            viewString.Append("ULICA], \r\n            T.ZASTUPNIK_ADRESA_KUCNI_BROJ AS [KORISNIK_DODATNO.ZASTUPN");
+            viewString.Append("IK_ADRESA_KUCNI_BROJ], \r\n            T.ZASTUPNIK_ADRESA_P_BROJ AS [KORISNIK_DODA");
+            viewString.Append("TNO.ZASTUPNIK_ADRESA_P_BROJ], \r\n            T.ZASTUPNIK_ADRESA_MJESTO AS [KORISN");
+            viewString.Append("IK_DODATNO.ZASTUPNIK_ADRESA_MJESTO], \r\n            T.ZASTUPNIK_ADRESA_DRZAVA AS ");
+            viewString.Append("[KORISNIK_DODATNO.ZASTUPNIK_ADRESA_DRZAVA], \r\n            T.ZASTUPNIK_TELEFON AS");
+            viewString.Append(" [KORISNIK_DODATNO.ZASTUPNIK_TELEFON], \r\n            T.ZASTUPNIK_MOBITEL AS [KOR");
+            viewString.Append("ISNIK_DODATNO.ZASTUPNIK_MOBITEL], \r\n            T.ZASTUPNIK_FAX AS [KORISNIK_DOD");
+            viewString.Append("ATNO.ZASTUPNIK_FAX], \r\n            T.ZASTUPNIK_EMAIL AS [KORISNIK_DODATNO.ZASTUP");
+            viewString.Append("NIK_EMAIL], \r\n            T.ADRESA_SLANJE_ULICA AS [KORISNIK_DODATNO.ADRESA_SLAN");
+            viewString.Append("JE_ULICA], \r\n            T.ADRESA_SLANJE_KUCNI_BROJ AS [KORISNIK_DODATNO.ADRESA_");
+            viewString.Append("SLANJE_KUCNI_BROJ], \r\n            T.ADRESA_SLANJE_POSTANSKI_BROJ AS [KORISNIK_DO");
+            viewString.Append("DATNO.ADRESA_SLANJE_POSTANSKI_BROJ], \r\n            T.ADRESA_SLANJE_MJESTO AS [KO");
+            viewString.Append("RISNIK_DODATNO.ADRESA_SLANJE_MJESTO], \r\n            T.ADRESA_SLANJE_DRZAVA AS [K");
+            viewString.Append("ORISNIK_DODATNO.ADRESA_SLANJE_DRZAVA], \r\n            T.SLIKA_OSOBNE_URL AS [KORI");
+            viewString.Append("SNIK_DODATNO.SLIKA_OSOBNE_URL], \r\n            T.KARTICA_RACUNA_URL AS [KORISNIK_");
+            viewString.Append("DODATNO.KARTICA_RACUNA_URL], \r\n            T.PRAVNA AS [KORISNIK_DODATNO.PRAVNA]");
+            viewString.Append(", \r\n            T.REZIDENTNOST AS [KORISNIK_DODATNO.REZIDENTNOST], \r\n           ");
+            viewString.Append(" T.RACUN_VBDI AS [KORISNIK_DODATNO.RACUN_VBDI], \r\n            T.RACUN_BROJ AS [K");
+            viewString.Append("ORISNIK_DODATNO.RACUN_BROJ], \r\n            T.FIZICKA_POLITICKA_IZLOZENOST AS [KO");
+            viewString.Append("RISNIK_DODATNO.FIZICKA_POLITICKA_IZLOZENOST], \r\n            T.PRAVNA_VLASNISTVO_");
+            viewString.Append("PODIJELJENO AS [KORISNIK_DODATNO.PRAVNA_VLASNISTVO_PODIJELJENO], \r\n            T");
+            viewString.Append(".IZVOD_SCAN_URL AS [KORISNIK_DODATNO.IZVOD_SCAN_URL], \r\n            T.POTPISNI_K");
+            viewString.Append("ARTON_SCAN_URL AS [KORISNIK_DODATNO.POTPISNI_KARTON_SCAN_URL], \r\n            T.S");
+            viewString.Append("LIKA_OSOBNE_DRUGI_URL AS [KORISNIK_DODATNO.SLIKA_OSOBNE_DRUGI_URL], \r\n          ");
+            viewString.Append("  T.NOVAC AS [KORISNIK_DODATNO.NOVAC], \r\n            True AS _from0\r\n        FRO");
             viewString.Append("M FondEntities.Korisnici AS T\r\n    ) AS T1");
             return new System.Collections.Generic.KeyValuePair<string, string>("FondModelStoreContainer.KORISNIK_DODATNO", viewString.ToString());
         }
@@ -1723,7 +1724,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView31()
         {
-            System.Text.StringBuilder viewString = new System.Text.StringBuilder(9563);
+            System.Text.StringBuilder viewString = new System.Text.StringBuilder(9646);
             viewString.Append("\r\n    SELECT VALUE -- Constructing Korisnici\r\n        [FondModel.Korisnik](T3.Ko");
             viewString.Append("risnik_ID, T3.[Korisnik.USER_NAME], T3.Korisnik_PASSWORD, T3.Korisnik_EMAIL, T3.");
             viewString.Append("[Korisnik.FIZICKA_DOKUMENT_TIP], T3.[Korisnik.FIZICKA_DOKUMENT_BROJ], T3.[Korisn");
@@ -1752,98 +1753,99 @@ namespace Edm_EntityMappingGeneratedViews
             viewString.Append("TVO_PODIJELJENO], T3.Korisnik_UserId, T3.[Korisnik.DRUSTVO_ID], T3.[Korisnik.PAS");
             viewString.Append("SWORD_RESET_TOKEN], T3.[Korisnik.PASSWORD_RESET_VRIJEDI_DO], T3.[Korisnik.IZVOD_");
             viewString.Append("SCAN_URL], T3.[Korisnik.POTPISNI_KARTON_SCAN_URL], T3.[Korisnik.SLIKA_OSOBNE_DRU");
-            viewString.Append("GI_URL])\r\n    FROM (\r\n        SELECT T1.Korisnik_ID, T1.[Korisnik.USER_NAME], T1");
-            viewString.Append(".Korisnik_PASSWORD, T1.Korisnik_EMAIL, T2.[Korisnik.FIZICKA_DOKUMENT_TIP], T2.[K");
-            viewString.Append("orisnik.FIZICKA_DOKUMENT_BROJ], T2.[Korisnik.FIZICKA_DOKUMENT_IZDAVATELJ], T2.[K");
-            viewString.Append("orisnik.FIZICKA_DOKUMENT_VRIJEDI_DO], T2.[Korisnik.PRAVNA_PLANIRANA_GOD_ULAGANJA");
-            viewString.Append("], T2.[Korisnik.ZASTUPNIK_IME], T2.[Korisnik.ZASTUPNIK_PREZIME], T2.[Korisnik.ZA");
-            viewString.Append("STUPNIK_JMBG], T2.[Korisnik.ZASTUPNIK_OIB], T2.[Korisnik.ZASTUPNIK_ADRESA_ULICA]");
-            viewString.Append(", T2.[Korisnik.ZASTUPNIK_ADRESA_P_BROJ], T2.[Korisnik.ZASTUPNIK_ADRESA_MJESTO], ");
-            viewString.Append("T2.[Korisnik.ZASTUPNIK_ADRESA_DRZAVA], T2.[Korisnik.FIZICKA_DATUM_RODENJA], T2.[");
-            viewString.Append("Korisnik.FIZICKA_MJESTO_RODENJA], T2.[Korisnik.FIZICKA_DRZAVA_RODENJA], T2.[Kori");
-            viewString.Append("snik.FIZICKA_DRZAVLJANSTVO], T2.[Korisnik.ZASTUPNIK_TELEFON], T2.[Korisnik.ZASTU");
-            viewString.Append("PNIK_MOBITEL], T2.[Korisnik.ZASTUPNIK_FAX], T2.[Korisnik.ZASTUPNIK_EMAIL], T2.[K");
-            viewString.Append("orisnik.FIZICKA_STATUS_ODABIR], T2.[Korisnik.FIZICKA_STATUS_OSTALO], T2.[Korisni");
-            viewString.Append("k.FIZICKA_VRSTA_POSLODAVCA], T2.[Korisnik.FIZICKA_STRUCNA_SPREMA], T2.[Korisnik.");
-            viewString.Append("FIZICKA_ZVANJE], T2.[Korisnik.FIZICKA_ZANIMANJE], T2.[Korisnik.FIZICKA_PLANIRANA");
-            viewString.Append("_GOD_ULAGANJA], T2.[Korisnik.FIZICKA_SREDSTVA_OSTVARENA], T2.[Korisnik.ADRESA_SL");
-            viewString.Append("ANJE_ULICA], T2.[Korisnik.ADRESA_SLANJE_POSTANSKI_BROJ], T2.[Korisnik.ADRESA_SLA");
-            viewString.Append("NJE_MJESTO], T2.[Korisnik.ADRESA_SLANJE_DRZAVA], T2.[Korisnik.SLIKA_OSOBNE_URL],");
-            viewString.Append(" T2.[Korisnik.KARTICA_RACUNA_URL], T2.Korisnik_PRAVNA, T2.Korisnik_REZIDENTNOST,");
-            viewString.Append(" T2.Korisnik_IME, T2.Korisnik_PREZIME, T2.Korisnik_MB, T2.Korisnik_OIB, T2.[Kori");
-            viewString.Append("snik.ADRESA_ULICA], T2.[Korisnik.ADRESA_KUCNI_BROJ], T2.[Korisnik.ADRESA_POSTANS");
-            viewString.Append("KI_BROJ], T2.[Korisnik.ADRESA_MJESTO], T2.[Korisnik.ADRESA_DRZAVA], T2.Korisnik_");
-            viewString.Append("TELEFON, T2.Korisnik_MOBITEL, T2.Korisnik_FAX, T2.[Korisnik.ZASTUPNIK_ADRESA_KUC");
-            viewString.Append("NI_BROJ], T2.[Korisnik.KONTAKT_EMAIL], T2.[Korisnik.ADRESA_SLANJE_KUCNI_BROJ], T");
-            viewString.Append("2.[Korisnik.RACUN_VBDI], T2.[Korisnik.RACUN_BROJ], T2.[Korisnik.FIZICKA_POLITICK");
-            viewString.Append("A_IZLOZENOST], T2.[Korisnik.PRAVNA_VLASNISTVO_PODIJELJENO], T1.Korisnik_UserId, ");
-            viewString.Append("T1.[Korisnik.DRUSTVO_ID], T1.[Korisnik.PASSWORD_RESET_TOKEN], T1.[Korisnik.PASSW");
-            viewString.Append("ORD_RESET_VRIJEDI_DO], T2.[Korisnik.IZVOD_SCAN_URL], T2.[Korisnik.POTPISNI_KARTO");
-            viewString.Append("N_SCAN_URL], T2.[Korisnik.SLIKA_OSOBNE_DRUGI_URL], T2._from0, T1._from1\r\n       ");
-            viewString.Append(" FROM  (\r\n            SELECT \r\n                T.ID AS Korisnik_ID, \r\n          ");
-            viewString.Append("      T.USER_NAME AS [Korisnik.USER_NAME], \r\n                T.PASSWORD AS Koris");
-            viewString.Append("nik_PASSWORD, \r\n                T.EMAIL AS Korisnik_EMAIL, \r\n                T.U");
-            viewString.Append("serId AS Korisnik_UserId, \r\n                T.DRUSTVO_ID AS [Korisnik.DRUSTVO_ID");
-            viewString.Append("], \r\n                T.PASSWORD_RESET_TOKEN AS [Korisnik.PASSWORD_RESET_TOKEN], ");
-            viewString.Append("\r\n                T.PASSWORD_RESET_VRIJEDI_DO AS [Korisnik.PASSWORD_RESET_VRIJED");
-            viewString.Append("I_DO], \r\n                True AS _from1\r\n            FROM FondModelStoreContaine");
-            viewString.Append("r.KORISNIK AS T) AS T1\r\n            INNER JOIN (\r\n            SELECT \r\n         ");
-            viewString.Append("       T.ID AS Korisnik_ID, \r\n                T.FIZICKA_DOKUMENT_TIP AS [Korisni");
-            viewString.Append("k.FIZICKA_DOKUMENT_TIP], \r\n                T.FIZICKA_DOKUMENT_BROJ AS [Korisnik.");
-            viewString.Append("FIZICKA_DOKUMENT_BROJ], \r\n                T.FIZICKA_DOKUMENT_IZDAVATELJ AS [Kori");
-            viewString.Append("snik.FIZICKA_DOKUMENT_IZDAVATELJ], \r\n                T.FIZICKA_DOKUMENT_VRIJEDI_");
-            viewString.Append("DO AS [Korisnik.FIZICKA_DOKUMENT_VRIJEDI_DO], \r\n                T.PRAVNA_PLANIRA");
-            viewString.Append("NA_GOD_ULAGANJA AS [Korisnik.PRAVNA_PLANIRANA_GOD_ULAGANJA], \r\n                T");
-            viewString.Append(".ZASTUPNIK_IME AS [Korisnik.ZASTUPNIK_IME], \r\n                T.ZASTUPNIK_PREZIM");
-            viewString.Append("E AS [Korisnik.ZASTUPNIK_PREZIME], \r\n                T.ZASTUPNIK_JMBG AS [Korisn");
-            viewString.Append("ik.ZASTUPNIK_JMBG], \r\n                T.ZASTUPNIK_OIB AS [Korisnik.ZASTUPNIK_OIB");
-            viewString.Append("], \r\n                T.ZASTUPNIK_ADRESA_ULICA AS [Korisnik.ZASTUPNIK_ADRESA_ULIC");
-            viewString.Append("A], \r\n                T.ZASTUPNIK_ADRESA_P_BROJ AS [Korisnik.ZASTUPNIK_ADRESA_P_");
-            viewString.Append("BROJ], \r\n                T.ZASTUPNIK_ADRESA_MJESTO AS [Korisnik.ZASTUPNIK_ADRESA");
-            viewString.Append("_MJESTO], \r\n                T.ZASTUPNIK_ADRESA_DRZAVA AS [Korisnik.ZASTUPNIK_ADR");
-            viewString.Append("ESA_DRZAVA], \r\n                T.FIZICKA_DATUM_RODENJA AS [Korisnik.FIZICKA_DATU");
-            viewString.Append("M_RODENJA], \r\n                T.FIZICKA_MJESTO_RODENJA AS [Korisnik.FIZICKA_MJES");
-            viewString.Append("TO_RODENJA], \r\n                T.FIZICKA_DRZAVA_RODENJA AS [Korisnik.FIZICKA_DRZ");
-            viewString.Append("AVA_RODENJA], \r\n                T.FIZICKA_DRZAVLJANSTVO AS [Korisnik.FIZICKA_DRZ");
-            viewString.Append("AVLJANSTVO], \r\n                T.ZASTUPNIK_TELEFON AS [Korisnik.ZASTUPNIK_TELEFO");
-            viewString.Append("N], \r\n                T.ZASTUPNIK_MOBITEL AS [Korisnik.ZASTUPNIK_MOBITEL], \r\n   ");
-            viewString.Append("             T.ZASTUPNIK_FAX AS [Korisnik.ZASTUPNIK_FAX], \r\n                T.ZA");
-            viewString.Append("STUPNIK_EMAIL AS [Korisnik.ZASTUPNIK_EMAIL], \r\n                T.FIZICKA_STATUS_");
-            viewString.Append("ODABIR AS [Korisnik.FIZICKA_STATUS_ODABIR], \r\n                T.FIZICKA_STATUS_O");
-            viewString.Append("STALO AS [Korisnik.FIZICKA_STATUS_OSTALO], \r\n                T.FIZICKA_VRSTA_POS");
-            viewString.Append("LODAVCA AS [Korisnik.FIZICKA_VRSTA_POSLODAVCA], \r\n                T.FIZICKA_STRU");
-            viewString.Append("CNA_SPREMA AS [Korisnik.FIZICKA_STRUCNA_SPREMA], \r\n                T.FIZICKA_ZVA");
-            viewString.Append("NJE AS [Korisnik.FIZICKA_ZVANJE], \r\n                T.FIZICKA_ZANIMANJE AS [Kori");
-            viewString.Append("snik.FIZICKA_ZANIMANJE], \r\n                T.FIZICKA_PLANIRANA_GOD_ULAGANJA AS [");
-            viewString.Append("Korisnik.FIZICKA_PLANIRANA_GOD_ULAGANJA], \r\n                T.FIZICKA_SREDSTVA_O");
-            viewString.Append("STVARENA AS [Korisnik.FIZICKA_SREDSTVA_OSTVARENA], \r\n                T.ADRESA_SL");
-            viewString.Append("ANJE_ULICA AS [Korisnik.ADRESA_SLANJE_ULICA], \r\n                T.ADRESA_SLANJE_");
-            viewString.Append("POSTANSKI_BROJ AS [Korisnik.ADRESA_SLANJE_POSTANSKI_BROJ], \r\n                T.A");
-            viewString.Append("DRESA_SLANJE_MJESTO AS [Korisnik.ADRESA_SLANJE_MJESTO], \r\n                T.ADRE");
-            viewString.Append("SA_SLANJE_DRZAVA AS [Korisnik.ADRESA_SLANJE_DRZAVA], \r\n                T.SLIKA_O");
-            viewString.Append("SOBNE_URL AS [Korisnik.SLIKA_OSOBNE_URL], \r\n                T.KARTICA_RACUNA_URL");
-            viewString.Append(" AS [Korisnik.KARTICA_RACUNA_URL], \r\n                T.PRAVNA AS Korisnik_PRAVNA");
-            viewString.Append(", \r\n                T.REZIDENTNOST AS Korisnik_REZIDENTNOST, \r\n                T");
-            viewString.Append(".IME AS Korisnik_IME, \r\n                T.PREZIME AS Korisnik_PREZIME, \r\n       ");
-            viewString.Append("         T.MB AS Korisnik_MB, \r\n                T.OIB AS Korisnik_OIB, \r\n       ");
-            viewString.Append("         T.ADRESA_ULICA AS [Korisnik.ADRESA_ULICA], \r\n                T.ADRESA_K");
-            viewString.Append("UCNI_BROJ AS [Korisnik.ADRESA_KUCNI_BROJ], \r\n                T.ADRESA_POSTANSKI_");
-            viewString.Append("BROJ AS [Korisnik.ADRESA_POSTANSKI_BROJ], \r\n                T.ADRESA_MJESTO AS [");
-            viewString.Append("Korisnik.ADRESA_MJESTO], \r\n                T.ADRESA_DRZAVA AS [Korisnik.ADRESA_D");
-            viewString.Append("RZAVA], \r\n                T.TELEFON AS Korisnik_TELEFON, \r\n                T.MOB");
-            viewString.Append("ITEL AS Korisnik_MOBITEL, \r\n                T.FAX AS Korisnik_FAX, \r\n           ");
-            viewString.Append("     T.ZASTUPNIK_ADRESA_KUCNI_BROJ AS [Korisnik.ZASTUPNIK_ADRESA_KUCNI_BROJ], \r\n");
-            viewString.Append("                T.KONTAKT_EMAIL AS [Korisnik.KONTAKT_EMAIL], \r\n                T");
-            viewString.Append(".ADRESA_SLANJE_KUCNI_BROJ AS [Korisnik.ADRESA_SLANJE_KUCNI_BROJ], \r\n            ");
-            viewString.Append("    T.RACUN_VBDI AS [Korisnik.RACUN_VBDI], \r\n                T.RACUN_BROJ AS [Ko");
-            viewString.Append("risnik.RACUN_BROJ], \r\n                T.FIZICKA_POLITICKA_IZLOZENOST AS [Korisni");
-            viewString.Append("k.FIZICKA_POLITICKA_IZLOZENOST], \r\n                T.PRAVNA_VLASNISTVO_PODIJELJE");
-            viewString.Append("NO AS [Korisnik.PRAVNA_VLASNISTVO_PODIJELJENO], \r\n                T.IZVOD_SCAN_U");
-            viewString.Append("RL AS [Korisnik.IZVOD_SCAN_URL], \r\n                T.POTPISNI_KARTON_SCAN_URL AS");
-            viewString.Append(" [Korisnik.POTPISNI_KARTON_SCAN_URL], \r\n                T.SLIKA_OSOBNE_DRUGI_URL");
-            viewString.Append(" AS [Korisnik.SLIKA_OSOBNE_DRUGI_URL], \r\n                True AS _from0\r\n       ");
-            viewString.Append("     FROM FondModelStoreContainer.KORISNIK_DODATNO AS T) AS T2\r\n            ON T");
-            viewString.Append("1.Korisnik_ID = T2.Korisnik_ID\r\n    ) AS T3");
+            viewString.Append("GI_URL], T3.Korisnik_NOVAC)\r\n    FROM (\r\n        SELECT T1.Korisnik_ID, T1.[Kori");
+            viewString.Append("snik.USER_NAME], T1.Korisnik_PASSWORD, T1.Korisnik_EMAIL, T2.[Korisnik.FIZICKA_D");
+            viewString.Append("OKUMENT_TIP], T2.[Korisnik.FIZICKA_DOKUMENT_BROJ], T2.[Korisnik.FIZICKA_DOKUMENT");
+            viewString.Append("_IZDAVATELJ], T2.[Korisnik.FIZICKA_DOKUMENT_VRIJEDI_DO], T2.[Korisnik.PRAVNA_PLA");
+            viewString.Append("NIRANA_GOD_ULAGANJA], T2.[Korisnik.ZASTUPNIK_IME], T2.[Korisnik.ZASTUPNIK_PREZIM");
+            viewString.Append("E], T2.[Korisnik.ZASTUPNIK_JMBG], T2.[Korisnik.ZASTUPNIK_OIB], T2.[Korisnik.ZAST");
+            viewString.Append("UPNIK_ADRESA_ULICA], T2.[Korisnik.ZASTUPNIK_ADRESA_P_BROJ], T2.[Korisnik.ZASTUPN");
+            viewString.Append("IK_ADRESA_MJESTO], T2.[Korisnik.ZASTUPNIK_ADRESA_DRZAVA], T2.[Korisnik.FIZICKA_D");
+            viewString.Append("ATUM_RODENJA], T2.[Korisnik.FIZICKA_MJESTO_RODENJA], T2.[Korisnik.FIZICKA_DRZAVA");
+            viewString.Append("_RODENJA], T2.[Korisnik.FIZICKA_DRZAVLJANSTVO], T2.[Korisnik.ZASTUPNIK_TELEFON],");
+            viewString.Append(" T2.[Korisnik.ZASTUPNIK_MOBITEL], T2.[Korisnik.ZASTUPNIK_FAX], T2.[Korisnik.ZAST");
+            viewString.Append("UPNIK_EMAIL], T2.[Korisnik.FIZICKA_STATUS_ODABIR], T2.[Korisnik.FIZICKA_STATUS_O");
+            viewString.Append("STALO], T2.[Korisnik.FIZICKA_VRSTA_POSLODAVCA], T2.[Korisnik.FIZICKA_STRUCNA_SPR");
+            viewString.Append("EMA], T2.[Korisnik.FIZICKA_ZVANJE], T2.[Korisnik.FIZICKA_ZANIMANJE], T2.[Korisni");
+            viewString.Append("k.FIZICKA_PLANIRANA_GOD_ULAGANJA], T2.[Korisnik.FIZICKA_SREDSTVA_OSTVARENA], T2.");
+            viewString.Append("[Korisnik.ADRESA_SLANJE_ULICA], T2.[Korisnik.ADRESA_SLANJE_POSTANSKI_BROJ], T2.[");
+            viewString.Append("Korisnik.ADRESA_SLANJE_MJESTO], T2.[Korisnik.ADRESA_SLANJE_DRZAVA], T2.[Korisnik");
+            viewString.Append(".SLIKA_OSOBNE_URL], T2.[Korisnik.KARTICA_RACUNA_URL], T2.Korisnik_PRAVNA, T2.Kor");
+            viewString.Append("isnik_REZIDENTNOST, T2.Korisnik_IME, T2.Korisnik_PREZIME, T2.Korisnik_MB, T2.Kor");
+            viewString.Append("isnik_OIB, T2.[Korisnik.ADRESA_ULICA], T2.[Korisnik.ADRESA_KUCNI_BROJ], T2.[Kori");
+            viewString.Append("snik.ADRESA_POSTANSKI_BROJ], T2.[Korisnik.ADRESA_MJESTO], T2.[Korisnik.ADRESA_DR");
+            viewString.Append("ZAVA], T2.Korisnik_TELEFON, T2.Korisnik_MOBITEL, T2.Korisnik_FAX, T2.[Korisnik.Z");
+            viewString.Append("ASTUPNIK_ADRESA_KUCNI_BROJ], T2.[Korisnik.KONTAKT_EMAIL], T2.[Korisnik.ADRESA_SL");
+            viewString.Append("ANJE_KUCNI_BROJ], T2.[Korisnik.RACUN_VBDI], T2.[Korisnik.RACUN_BROJ], T2.[Korisn");
+            viewString.Append("ik.FIZICKA_POLITICKA_IZLOZENOST], T2.[Korisnik.PRAVNA_VLASNISTVO_PODIJELJENO], T");
+            viewString.Append("1.Korisnik_UserId, T1.[Korisnik.DRUSTVO_ID], T1.[Korisnik.PASSWORD_RESET_TOKEN],");
+            viewString.Append(" T1.[Korisnik.PASSWORD_RESET_VRIJEDI_DO], T2.[Korisnik.IZVOD_SCAN_URL], T2.[Kori");
+            viewString.Append("snik.POTPISNI_KARTON_SCAN_URL], T2.[Korisnik.SLIKA_OSOBNE_DRUGI_URL], T2.Korisni");
+            viewString.Append("k_NOVAC, T2._from0, T1._from1\r\n        FROM  (\r\n            SELECT \r\n           ");
+            viewString.Append("     T.ID AS Korisnik_ID, \r\n                T.USER_NAME AS [Korisnik.USER_NAME],");
+            viewString.Append(" \r\n                T.PASSWORD AS Korisnik_PASSWORD, \r\n                T.EMAIL AS");
+            viewString.Append(" Korisnik_EMAIL, \r\n                T.UserId AS Korisnik_UserId, \r\n              ");
+            viewString.Append("  T.DRUSTVO_ID AS [Korisnik.DRUSTVO_ID], \r\n                T.PASSWORD_RESET_TOKE");
+            viewString.Append("N AS [Korisnik.PASSWORD_RESET_TOKEN], \r\n                T.PASSWORD_RESET_VRIJEDI");
+            viewString.Append("_DO AS [Korisnik.PASSWORD_RESET_VRIJEDI_DO], \r\n                True AS _from1\r\n ");
+            viewString.Append("           FROM FondModelStoreContainer.KORISNIK AS T) AS T1\r\n            INNER ");
+            viewString.Append("JOIN (\r\n            SELECT \r\n                T.ID AS Korisnik_ID, \r\n            ");
+            viewString.Append("    T.FIZICKA_DOKUMENT_TIP AS [Korisnik.FIZICKA_DOKUMENT_TIP], \r\n               ");
+            viewString.Append(" T.FIZICKA_DOKUMENT_BROJ AS [Korisnik.FIZICKA_DOKUMENT_BROJ], \r\n                ");
+            viewString.Append("T.FIZICKA_DOKUMENT_IZDAVATELJ AS [Korisnik.FIZICKA_DOKUMENT_IZDAVATELJ], \r\n     ");
+            viewString.Append("           T.FIZICKA_DOKUMENT_VRIJEDI_DO AS [Korisnik.FIZICKA_DOKUMENT_VRIJEDI_D");
+            viewString.Append("O], \r\n                T.PRAVNA_PLANIRANA_GOD_ULAGANJA AS [Korisnik.PRAVNA_PLANIR");
+            viewString.Append("ANA_GOD_ULAGANJA], \r\n                T.ZASTUPNIK_IME AS [Korisnik.ZASTUPNIK_IME]");
+            viewString.Append(", \r\n                T.ZASTUPNIK_PREZIME AS [Korisnik.ZASTUPNIK_PREZIME], \r\n     ");
+            viewString.Append("           T.ZASTUPNIK_JMBG AS [Korisnik.ZASTUPNIK_JMBG], \r\n                T.ZA");
+            viewString.Append("STUPNIK_OIB AS [Korisnik.ZASTUPNIK_OIB], \r\n                T.ZASTUPNIK_ADRESA_UL");
+            viewString.Append("ICA AS [Korisnik.ZASTUPNIK_ADRESA_ULICA], \r\n                T.ZASTUPNIK_ADRESA_P");
+            viewString.Append("_BROJ AS [Korisnik.ZASTUPNIK_ADRESA_P_BROJ], \r\n                T.ZASTUPNIK_ADRES");
+            viewString.Append("A_MJESTO AS [Korisnik.ZASTUPNIK_ADRESA_MJESTO], \r\n                T.ZASTUPNIK_AD");
+            viewString.Append("RESA_DRZAVA AS [Korisnik.ZASTUPNIK_ADRESA_DRZAVA], \r\n                T.FIZICKA_D");
+            viewString.Append("ATUM_RODENJA AS [Korisnik.FIZICKA_DATUM_RODENJA], \r\n                T.FIZICKA_MJ");
+            viewString.Append("ESTO_RODENJA AS [Korisnik.FIZICKA_MJESTO_RODENJA], \r\n                T.FIZICKA_D");
+            viewString.Append("RZAVA_RODENJA AS [Korisnik.FIZICKA_DRZAVA_RODENJA], \r\n                T.FIZICKA_");
+            viewString.Append("DRZAVLJANSTVO AS [Korisnik.FIZICKA_DRZAVLJANSTVO], \r\n                T.ZASTUPNIK");
+            viewString.Append("_TELEFON AS [Korisnik.ZASTUPNIK_TELEFON], \r\n                T.ZASTUPNIK_MOBITEL ");
+            viewString.Append("AS [Korisnik.ZASTUPNIK_MOBITEL], \r\n                T.ZASTUPNIK_FAX AS [Korisnik.");
+            viewString.Append("ZASTUPNIK_FAX], \r\n                T.ZASTUPNIK_EMAIL AS [Korisnik.ZASTUPNIK_EMAIL");
+            viewString.Append("], \r\n                T.FIZICKA_STATUS_ODABIR AS [Korisnik.FIZICKA_STATUS_ODABIR]");
+            viewString.Append(", \r\n                T.FIZICKA_STATUS_OSTALO AS [Korisnik.FIZICKA_STATUS_OSTALO],");
+            viewString.Append(" \r\n                T.FIZICKA_VRSTA_POSLODAVCA AS [Korisnik.FIZICKA_VRSTA_POSLODA");
+            viewString.Append("VCA], \r\n                T.FIZICKA_STRUCNA_SPREMA AS [Korisnik.FIZICKA_STRUCNA_SP");
+            viewString.Append("REMA], \r\n                T.FIZICKA_ZVANJE AS [Korisnik.FIZICKA_ZVANJE], \r\n      ");
+            viewString.Append("          T.FIZICKA_ZANIMANJE AS [Korisnik.FIZICKA_ZANIMANJE], \r\n               ");
+            viewString.Append(" T.FIZICKA_PLANIRANA_GOD_ULAGANJA AS [Korisnik.FIZICKA_PLANIRANA_GOD_ULAGANJA], ");
+            viewString.Append("\r\n                T.FIZICKA_SREDSTVA_OSTVARENA AS [Korisnik.FIZICKA_SREDSTVA_OST");
+            viewString.Append("VARENA], \r\n                T.ADRESA_SLANJE_ULICA AS [Korisnik.ADRESA_SLANJE_ULIC");
+            viewString.Append("A], \r\n                T.ADRESA_SLANJE_POSTANSKI_BROJ AS [Korisnik.ADRESA_SLANJE_");
+            viewString.Append("POSTANSKI_BROJ], \r\n                T.ADRESA_SLANJE_MJESTO AS [Korisnik.ADRESA_SL");
+            viewString.Append("ANJE_MJESTO], \r\n                T.ADRESA_SLANJE_DRZAVA AS [Korisnik.ADRESA_SLANJ");
+            viewString.Append("E_DRZAVA], \r\n                T.SLIKA_OSOBNE_URL AS [Korisnik.SLIKA_OSOBNE_URL], ");
+            viewString.Append("\r\n                T.KARTICA_RACUNA_URL AS [Korisnik.KARTICA_RACUNA_URL], \r\n     ");
+            viewString.Append("           T.PRAVNA AS Korisnik_PRAVNA, \r\n                T.REZIDENTNOST AS Kori");
+            viewString.Append("snik_REZIDENTNOST, \r\n                T.IME AS Korisnik_IME, \r\n                T.");
+            viewString.Append("PREZIME AS Korisnik_PREZIME, \r\n                T.MB AS Korisnik_MB, \r\n          ");
+            viewString.Append("      T.OIB AS Korisnik_OIB, \r\n                T.ADRESA_ULICA AS [Korisnik.ADRES");
+            viewString.Append("A_ULICA], \r\n                T.ADRESA_KUCNI_BROJ AS [Korisnik.ADRESA_KUCNI_BROJ],");
+            viewString.Append(" \r\n                T.ADRESA_POSTANSKI_BROJ AS [Korisnik.ADRESA_POSTANSKI_BROJ], ");
+            viewString.Append("\r\n                T.ADRESA_MJESTO AS [Korisnik.ADRESA_MJESTO], \r\n               ");
+            viewString.Append(" T.ADRESA_DRZAVA AS [Korisnik.ADRESA_DRZAVA], \r\n                T.TELEFON AS Kor");
+            viewString.Append("isnik_TELEFON, \r\n                T.MOBITEL AS Korisnik_MOBITEL, \r\n              ");
+            viewString.Append("  T.FAX AS Korisnik_FAX, \r\n                T.ZASTUPNIK_ADRESA_KUCNI_BROJ AS [Kor");
+            viewString.Append("isnik.ZASTUPNIK_ADRESA_KUCNI_BROJ], \r\n                T.KONTAKT_EMAIL AS [Korisn");
+            viewString.Append("ik.KONTAKT_EMAIL], \r\n                T.ADRESA_SLANJE_KUCNI_BROJ AS [Korisnik.ADR");
+            viewString.Append("ESA_SLANJE_KUCNI_BROJ], \r\n                T.RACUN_VBDI AS [Korisnik.RACUN_VBDI],");
+            viewString.Append(" \r\n                T.RACUN_BROJ AS [Korisnik.RACUN_BROJ], \r\n                T.FI");
+            viewString.Append("ZICKA_POLITICKA_IZLOZENOST AS [Korisnik.FIZICKA_POLITICKA_IZLOZENOST], \r\n       ");
+            viewString.Append("         T.PRAVNA_VLASNISTVO_PODIJELJENO AS [Korisnik.PRAVNA_VLASNISTVO_PODIJELJ");
+            viewString.Append("ENO], \r\n                T.IZVOD_SCAN_URL AS [Korisnik.IZVOD_SCAN_URL], \r\n       ");
+            viewString.Append("         T.POTPISNI_KARTON_SCAN_URL AS [Korisnik.POTPISNI_KARTON_SCAN_URL], \r\n  ");
+            viewString.Append("              T.SLIKA_OSOBNE_DRUGI_URL AS [Korisnik.SLIKA_OSOBNE_DRUGI_URL], \r\n ");
+            viewString.Append("               T.NOVAC AS Korisnik_NOVAC, \r\n                True AS _from0\r\n    ");
+            viewString.Append("        FROM FondModelStoreContainer.KORISNIK_DODATNO AS T) AS T2\r\n            O");
+            viewString.Append("N T1.Korisnik_ID = T2.Korisnik_ID\r\n    ) AS T3");
             return new System.Collections.Generic.KeyValuePair<string, string>("FondEntities.Korisnici", viewString.ToString());
         }
         

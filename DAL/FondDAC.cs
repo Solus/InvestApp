@@ -902,5 +902,35 @@ namespace InvestApp.DAL
 			}
 		}
 
+        public static decimal KorisnikNovac(int korisnikID)
+        {
+            using (var context = new FondEntities())
+            {
+                var korisnik = context.Korisnici.Single(k => k.ID == korisnikID);
+
+                return korisnik.NOVAC ?? 0;
+            }
+        }
+
+        public static bool AzurirajNovac(decimal novac, int korisnikID)
+        {
+            try
+            {
+                using (var context = new FondEntities())
+                {
+                    var korisnik = context.Korisnici.Single(k => k.ID == korisnikID);
+
+                    korisnik.NOVAC = novac;
+
+                    return context.SaveChanges() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                DAC.Logiraj("Greška pri unosu novca", ex);
+                return false;
+            }
+        }
+
 	}
 }

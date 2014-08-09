@@ -42,6 +42,9 @@
 
         function initAjax() {
 
+            //asinkrono učitavanje podataka
+            //grid.PerformCallback('');
+
             $(document).ready(function () {
 
                 // Add the page method call as an onclick handler for the div.
@@ -370,7 +373,7 @@
             <dx:ASPxGridView ID="gvFondovi" runat="server" AutoGenerateColumns="False" EnableTheming="True" KeyFieldName="ID"
                 OnCustomButtonCallback="gvFondovi_CustomButtonCallback" OnCustomButtonInitialize="gvFondovi_CustomButtonInitialize" OnCustomColumnDisplayText="gvFondovi_CustomColumnDisplayText"
                 OnCustomGroupDisplayText="gvFondovi_CustomGroupDisplayText" OnDataBinding="gvFondovi_DataBinding"
-                SettingsPager-Mode="ShowAllRecords" CssClass="data_table" ClientInstanceName="grid" >
+                SettingsPager-Mode="ShowAllRecords" CssClass="data_table" ClientInstanceName="grid">
                 <Columns>
                     <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" Visible="false" VisibleIndex="0">
                     </dx:GridViewDataTextColumn>

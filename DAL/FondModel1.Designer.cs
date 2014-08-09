@@ -11234,6 +11234,30 @@ namespace InvestApp.DAL
         private global::System.String _SLIKA_OSOBNE_DRUGI_URL;
         partial void OnSLIKA_OSOBNE_DRUGI_URLChanging(global::System.String value);
         partial void OnSLIKA_OSOBNE_DRUGI_URLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> NOVAC
+        {
+            get
+            {
+                return _NOVAC;
+            }
+            set
+            {
+                OnNOVACChanging(value);
+                ReportPropertyChanging("NOVAC");
+                _NOVAC = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NOVAC");
+                OnNOVACChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _NOVAC;
+        partial void OnNOVACChanging(Nullable<global::System.Decimal> value);
+        partial void OnNOVACChanged();
 
         #endregion
 

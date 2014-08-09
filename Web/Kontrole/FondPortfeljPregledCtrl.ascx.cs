@@ -36,6 +36,9 @@ namespace InvestApp.Web
 			if (!IsPostBack)
 			{
 				gvPortfelj.DataBind();
+
+                var novac = DAL.FondDAC.KorisnikNovac(KorisnikId);
+                txtNovac.Text = lblNovac.Text = Common.Utility.DecimalToString(novac);
 			}
 		}
 
@@ -126,5 +129,42 @@ namespace InvestApp.Web
 		{
 			Response.Redirect(ResolveUrl("~/Fond/FondRealizacija.aspx"));
 		}
+
+        private void NovacChangeMode(bool edit)
+        {
+            if (edit)
+            {
+                divNovacView.Visible = false;
+                divNovacEdit.Visible = true;
+            }
+            else
+            {
+                divNovacView.Visible = true;
+                divNovacEdit.Visible = false;
+            }
+        }
+
+        protected void btnNovacEdit_Click(object sender, EventArgs e)
+        {
+            NovacChangeMode(true);
+        }
+
+        protected void btnNovacSave_Click(object sender, EventArgs e)
+        {
+            decimal novac = 0;
+
+            if (decimal.TryParse(txtNovac.Text, out novac))
+            {
+                DAL.FondDAC.AzurirajNovac(novac, KorisnikId);
+
+                lblNovac.Text = Common.Utility.DecimalToString(novac);
+                NovacChangeMode(false);
+            }
+        }
+
+        protected void btnNovacCancel_Click(object sender, EventArgs e)
+        {
+            NovacChangeMode(false);
+        }
 	}
 }

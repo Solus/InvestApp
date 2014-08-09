@@ -360,6 +360,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
         <MappingFragment StoreEntitySet="KORISNIK_DODATNO">
+          <ScalarProperty Name="NOVAC" ColumnName="NOVAC" />
           <ScalarProperty Name="SLIKA_OSOBNE_DRUGI_URL" ColumnName="SLIKA_OSOBNE_DRUGI_URL" />
           <ScalarProperty Name="POTPISNI_KARTON_SCAN_URL" ColumnName="POTPISNI_KARTON_SCAN_URL" />
           <ScalarProperty Name="IZVOD_SCAN_URL" ColumnName="IZVOD_SCAN_URL" />

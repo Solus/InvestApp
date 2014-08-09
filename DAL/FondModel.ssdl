@@ -198,7 +198,7 @@
     <Property Name="SEKTOR_ID" Type="int" />
     <Property Name="TRZISTE_ID" Type="int" />
     <Property Name="PROFIL_RIZICNOSTI_ID" Type="int" />
-    <Property Name="RIZICNOST" Type="nvarchar" MaxLength="50" />
+    <Property Name="RIZICNOST" Type="nvarchar" MaxLength="2" />
     <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
     <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
     <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
@@ -631,6 +631,7 @@
     <Property Name="IZVOD_SCAN_URL" Type="nvarchar" MaxLength="250" />
     <Property Name="POTPISNI_KARTON_SCAN_URL" Type="nvarchar" MaxLength="250" />
     <Property Name="SLIKA_OSOBNE_DRUGI_URL" Type="nvarchar" MaxLength="250" />
+    <Property Name="NOVAC" Type="numeric" Precision="15" Scale="4" />
   </EntityType>
   <EntityType Name="KORISNIK_FOND_FAVORITI">
     <Key>

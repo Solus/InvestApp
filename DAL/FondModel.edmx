@@ -203,7 +203,7 @@
           <Property Name="SEKTOR_ID" Type="int" />
           <Property Name="TRZISTE_ID" Type="int" />
           <Property Name="PROFIL_RIZICNOSTI_ID" Type="int" />
-          <Property Name="RIZICNOST" Type="nvarchar" MaxLength="50" />
+          <Property Name="RIZICNOST" Type="nvarchar" MaxLength="2" />
           <Property Name="MINIMALNA_POCETNA_UPLATA" Type="numeric" Precision="15" Scale="2" />
           <Property Name="MINIMALNE_OSTALE_UPLATE" Type="numeric" Precision="15" Scale="2" />
           <Property Name="VALUTA_SIFRA" Type="nvarchar" MaxLength="3" />
@@ -636,6 +636,7 @@
           <Property Name="IZVOD_SCAN_URL" Type="nvarchar" MaxLength="250" />
           <Property Name="POTPISNI_KARTON_SCAN_URL" Type="nvarchar" MaxLength="250" />
           <Property Name="SLIKA_OSOBNE_DRUGI_URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="NOVAC" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="KORISNIK_FOND_FAVORITI">
           <Key>
@@ -1169,7 +1170,7 @@
           <Property Name="TIP_ULAGANJA_ID" Type="Int32" />
           <Property Name="TIP_UPRAVLJANJA_ID" Type="Int32" />
           <Property Name="DRUSTVA_ID" Type="Int32" />
-          <Property Name="RIZICNOST" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RIZICNOST" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
           <Property Name="MINIMALNA_POCETNA_UPLATA" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="MINIMALNE_OSTALE_UPLATE" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="VALUTA_SIFRA" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
@@ -1748,6 +1749,7 @@
           <Property Type="String" Name="IZVOD_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="POTPISNI_KARTON_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SLIKA_OSOBNE_DRUGI_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="NOVAC" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="BankaDomaca">
           <Key>
@@ -2394,6 +2396,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
               <MappingFragment StoreEntitySet="KORISNIK_DODATNO">
+                <ScalarProperty Name="NOVAC" ColumnName="NOVAC" />
                 <ScalarProperty Name="SLIKA_OSOBNE_DRUGI_URL" ColumnName="SLIKA_OSOBNE_DRUGI_URL" />
                 <ScalarProperty Name="POTPISNI_KARTON_SCAN_URL" ColumnName="POTPISNI_KARTON_SCAN_URL" />
                 <ScalarProperty Name="IZVOD_SCAN_URL" ColumnName="IZVOD_SCAN_URL" />

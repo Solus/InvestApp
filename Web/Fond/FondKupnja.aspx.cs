@@ -657,8 +657,8 @@ namespace InvestApp.Web
 					k.ZASTUPNIK_EMAIL = KontrolaTxt("FIZICKA_EMAILTextBox").Text;
 
                     //dokumenti
-                    k.IZVOD_SCAN_URL = KontrolaAnchor("linkIzvod").HRef;
-                    k.POTPISNI_KARTON_SCAN_URL = KontrolaAnchor("linkPotpisniKarton").HRef;
+                    k.IZVOD_SCAN_URL = StringTimestampUkloni(KontrolaAnchor("linkIzvod").HRef);
+                    k.POTPISNI_KARTON_SCAN_URL = StringTimestampUkloni(KontrolaAnchor("linkPotpisniKarton").HRef);
 				}
 				else
 				{
@@ -682,11 +682,11 @@ namespace InvestApp.Web
 					k.KONTAKT_EMAIL = KontrolaTxt("FIZICKA_EMAILTextBox").Text;
 
                     //dokumenti
-                    k.KARTICA_RACUNA_URL = KontrolaAnchor("linkKartica").HRef;
+                    k.KARTICA_RACUNA_URL = StringTimestampUkloni(KontrolaAnchor("linkKartica").HRef);
 				}
 
                 //dokumenti
-                k.SLIKA_OSOBNE_URL = KontrolaAnchor("linkOsobna").HRef;
+                k.SLIKA_OSOBNE_URL = StringTimestampUkloni(KontrolaAnchor("linkOsobna").HRef);
 
 				k.FIZICKA_DOKUMENT_TIP = KontrolaDdl("FIZICKA_DOKUMENT_TIP").SelectedValue;
 				k.FIZICKA_DOKUMENT_BROJ = KontrolaTxt("FIZICKA_DOKUMENT_BROJTextBox").Text;
@@ -742,6 +742,25 @@ namespace InvestApp.Web
 
 			KorisnikUneseniPodaci = k;
 		}
+
+        private string StringTimestampUkloni(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
+            if (value.Contains('?'))
+                return value.Remove(value.IndexOf('?'));
+            else
+                return value;
+        }
+
+        private string StringTimestampDodaj(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+            else
+                return value + "?t=" + DateTime.Now.Ticks;
+        }
 
 		private void PostaviHeader(string fondNaziv = "")
 		{
@@ -916,6 +935,16 @@ namespace InvestApp.Web
             linkKartica.Visible = !string.IsNullOrEmpty(linkKartica.HRef);
             linkIzvod.Visible = !string.IsNullOrEmpty(linkIzvod.HRef);
             linkPotpisniKarton.Visible = !string.IsNullOrEmpty(linkPotpisniKarton.HRef);
+
+            linkOsobna.HRef = StringTimestampDodaj(linkOsobna.HRef);
+            linkKartica.HRef = StringTimestampDodaj(linkKartica.HRef);
+            linkIzvod.HRef = StringTimestampDodaj(linkIzvod.HRef);
+            linkPotpisniKarton.HRef = StringTimestampDodaj(linkPotpisniKarton.HRef);
+
+            KontrolaVal("valOsobna").Enabled = !linkOsobna.Visible;
+            KontrolaVal("valKartica").Enabled = !linkKartica.Visible;
+            KontrolaVal("valIzvod").Enabled = !linkIzvod.Visible;
+            KontrolaVal("valPotpisniKarton").Enabled = !linkPotpisniKarton.Visible;
 		}
 
 		/// <summary>

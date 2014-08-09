@@ -28,23 +28,6 @@ namespace InvestApp.Web
 
             if (!IsPostBack)
             {
-				////dodaj includove
-				//LiteralControl jsResource1 = new LiteralControl();
-				//jsResource1.Text = @"<script src=""../includes/jquery-1.11.0.min.js""></script>";
-				//Page.Header.Controls.Add(jsResource1);
-
-				//LiteralControl jsResource2 = new LiteralControl();
-				//jsResource2.Text = @"<script src=""../includes/jquery-migrate-1.2.1.min.js""></script>";
-				//Page.Header.Controls.Add(jsResource2);
-
-				//LiteralControl jsResource3 = new LiteralControl();
-				//jsResource3.Text = @"<script src=""../includes/thickbox.js""></script>";
-				//Page.Header.Controls.Add(jsResource3);
-
-				//LiteralControl cssResource = new LiteralControl();
-				//cssResource.Text = @"<link href=""../includes/thickbox.css"" rel=""stylesheet"" />";
-				//Page.Header.Controls.Add(cssResource);
-
                 Session["fondID"] = null;
                 gvFondovi.Columns["PTG"].Caption = DateTime.Today.Year.ToString() + ".";
                 gvFondovi.DataBind();
@@ -59,6 +42,8 @@ namespace InvestApp.Web
 
 		protected void gvFondovi_DataBinding(object sender, EventArgs e)
 		{
+            //gvFondovi.SettingsText.EmptyDataRow = "Nema podataka za zadane uvjete pretraživanja.";
+
 			//logiranje
 			vrijemeFondovi = DateTime.Now;
 
@@ -367,6 +352,11 @@ namespace InvestApp.Web
 			Session["fonddokmod"] = Common.DokumentMod.Novi;
 			Response.Redirect(ResolveUrl("~/Admin/FondUredjivanje.aspx"));
 		}
+
+        //protected void gvFondovi_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        //{
+        //    gvFondovi.DataBind();
+        //}
                    
     }
 }

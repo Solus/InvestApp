@@ -26,6 +26,13 @@
             else {
                 divAdresaSlanje.style.display = 'none';
                 valUlica.enabled = valKbr.enabled = valPbr.enabled = valMjesto.enabled = valDrzava.enabled = false;
+
+                $('#ADRESA_SLANJE_ULICATextBox').val('');
+                $('#ADRESA_SLANJE_KUCNI_BROJTextBox').val('');
+                $('#ADRESA_SLANJE_POSTANSKI_BROJTextBox').val('');
+                $('#ADRESA_SLANJE_MJESTOTextBox').val('');
+                $('#ADRESA_SLANJE_DRZAVATextBox').val('');
+
             }
         }
 
@@ -311,9 +318,9 @@
                                     <div class="form_text">
                                         Ovlaštena osoba pravne osobe je:
                                             <ol>
-                                                <li>Punoljetna osoba koja je unutar pravne osobe ovlaštena za raspolaganje s udjelima u fondu koji su u vlasništvu pravne osobe</li>
-                                                <li>punoljetna osoba koja je prema sudskom ili drugom javnom registru ovlaštena za zastupanje tvrtke</li>
-                                                <li>neka druga osoba koja dokazuje pravo raspolaganja udjelima u fondu temeljem javnobilježnički ovjerene punomoći</li>
+                                                <li>Punoljetna osoba koja je unutar pravne osobe ovlaštena za raspolaganje s udjelima u fondu koji su u vlasništvu pravne osobe.</li>
+                                                <li>Punoljetna osoba koja je prema sudskom ili drugom javnom registru ovlaštena za zastupanje tvrtke.</li>
+                                                <li>Neka druga osoba koja dokazuje pravo raspolaganja udjelima u fondu temeljem javnobilježnički ovjerene punomoći.</li>
                                             </ol>
                                     </div>
                                 </div>
@@ -528,33 +535,33 @@
 
                                 <div class="form_item">
                                     <label class="form_item_label_edit">Ulica:</label>
-                                    <asp:TextBox ID="ADRESA_SLANJE_ULICATextBox" runat="server" CssClass="form_item_value_edit ulica" Text='<%# Bind("ADRESA_SLANJE_ULICA") %>' />
+                                    <asp:TextBox ID="ADRESA_SLANJE_ULICATextBox" ClientIDMode="Static" runat="server" CssClass="form_item_value_edit ulica" Text='<%# Bind("ADRESA_SLANJE_ULICA") %>' />
                                     <asp:RequiredFieldValidator Enabled="false" ID="valSlanjeUlica" ClientIDMode="Static" ControlToValidate="ADRESA_SLANJE_ULICATextBox" ErrorMessage="Adresa slanja mora biti upisana" runat="server" Display="Dynamic">
                                         <img src="~/Images/Upozorenje.gif" runat="server" />
                                     </asp:RequiredFieldValidator>
 
                                     <label class="form_item_label_edit inline">br.:</label>
-                                    <asp:TextBox ID="ADRESA_SLANJE_KUCNI_BROJTextBox" runat="server" CssClass="form_item_value_edit small" Text='<%# Bind("ADRESA_SLANJE_KUCNI_BROJ") %>' />
+                                    <asp:TextBox ID="ADRESA_SLANJE_KUCNI_BROJTextBox" ClientIDMode="Static" runat="server" CssClass="form_item_value_edit small" Text='<%# Bind("ADRESA_SLANJE_KUCNI_BROJ") %>' />
                                     <asp:RequiredFieldValidator Enabled="false" ID="valSlanjeKbr" ClientIDMode="Static" ControlToValidate="ADRESA_SLANJE_KUCNI_BROJTextBox" ErrorMessage="Kućni broj slanja mora biti upisan" runat="server" Display="Dynamic">
                                         <img src="~/Images/Upozorenje.gif" runat="server" />
                                     </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form_item">
                                     <label class="form_item_label_edit">Poštanski broj:</label>
-                                    <asp:TextBox ID="ADRESA_SLANJE_POSTANSKI_BROJTextBox" runat="server" CssClass="form_item_value_edit small" Text='<%# Bind("ADRESA_SLANJE_POSTANSKI_BROJ") %>' MaxLength="5" />
+                                    <asp:TextBox ID="ADRESA_SLANJE_POSTANSKI_BROJTextBox" ClientIDMode="Static" runat="server" CssClass="form_item_value_edit small" Text='<%# Bind("ADRESA_SLANJE_POSTANSKI_BROJ") %>' MaxLength="5" />
                                     <asp:RequiredFieldValidator Enabled="false" ID="valSlanjePbr" ClientIDMode="Static" ControlToValidate="ADRESA_SLANJE_POSTANSKI_BROJTextBox" ErrorMessage="Poštanski broj slanja mora biti upisan" runat="server" Display="Dynamic">
                                         <img src="~/Images/Upozorenje.gif" runat="server" />
                                     </asp:RequiredFieldValidator>
 
                                     <label class="form_item_label_edit inline">Mjesto/grad:</label>
-                                    <asp:TextBox ID="ADRESA_SLANJE_MJESTOTextBox" runat="server" CssClass="form_item_value_edit mjesto" Text='<%# Bind("ADRESA_SLANJE_MJESTO") %>' />
+                                    <asp:TextBox ID="ADRESA_SLANJE_MJESTOTextBox" ClientIDMode="Static" runat="server" CssClass="form_item_value_edit mjesto" Text='<%# Bind("ADRESA_SLANJE_MJESTO") %>' />
                                     <asp:RequiredFieldValidator Enabled="false" ID="valSlanjeMjesto" ClientIDMode="Static" ControlToValidate="ADRESA_SLANJE_MJESTOTextBox" ErrorMessage="Mjesto slanja mora biti upisano" runat="server" Display="Dynamic">
                                         <img src="~/Images/Upozorenje.gif" runat="server" />
                                     </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form_item">
                                     <label class="form_item_label_edit">Država:</label>
-                                    <asp:TextBox ID="ADRESA_SLANJE_DRZAVATextBox" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("ADRESA_SLANJE_DRZAVA") %>' />
+                                    <asp:TextBox ID="ADRESA_SLANJE_DRZAVATextBox" ClientIDMode="Static" runat="server" CssClass="form_item_value_edit" Text='<%# Bind("ADRESA_SLANJE_DRZAVA") %>' />
 
                                     <asp:RequiredFieldValidator Enabled="false" ID="valSlanjeDrzava" ClientIDMode="Static" ControlToValidate="ADRESA_SLANJE_DRZAVATextBox" ErrorMessage="Država slanja mora biti upisana" runat="server" Display="Dynamic">
                                         <img src="~/Images/Upozorenje.gif" runat="server" />
@@ -568,35 +575,51 @@
                                 <h3 class="form_group">Dokumenti</h3>
 
                                 <div class="form_item">
-                                    <label class="form_item_label_edit">Scan osobne:</label>
+                                    <label class="form_item_label_edit">Scan osobnog dokumenta:</label>
                                     <asp:FileUpload ID="fuOsobna" runat="server" CssClass="form_item_value_edit" />
-                                    <a id="linkOsobna" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_OSOBNA_URL") %>' title="Spremljena slika" visible="false" >
+                                    <a id="linkOsobna" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_OSOBNA_URL") %>' title="Spremljeni scan" visible="false" >
                                         <img runat="server" src='~/Images/img_thumb_small.png' />
                                     </a>
+
+                                    <asp:RequiredFieldValidator ID="valOsobna" ControlToValidate="fuOsobna" ErrorMessage="Scan osobnog dokumenta mora biti spremljen" runat="server" Display="Dynamic">
+                                        <img id="Img50" src="~/Images/Upozorenje.gif" runat="server" />
+                                    </asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="form_item" id="divKartica" runat="server">
                                     <label class="form_item_label_edit">Scan kartice tekućeg računa:</label>
                                     <asp:FileUpload ID="fuKartica" runat="server" CssClass="form_item_value_edit" />
-                                    <a id="linkKartica" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_KARTICA_URL") %>' title="Spremljena slika" visible="false" >
+                                    <a id="linkKartica" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_KARTICA_URL") %>' title="Spremljeni scan" visible="false" >
                                         <img id="Img46" runat="server" src='~/Images/img_thumb_small.png' />
                                     </a>
+
+                                    <asp:RequiredFieldValidator ID="valKartica" ControlToValidate="fuKartica" ErrorMessage="Scan kartice računa mora biti spremljen" runat="server" Display="Dynamic">
+                                        <img id="Img51" src="~/Images/Upozorenje.gif" runat="server" />
+                                    </asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="form_item" id="divIzvod" runat="server">
                                     <label class="form_item_label_edit">Scan izvoda iz Sudskog registra:</label>
                                     <asp:FileUpload ID="fuIzvod" runat="server" CssClass="form_item_value_edit" />
-                                    <a id="linkIzvod" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_IZVOD_URL") %>' title="Spremljena slika" visible="false" >
+                                    <a id="linkIzvod" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_IZVOD_URL") %>' title="Spremljeni scan" visible="false" >
                                         <img id="Img47" runat="server" src='~/Images/img_thumb_small.png' />
                                     </a>
+
+                                    <asp:RequiredFieldValidator ID="valIzvod" ControlToValidate="fuIzvod" ErrorMessage="Scan izvoda mora biti spremljen" runat="server" Display="Dynamic">
+                                        <img id="Img52" src="~/Images/Upozorenje.gif" runat="server" />
+                                    </asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="form_item" id="divPotpisniKarton" runat="server">
                                     <label class="form_item_label_edit">Scan potpisnog kartona:</label>
                                     <asp:FileUpload ID="fuPotpisniKarton" runat="server" CssClass="form_item_value_edit" />
-                                    <a id="linkPotpisniKarton" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_POTPISNI_KARTON_URL") %>' title="Spremljena slika" visible="false" >
+                                    <a id="linkPotpisniKarton" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_POTPISNI_KARTON_URL") %>' title="Spremljeni scan" visible="false" >
                                         <img id="Img48" runat="server" src='~/Images/img_thumb_small.png' />
                                     </a>
+
+                                    <asp:RequiredFieldValidator ID="valPotpisniKarton" ControlToValidate="fuPotpisniKarton" ErrorMessage="Scan potpisnog kartona mora biti spremljen" runat="server" Display="Dynamic">
+                                        <img id="Img53" src="~/Images/Upozorenje.gif" runat="server" />
+                                    </asp:RequiredFieldValidator>
                                 </div>
 
                             </div>
@@ -789,7 +812,7 @@
                             <h3 class="form_group">Dokumenti</h3>
 
                             <div class="form_item" id="divOsobnaDrugaOsoba" runat="server">
-                                <label class="form_item_label_edit">Scan osobne:</label>
+                                <label class="form_item_label_edit">Scan osobnog dokumenta:</label>
                                 <asp:FileUpload ID="fuOsobnaDrugi" runat="server" CssClass="form_item_value_edit" />
                                 <a id="linkOsobnaDrugi" class="file_thumb thickbox" runat="server" href='<%# Bind("SCAN_OSOBNA_DRUGI_URL") %>' title="Spremljena slika" visible="false">
                                     <img id="Img49" runat="server" src='~/Images/img_thumb_small.png' />
@@ -1088,16 +1111,9 @@
 
                             <div id="divPravnaZadnje" runat="server">
 
-                                <h1 class="form_group">Podaci o stvarnom vlasniku*</h1>
+                                <h1 class="form_group">Podaci o stvarnom vlasniku</h1>
 
                                 <div class="form_item">
-
-                                    <p class="form_text">
-                                        *Pravne osobe koje po prvi puta vrše uplatu u fond pojedinog društva, uz Zahtjev za kupnju udjela, obvezne su dostaviti Rješenje Trgovačkog suda, pregled potpisnih kartona i Izjavu o stvarnom vlasnišvu.
-                                        <br />
-                                        *Podatake o stvarnom vlasniku nije potrebno utvrđivati u slučajevima predviđenim čl. 35 Zakona o sprječavanju pranja novca i financiranja terorizma.
-                                    </p>
-
                                     <label class="form_item_label_edit">Da li je vlasništvo podijeljeno na dijelove veće od 25%?:</label>
                                     <asp:RadioButtonList ID="VLASNISTVO_PODIJELJENORbl" runat="server" CssClass="form_item_value_edit" RepeatDirection="Horizontal" SelectedValue='<%# Bind("VLASNISTVO_PODIJELJENO") %>' RepeatLayout="Flow">
                                         <asp:ListItem Text="DA" Value="D"></asp:ListItem>

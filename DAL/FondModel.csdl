@@ -149,7 +149,7 @@
     <Property Name="TIP_ULAGANJA_ID" Type="Int32" />
     <Property Name="TIP_UPRAVLJANJA_ID" Type="Int32" />
     <Property Name="DRUSTVA_ID" Type="Int32" />
-    <Property Name="RIZICNOST" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RIZICNOST" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
     <Property Name="MINIMALNA_POCETNA_UPLATA" Type="Decimal" Precision="15" Scale="2" />
     <Property Name="MINIMALNE_OSTALE_UPLATE" Type="Decimal" Precision="15" Scale="2" />
     <Property Name="VALUTA_SIFRA" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
@@ -728,6 +728,7 @@
     <Property Type="String" Name="IZVOD_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="POTPISNI_KARTON_SCAN_URL" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="SLIKA_OSOBNE_DRUGI_URL" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="NOVAC" Precision="15" Scale="4" />
   </EntityType>
   <EntityType Name="BankaDomaca">
     <Key>

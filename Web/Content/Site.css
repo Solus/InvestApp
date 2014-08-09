@@ -1647,6 +1647,14 @@ input.btn_trazi:focus
 }
 
 /* podaci u tablici */
+.dxgvEmptyDataRow{
+    background-color: #e6e6e6;
+}
+
+.data_table .dxgvEmptyDataRow .dxgv{
+    border: none !important;
+}
+
 .dxgvControl, .dxgvDisabled{
     font-family: inherit;
     font-size: 15px;
@@ -1840,7 +1848,7 @@ a.updateCart.bigger:link
 	font-size: 18px;
     font-weight: bold;
     color: inherit;
-	background: #f6c2a8 url(/Images/usporedi_black.png) no-repeat 90px center;
+	background: #f6d6c7 url(/Images/usporedi_black.png) no-repeat 90px center;
     text-align: left;
     padding-left: 10px;
 }
@@ -1913,6 +1921,16 @@ a.blacklist.blacklisted /*link za sakrivanje fondova*/
     height: 100%;
     font-family: inherit;
     font-size: 14px;
+}
+
+.portfelj_bottom_extra{
+    margin-top: 20px;
+    float: left;
+    font-size: 15px;
+}
+
+.portfelj_bottom_extra *{
+    vertical-align: middle;
 }
 
 /* USPOREDBA FONDOVA */
@@ -2663,6 +2681,10 @@ textarea:focus
 	font-size: 11px;
 }
 
+.validate_error_inline.v2{
+    margin-left: 75px;
+}
+
 .validate_error_inline.small2
 {
 	margin-left: 105px;
@@ -2860,6 +2882,24 @@ input.btn_navigation:active
     box-shadow: none;
 }
 
+input.btn_navigation.small{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    font-size: 13px;
+    background-position: center center;
+}
+
+input.btn_navigation.save.small,
+input.btn_navigation.cancel.small{
+    width: 30px;
+}
+
+input.btn_navigation.small.edit{
+    background-image: url(../Images/edit_white.png);
+    width: 30px;
+}
+
 input[type=button].btn_grid_akcija,
 input[type=submit].btn_grid_akcija
 {
@@ -2984,7 +3024,7 @@ input[type=file]{
 }
 
 input[type=file]:after{
-    content: "bmp, jpg, png";
+    content: "pdf, bmp, jpg, png";
     position: absolute;
     right: 5px;
     line-height: 22px;

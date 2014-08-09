@@ -17,8 +17,18 @@
 <head id="Head1" runat="server">
     <title></title>
 
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="<%# ResolveUrl("../Scripts/jquery-2.1.0.min.js")%>"></script>
+    <link href="~/Content/Site.css?v=2.27" rel="stylesheet" />
+
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">
+
+        <!--[if lt IE 9]>
+            <script src="<%: ResolveUrl("~/Scripts/jquery-1.11.1.min.js") %>" ></script>
+        <![endif]-->
+        <!--[if (gte IE 9) | (!IE)]><!-->
+            <script src="<%: ResolveUrl("~/Scripts/jquery-2.1.0.min.js") %>"></script>
+        <!--<![endif]-->
+
+    </asp:PlaceHolder>
 
     <script type="text/javascript">
 
