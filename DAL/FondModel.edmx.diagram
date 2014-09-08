@@ -25,7 +25,7 @@
         <EntityTypeShape EntityType="FondModel.Korisnik" Width="2.25" PointX="11.375" PointY="1" />
         <EntityTypeShape EntityType="FondModel.BankaDomaca" Width="1.5" PointX="14.375" PointY="13.75" />
         <AssociationConnector Association="FondModel.FK_FOND_PROMETI_KORISNIK" />
-        <EntityTypeShape EntityType="FondModel.VALUTA" Width="1.5" PointX="3.625" PointY="18.25" />
+        <EntityTypeShape EntityType="FondModel.VALUTA" Width="1.5" PointX="3.625" PointY="19.375" />
         <AssociationConnector Association="FondModel.FK_FOND_DEF_VALUTE" />
         <EntityTypeShape EntityType="FondModel.StrukturaUlaganjaDetalji" Width="1.5" PointX="0.875" PointY="17.875" />
         <EntityTypeShape EntityType="FondModel.StrukturaUlaganjaZaglavlje" Width="1.5" PointX="0.75" PointY="15" />
@@ -47,6 +47,7 @@
         <EntityTypeShape EntityType="FondModel.Novost" Width="1.5" PointX="8.875" PointY="25.5" />
         <AssociationConnector Association="FondModel.FK_NOVOSTI_KORISNIK" />
         <AssociationConnector Association="FondModel.FK_NOVOSTI_KORISNIK1" />
+        <AssociationConnector Association="FondModel.FK_FOND_DEF_FOND_DEF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -202,6 +202,8 @@ namespace InvestApp.Web
 				string osobna = SpremiDatoteku("fileOsobna", fondId: fond.ID);
 
 				DAL.FondDAC.UnesiFondDokumente(fond.ID, kiid, pravila, prospekt, osobna);
+
+                //ZapisiUsporedbeneFondove(fond.ID);
 			}
 		}
 
@@ -216,6 +218,22 @@ namespace InvestApp.Web
 			{
 				(FormViewFond.FindControl("VALUTA_SIFRALabel") as DropDownList).SelectedValue = "191";
 			}
+
+            //if (FormViewFond.CurrentMode != FormViewMode.ReadOnly)
+            //{
+            //    var usporedbeniFondovi = DAL.FondDAC.VratiFondoveUsporedbene(FondID);
+
+            //    if (usporedbeniFondovi != null && usporedbeniFondovi.Any())
+            //    {
+            //        var checkList = FormViewFond.FindControl("clbUsporedniFondovi") as CheckBoxList;
+
+            //        foreach (ListItem item in checkList.Items)
+            //        {
+            //            if (usporedbeniFondovi.Contains(Convert.ToInt32(item.Value)))
+            //                item.Selected = true;
+            //        }
+            //    }
+            //}
 		}
 
         protected void EntityDataSourceFond_Updating(object sender, EntityDataSourceChangingEventArgs e)
@@ -225,8 +243,25 @@ namespace InvestApp.Web
 
         protected void EntityDataSourceFond_Updated(object sender, EntityDataSourceChangedEventArgs e)
         {
-
+            //if (e.Exception == null)
+            //{
+            //    ZapisiUsporedbeneFondove(FondID);
+            //}
         }
+
+        //private void ZapisiUsporedbeneFondove(int fondID)
+        //{
+        //    List<int> ids = new List<int>();
+
+        //    var checkList = FormViewFond.FindControl("clbUsporedniFondovi") as CheckBoxList;
+        //    foreach (ListItem item in checkList.Items)
+        //    {
+        //        if (item.Selected)
+        //            ids.Add(Convert.ToInt32(item.Value));
+        //    }
+
+        //    DAL.FondDAC.PostaviFondUsporedbene(fondID, ids);
+        //}
 
 	}
 }

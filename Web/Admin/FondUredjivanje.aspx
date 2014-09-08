@@ -49,6 +49,20 @@
                     </div>
 
                     <div class="form_item">
+                        <label class="form_item_label_edit" >Indeksni:</label>
+                        <asp:CheckBox ID="chkIndeksni" runat="server" Checked='<%# Bind("INDEKSNI") %>' CssClass="form_item_value_edit" Text=" " />
+                    </div>
+
+                    <div class="form_item">
+                        <label class="form_item_label_edit" >Usporedi sa fondom:</label>
+                        <asp:DropDownList ID="ddlUsporedniFond" runat="server" AppendDataBoundItems="true" CssClass="form_item_value_edit" SelectedValue='<%# Bind("USPOREDNI_FOND_ID") %>' DataSourceID="EntityDataSourceFondoviUsporedba" DataTextField="NAZIV" DataValueField="ID">
+                            <asp:ListItem Value="" Text="" />
+                        </asp:DropDownList>
+                        <%--<asp:CheckBoxList ID="clbUsporedniFondovi" runat="server" CssClass="form_item_value_edit lista" DataSourceID="EntityDataSourceFondoviUsporedba" DataTextField="NAZIV" DataValueField="ID" >
+                        </asp:CheckBoxList>--%>
+                    </div>
+
+                    <div class="form_item">
                         <label class="form_item_label_edit" title="Svako uneseno slovo predstavlja zasebnu grupu">Grupe:</label>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("GRUPE") %>' CssClass="form_item_value_edit" />
                     </div>
@@ -333,6 +347,20 @@
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("OPIS") %>' CssClass="form_item_value_edit" TextMode="MultiLine" />
                     </div>
 
+                    <div class="form_item">
+                        <label class="form_item_label_edit" >Indeksni:</label>
+                        <asp:CheckBox ID="chkIndeksni" runat="server" Checked='<%# Bind("INDEKSNI") %>' CssClass="form_item_value_edit" Text=" " />
+                    </div>
+
+                    <div class="form_item">
+                        <label class="form_item_label_edit" >Usporedi sa fondom:</label>
+                        <asp:DropDownList ID="ddlUsporedniFond" runat="server" AppendDataBoundItems="true" CssClass="form_item_value_edit" SelectedValue='<%# Bind("USPOREDNI_FOND_ID") %>' DataSourceID="EntityDataSourceFondoviUsporedba" DataTextField="NAZIV" DataValueField="ID">
+                            <asp:ListItem Value="" Text="" />
+                        </asp:DropDownList>
+                        <%--<asp:CheckBoxList ID="clbUsporedniFondovi" runat="server" CssClass="form_item_value_edit lista" DataSourceID="EntityDataSourceFondoviUsporedba" DataTextField="NAZIV" DataValueField="ID" >
+                        </asp:CheckBoxList>--%>
+                    </div>
+
                     <h3 class="form_group">DOKUMENTI FONDA</h3>
                     
                     <div id="divDokUpload" runat="server">
@@ -609,6 +637,15 @@
                 <asp:Parameter Name="NALOG_SIFRA_NAMJENE" ConvertEmptyStringToNull="true" Type="String" />
                 <asp:Parameter Name="NALOG_OPIS_PLACANJA" ConvertEmptyStringToNull="true" Type="String" />
             </InsertParameters>
+        </asp:EntityDataSource>
+
+        <asp:EntityDataSource ID="EntityDataSourceFondoviUsporedba" runat="server"
+            ContextTypeName="InvestApp.DAL.FondEntities"
+            ConnectionString="name=FondEntities"
+            DefaultContainerName="FondEntities"
+            EnableFlattening="False" EnableUpdate="True"
+            EntitySetName="Fondovi" EntityTypeFilter="Fond"
+            Where="it.INDEKSNI = True">
         </asp:EntityDataSource>
 
         <asp:EntityDataSource ID="EntityDataSourceValute" runat="server"

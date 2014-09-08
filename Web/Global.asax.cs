@@ -6,13 +6,14 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.Profile;
 using Web;
+using System.IO;
 
 namespace InvestApp.Web
 {
 	public class Global : HttpApplication
 	{
 		void Application_Start(object sender, EventArgs e)
-		{
+        {
 			// Code that runs on application startup
 			AuthConfig.RegisterOpenAuth();
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -40,14 +41,32 @@ namespace InvestApp.Web
 		{
 			// Code that runs when an unhandled error occurs
 			var sb = new System.Text.StringBuilder();
-			Exception objErr = Server.GetLastError().GetBaseException();
-			//                  Server.ClearError();
 
-			sb.Append("Greška u aplikaciji.");
-			sb.AppendLine("Error Message: " + objErr.Message.ToString());
-			sb.AppendLine("Stack Trace: " + objErr.StackTrace.ToString());
+            try
+            {
+                Exception objErr = Server.GetLastError().GetBaseException();
+                //                  Server.ClearError();
 
-			DAL.DAC.Logiraj(sb.ToString());
+                sb.Append("Greška u aplikaciji.");
+                sb.AppendLine("Error Message: " + objErr.Message.ToString());
+                sb.AppendLine("Stack Trace: " + objErr.StackTrace.ToString());
+
+                DAL.DAC.Logiraj(sb.ToString());
+            }
+            catch (Exception ex)
+            {
+                string path = HttpContext.Current.Server.MapPath("log.txt");
+                using (StreamWriter sw = new StreamWriter(path, true))
+                {
+                    sw.WriteLine("---------------------------");
+                    sw.WriteLine("{0:G}", DateTime.Now);
+                    sw.WriteLine("Greška pri logiranju greške. " + sb.ToString());
+                    sw.WriteLine(ex.Message);
+
+                    if (ex.InnerException != null)
+                        sw.WriteLine(ex.InnerException.Message);
+                }
+            }
 
 			//if (objErr is System.Reflection.ReflectionTypeLoadException)
 			//{

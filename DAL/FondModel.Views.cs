@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsAD2E94AC72FDD0BE8E5E791EC5351C6F60A720B10F2EE1C2991441C027CE9502))]
+[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets82664D0415AA54BE1BC2B38EA396C565B4C5FF0ED632119E369D0E501519F47E))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -17,18 +17,18 @@ namespace Edm_EntityMappingGeneratedViews
     /// <Summary>
     /// The type contains views for EntitySets and AssociationSets that were generated at design time.
     /// </Summary>
-    public sealed class ViewsForBaseEntitySetsAD2E94AC72FDD0BE8E5E791EC5351C6F60A720B10F2EE1C2991441C027CE9502 : System.Data.Mapping.EntityViewContainer
+    public sealed class ViewsForBaseEntitySets82664D0415AA54BE1BC2B38EA396C565B4C5FF0ED632119E369D0E501519F47E : System.Data.Mapping.EntityViewContainer
     {
         
         /// <Summary>
         /// The constructor stores the views for the extents and also the hash values generated based on the metadata and mapping closure and views.
         /// </Summary>
-        public ViewsForBaseEntitySetsAD2E94AC72FDD0BE8E5E791EC5351C6F60A720B10F2EE1C2991441C027CE9502()
+        public ViewsForBaseEntitySets82664D0415AA54BE1BC2B38EA396C565B4C5FF0ED632119E369D0E501519F47E()
         {
             this.EdmEntityContainerName = "FondEntities";
             this.StoreEntityContainerName = "FondModelStoreContainer";
-            this.HashOverMappingClosure = "6287612fbabf71434d1f446fe7dc8a061bb79fe3b85e4908490822ac76b27f2b";
-            this.HashOverAllExtentViews = "ca3d7438a121c23b7d044a0802ef26754ccec22029c00999fa1e812ac3b7e73a";
+            this.HashOverMappingClosure = "a73a7305e873ea21a06d3d8b273e534c9e0b0df71d86ece2755d78302e73259d";
+            this.HashOverAllExtentViews = "eb0ebd11ed7544553768c20d8ed353811539694296fc2cae0945176d7d09dc05";
             this.ViewCount = 47;
         }
         
@@ -233,7 +233,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView0()
         {
-            System.Text.StringBuilder viewString = new System.Text.StringBuilder(5324);
+            System.Text.StringBuilder viewString = new System.Text.StringBuilder(5424);
             viewString.Append("\r\n    SELECT VALUE -- Constructing FOND_DEF\r\n        [FondModel.Store.FOND_DEF](");
             viewString.Append("T1.[FOND_DEF.ID], T1.[FOND_DEF.NAZIV], T1.[FOND_DEF.KATEGORIJA_ID], T1.[FOND_DEF");
             viewString.Append(".DRUSTVA_ID], T1.[FOND_DEF.REGIJA_ID], T1.[FOND_DEF.TIP_ULAGANJA_ID], T1.[FOND_D");
@@ -256,51 +256,52 @@ namespace Edm_EntityMappingGeneratedViews
             viewString.Append("F.POKAZATELJ_UKUPNIH_TROSKOVA], T1.[FOND_DEF.INDEKSNI], T1.[FOND_DEF.GRUPE], T1.");
             viewString.Append("[FOND_DEF.ZADNJA_VRIJEDNOST], T1.[FOND_DEF.ZADNJA_VRIJEDNOST_DATUM], T1.[FOND_DE");
             viewString.Append("F.PREDZADNJA_VRIJEDNOST], T1.[FOND_DEF.PREDZADNJA_VRIJEDNOST_DATUM], T1.[FOND_DE");
-            viewString.Append("F.SAKRIVENI])\r\n    FROM (\r\n        SELECT \r\n            T.ID AS [FOND_DEF.ID], \r");
-            viewString.Append("\n            T.NAZIV AS [FOND_DEF.NAZIV], \r\n            T.KATEGORIJA_ID AS [FOND");
-            viewString.Append("_DEF.KATEGORIJA_ID], \r\n            T.DRUSTVA_ID AS [FOND_DEF.DRUSTVA_ID], \r\n    ");
-            viewString.Append("        T.REGIJA_ID AS [FOND_DEF.REGIJA_ID], \r\n            T.TIP_ULAGANJA_ID AS ");
-            viewString.Append("[FOND_DEF.TIP_ULAGANJA_ID], \r\n            T.TIP_UPRAVLJANJA_ID AS [FOND_DEF.TIP_");
-            viewString.Append("UPRAVLJANJA_ID], \r\n            T.CILJ_PRINOSA_ID AS [FOND_DEF.CILJ_PRINOSA_ID], ");
-            viewString.Append("\r\n            T.SEKTOR_ID AS [FOND_DEF.SEKTOR_ID], \r\n            T.TRZISTE_ID AS");
-            viewString.Append(" [FOND_DEF.TRZISTE_ID], \r\n            T.PROFIL_RIZICNOSTI_ID AS [FOND_DEF.PROFIL");
-            viewString.Append("_RIZICNOSTI_ID], \r\n            T.RIZICNOST AS [FOND_DEF.RIZICNOST], \r\n          ");
-            viewString.Append("  T.MINIMALNA_POCETNA_UPLATA AS [FOND_DEF.MINIMALNA_POCETNA_UPLATA], \r\n         ");
-            viewString.Append("   T.MINIMALNE_OSTALE_UPLATE AS [FOND_DEF.MINIMALNE_OSTALE_UPLATE], \r\n          ");
-            viewString.Append("  T.VALUTA_SIFRA AS [FOND_DEF.VALUTA_SIFRA], \r\n            T.POCETNA_CIJENA_UDJE");
-            viewString.Append("LA AS [FOND_DEF.POCETNA_CIJENA_UDJELA], \r\n            T.DATUM_OSNIVANJA AS [FOND");
-            viewString.Append("_DEF.DATUM_OSNIVANJA], \r\n            T.IMOVINA_FONDA AS [FOND_DEF.IMOVINA_FONDA]");
-            viewString.Append(", \r\n            T.NAKNADA_ULAZNA AS [FOND_DEF.NAKNADA_ULAZNA], \r\n            T.N");
-            viewString.Append("AKNADA_IZLAZNA AS [FOND_DEF.NAKNADA_IZLAZNA], \r\n            T.NAKNADA_ZA_UPRAVLJ");
-            viewString.Append("ANJEM_FONDA AS [FOND_DEF.NAKNADA_ZA_UPRAVLJANJEM_FONDA], \r\n            T.NAKNADA");
-            viewString.Append("_DEPOZITARNOJ_BANCI AS [FOND_DEF.NAKNADA_DEPOZITARNOJ_BANCI], \r\n            T.NA");
-            viewString.Append("KNADA_BANKA_FIKSNA AS [FOND_DEF.NAKNADA_BANKA_FIKSNA], \r\n            T.NAKNADA_B");
-            viewString.Append("ANKA_POSTO AS [FOND_DEF.NAKNADA_BANKA_POSTO], \r\n            T.NAKNADA_BANKA_MINI");
-            viewString.Append("MALNI AS [FOND_DEF.NAKNADA_BANKA_MINIMALNI], \r\n            T.NAKNADA_BANKA_MAKSI");
-            viewString.Append("MALNI AS [FOND_DEF.NAKNADA_BANKA_MAKSIMALNI], \r\n            T.NAPOMENA_ZA_KUPNJU");
-            viewString.Append(" AS [FOND_DEF.NAPOMENA_ZA_KUPNJU], \r\n            T.NAPOMENA_ZA_PRODAJU AS [FOND_");
-            viewString.Append("DEF.NAPOMENA_ZA_PRODAJU], \r\n            T.NAPOMENA_ZA_REGISTRACIJU AS [FOND_DEF.");
-            viewString.Append("NAPOMENA_ZA_REGISTRACIJU], \r\n            T.DODATNI_PODACI AS [FOND_DEF.DODATNI_P");
-            viewString.Append("ODACI], \r\n            T.VRIJEDI_OD AS [FOND_DEF.VRIJEDI_OD], \r\n            T.VRI");
-            viewString.Append("JEDI_DO AS [FOND_DEF.VRIJEDI_DO], \r\n            T.NAPOMENA_ZA_ODREGISTRACIJU AS ");
-            viewString.Append("[FOND_DEF.NAPOMENA_ZA_ODREGISTRACIJU], \r\n            T.ZAHTJEV_REPORT_ID AS [FON");
-            viewString.Append("D_DEF.ZAHTJEV_REPORT_ID], \r\n            T.NALOG_PRIMATELJ_VBDI AS [FOND_DEF.NALO");
-            viewString.Append("G_PRIMATELJ_VBDI], \r\n            T.NALOG_PRIMATELJ_RACUN AS [FOND_DEF.NALOG_PRIM");
-            viewString.Append("ATELJ_RACUN], \r\n            T.NALOG_PBO_MODEL AS [FOND_DEF.NALOG_PBO_MODEL], \r\n ");
-            viewString.Append("           T.NALOG_PBO AS [FOND_DEF.NALOG_PBO], \r\n            T.NALOG_OPIS_PLACA");
-            viewString.Append("NJA AS [FOND_DEF.NALOG_OPIS_PLACANJA], \r\n            T.NALOG_SIFRA_NAMJENE AS [F");
-            viewString.Append("OND_DEF.NALOG_SIFRA_NAMJENE], \r\n            T.KIID_URL AS [FOND_DEF.KIID_URL], \r");
-            viewString.Append("\n            T.PRAVILA_URL AS [FOND_DEF.PRAVILA_URL], \r\n            T.PROSPEKT_U");
-            viewString.Append("RL AS [FOND_DEF.PROSPEKT_URL], \r\n            T.OSOBNA_ISKAZNICA_URL AS [FOND_DEF");
-            viewString.Append(".OSOBNA_ISKAZNICA_URL], \r\n            T.OPIS AS [FOND_DEF.OPIS], \r\n            T");
-            viewString.Append(".POKAZATELJ_UKUPNIH_TROSKOVA AS [FOND_DEF.POKAZATELJ_UKUPNIH_TROSKOVA], \r\n      ");
-            viewString.Append("      T.INDEKSNI AS [FOND_DEF.INDEKSNI], \r\n            T.GRUPE AS [FOND_DEF.GRUP");
-            viewString.Append("E], \r\n            T.ZADNJA_VRIJEDNOST AS [FOND_DEF.ZADNJA_VRIJEDNOST], \r\n       ");
-            viewString.Append("     T.ZADNJA_VRIJEDNOST_DATUM AS [FOND_DEF.ZADNJA_VRIJEDNOST_DATUM], \r\n        ");
-            viewString.Append("    T.PREDZADNJA_VRIJEDNOST AS [FOND_DEF.PREDZADNJA_VRIJEDNOST], \r\n            T");
-            viewString.Append(".PREDZADNJA_VRIJEDNOST_DATUM AS [FOND_DEF.PREDZADNJA_VRIJEDNOST_DATUM], \r\n      ");
-            viewString.Append("      T.SAKRIVENI AS [FOND_DEF.SAKRIVENI], \r\n            True AS _from0\r\n       ");
-            viewString.Append(" FROM FondEntities.Fondovi AS T\r\n    ) AS T1");
+            viewString.Append("F.SAKRIVENI], T1.[FOND_DEF.USPOREDNI_FOND_ID])\r\n    FROM (\r\n        SELECT \r\n   ");
+            viewString.Append("         T.ID AS [FOND_DEF.ID], \r\n            T.NAZIV AS [FOND_DEF.NAZIV], \r\n   ");
+            viewString.Append("         T.KATEGORIJA_ID AS [FOND_DEF.KATEGORIJA_ID], \r\n            T.DRUSTVA_ID");
+            viewString.Append(" AS [FOND_DEF.DRUSTVA_ID], \r\n            T.REGIJA_ID AS [FOND_DEF.REGIJA_ID], \r\n");
+            viewString.Append("            T.TIP_ULAGANJA_ID AS [FOND_DEF.TIP_ULAGANJA_ID], \r\n            T.TIP");
+            viewString.Append("_UPRAVLJANJA_ID AS [FOND_DEF.TIP_UPRAVLJANJA_ID], \r\n            T.CILJ_PRINOSA_I");
+            viewString.Append("D AS [FOND_DEF.CILJ_PRINOSA_ID], \r\n            T.SEKTOR_ID AS [FOND_DEF.SEKTOR_I");
+            viewString.Append("D], \r\n            T.TRZISTE_ID AS [FOND_DEF.TRZISTE_ID], \r\n            T.PROFIL_");
+            viewString.Append("RIZICNOSTI_ID AS [FOND_DEF.PROFIL_RIZICNOSTI_ID], \r\n            T.RIZICNOST AS [");
+            viewString.Append("FOND_DEF.RIZICNOST], \r\n            T.MINIMALNA_POCETNA_UPLATA AS [FOND_DEF.MINIM");
+            viewString.Append("ALNA_POCETNA_UPLATA], \r\n            T.MINIMALNE_OSTALE_UPLATE AS [FOND_DEF.MINIM");
+            viewString.Append("ALNE_OSTALE_UPLATE], \r\n            T.VALUTA_SIFRA AS [FOND_DEF.VALUTA_SIFRA], \r\n");
+            viewString.Append("            T.POCETNA_CIJENA_UDJELA AS [FOND_DEF.POCETNA_CIJENA_UDJELA], \r\n     ");
+            viewString.Append("       T.DATUM_OSNIVANJA AS [FOND_DEF.DATUM_OSNIVANJA], \r\n            T.IMOVINA_");
+            viewString.Append("FONDA AS [FOND_DEF.IMOVINA_FONDA], \r\n            T.NAKNADA_ULAZNA AS [FOND_DEF.N");
+            viewString.Append("AKNADA_ULAZNA], \r\n            T.NAKNADA_IZLAZNA AS [FOND_DEF.NAKNADA_IZLAZNA], \r");
+            viewString.Append("\n            T.NAKNADA_ZA_UPRAVLJANJEM_FONDA AS [FOND_DEF.NAKNADA_ZA_UPRAVLJANJE");
+            viewString.Append("M_FONDA], \r\n            T.NAKNADA_DEPOZITARNOJ_BANCI AS [FOND_DEF.NAKNADA_DEPOZI");
+            viewString.Append("TARNOJ_BANCI], \r\n            T.NAKNADA_BANKA_FIKSNA AS [FOND_DEF.NAKNADA_BANKA_F");
+            viewString.Append("IKSNA], \r\n            T.NAKNADA_BANKA_POSTO AS [FOND_DEF.NAKNADA_BANKA_POSTO], \r");
+            viewString.Append("\n            T.NAKNADA_BANKA_MINIMALNI AS [FOND_DEF.NAKNADA_BANKA_MINIMALNI], \r\n");
+            viewString.Append("            T.NAKNADA_BANKA_MAKSIMALNI AS [FOND_DEF.NAKNADA_BANKA_MAKSIMALNI], \r");
+            viewString.Append("\n            T.NAPOMENA_ZA_KUPNJU AS [FOND_DEF.NAPOMENA_ZA_KUPNJU], \r\n          ");
+            viewString.Append("  T.NAPOMENA_ZA_PRODAJU AS [FOND_DEF.NAPOMENA_ZA_PRODAJU], \r\n            T.NAPOM");
+            viewString.Append("ENA_ZA_REGISTRACIJU AS [FOND_DEF.NAPOMENA_ZA_REGISTRACIJU], \r\n            T.DODA");
+            viewString.Append("TNI_PODACI AS [FOND_DEF.DODATNI_PODACI], \r\n            T.VRIJEDI_OD AS [FOND_DEF");
+            viewString.Append(".VRIJEDI_OD], \r\n            T.VRIJEDI_DO AS [FOND_DEF.VRIJEDI_DO], \r\n           ");
+            viewString.Append(" T.NAPOMENA_ZA_ODREGISTRACIJU AS [FOND_DEF.NAPOMENA_ZA_ODREGISTRACIJU], \r\n      ");
+            viewString.Append("      T.ZAHTJEV_REPORT_ID AS [FOND_DEF.ZAHTJEV_REPORT_ID], \r\n            T.NALOG");
+            viewString.Append("_PRIMATELJ_VBDI AS [FOND_DEF.NALOG_PRIMATELJ_VBDI], \r\n            T.NALOG_PRIMAT");
+            viewString.Append("ELJ_RACUN AS [FOND_DEF.NALOG_PRIMATELJ_RACUN], \r\n            T.NALOG_PBO_MODEL A");
+            viewString.Append("S [FOND_DEF.NALOG_PBO_MODEL], \r\n            T.NALOG_PBO AS [FOND_DEF.NALOG_PBO],");
+            viewString.Append(" \r\n            T.NALOG_OPIS_PLACANJA AS [FOND_DEF.NALOG_OPIS_PLACANJA], \r\n      ");
+            viewString.Append("      T.NALOG_SIFRA_NAMJENE AS [FOND_DEF.NALOG_SIFRA_NAMJENE], \r\n            T.K");
+            viewString.Append("IID_URL AS [FOND_DEF.KIID_URL], \r\n            T.PRAVILA_URL AS [FOND_DEF.PRAVILA");
+            viewString.Append("_URL], \r\n            T.PROSPEKT_URL AS [FOND_DEF.PROSPEKT_URL], \r\n            T.");
+            viewString.Append("OSOBNA_ISKAZNICA_URL AS [FOND_DEF.OSOBNA_ISKAZNICA_URL], \r\n            T.OPIS AS");
+            viewString.Append(" [FOND_DEF.OPIS], \r\n            T.POKAZATELJ_UKUPNIH_TROSKOVA AS [FOND_DEF.POKAZ");
+            viewString.Append("ATELJ_UKUPNIH_TROSKOVA], \r\n            T.INDEKSNI AS [FOND_DEF.INDEKSNI], \r\n    ");
+            viewString.Append("        T.GRUPE AS [FOND_DEF.GRUPE], \r\n            T.ZADNJA_VRIJEDNOST AS [FOND_");
+            viewString.Append("DEF.ZADNJA_VRIJEDNOST], \r\n            T.ZADNJA_VRIJEDNOST_DATUM AS [FOND_DEF.ZAD");
+            viewString.Append("NJA_VRIJEDNOST_DATUM], \r\n            T.PREDZADNJA_VRIJEDNOST AS [FOND_DEF.PREDZA");
+            viewString.Append("DNJA_VRIJEDNOST], \r\n            T.PREDZADNJA_VRIJEDNOST_DATUM AS [FOND_DEF.PREDZ");
+            viewString.Append("ADNJA_VRIJEDNOST_DATUM], \r\n            T.SAKRIVENI AS [FOND_DEF.SAKRIVENI], \r\n  ");
+            viewString.Append("          T.USPOREDNI_FOND_ID AS [FOND_DEF.USPOREDNI_FOND_ID], \r\n            Tru");
+            viewString.Append("e AS _from0\r\n        FROM FondEntities.Fondovi AS T\r\n    ) AS T1");
             return new System.Collections.Generic.KeyValuePair<string, string>("FondModelStoreContainer.FOND_DEF", viewString.ToString());
         }
         
@@ -1112,7 +1113,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView22()
         {
-            System.Text.StringBuilder viewString = new System.Text.StringBuilder(4873);
+            System.Text.StringBuilder viewString = new System.Text.StringBuilder(4965);
             viewString.Append("\r\n    SELECT VALUE -- Constructing Fondovi\r\n        [FondModel.Fond](T1.Fond_ID,");
             viewString.Append(" T1.[Fond.KATEGORIJA_ID], T1.[Fond.TIP_ULAGANJA_ID], T1.[Fond.TIP_UPRAVLJANJA_ID");
             viewString.Append("], T1.[Fond.DRUSTVA_ID], T1.Fond_RIZICNOST, T1.[Fond.MINIMALNA_POCETNA_UPLATA], ");
@@ -1132,48 +1133,50 @@ namespace Edm_EntityMappingGeneratedViews
             viewString.Append("RIZICNOSTI_ID], T1.Fond_OPIS, T1.[Fond.POKAZATELJ_UKUPNIH_TROSKOVA], T1.Fond_IND");
             viewString.Append("EKSNI, T1.Fond_GRUPE, T1.[Fond.ZADNJA_VRIJEDNOST], T1.[Fond.ZADNJA_VRIJEDNOST_DA");
             viewString.Append("TUM], T1.[Fond.PREDZADNJA_VRIJEDNOST], T1.[Fond.PREDZADNJA_VRIJEDNOST_DATUM], T1");
-            viewString.Append(".Fond_SAKRIVENI)\r\n    FROM (\r\n        SELECT \r\n            T.ID AS Fond_ID, \r\n  ");
-            viewString.Append("          T.KATEGORIJA_ID AS [Fond.KATEGORIJA_ID], \r\n            T.TIP_ULAGANJA_");
-            viewString.Append("ID AS [Fond.TIP_ULAGANJA_ID], \r\n            T.TIP_UPRAVLJANJA_ID AS [Fond.TIP_UP");
-            viewString.Append("RAVLJANJA_ID], \r\n            T.DRUSTVA_ID AS [Fond.DRUSTVA_ID], \r\n            T.");
-            viewString.Append("RIZICNOST AS Fond_RIZICNOST, \r\n            T.MINIMALNA_POCETNA_UPLATA AS [Fond.M");
-            viewString.Append("INIMALNA_POCETNA_UPLATA], \r\n            T.MINIMALNE_OSTALE_UPLATE AS [Fond.MINIM");
-            viewString.Append("ALNE_OSTALE_UPLATE], \r\n            T.VALUTA_SIFRA AS [Fond.VALUTA_SIFRA], \r\n    ");
-            viewString.Append("        T.POCETNA_CIJENA_UDJELA AS [Fond.POCETNA_CIJENA_UDJELA], \r\n            T");
-            viewString.Append(".DATUM_OSNIVANJA AS [Fond.DATUM_OSNIVANJA], \r\n            T.IMOVINA_FONDA AS [Fo");
-            viewString.Append("nd.IMOVINA_FONDA], \r\n            T.NAKNADA_ULAZNA AS [Fond.NAKNADA_ULAZNA], \r\n  ");
-            viewString.Append("          T.NAKNADA_IZLAZNA AS [Fond.NAKNADA_IZLAZNA], \r\n            T.NAKNADA_Z");
-            viewString.Append("A_UPRAVLJANJEM_FONDA AS [Fond.NAKNADA_ZA_UPRAVLJANJEM_FONDA], \r\n            T.NA");
-            viewString.Append("KNADA_DEPOZITARNOJ_BANCI AS [Fond.NAKNADA_DEPOZITARNOJ_BANCI], \r\n            T.N");
-            viewString.Append("AKNADA_BANKA_FIKSNA AS [Fond.NAKNADA_BANKA_FIKSNA], \r\n            T.NAKNADA_BANK");
-            viewString.Append("A_POSTO AS [Fond.NAKNADA_BANKA_POSTO], \r\n            T.NAKNADA_BANKA_MINIMALNI A");
-            viewString.Append("S [Fond.NAKNADA_BANKA_MINIMALNI], \r\n            T.NAKNADA_BANKA_MAKSIMALNI AS [F");
-            viewString.Append("ond.NAKNADA_BANKA_MAKSIMALNI], \r\n            T.NAPOMENA_ZA_KUPNJU AS [Fond.NAPOM");
-            viewString.Append("ENA_ZA_KUPNJU], \r\n            T.NAPOMENA_ZA_PRODAJU AS [Fond.NAPOMENA_ZA_PRODAJU");
-            viewString.Append("], \r\n            T.NAPOMENA_ZA_REGISTRACIJU AS [Fond.NAPOMENA_ZA_REGISTRACIJU], ");
-            viewString.Append("\r\n            T.DODATNI_PODACI AS [Fond.DODATNI_PODACI], \r\n            T.VRIJEDI");
-            viewString.Append("_OD AS [Fond.VRIJEDI_OD], \r\n            T.VRIJEDI_DO AS [Fond.VRIJEDI_DO], \r\n   ");
-            viewString.Append("         T.NAZIV AS Fond_NAZIV, \r\n            T.NAPOMENA_ZA_ODREGISTRACIJU AS [F");
-            viewString.Append("ond.NAPOMENA_ZA_ODREGISTRACIJU], \r\n            T.ZAHTJEV_REPORT_ID AS [Fond.ZAHT");
-            viewString.Append("JEV_REPORT_ID], \r\n            T.NALOG_PRIMATELJ_VBDI AS [Fond.NALOG_PRIMATELJ_VB");
-            viewString.Append("DI], \r\n            T.NALOG_PRIMATELJ_RACUN AS [Fond.NALOG_PRIMATELJ_RACUN], \r\n  ");
-            viewString.Append("          T.NALOG_PBO_MODEL AS [Fond.NALOG_PBO_MODEL], \r\n            T.NALOG_PBO");
-            viewString.Append(" AS [Fond.NALOG_PBO], \r\n            T.NALOG_OPIS_PLACANJA AS [Fond.NALOG_OPIS_PL");
-            viewString.Append("ACANJA], \r\n            T.REGIJA_ID AS [Fond.REGIJA_ID], \r\n            T.NALOG_SI");
-            viewString.Append("FRA_NAMJENE AS [Fond.NALOG_SIFRA_NAMJENE], \r\n            T.KIID_URL AS [Fond.KII");
-            viewString.Append("D_URL], \r\n            T.PRAVILA_URL AS [Fond.PRAVILA_URL], \r\n            T.PROSP");
-            viewString.Append("EKT_URL AS [Fond.PROSPEKT_URL], \r\n            T.OSOBNA_ISKAZNICA_URL AS [Fond.OS");
-            viewString.Append("OBNA_ISKAZNICA_URL], \r\n            T.CILJ_PRINOSA_ID AS [Fond.CILJ_PRINOSA_ID], ");
-            viewString.Append("\r\n            T.SEKTOR_ID AS [Fond.SEKTOR_ID], \r\n            T.TRZISTE_ID AS [Fo");
-            viewString.Append("nd.TRZISTE_ID], \r\n            T.PROFIL_RIZICNOSTI_ID AS [Fond.PROFIL_RIZICNOSTI_");
-            viewString.Append("ID], \r\n            T.OPIS AS Fond_OPIS, \r\n            T.POKAZATELJ_UKUPNIH_TROSK");
-            viewString.Append("OVA AS [Fond.POKAZATELJ_UKUPNIH_TROSKOVA], \r\n            T.INDEKSNI AS Fond_INDE");
-            viewString.Append("KSNI, \r\n            T.GRUPE AS Fond_GRUPE, \r\n            T.ZADNJA_VRIJEDNOST AS ");
-            viewString.Append("[Fond.ZADNJA_VRIJEDNOST], \r\n            T.ZADNJA_VRIJEDNOST_DATUM AS [Fond.ZADNJ");
-            viewString.Append("A_VRIJEDNOST_DATUM], \r\n            T.PREDZADNJA_VRIJEDNOST AS [Fond.PREDZADNJA_V");
-            viewString.Append("RIJEDNOST], \r\n            T.PREDZADNJA_VRIJEDNOST_DATUM AS [Fond.PREDZADNJA_VRIJ");
-            viewString.Append("EDNOST_DATUM], \r\n            T.SAKRIVENI AS Fond_SAKRIVENI, \r\n            True A");
-            viewString.Append("S _from0\r\n        FROM FondModelStoreContainer.FOND_DEF AS T\r\n    ) AS T1");
+            viewString.Append(".Fond_SAKRIVENI, T1.[Fond.USPOREDNI_FOND_ID])\r\n    FROM (\r\n        SELECT \r\n    ");
+            viewString.Append("        T.ID AS Fond_ID, \r\n            T.KATEGORIJA_ID AS [Fond.KATEGORIJA_ID], ");
+            viewString.Append("\r\n            T.TIP_ULAGANJA_ID AS [Fond.TIP_ULAGANJA_ID], \r\n            T.TIP_U");
+            viewString.Append("PRAVLJANJA_ID AS [Fond.TIP_UPRAVLJANJA_ID], \r\n            T.DRUSTVA_ID AS [Fond.");
+            viewString.Append("DRUSTVA_ID], \r\n            T.RIZICNOST AS Fond_RIZICNOST, \r\n            T.MINIMA");
+            viewString.Append("LNA_POCETNA_UPLATA AS [Fond.MINIMALNA_POCETNA_UPLATA], \r\n            T.MINIMALNE");
+            viewString.Append("_OSTALE_UPLATE AS [Fond.MINIMALNE_OSTALE_UPLATE], \r\n            T.VALUTA_SIFRA A");
+            viewString.Append("S [Fond.VALUTA_SIFRA], \r\n            T.POCETNA_CIJENA_UDJELA AS [Fond.POCETNA_CI");
+            viewString.Append("JENA_UDJELA], \r\n            T.DATUM_OSNIVANJA AS [Fond.DATUM_OSNIVANJA], \r\n     ");
+            viewString.Append("       T.IMOVINA_FONDA AS [Fond.IMOVINA_FONDA], \r\n            T.NAKNADA_ULAZNA A");
+            viewString.Append("S [Fond.NAKNADA_ULAZNA], \r\n            T.NAKNADA_IZLAZNA AS [Fond.NAKNADA_IZLAZN");
+            viewString.Append("A], \r\n            T.NAKNADA_ZA_UPRAVLJANJEM_FONDA AS [Fond.NAKNADA_ZA_UPRAVLJANJ");
+            viewString.Append("EM_FONDA], \r\n            T.NAKNADA_DEPOZITARNOJ_BANCI AS [Fond.NAKNADA_DEPOZITAR");
+            viewString.Append("NOJ_BANCI], \r\n            T.NAKNADA_BANKA_FIKSNA AS [Fond.NAKNADA_BANKA_FIKSNA],");
+            viewString.Append(" \r\n            T.NAKNADA_BANKA_POSTO AS [Fond.NAKNADA_BANKA_POSTO], \r\n          ");
+            viewString.Append("  T.NAKNADA_BANKA_MINIMALNI AS [Fond.NAKNADA_BANKA_MINIMALNI], \r\n            T.N");
+            viewString.Append("AKNADA_BANKA_MAKSIMALNI AS [Fond.NAKNADA_BANKA_MAKSIMALNI], \r\n            T.NAPO");
+            viewString.Append("MENA_ZA_KUPNJU AS [Fond.NAPOMENA_ZA_KUPNJU], \r\n            T.NAPOMENA_ZA_PRODAJU");
+            viewString.Append(" AS [Fond.NAPOMENA_ZA_PRODAJU], \r\n            T.NAPOMENA_ZA_REGISTRACIJU AS [Fon");
+            viewString.Append("d.NAPOMENA_ZA_REGISTRACIJU], \r\n            T.DODATNI_PODACI AS [Fond.DODATNI_POD");
+            viewString.Append("ACI], \r\n            T.VRIJEDI_OD AS [Fond.VRIJEDI_OD], \r\n            T.VRIJEDI_D");
+            viewString.Append("O AS [Fond.VRIJEDI_DO], \r\n            T.NAZIV AS Fond_NAZIV, \r\n            T.NAP");
+            viewString.Append("OMENA_ZA_ODREGISTRACIJU AS [Fond.NAPOMENA_ZA_ODREGISTRACIJU], \r\n            T.ZA");
+            viewString.Append("HTJEV_REPORT_ID AS [Fond.ZAHTJEV_REPORT_ID], \r\n            T.NALOG_PRIMATELJ_VBD");
+            viewString.Append("I AS [Fond.NALOG_PRIMATELJ_VBDI], \r\n            T.NALOG_PRIMATELJ_RACUN AS [Fond");
+            viewString.Append(".NALOG_PRIMATELJ_RACUN], \r\n            T.NALOG_PBO_MODEL AS [Fond.NALOG_PBO_MODE");
+            viewString.Append("L], \r\n            T.NALOG_PBO AS [Fond.NALOG_PBO], \r\n            T.NALOG_OPIS_PL");
+            viewString.Append("ACANJA AS [Fond.NALOG_OPIS_PLACANJA], \r\n            T.REGIJA_ID AS [Fond.REGIJA_");
+            viewString.Append("ID], \r\n            T.NALOG_SIFRA_NAMJENE AS [Fond.NALOG_SIFRA_NAMJENE], \r\n      ");
+            viewString.Append("      T.KIID_URL AS [Fond.KIID_URL], \r\n            T.PRAVILA_URL AS [Fond.PRAVIL");
+            viewString.Append("A_URL], \r\n            T.PROSPEKT_URL AS [Fond.PROSPEKT_URL], \r\n            T.OSO");
+            viewString.Append("BNA_ISKAZNICA_URL AS [Fond.OSOBNA_ISKAZNICA_URL], \r\n            T.CILJ_PRINOSA_I");
+            viewString.Append("D AS [Fond.CILJ_PRINOSA_ID], \r\n            T.SEKTOR_ID AS [Fond.SEKTOR_ID], \r\n  ");
+            viewString.Append("          T.TRZISTE_ID AS [Fond.TRZISTE_ID], \r\n            T.PROFIL_RIZICNOSTI_I");
+            viewString.Append("D AS [Fond.PROFIL_RIZICNOSTI_ID], \r\n            T.OPIS AS Fond_OPIS, \r\n         ");
+            viewString.Append("   T.POKAZATELJ_UKUPNIH_TROSKOVA AS [Fond.POKAZATELJ_UKUPNIH_TROSKOVA], \r\n      ");
+            viewString.Append("      T.INDEKSNI AS Fond_INDEKSNI, \r\n            T.GRUPE AS Fond_GRUPE, \r\n      ");
+            viewString.Append("      T.ZADNJA_VRIJEDNOST AS [Fond.ZADNJA_VRIJEDNOST], \r\n            T.ZADNJA_VR");
+            viewString.Append("IJEDNOST_DATUM AS [Fond.ZADNJA_VRIJEDNOST_DATUM], \r\n            T.PREDZADNJA_VRI");
+            viewString.Append("JEDNOST AS [Fond.PREDZADNJA_VRIJEDNOST], \r\n            T.PREDZADNJA_VRIJEDNOST_D");
+            viewString.Append("ATUM AS [Fond.PREDZADNJA_VRIJEDNOST_DATUM], \r\n            T.SAKRIVENI AS Fond_SA");
+            viewString.Append("KRIVENI, \r\n            T.USPOREDNI_FOND_ID AS [Fond.USPOREDNI_FOND_ID], \r\n      ");
+            viewString.Append("      True AS _from0\r\n        FROM FondModelStoreContainer.FOND_DEF AS T\r\n    ) ");
+            viewString.Append("AS T1");
             return new System.Collections.Generic.KeyValuePair<string, string>("FondEntities.Fondovi", viewString.ToString());
         }
         

@@ -46,6 +46,10 @@
             <End Role="FOND_CILJ_PRINOSA" EntitySet="FOND_CILJ_PRINOSA" />
             <End Role="FOND_DEF" EntitySet="FOND_DEF" />
           </AssociationSet>
+          <AssociationSet Name="FK_FOND_DEF_FOND_DEF" Association="FondModel.Store.FK_FOND_DEF_FOND_DEF">
+            <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+            <End Role="FOND_DEF1" EntitySet="FOND_DEF" />
+          </AssociationSet>
           <AssociationSet Name="FK_FOND_DEF_FOND_DRUSTVA" Association="FondModel.Store.FK_FOND_DEF_FOND_DRUSTVA">
             <End Role="FOND_DRUSTVA" EntitySet="FOND_DRUSTVA" />
             <End Role="FOND_DEF" EntitySet="FOND_DEF" />
@@ -245,6 +249,7 @@
           <Property Name="PREDZADNJA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
           <Property Name="PREDZADNJA_VRIJEDNOST_DATUM" Type="date" />
           <Property Name="SAKRIVENI" Type="bit" />
+          <Property Name="USPOREDNI_FOND_ID" Type="int" />
         </EntityType>
         <EntityType Name="FOND_DRUSTVA">
           <Key>
@@ -680,6 +685,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FOND_DEF_FOND_DEF">
+          <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="0..1" />
+          <End Role="FOND_DEF1" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOND_DEF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FOND_DEF1">
+              <PropertyRef Name="USPOREDNI_FOND_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
           <End Role="FOND_DRUSTVA" Type="FondModel.Store.FOND_DRUSTVA" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1009,6 +1026,7 @@
           <Parameter Name="inProfilRizicnosti" Type="int" Mode="In" />
           <Parameter Name="inKorisnikId" Type="int" Mode="In" />
           <Parameter Name="inPrikaziSakrivene" Type="bit" Mode="In" />
+          <Parameter Name="inPrikaziIndeksni" Type="bit" Mode="In" />
         </Function>
         <Function Name="ZadnjaCijena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="inFondId" Type="int" Mode="In" />
@@ -1130,6 +1148,7 @@
             <Parameter Name="inProfilRizicnosti" Mode="In" Type="Int32" />
             <Parameter Name="inKorisnikId" Mode="In" Type="Int32" />
             <Parameter Name="inPrikaziSakrivene" Mode="In" Type="Boolean" />
+            <Parameter Name="inPrikaziIndeksni" Mode="In" Type="Boolean" />
           </FunctionImport>
           <EntitySet Name="FOND_CILJ_PRINOSA" EntityType="FondModel.FOND_CILJ_PRINOSA" />
           <EntitySet Name="FOND_PROFIL_RIZICNOSTI" EntityType="FondModel.FOND_PROFIL_RIZICNOSTI" />
@@ -1159,6 +1178,10 @@
           <AssociationSet Name="FK_NOVOSTI_KORISNIK1" Association="FondModel.FK_NOVOSTI_KORISNIK1">
             <End Role="Korisnik" EntitySet="Korisnici" />
             <End Role="Novost" EntitySet="Novosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOND_DEF_FOND_DEF" Association="FondModel.FK_FOND_DEF_FOND_DEF">
+            <End Role="Fond" EntitySet="Fondovi" />
+            <End Role="Fond1" EntitySet="Fondovi" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Fond">
@@ -1233,6 +1256,9 @@
           <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Precision="15" Scale="4" />
           <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Precision="0" />
           <Property Type="Boolean" Name="SAKRIVENI" />
+          <Property Type="Int32" Name="USPOREDNI_FOND_ID" />
+          <NavigationProperty Name="FOND_DEF1" Relationship="FondModel.FK_FOND_DEF_FOND_DEF" FromRole="Fond" ToRole="Fond1" />
+          <NavigationProperty Name="FondUsporedba" Relationship="FondModel.FK_FOND_DEF_FOND_DEF" FromRole="Fond1" ToRole="Fond" />
         </EntityType>
         <EntityType Name="Drustvo">
           <Key>
@@ -1672,6 +1698,8 @@
           <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
           <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Nullable="true" />
           <Property Type="Boolean" Name="SAKRIVENI" Nullable="true" />
+          <Property Type="Decimal" Name="PRVA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="PRVA_VRIJEDNOST_DATUM" Nullable="true" />
         </ComplexType>
         <EntityType Name="Korisnik">
           <Key>
@@ -2031,6 +2059,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FOND_DEF_FOND_DEF">
+          <End Type="FondModel.Fond" Role="Fond" Multiplicity="0..1" />
+          <End Type="FondModel.Fond" Role="Fond1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fond">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Fond1">
+              <PropertyRef Name="USPOREDNI_FOND_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2040,6 +2080,7 @@
           <EntitySetMapping Name="Fondovi">
             <EntityTypeMapping TypeName="FondModel.Fond">
               <MappingFragment StoreEntitySet="FOND_DEF">
+                <ScalarProperty Name="USPOREDNI_FOND_ID" ColumnName="USPOREDNI_FOND_ID" />
                 <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
                 <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
                 <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
@@ -2621,6 +2662,8 @@
                 <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
                 <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
                 <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
+                <ScalarProperty Name="PRVA_VRIJEDNOST" ColumnName="PRVA_VRIJEDNOST" />
+                <ScalarProperty Name="PRVA_VRIJEDNOST_DATUM" ColumnName="PRVA_VRIJEDNOST_DATUM" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

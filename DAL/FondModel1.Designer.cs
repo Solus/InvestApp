@@ -40,6 +40,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("FondModel", "FK_FOND_DEF_FOND_TRZISTE", "FOND_TRZISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InvestApp.DAL.FOND_TRZISTE), "Fond", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InvestApp.DAL.Fond), true)]
 [assembly: EdmRelationshipAttribute("FondModel", "FK_NOVOSTI_KORISNIK", "Korisnik", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(InvestApp.DAL.Korisnik), "NOVOSTI", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InvestApp.DAL.Novost), true)]
 [assembly: EdmRelationshipAttribute("FondModel", "FK_NOVOSTI_KORISNIK1", "Korisnik", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InvestApp.DAL.Korisnik), "Novost", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InvestApp.DAL.Novost), true)]
+[assembly: EdmRelationshipAttribute("FondModel", "FK_FOND_DEF_FOND_DEF", "Fond", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(InvestApp.DAL.Fond), "Fond1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(InvestApp.DAL.Fond), true)]
 
 #endregion
 
@@ -725,7 +726,8 @@ namespace InvestApp.DAL
         /// <param name="inProfilRizicnosti">No Metadata Documentation available.</param>
         /// <param name="inKorisnikId">No Metadata Documentation available.</param>
         /// <param name="inPrikaziSakrivene">No Metadata Documentation available.</param>
-        public ObjectResult<TraziFondove_Result> TraziFondove(Nullable<global::System.Int32> inFondId, Nullable<global::System.DateTime> inDatum, global::System.String inNaziv, Nullable<global::System.Int32> inKategorijaId, global::System.String inRizicnost, Nullable<global::System.Int32> inDrustvoId, Nullable<global::System.Int32> inRegijaId, Nullable<global::System.Int32> inUlaganjeTipId, Nullable<global::System.Int32> inUpravljanjeTipId, Nullable<global::System.Int32> inCiljPrinosaId, Nullable<global::System.Int32> inSektorId, Nullable<global::System.Int32> inTrzisteId, Nullable<global::System.Int32> inProfilRizicnosti, Nullable<global::System.Int32> inKorisnikId, Nullable<global::System.Boolean> inPrikaziSakrivene)
+        /// <param name="inPrikaziIndeksni">No Metadata Documentation available.</param>
+        public ObjectResult<TraziFondove_Result> TraziFondove(Nullable<global::System.Int32> inFondId, Nullable<global::System.DateTime> inDatum, global::System.String inNaziv, Nullable<global::System.Int32> inKategorijaId, global::System.String inRizicnost, Nullable<global::System.Int32> inDrustvoId, Nullable<global::System.Int32> inRegijaId, Nullable<global::System.Int32> inUlaganjeTipId, Nullable<global::System.Int32> inUpravljanjeTipId, Nullable<global::System.Int32> inCiljPrinosaId, Nullable<global::System.Int32> inSektorId, Nullable<global::System.Int32> inTrzisteId, Nullable<global::System.Int32> inProfilRizicnosti, Nullable<global::System.Int32> inKorisnikId, Nullable<global::System.Boolean> inPrikaziSakrivene, Nullable<global::System.Boolean> inPrikaziIndeksni)
         {
             ObjectParameter inFondIdParameter;
             if (inFondId.HasValue)
@@ -877,7 +879,17 @@ namespace InvestApp.DAL
                 inPrikaziSakriveneParameter = new ObjectParameter("inPrikaziSakrivene", typeof(global::System.Boolean));
             }
     
-            return base.ExecuteFunction<TraziFondove_Result>("TraziFondove", inFondIdParameter, inDatumParameter, inNazivParameter, inKategorijaIdParameter, inRizicnostParameter, inDrustvoIdParameter, inRegijaIdParameter, inUlaganjeTipIdParameter, inUpravljanjeTipIdParameter, inCiljPrinosaIdParameter, inSektorIdParameter, inTrzisteIdParameter, inProfilRizicnostiParameter, inKorisnikIdParameter, inPrikaziSakriveneParameter);
+            ObjectParameter inPrikaziIndeksniParameter;
+            if (inPrikaziIndeksni.HasValue)
+            {
+                inPrikaziIndeksniParameter = new ObjectParameter("inPrikaziIndeksni", inPrikaziIndeksni);
+            }
+            else
+            {
+                inPrikaziIndeksniParameter = new ObjectParameter("inPrikaziIndeksni", typeof(global::System.Boolean));
+            }
+    
+            return base.ExecuteFunction<TraziFondove_Result>("TraziFondove", inFondIdParameter, inDatumParameter, inNazivParameter, inKategorijaIdParameter, inRizicnostParameter, inDrustvoIdParameter, inRegijaIdParameter, inUlaganjeTipIdParameter, inUpravljanjeTipIdParameter, inCiljPrinosaIdParameter, inSektorIdParameter, inTrzisteIdParameter, inProfilRizicnostiParameter, inKorisnikIdParameter, inPrikaziSakriveneParameter, inPrikaziIndeksniParameter);
         }
 
         #endregion
@@ -3202,6 +3214,30 @@ namespace InvestApp.DAL
         private Nullable<global::System.Boolean> _SAKRIVENI;
         partial void OnSAKRIVENIChanging(Nullable<global::System.Boolean> value);
         partial void OnSAKRIVENIChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> USPOREDNI_FOND_ID
+        {
+            get
+            {
+                return _USPOREDNI_FOND_ID;
+            }
+            set
+            {
+                OnUSPOREDNI_FOND_IDChanging(value);
+                ReportPropertyChanging("USPOREDNI_FOND_ID");
+                _USPOREDNI_FOND_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("USPOREDNI_FOND_ID");
+                OnUSPOREDNI_FOND_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _USPOREDNI_FOND_ID;
+        partial void OnUSPOREDNI_FOND_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnUSPOREDNI_FOND_IDChanged();
 
         #endregion
 
@@ -3694,6 +3730,66 @@ namespace InvestApp.DAL
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FOND_TRZISTE>("FondModel.FK_FOND_DEF_FOND_TRZISTE", "FOND_TRZISTE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FondModel", "FK_FOND_DEF_FOND_DEF", "Fond1")]
+        public EntityCollection<Fond> FOND_DEF1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Fond>("FondModel.FK_FOND_DEF_FOND_DEF", "Fond1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Fond>("FondModel.FK_FOND_DEF_FOND_DEF", "Fond1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("FondModel", "FK_FOND_DEF_FOND_DEF", "Fond")]
+        public Fond FondUsporedba
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Fond>("FondModel.FK_FOND_DEF_FOND_DEF", "Fond").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Fond>("FondModel.FK_FOND_DEF_FOND_DEF", "Fond").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Fond> FondUsporedbaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Fond>("FondModel.FK_FOND_DEF_FOND_DEF", "Fond");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Fond>("FondModel.FK_FOND_DEF_FOND_DEF", "Fond", value);
                 }
             }
         }
@@ -14307,6 +14403,54 @@ namespace InvestApp.DAL
         private Nullable<global::System.Boolean> _SAKRIVENI;
         partial void OnSAKRIVENIChanging(Nullable<global::System.Boolean> value);
         partial void OnSAKRIVENIChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRVA_VRIJEDNOST
+        {
+            get
+            {
+                return _PRVA_VRIJEDNOST;
+            }
+            set
+            {
+                OnPRVA_VRIJEDNOSTChanging(value);
+                ReportPropertyChanging("PRVA_VRIJEDNOST");
+                _PRVA_VRIJEDNOST = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRVA_VRIJEDNOST");
+                OnPRVA_VRIJEDNOSTChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRVA_VRIJEDNOST;
+        partial void OnPRVA_VRIJEDNOSTChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRVA_VRIJEDNOSTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> PRVA_VRIJEDNOST_DATUM
+        {
+            get
+            {
+                return _PRVA_VRIJEDNOST_DATUM;
+            }
+            set
+            {
+                OnPRVA_VRIJEDNOST_DATUMChanging(value);
+                ReportPropertyChanging("PRVA_VRIJEDNOST_DATUM");
+                _PRVA_VRIJEDNOST_DATUM = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRVA_VRIJEDNOST_DATUM");
+                OnPRVA_VRIJEDNOST_DATUMChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _PRVA_VRIJEDNOST_DATUM;
+        partial void OnPRVA_VRIJEDNOST_DATUMChanging(Nullable<global::System.DateTime> value);
+        partial void OnPRVA_VRIJEDNOST_DATUMChanged();
 
         #endregion
 

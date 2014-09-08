@@ -41,6 +41,10 @@
       <End Role="FOND_CILJ_PRINOSA" EntitySet="FOND_CILJ_PRINOSA" />
       <End Role="FOND_DEF" EntitySet="FOND_DEF" />
     </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_DEF" Association="FondModel.Store.FK_FOND_DEF_FOND_DEF">
+      <End Role="FOND_DEF" EntitySet="FOND_DEF" />
+      <End Role="FOND_DEF1" EntitySet="FOND_DEF" />
+    </AssociationSet>
     <AssociationSet Name="FK_FOND_DEF_FOND_DRUSTVA" Association="FondModel.Store.FK_FOND_DEF_FOND_DRUSTVA">
       <End Role="FOND_DRUSTVA" EntitySet="FOND_DRUSTVA" />
       <End Role="FOND_DEF" EntitySet="FOND_DEF" />
@@ -240,6 +244,7 @@
     <Property Name="PREDZADNJA_VRIJEDNOST" Type="numeric" Precision="15" Scale="4" />
     <Property Name="PREDZADNJA_VRIJEDNOST_DATUM" Type="date" />
     <Property Name="SAKRIVENI" Type="bit" />
+    <Property Name="USPOREDNI_FOND_ID" Type="int" />
   </EntityType>
   <EntityType Name="FOND_DRUSTVA">
     <Key>
@@ -675,6 +680,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_FOND_DEF_FOND_DEF">
+    <End Role="FOND_DEF" Type="FondModel.Store.FOND_DEF" Multiplicity="0..1" />
+    <End Role="FOND_DEF1" Type="FondModel.Store.FOND_DEF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOND_DEF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FOND_DEF1">
+        <PropertyRef Name="USPOREDNI_FOND_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_FOND_DEF_FOND_DRUSTVA">
     <End Role="FOND_DRUSTVA" Type="FondModel.Store.FOND_DRUSTVA" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -1004,6 +1021,7 @@
     <Parameter Name="inProfilRizicnosti" Type="int" Mode="In" />
     <Parameter Name="inKorisnikId" Type="int" Mode="In" />
     <Parameter Name="inPrikaziSakrivene" Type="bit" Mode="In" />
+    <Parameter Name="inPrikaziIndeksni" Type="bit" Mode="In" />
   </Function>
   <Function Name="ZadnjaCijena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inFondId" Type="int" Mode="In" />

@@ -5,7 +5,6 @@ using System.Text;
 using InvestApp.Common;
 using System.Web.Security;
 using System.Web;
-using InvestApp.Common;
 
 namespace InvestApp.DAL
 {

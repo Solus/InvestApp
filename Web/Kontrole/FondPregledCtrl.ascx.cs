@@ -75,8 +75,9 @@ namespace InvestApp.Web
 				trzisteID = Common.Utility.StringToInt(rblTrziste.SelectedItem.Value);
 
             bool prikaziSakrivene = Roditelj.KorisnikJeAdmin;
+            bool prikaziIndeksne = Roditelj.KorisnikJeAdmin;
 
-			var fondovi = DAL.FondDAC.TraziFondove(kategorijaID, regijaID, ulaganjeID, upravljanjeID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, Roditelj.KorisnikID, prikaziSakrivene);
+			var fondovi = DAL.FondDAC.TraziFondove(kategorijaID, regijaID, ulaganjeID, upravljanjeID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, Roditelj.KorisnikID, prikaziSakrivene, prikaziIndeksne);
 			
 			gvFondovi.DataSource = fondovi;
 
@@ -228,8 +229,15 @@ namespace InvestApp.Web
 			}
 			else if (e.Column.Name == "FOND_NAZIV")
 			{
-				if (fond != null)
-                    e.DisplayText = String.Format("<a class='thickbox' href='../Fond/FondDokumentStandalone.aspx?ID={0}&usporedba=1&KeepThis=true&TB_iframe=true&width=800' >{1}</a>", fond.ID, fond.NAZIV);
+                string klasa = "", title="";
+
+                if(fond.INDEKSNI.HasValue && fond.INDEKSNI.Value)
+                {
+                    klasa = " indeksni";
+                    title = "Indeksni fond";
+                }
+
+                e.DisplayText = String.Format("<a class='thickbox{2}' title='{3}' href='../Fond/FondDokumentStandalone.aspx?ID={0}&usporedba=1&KeepThis=true&TB_iframe=true&width=800' >{1}</a>", fond.ID, fond.NAZIV, klasa, title);
 			}
 			else if (e.Column.Name == "FOND_USPOREDI2")
 			{

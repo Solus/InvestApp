@@ -49,6 +49,15 @@ namespace InvestApp.Web {
         protected global::System.Web.UI.WebControls.EntityDataSource EntityDataSourceFond;
         
         /// <summary>
+        /// EntityDataSourceFondoviUsporedba control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource EntityDataSourceFondoviUsporedba;
+        
+        /// <summary>
         /// EntityDataSourceValute control.
         /// </summary>
         /// <remarks>

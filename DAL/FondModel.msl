@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Fondovi">
       <EntityTypeMapping TypeName="FondModel.Fond">
         <MappingFragment StoreEntitySet="FOND_DEF">
+          <ScalarProperty Name="USPOREDNI_FOND_ID" ColumnName="USPOREDNI_FOND_ID" />
           <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
           <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
           <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
@@ -585,6 +586,8 @@
           <ScalarProperty Name="PREDZADNJA_VRIJEDNOST" ColumnName="PREDZADNJA_VRIJEDNOST" />
           <ScalarProperty Name="PREDZADNJA_VRIJEDNOST_DATUM" ColumnName="PREDZADNJA_VRIJEDNOST_DATUM" />
           <ScalarProperty Name="SAKRIVENI" ColumnName="SAKRIVENI" />
+          <ScalarProperty Name="PRVA_VRIJEDNOST" ColumnName="PRVA_VRIJEDNOST" />
+          <ScalarProperty Name="PRVA_VRIJEDNOST_DATUM" ColumnName="PRVA_VRIJEDNOST_DATUM" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

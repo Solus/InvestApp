@@ -109,6 +109,7 @@
       <Parameter Name="inProfilRizicnosti" Mode="In" Type="Int32" />
       <Parameter Name="inKorisnikId" Mode="In" Type="Int32" />
       <Parameter Name="inPrikaziSakrivene" Mode="In" Type="Boolean" />
+      <Parameter Name="inPrikaziIndeksni" Mode="In" Type="Boolean" />
     </FunctionImport>
     <EntitySet Name="FOND_CILJ_PRINOSA" EntityType="FondModel.FOND_CILJ_PRINOSA" />
     <EntitySet Name="FOND_PROFIL_RIZICNOSTI" EntityType="FondModel.FOND_PROFIL_RIZICNOSTI" />
@@ -138,6 +139,10 @@
     <AssociationSet Name="FK_NOVOSTI_KORISNIK1" Association="FondModel.FK_NOVOSTI_KORISNIK1">
       <End Role="Korisnik" EntitySet="Korisnici" />
       <End Role="Novost" EntitySet="Novosti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOND_DEF_FOND_DEF" Association="FondModel.FK_FOND_DEF_FOND_DEF">
+      <End Role="Fond" EntitySet="Fondovi" />
+      <End Role="Fond1" EntitySet="Fondovi" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Fond">
@@ -212,6 +217,9 @@
     <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Precision="15" Scale="4" />
     <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Precision="0" />
     <Property Type="Boolean" Name="SAKRIVENI" />
+    <Property Type="Int32" Name="USPOREDNI_FOND_ID" />
+    <NavigationProperty Name="FOND_DEF1" Relationship="FondModel.FK_FOND_DEF_FOND_DEF" FromRole="Fond" ToRole="Fond1" />
+    <NavigationProperty Name="FondUsporedba" Relationship="FondModel.FK_FOND_DEF_FOND_DEF" FromRole="Fond1" ToRole="Fond" />
   </EntityType>
   <EntityType Name="Drustvo">
     <Key>
@@ -651,6 +659,8 @@
     <Property Type="Decimal" Name="PREDZADNJA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
     <Property Type="DateTime" Name="PREDZADNJA_VRIJEDNOST_DATUM" Nullable="true" />
     <Property Type="Boolean" Name="SAKRIVENI" Nullable="true" />
+    <Property Type="Decimal" Name="PRVA_VRIJEDNOST" Nullable="true" Precision="15" Scale="4" />
+    <Property Type="DateTime" Name="PRVA_VRIJEDNOST_DATUM" Nullable="true" />
   </ComplexType>
   <EntityType Name="Korisnik">
     <Key>
@@ -1007,6 +1017,18 @@
       </Principal>
       <Dependent Role="Novost">
         <PropertyRef Name="KORISNIK_PROMJENA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOND_DEF_FOND_DEF">
+    <End Type="FondModel.Fond" Role="Fond" Multiplicity="0..1" />
+    <End Type="FondModel.Fond" Role="Fond1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fond">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fond1">
+        <PropertyRef Name="USPOREDNI_FOND_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -1804,6 +1804,10 @@ input.btn_trazi:focus
 	text-decoration: none;
 }
 
+.dxgv .indeksni{
+    color: #BA4747;
+}
+
 /*cijena fonda koja nije današnja*/
 .data_table .stara_cijena
 {
@@ -2652,6 +2656,12 @@ textarea.form_item_value_edit
 	width: 388px;
 	height: 70px;
 	vertical-align: top;
+}
+
+.form_item_value_edit.lista
+{
+    display: inline-block;
+    vertical-align: top;
 }
 
 input:focus,

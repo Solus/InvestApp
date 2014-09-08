@@ -27,7 +27,10 @@ namespace InvestApp.Web
 			set { ViewState["datumOd"] = value; }
 		}
 
-        static List<Color> GrafBoje = new List<Color>() { ColorTranslator.FromHtml("#0070bb"), Color.OliveDrab, Color.Salmon, Color.Indigo, Color.Plum, Color.MediumTurquoise };
+        static List<Color> GrafBoje = new List<Color>() { 
+            ColorTranslator.FromHtml("#0070bb"), 
+            Color.OliveDrab, Color.Indigo, Color.Plum, Color.Salmon, Color.MediumTurquoise,
+            Color.MediumVioletRed, Color.OldLace, Color.Olive};
 
         Color fondBoja = System.Drawing.ColorTranslator.FromHtml("#c1272c");
 
@@ -79,7 +82,7 @@ namespace InvestApp.Web
 			var cijene = DAL.FondDAC.DohvatiCijeneProsireno(FondID, DatumPoc, maxDate);
 
 			//indeksni fondovi
-			var indeksniCijene = PrikaziIndeksni ? DAL.FondDAC.DohvatiCijeneIndeksni(DatumPoc, maxDate) : null;
+			var indeksniCijene = PrikaziIndeksni ? DAL.FondDAC.DohvatiCijeneIndeksni(FondID, DatumPoc, maxDate) : null;
 
 			#region Ograničavanje broja elemenata grafa
 

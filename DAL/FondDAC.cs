@@ -77,11 +77,11 @@ namespace InvestApp.DAL
 			}
 		}
 
-        public static IEnumerable<TraziFondove_Result> TraziFondove(int? kategorijaID, int? regijaID, int? ulaganjeTipID, int? upravljanjeTipID, int? ciljPrinosaID, int? sektorID, int? trzisteID, int? profilRizicnostiID, int? korisnikID, bool prikaziSakrivene)
+        public static IEnumerable<TraziFondove_Result> TraziFondove(int? kategorijaID, int? regijaID, int? ulaganjeTipID, int? upravljanjeTipID, int? ciljPrinosaID, int? sektorID, int? trzisteID, int? profilRizicnostiID, int? korisnikID, bool prikaziSakrivene, bool? prikaziIndeksni)
         {
             using (var context = new FondEntities())
             {
-                var fondovi = context.TraziFondove(null, DateTime.Today, null, kategorijaID, null, null, regijaID, ulaganjeTipID, upravljanjeTipID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, korisnikID, prikaziSakrivene);
+                var fondovi = context.TraziFondove(null, DateTime.Today, null, kategorijaID, null, null, regijaID, ulaganjeTipID, upravljanjeTipID, ciljPrinosaID, sektorID, trzisteID, profilRizicnostiID, korisnikID, prikaziSakrivene, prikaziIndeksni);
 
                 return fondovi.ToList();
             }
@@ -95,7 +95,7 @@ namespace InvestApp.DAL
 			{
 				foreach (int id in fondIDs)
 				{
-					var fond = context.TraziFondove(id, DateTime.Today, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
+					var fond = context.TraziFondove(id, DateTime.Today, null, null, null, null, null, null, null, null, null, null, null, null, null, null).ToList();
 
 					if (fond != null && fond.Count == 1)
 						fondovi.Add(fond[0]);
@@ -231,21 +231,22 @@ namespace InvestApp.DAL
             }
         }
 
-		public static List<FondCijene> DohvatiCijeneIndeksni(DateTime? inDatumOd, DateTime? inDatumDo)
+		public static List<FondCijene> DohvatiCijeneIndeksni(int fondID, DateTime? inDatumOd, DateTime? inDatumDo)
 		{
 			using (var context = new FondEntities())
 			{
 				var fondoviCijene = new List<FondCijene>();
 
-				var indeksni = context.Fondovi.Where(f => f.INDEKSNI.HasValue && f.INDEKSNI.Value).OrderBy(f=>f.NAZIV);
+				var indeksni = context.Fondovi.Single(f=>f.ID == fondID).FondUsporedba;
 				
-				foreach(var ind in indeksni)
+				//foreach(var ind in indeksni)
+                if(indeksni != null)
 				{
 					FondCijene fondCijene = new FondCijene();
 
-					fondCijene.Cijene = DohvatiCijeneProsireno( ind.ID, inDatumOd, inDatumDo);
-					fondCijene.ID = ind.ID;
-					fondCijene.Naziv = ind.NAZIV;
+                    fondCijene.Cijene = DohvatiCijeneProsireno(indeksni.ID, inDatumOd, inDatumDo);
+                    fondCijene.ID = indeksni.ID;
+                    fondCijene.Naziv = indeksni.NAZIV;
 
 					fondoviCijene.Add(fondCijene);
 				}
@@ -931,6 +932,43 @@ namespace InvestApp.DAL
                 return false;
             }
         }
+
+        //public static List<int> VratiFondoveUsporedbene(int fondID)
+        //{
+        //    if (fondID <= 0)
+        //        return null;
+
+        //    using (var context = new FondEntities())
+        //    {
+        //        return context.Fondovi.Single(f => f.ID == fondID).FondoviUsporedba.Select(u => u.ID).ToList();
+        //    }
+        //}
+
+        //public static void PostaviFondUsporedbene(int fondID, List<int> usporedbeFondIDs)
+        //{
+        //    try
+        //    {
+        //        using (var context = new FondEntities())
+        //        {
+        //            var fond = context.Fondovi.Single(f => f.ID == fondID);
+
+        //            fond.FondoviUsporedba.Clear();
+
+        //            foreach (int id in usporedbeFondIDs)
+        //            {
+        //                var fondUsporedba = context.Fondovi.Single(f => f.ID == id);
+
+        //                fond.FondoviUsporedba.Add(fondUsporedba);
+        //            }
+
+        //            context.SaveChanges();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DAC.Logiraj("Greška pri spremanju fondova za usporedbu. Fond ID: " + fondID, ex);
+        //    }
+        //}
 
 	}
 }

@@ -326,7 +326,7 @@
     <Content Include="Kontrole\FondPortfeljPregledCtrl.ascx" />
     <Content Include="Kontrole\FondPrinosiTablicaCtrl.ascx" />
     <Content Include="Blog.aspx" />
-    <Content Include="promjene.txt" />
+    <Content Include="promjene.sql" />
     <Content Include="Reports\ZahtjevIspis.aspx" />
     <Content Include="Admin.sitemap" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
