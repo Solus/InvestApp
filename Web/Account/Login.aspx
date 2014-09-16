@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Prijava | InvestApp" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="InvestApp.Web.Login" %>
+﻿<%@ Page Title="Prijava | investiraj.net" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="InvestApp.Web.Login" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 

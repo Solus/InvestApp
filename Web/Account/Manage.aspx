@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Upravljanje računom | InvestApp" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="InvestApp.Web.Manage" %>
+﻿<%@ Page Title="Upravljanje računom | investiraj.net" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="InvestApp.Web.Manage" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 <%@ Import Namespace="Microsoft.AspNet.Membership.OpenAuth" %>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Registracija | InvestApp" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="InvestApp.Web.Register" %>
+﻿<%@ Page Title="Registracija | investiraj.net" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="InvestApp.Web.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 

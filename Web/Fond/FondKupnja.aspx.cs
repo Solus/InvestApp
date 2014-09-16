@@ -765,7 +765,7 @@ namespace InvestApp.Web
 		private void PostaviHeader(string fondNaziv = "")
 		{
 			formHeader.InnerText = (Kupnja ? "Kupnja" : "Prodaja") + " udjela u fondu" + (fondNaziv.IsNullOrEmpty() ? "" : " " + fondNaziv);
-			this.Page.Title = formHeader.InnerText + " | InvestApp";
+            this.Page.Title = formHeader.InnerText + " | investiraj.net";
 		}
 
 		#region Init korakâ

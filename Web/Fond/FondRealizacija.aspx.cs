@@ -14,7 +14,7 @@ namespace InvestApp.Web
 		{
 			if (!IsPostBack)
 			{
-				this.Page.Title = "Ručna realizacija | InvestApp";
+                this.Page.Title = "Ručna realizacija | investiraj.net";
 
 				if (Request.UrlReferrer != null)
 					ViewState["PrevPage"] = Request.UrlReferrer;

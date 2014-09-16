@@ -12,7 +12,7 @@ namespace InvestApp.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-                this.Master.Page.Title = "Uvjeti korištenja | InvestApp";
+                this.Master.Page.Title = "Uvjeti korištenja | investiraj.net";
         }
     }
 }

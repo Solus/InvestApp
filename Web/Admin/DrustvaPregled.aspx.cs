@@ -20,7 +20,7 @@ namespace InvestApp.Web
 		{
 			if (!IsPostBack)
 			{
-				this.Master.Page.Title = "Uređivanje društava | InvestApp";
+                this.Master.Page.Title = "Uređivanje društava | investiraj.net";
 			}
 		}
 

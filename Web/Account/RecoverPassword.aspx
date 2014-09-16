@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Resetiranje lozinke | InvestApp" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="RecoverPassword.aspx.cs" Inherits="InvestApp.Web.RecoverPassword" %>
+﻿<%@ Page Title="Resetiranje lozinke | investiraj.net" Language="C#" MasterPageFile="~/InvestMainContent.Master" AutoEventWireup="true" CodeBehind="RecoverPassword.aspx.cs" Inherits="InvestApp.Web.RecoverPassword" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
