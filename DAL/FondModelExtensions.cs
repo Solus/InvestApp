@@ -174,9 +174,9 @@ namespace InvestApp.DAL
 		{
 			get
 			{
-				if (this.GRUPE.IsNullOrEmpty())
-					return null;
-				else
+                //if (this.GRUPE.IsNullOrEmpty())
+                //    return null;
+                //else
 				{
 					return FondDAC.VratiSlicneFondove(this.ID);
 				}

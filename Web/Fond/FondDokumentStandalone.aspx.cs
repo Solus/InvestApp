@@ -43,6 +43,7 @@ namespace InvestApp.Web
 				//gumb za kupnju
 				Button btnKupi = FormView1.FindControl("btnKupi") as Button;
 				btnKupi.OnClientClick = string.Format("window.parent.location = '{0}?fondID={1}&mod=K'; return false;", ResolveClientUrl("~/Fond/FondKupnja.aspx"), FondID);
+                btnUsporedi.OnClientClick = string.Format("window.parent.location = '{0}'; return false;", ResolveClientUrl("~/FondUsporedba/FondUsporedba.aspx"));
 			}
 
 			PostaviTablicu();
@@ -167,26 +168,9 @@ namespace InvestApp.Web
 				return;
 			}
 
-			PostaviUsporedbaKlase(btnUsporedba, FondID);
+			//PostaviUsporedbaKlase(btnUsporedba, FondID);
 
-			//FondUsporedbaContainer container = FondUsporedbaContainer.GetContainer(Session);
-
-			//string strClass = btnUsporedba.Attributes["class"];
-
-			//if (container.SadrziFond(FondID)) //ako sadrži taj fond, onda se može ukloniti
-			//{
-			//	string dodatnaKlasa = " remove";
-
-			//	if (!strClass.Contains(dodatnaKlasa))
-			//		btnUsporedba.Attributes["class"] = strClass + dodatnaKlasa;
-
-			//	btnUsporedba.InnerText = "Ukloni";
-			//}
-			//else if (container.IsFull) //ako je puno, ne može se dodati
-			//	btnUsporedba.Attributes["class"] = strClass + " disabled";
-
-
-			btnUsporedba.Attributes["data-id"] = FondID.ToString();
+			//btnUsporedba.Attributes["data-id"] = FondID.ToString();
 		}
 
 		protected void fondoviSlicniRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)

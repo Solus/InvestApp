@@ -104,11 +104,11 @@
 
                     <div class="form_item">
                         <a href="javascript: void(0);" class="link_add_file" onclick="$('#divDokOsobna').toggle();" title="Odaberi"></a>
-                        <asp:HyperLink ID="linkDokOsobna" ClientIDMode="Static" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Eval("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
+                        <asp:HyperLink ID="linkDokOsobna" ClientIDMode="Static" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Eval("OSOBNA_ISKAZNICA_URL") %>'>Mjesečno izvješće</asp:HyperLink>
                         <asp:HiddenField ID="hfkDokOsobna" ClientIDMode="Static" runat="server" Value='<%# Bind("OSOBNA_ISKAZNICA_URL") %>' />
                         <a href="javascript: void(0);" class="link_clear_file" onclick="clearDocLink('linkDokOsobna', 'hfkDokOsobna');" title="Obriši"></a>
                         <div id="divDokOsobna" class="form_item" style="display: none;">
-                            <label class="form_item_label_edit">Osobna iskaznica (PDF):</label>
+                            <label class="form_item_label_edit">Mjesečno izvješće (PDF):</label>
                             <asp:FileUpload ID="fileOsobna" runat="server" CssClass="form_item_value_edit pdf" />
                         </div>
                     </div>
@@ -381,7 +381,7 @@
                         </div>
 
                         <div class="form_item">
-                            <label class="form_item_label_edit">Osobna iskaznica (PDF):</label>
+                            <label class="form_item_label_edit">Mjesečno izvješće (PDF):</label>
                             <asp:FileUpload ID="fileOsobna" runat="server" CssClass="form_item_value_edit pdf" />
                         </div>
 

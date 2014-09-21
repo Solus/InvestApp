@@ -67,5 +67,13 @@ namespace InvestApp.Common
 
 			return valid;
 		}
+
+        public static bool KorisnikJeAdmin
+        {
+            get
+            {
+                return Roles.IsUserInRole("Admin");
+            }
+        }
 	}
 }

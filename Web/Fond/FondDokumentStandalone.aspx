@@ -17,7 +17,7 @@
 <head id="Head1" runat="server">
     <title></title>
 
-    <link href="~/Content/Site.css?v=2.27" rel="stylesheet" />
+    <link href="~/Content/Site.css?v=2.31" rel="stylesheet" />
 
     <asp:PlaceHolder ID="PlaceHolder1" runat="server">
 
@@ -113,7 +113,7 @@
                                     <asp:HyperLink ID="HyperLink3" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("PROSPEKT_URL") %>'>Prospekt fonda</asp:HyperLink>
                                 </div>
                                 <div class="form_item">
-                                    <asp:HyperLink ID="HyperLink4" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("OSOBNA_ISKAZNICA_URL") %>'>Osobna iskaznica</asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink4" CssClass="form_item_link" runat="server" Target="_blank" NavigateUrl='<%# Bind("OSOBNA_ISKAZNICA_URL") %>'>Mjesečno izvješće</asp:HyperLink>
                                 </div>
 
                             </div>
@@ -351,17 +351,31 @@
 
                 <div class="btn_navigation_group left_buttons" id="btnGrupa" runat="server">
                     <%--<asp:Button ID="btnDodajUsporedba" CssClass="btn_navigation" runat="server" CausesValidation="False" CommandName="Edit" Text="Dodaj u usporedbu" OnClick="btnDodajUsporedba_Click" />--%>
-                    <a id="btnUsporedba" class='updateCart bigger' href='javascript:void(0)' runat="server">usporedi</a>
+                    <%--<a id="btnUsporedba" class='updateCart bigger' href='javascript:void(0)' runat="server">usporedi</a>--%>
+                    <asp:Button id="btnUsporedi" CssClass='btn_kupi usporedi' runat="server" UseSubmitBehavior="false" Text="Usporedi" />
                 </div>
             </div>
 
         </div>
 
 
-        <asp:EntityDataSource ID="EntityDataSource1" runat="server" ContextTypeName="InvestApp.DAL.FondEntities" ConnectionString="name=FondEntities" DefaultContainerName="FondEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Fondovi" EntityTypeFilter="Fond" OnUpdated="EntityDataSource1_Updated" OnSelecting="EntityDataSource1_Selecting">
+        <asp:EntityDataSource ID="EntityDataSource1" runat="server" 
+            ContextTypeName="InvestApp.DAL.FondEntities" 
+            ConnectionString="name=FondEntities" 
+            DefaultContainerName="FondEntities" 
+            EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" 
+            EntitySetName="Fondovi" 
+            EntityTypeFilter="Fond" 
+            OnUpdated="EntityDataSource1_Updated" OnSelecting="EntityDataSource1_Selecting">
         </asp:EntityDataSource>
 
-        <asp:EntityDataSource ID="EntityDataSourceKategorije" runat="server" ContextTypeName="InvestApp.DAL.FondEntities" ConnectionString="name=FondEntities" DefaultContainerName="FondEntities" EnableFlattening="False" EntitySetName="Kategorije" EntityTypeFilter="Kategorija">
+        <asp:EntityDataSource ID="EntityDataSourceKategorije" runat="server" 
+            ContextTypeName="InvestApp.DAL.FondEntities" 
+            ConnectionString="name=FondEntities" 
+            DefaultContainerName="FondEntities" 
+            EnableFlattening="False" 
+            EntitySetName="Kategorije" 
+            EntityTypeFilter="Kategorija">
         </asp:EntityDataSource>
 
     </form>

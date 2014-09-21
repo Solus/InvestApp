@@ -45,17 +45,23 @@ namespace InvestApp.DAL
 			{
 				var fond = context.Fondovi.Single(f => f.ID == fondID);
 
-				if (fond.GRUPE.IsNullOrEmpty())
-					return null;
-				else
+                var slicniFondovi = new List<Fond>();
+
+				if (!fond.GRUPE.IsNullOrEmpty())
 				{
 					char[] grupe = fond.GRUPE.ToCharArray();
 
-					var fondovi = context.Fondovi.Where(f => f.ID != fondID).ToList();
-					var slicniFondovi = fondovi.FindAll(f => !string.IsNullOrEmpty(f.GRUPE) && f.GRUPE.IndexOfAny(grupe) != -1);
+                    bool prikaziSakrivene = Common.Security.KorisnikJeAdmin;
 
-					return slicniFondovi;
+					var fondovi = context.Fondovi.Where(f => f.ID != fondID).ToList();
+					slicniFondovi = fondovi.FindAll(f => !string.IsNullOrEmpty(f.GRUPE) && f.GRUPE.IndexOfAny(grupe) != -1 && 
+                        (prikaziSakrivene || !f.SAKRIVENI.HasValue || f.SAKRIVENI.Value == prikaziSakrivene)
+                        );
 				}
+
+                slicniFondovi.Insert(0, fond);
+
+                return slicniFondovi;
 			}
 		}
 
@@ -274,7 +280,7 @@ namespace InvestApp.DAL
                     DohvatiCijene_Result cijena = cijene[i];
 
                     //računanje postotka
-                    decimal? razlika = cijena.VRIJEDNOST - prvaVrijednost;
+                    decimal? razlika = cijena.VRIJEDNOST - prvaVrijednost ?? 0;
                     decimal? postotak = prvaVrijednost.HasValue && prvaVrijednost != 0 ? (razlika * 100) / prvaVrijednost : 0;
                     cijena.POSTOTAK = Math.Round(postotak.Value, 2);
 

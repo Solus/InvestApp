@@ -85,13 +85,13 @@ namespace InvestApp.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnGrupa;
         
         /// <summary>
-        /// btnUsporedba control.
+        /// btnUsporedi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnUsporedba;
+        protected global::System.Web.UI.WebControls.Button btnUsporedi;
         
         /// <summary>
         /// EntityDataSource1 control.
