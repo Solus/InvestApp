@@ -1311,6 +1311,12 @@ namespace InvestApp.Web
                 args.IsValid = true;
         }
 
+        protected void EntityDataSourceFondovi_Selecting(object sender, EntityDataSourceSelectingEventArgs e)
+        {
+            if (KorisnikJeAdmin)
+                e.DataSource.Where = "";
+        }
+
 
 	}
 }

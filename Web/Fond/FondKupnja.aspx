@@ -1947,7 +1947,8 @@
         EntitySetName="Fondovi"
         EntityTypeFilter="Fond"
         OrderBy="it.[NAZIV]"
-        Where="(it.INDEKSNI IS NULL OR it.INDEKSNI = FALSE) AND (it.SAKRIVENI IS NULL OR it.SAKRIVENI = false)">
+        Where="(it.INDEKSNI IS NULL OR it.INDEKSNI = FALSE) AND (it.SAKRIVENI IS NULL OR it.SAKRIVENI = false)"
+        OnSelecting="EntityDataSourceFondovi_Selecting">
     </asp:EntityDataSource>
 
     <asp:EntityDataSource ID="EntityDataSourceBanke" runat="server" ContextTypeName="InvestApp.DAL.FondEntities" ConnectionString="name=FondEntities" DefaultContainerName="FondEntities" EnableFlattening="False" EntitySetName="BankeDomace" EntityTypeFilter="BankaDomaca">
