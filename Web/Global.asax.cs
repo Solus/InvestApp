@@ -44,12 +44,21 @@ namespace InvestApp.Web
 
             try
             {
-                Exception objErr = Server.GetLastError().GetBaseException();
-                //                  Server.ClearError();
+                //Exception objErr = Server.GetLastError().GetBaseException();
 
-                sb.Append("Greška u aplikaciji.");
-                sb.AppendLine("Error Message: " + objErr.Message.ToString());
-                sb.AppendLine("Stack Trace: " + objErr.StackTrace.ToString());
+                //sb.Append("Greška u aplikaciji.");
+                //sb.AppendLine("Error Message: " + objErr.Message.ToString());
+                //sb.AppendLine("Stack Trace: " + objErr.StackTrace.ToString());
+
+                HttpException lastErrorWrapper = Server.GetLastError() as HttpException;
+
+                Exception lastError = lastErrorWrapper;
+                if (lastErrorWrapper.InnerException != null)
+                    lastError = lastErrorWrapper.InnerException;
+
+                sb.Append("Greška u aplikaciji: " + lastError.GetType().ToString());
+                sb.AppendLine("Error Message: " + lastError.Message);
+                sb.AppendLine("Stack Trace: " + lastError.StackTrace);
 
                 DAL.DAC.Logiraj(sb.ToString());
             }

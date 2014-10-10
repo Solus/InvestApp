@@ -9,7 +9,7 @@ namespace InvestApp.Common
 {
 	public class Email
 	{
-		public static bool PosaljiEmail(string primateljEmail, string subject, string body, string cc = null, string posiljatelj = null, List<string> privitciUrls = null)
+		public static bool PosaljiEmail(string primateljEmail, string subject, string body, string[] cc = null, string posiljatelj = null, List<string> privitciUrls = null)
 		{
 			MailMessage mail = new MailMessage();
 
@@ -18,8 +18,14 @@ namespace InvestApp.Common
             mail.IsBodyHtml = true;
 			mail.To.Add(new MailAddress(primateljEmail));
 
-            if(!string.IsNullOrEmpty(cc))
-                mail.CC.Add(new MailAddress(cc));
+            if (cc != null)
+            {
+                foreach (var c in cc)
+                {
+                    if (!string.IsNullOrEmpty(c))
+                        mail.CC.Add(new MailAddress(c));
+                }
+            }
 
 			if (!string.IsNullOrEmpty(posiljatelj))
 				mail.From = new MailAddress(posiljatelj);

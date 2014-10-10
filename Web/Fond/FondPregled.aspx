@@ -14,7 +14,7 @@
     <div id="divSiteEnter" class="site_enter" runat="server">
 
         <div class="inner_box">
-            <a class="box_button help" href="#">Kako funkcionira?</a>
+            <a class="box_button help" href="../Dokumenti/investiraj.net_upute_02.pdf" target="_blank">Kako funkcionira?</a>
             <a class="box_button register" runat="server" href="~/Account/Register">Registriraj se</a>
             <a class="button_more" href="#zasto">saznaj više >></a>
         </div>

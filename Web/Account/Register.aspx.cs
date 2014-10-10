@@ -37,6 +37,10 @@ namespace InvestApp.Web
 
 			Log("Registriran korisnik: " + RegisterUser.UserName);
 
+            Common.Email.PosaljiEmail("investiraj@investiraj.net",
+                "Novi registrirani korisnik",
+                string.Format("Novi korisnik: <strong>{0}</strong> ({1})", RegisterUser.UserName, RegisterUser.Email));
+
 			//string continueUrl = RegisterUser.ContinueDestinationPageUrl;
 			//if (!OpenAuth.IsLocalUrl(continueUrl))
 			//{

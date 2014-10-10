@@ -136,6 +136,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -234,11 +235,13 @@
     <Content Include="Fond\FondZahtjeviPregled.aspx" />
     <Content Include="Fond\FondZahtjevRealizacija.aspx" />
     <Content Include="Fond\SlanjeZahtjeva.aspx" />
+    <Content Include="Greska.aspx" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\arrow_less.png" />
     <Content Include="Images\arrow_more.png" />
     <Content Include="Images\blog_banner.png" />
     <Content Include="Images\cart.png" />
+    <Content Include="Images\cat_small.png" />
     <Content Include="Images\checkbox.png" />
     <Content Include="Images\checkbox_darker.png" />
     <Content Include="Images\delete.png" />
@@ -255,6 +258,7 @@
     <Content Include="Images\edit.png" />
     <Content Include="Images\edit_white.png" />
     <Content Include="Images\enter_bg.png" />
+    <Content Include="Images\error_bg.png" />
     <Content Include="Images\file_pdf.png" />
     <Content Include="Images\gore_green.png" />
     <Content Include="Images\graf.png" />
@@ -329,6 +333,8 @@
     <Content Include="promjene.sql" />
     <Content Include="Reports\ZahtjevIspis.aspx" />
     <Content Include="Admin.sitemap" />
+    <Content Include="Dokumenti\investiraj.net_rijecnik_01.pdf" />
+    <Content Include="Dokumenti\investiraj.net_upute_02.pdf" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\cookie_consent.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
@@ -482,6 +488,13 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\RecoverPassword.aspx.cs">
       <DependentUpon>RecoverPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -680,6 +693,13 @@
     </Compile>
     <Compile Include="Fond\SlanjeZahtjeva.aspx.designer.cs">
       <DependentUpon>SlanjeZahtjeva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Greska.aspx.cs">
+      <DependentUpon>Greska.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Greska.aspx.designer.cs">
+      <DependentUpon>Greska.aspx</DependentUpon>
     </Compile>
     <Compile Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx.cs">
       <DependentUpon>FondPortfeljUdioGrafCtrl.ascx</DependentUpon>

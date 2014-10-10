@@ -3311,3 +3311,56 @@ input.btn_blog_novi{
     background-repeat: no-repeat;
     background-position: right center;
 }
+
+/*ERROR*/
+.error_body{
+    min-height: 500px;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+.error_body.error{
+    background: url(../Images/error_bg.png) no-repeat center right;
+}
+
+.error_body p,
+.error_body h1{
+    color: #e0e0e0;
+}
+
+.error_body a{
+    color: #EC835B;
+}
+
+.error_body_text{
+    padding: 30px;
+    background: #262B2C;
+}
+
+.error_body_text.panel{
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    max-width: 600px;
+}
+
+.error_body_text.box{
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -70px;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+}
+
+.error_body_text .pic{
+    background: url(../Images/cat_small.png) center center no-repeat;
+    width: 100px;
+    height: 76px;
+    position: absolute;
+    top: -34px;
+    right: 0;
+}
