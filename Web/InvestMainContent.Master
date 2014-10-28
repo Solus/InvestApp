@@ -8,7 +8,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Signika:400,600,700,300&subset=latin,latin-ext' rel='stylesheet prefetch' type='text/css'>
 
-    <link href="~/Content/Site.css?v=2.32" rel="stylesheet" />
+    <link href="~/Content/Site.css?v=2.33" rel="stylesheet" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="favicon.ico" rel="shortcut icon" type="image/ico"/>
@@ -92,10 +92,13 @@
 
             <section id="login">
 
+
                 <asp:SiteMapDataSource runat="server" ID="userSitemap" SiteMapProvider="adminSitemap" ShowStartingNode="false" />
                 <asp:Repeater ID="repeaterUserMenu" runat="server" DataSourceID="userSitemap">
                     <HeaderTemplate>
                         <ul>
+                            <li><a class="header_link_2" href="Upute.aspx">Kako funkcionira?</a></li>
+                            <li><a class="header_link_2" href="Rjecnik.aspx">Rječnik<a></li>
                     </HeaderTemplate>
                     <ItemTemplate>
                         <li><a id="A4" runat="server" title='<%# Eval("description") %>' href='<%# Eval("url") %>'><%# Eval("title") %></a></li>

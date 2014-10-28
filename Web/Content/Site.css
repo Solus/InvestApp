@@ -862,6 +862,14 @@ ol li{
 	cursor: help;
 }
 
+h1{
+    color: inherit;
+}
+
+h1.large{
+    font-size: 38px
+}
+
 /*LOGIN podaci*/
 #login
 {
@@ -903,10 +911,15 @@ ol li{
     font-weight: normal;
     text-decoration: none;
     text-shadow: 1px 1px 1px rgba(190, 70, 20, .7);
+    transition: .2s;
+}
+
+#login a.header_link_2{
+    color: #250D04;
 }
 
 #login a:hover{
-    color: #FDF1ED;
+    color: #fce5de;
 }
 
 #login .username{
@@ -3363,4 +3376,301 @@ input.btn_blog_novi{
     position: absolute;
     top: -34px;
     right: 0;
+}
+
+/*UPUTE*/
+.upute_container {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.upute_container > div{
+    margin: 20px 0 100px 0;
+    position: relative;
+}
+
+.upute_container p{
+    line-height: 22px;
+}
+
+.upute_container .section{
+    position: relative;
+}
+
+.upute_container h1{
+    font-size: 24px;
+    font-weight: lighter;
+    color: inherit;
+    border-bottom: 1px solid #999;
+    margin-bottom: 5px;
+}
+
+.upute_container img.left{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.upute_container img.right{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.upute_1 {
+    min-height: 525px;
+}
+
+.upute_1 .title {
+    font-size: 48px;
+    font-weight: lighter;
+    display: inline-block;
+    max-width: 320px;
+}
+
+.upute_1 .link_site {
+    font-weight: bold;
+}
+
+.upute_1 .link_domain {
+    color: #F37D43;
+}
+
+.upute_1 img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+}
+
+.upute_1 ul{
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+.upute_1 li{
+    background: url(../Images/Upute/list_arrow.png) left center no-repeat;
+    padding-left: 25px;
+    margin: 7px 0;
+    line-height: 24px;
+}
+
+.upute_2 .section.prva{
+    min-height: 340px;
+}
+
+.upute_2 .section.prva img{
+    width: 500px;
+}
+
+.upute_2 .section.druga{
+    text-align: right;
+    min-height: 230px;
+}
+
+.upute_2 .section.druga img{
+    width: 500px;
+}
+
+.upute_3 .section.prva{
+    min-height: 300px;
+    text-align: right;
+}
+
+.upute_3 .section.prva p{
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.upute_3 .section.prva img{
+    width: 500px;
+}
+
+.upute_3 .section.druga{
+    min-height: 280px;
+}
+
+.upute_3 .section.druga img{
+    width: 500px;
+}
+
+.upute_4 .section.prva{
+    min-height: 315px;
+    text-align: right;
+}
+
+.upute_4 .section.prva img{
+    width: 500px;
+}
+
+.upute_4 .section.druga{
+    min-height: 300px;
+    text-align: right;
+}
+
+.upute_4 .section.druga img{
+    width: 500px;
+}
+
+.upute_5{
+    min-height: 520px;
+}
+
+.upute_5 h1{
+    font-size: 48px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.upute_5 p{
+    max-width: 325px;
+}
+
+.upute_5 img{
+    width: 600px;
+}
+
+.upute_6{
+}
+
+.upute_6 .title{
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.upute_6 .title .highlight{
+    color: #F37D43;
+}
+
+.upute_6 .koraci{
+    text-align: center;
+    margin-top: 70px;
+}
+
+.upute_6 .korak{
+    width: 165px;
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.upute_6 .korak.prvi{
+    width: 140px;
+}
+
+.upute_6 .korak.drugi{
+    width: 240px;
+}
+
+.upute_6 .korak .image_top{
+    height: 90px;
+    vertical-align: top;
+}
+
+.upute_6 .korak .image_bottom{
+    height: 125px;
+}
+
+.upute_6 .korak .korak_tekst{
+    height: 100px;
+    max-width: 150px;
+    margin: 0 auto;
+    line-height: 100px;
+}
+
+.upute_6 .korak .korak_tekst span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.upute_6 .korak.prvi .image_top{
+    background: url(../Images/Upute/korak_br_1.png) no-repeat center center;
+}
+
+.upute_6 .korak.drugi .image_top{
+    background: url(../Images/Upute/korak_br_2.png) no-repeat center center;
+}
+
+.upute_6 .korak.treci .image_top{
+    background: url(../Images/Upute/korak_br_3.png) no-repeat center center;
+}
+
+.upute_6 .korak.cetvrti .image_top{
+    background: url(../Images/Upute/korak_br_4.png) no-repeat center center;
+}
+
+.upute_6 .korak.peti .image_top{
+    background: url(../Images/Upute/korak_br_5.png) no-repeat center center;
+}
+
+.upute_6 .korak.prvi .image_bottom{
+    background: url(../Images/Upute/korak_1_slika.png) no-repeat center center;
+}
+
+.upute_6 .korak.drugi .image_bottom{
+    background: url(../Images/Upute/korak_2_slika.png) no-repeat center left;
+}
+
+.upute_6 .korak.treci .image_bottom{
+    background: url(../Images/Upute/korak_3_slika.png) no-repeat center center;
+}
+
+.upute_6 .korak.cetvrti .image_bottom{
+    background: url(../Images/Upute/korak_4_slika.png) no-repeat center center;
+}
+
+.upute_6 .korak.peti .image_bottom{
+    background: url(../Images/Upute/korak_5_slika.png) no-repeat center center;
+}
+
+/*RJEČNIK*/
+.rjecnik_container{
+    width: 900px;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+.rjecnik_container h1{
+    margin-bottom: 20px;
+}
+
+.rjecnik_container .left,
+.rjecnik_container .right{
+    width: 45%;
+}
+
+.rjecnik_container ul{
+    list-style-type: none;
+    margin-top: 3px;
+}
+
+.rjecnik_container ul.indent{
+    margin-left: 20px;
+}
+
+.rjecnik_container li{
+    margin-bottom: 5px;
+}
+
+.rjecnik_container .dict_group{
+    font-weight: bold;
+    display: inline-block;
+}
+
+.rjecnik_container .dict_group:not(:first-child){
+    margin-top: 10px;
+}
+
+.rjecnik_container .term{
+    font-weight: bold;
+}
+
+a.large{
+    display: block;
+    margin-top: 20px;
+    font-size: 26px;
+    font-weight: lighter;
 }

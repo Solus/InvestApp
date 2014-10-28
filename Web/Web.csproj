@@ -283,6 +283,7 @@
     <Content Include="Images\log_out.png" />
     <Content Include="Images\log_out_bg.png" />
     <Content Include="Images\log_out_fg.png" />
+    <Content Include="Images\pagination.png" />
     <Content Include="Images\pdf.png" />
     <Content Include="Images\pencil.png" />
     <Content Include="Images\plus_circle.png" />
@@ -321,6 +322,27 @@
     <Content Include="Images\triangle_big_light.png" />
     <Content Include="Images\triangle_dark.png" />
     <Content Include="Images\triangle_light.png" />
+    <Content Include="Images\Upute\01_pregled-fondova_01.png" />
+    <Content Include="Images\Upute\02_usporedba-fondova_01.png" />
+    <Content Include="Images\Upute\03_registriraj-se_01.png" />
+    <Content Include="Images\Upute\04_account_01.png" />
+    <Content Include="Images\Upute\05_realizacija-zahtjeva_01.png" />
+    <Content Include="Images\Upute\06_portfelj_01.png" />
+    <Content Include="Images\Upute\07_blog_01.png" />
+    <Content Include="Images\Upute\07_blog_01_s.png" />
+    <Content Include="Images\Upute\ekrani_01.png" />
+    <Content Include="Images\Upute\ekrani_01_sa_sjenom.png" />
+    <Content Include="Images\Upute\korak_1_slika.png" />
+    <Content Include="Images\Upute\korak_2_slika.png" />
+    <Content Include="Images\Upute\korak_3_slika.png" />
+    <Content Include="Images\Upute\korak_4_slika.png" />
+    <Content Include="Images\Upute\korak_5_slika.png" />
+    <Content Include="Images\Upute\korak_br_1.png" />
+    <Content Include="Images\Upute\korak_br_2.png" />
+    <Content Include="Images\Upute\korak_br_3.png" />
+    <Content Include="Images\Upute\korak_br_4.png" />
+    <Content Include="Images\Upute\korak_br_5.png" />
+    <Content Include="Images\Upute\list_arrow.png" />
     <Content Include="Images\usporedi.png" />
     <Content Include="Images\usporedi_black.png" />
     <Content Include="Kontrole\FondPortfeljUdioGrafCtrl.ascx" />
@@ -336,6 +358,7 @@
     <Content Include="Dokumenti\investiraj.net_rijecnik_01.pdf" />
     <Content Include="Dokumenti\investiraj.net_upute_02.pdf" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Rjecnik.aspx" />
     <Content Include="Scripts\cookie_consent.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
@@ -345,6 +368,7 @@
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Content\css\site_content.css" />
     <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.slides.min.js" />
     <Content Include="Scripts\jqueryCookieGuard.1.0.min.js" />
     <Content Include="Scripts\skins\lightgray\content.inline.min.css" />
     <Content Include="Scripts\skins\lightgray\content.min.css" />
@@ -468,6 +492,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="test.aspx" />
+    <Content Include="Upute.aspx" />
     <Content Include="UvjetiKoristenja.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -817,6 +842,13 @@
     <Compile Include="Reports\ZahtjevIspis.aspx.designer.cs">
       <DependentUpon>ZahtjevIspis.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Rjecnik.aspx.cs">
+      <DependentUpon>Rjecnik.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rjecnik.aspx.designer.cs">
+      <DependentUpon>Rjecnik.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -830,6 +862,13 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Upute.aspx.cs">
+      <DependentUpon>Upute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Upute.aspx.designer.cs">
+      <DependentUpon>Upute.aspx</DependentUpon>
     </Compile>
     <Compile Include="UvjetiKoristenja.aspx.cs">
       <DependentUpon>UvjetiKoristenja.aspx</DependentUpon>
