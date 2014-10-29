@@ -915,7 +915,8 @@ h1.large{
 }
 
 #login a.header_link_2{
-    color: #250D04;
+    color: #31393A;
+    text-shadow: none;
 }
 
 #login a:hover{
@@ -3383,6 +3384,9 @@ input.btn_blog_novi{
     width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    color: #333;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 .upute_container > div{
@@ -3392,6 +3396,10 @@ input.btn_blog_novi{
 
 .upute_container p{
     line-height: 22px;
+}
+
+.upute_container img{
+    border: none;
 }
 
 .upute_container .section{
@@ -3406,20 +3414,20 @@ input.btn_blog_novi{
     margin-bottom: 5px;
 }
 
-.upute_container img.left{
+.upute_container img.img_left{
     position: absolute;
     left: 0;
     bottom: 0;
 }
 
-.upute_container img.right{
+.upute_container img.img_right{
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
 .upute_1 {
-    min-height: 525px;
+    min-height: 380px;
 }
 
 .upute_1 .title {
@@ -3574,10 +3582,10 @@ input.btn_blog_novi{
 }
 
 .upute_6 .korak .korak_tekst{
-    height: 100px;
+    height: 120px;
     max-width: 150px;
     margin: 0 auto;
-    line-height: 100px;
+    line-height: 120px;
 }
 
 .upute_6 .korak .korak_tekst span{

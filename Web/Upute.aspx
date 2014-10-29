@@ -18,20 +18,20 @@
                 <li>klikom na fond pregledajte detalje o pojedinom fondu</li>
                 <li>klikom na graf pogledajte graf cijene udjela u fondu</li>
             </ul>
-            <img class="right" src="Images/Upute/ekrani_01_sa_sjenom.png" alt="" />
+            <img class="img_right" src="Images/Upute/ekrani_01_sa_sjenom.png" alt="" />
         </div>
 
         <div class="upute_2">
             <div class="section prva">
                 <h1 id="pretraga">NAPREDNA PRETRAGA</h1>
                 <p>lako i brzo pronađite fond koji zadovoljava vaše karakteristike</p>
-                <img class="right" src="Images/Upute/01_pregled-fondova_01.png" alt="" />
+                <img class="img_right" src="Images/Upute/01_pregled-fondova_01.png" alt="" />
             </div>
 
             <div class="section druga">
                 <h1 id="usporedba">USPOREDBA</h1>
                 <p>usporedite prinose fondova</p>
-                <img class="left" src="Images/Upute/02_usporedba-fondova_01.png" alt="" />
+                <img class="img_left" src="Images/Upute/02_usporedba-fondova_01.png" alt="" />
             </div>
         </div>
 
@@ -40,13 +40,13 @@
                 <h1 id="registracija">REGISTRIRAJ SE</h1>
                 <div><p>registracija omogućuje usporedbu većeg broja fondova, kupnju i prodaju fondova, te vođenje vlastitog portfelja</p>
                     </div>
-                <img class="left" src="Images/Upute/03_registriraj-se_01.png" alt="" />
+                <img class="img_left" src="Images/Upute/03_registriraj-se_01.png" alt="" />
             </div>
 
             <div class="section druga">
                 <h1 id="kupnja">KUPNJA & PRODAJA</h1>
                 <p>pojednostavite proces kupnje kreiranjem korisničkog računa</p>
-                <img class="right" src="Images/Upute/04_account_01.png" alt="" />
+                <img class="img_right" src="Images/Upute/04_account_01.png" alt="" />
             </div>
         </div>
 
@@ -54,20 +54,20 @@
             <div class="section prva">
                 <h1 id="zahtjevi">ZAHTJEVI</h1>
                 <p>pregledajte povijest vaših kupnji i prodaja</p>
-                <img class="left" src="Images/Upute/05_realizacija-zahtjeva_01.png" alt="" />
+                <img class="img_left" src="Images/Upute/05_realizacija-zahtjeva_01.png" alt="" />
             </div>
 
             <div class="section druga">
                 <h1 id="portfelj">PORTFELJ</h1>
                 <p>pratite svoj portfelj i pojedine fondove</p>
-                <img class="left" src="Images/Upute/06_portfelj_01.png" alt="" />
+                <img class="img_left" src="Images/Upute/06_portfelj_01.png" alt="" />
             </div>
         </div>
 
         <div class="upute_5">
-            <h1 id="blog">BLOG</h1>
+            <h1 id="blog"><a href="Blog.aspx">BLOG</a></h1>
             <p>pratite događanja relevantna za vaše osobne financije i naše poglede na ulaganja</p>
-            <img class="right" src="Images/Upute/07_blog_01_s.png" alt="" />
+            <a href="Blog.aspx"><img class="img_right" src="Images/Upute/07_blog_01_s.png" alt="" /></a>
         </div>
 
         <div class="upute_6">

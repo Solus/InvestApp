@@ -8,7 +8,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Signika:400,600,700,300&subset=latin,latin-ext' rel='stylesheet prefetch' type='text/css'>
 
-    <link href="~/Content/Site.css?v=2.33" rel="stylesheet" />
+    <link href="~/Content/Site.css?v=2.35" rel="stylesheet" />
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="favicon.ico" rel="shortcut icon" type="image/ico"/>
